@@ -4,7 +4,10 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // ─── DELETED BLACKLIST TRACKERS ─────────────────────────────────────────────
 const getDeletedCertificates = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_deleted_certificates') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_deleted_certificates') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const addDeletedCertificate = (...ids) => {
@@ -17,7 +20,10 @@ const addDeletedCertificate = (...ids) => {
 };
 
 const getDeletedApplications = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_deleted_applications') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_deleted_applications') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const addDeletedApplication = (...ids) => {
@@ -30,7 +36,10 @@ const addDeletedApplication = (...ids) => {
 };
 
 const getDeletedInquiries = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_deleted_inquiries') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_deleted_inquiries') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const addDeletedInquiry = (...ids) => {
@@ -43,7 +52,10 @@ const addDeletedInquiry = (...ids) => {
 };
 
 const getDeletedSubscribers = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_deleted_subscribers') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_deleted_subscribers') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const addDeletedSubscriber = (...ids) => {
@@ -57,7 +69,10 @@ const addDeletedSubscriber = (...ids) => {
 
 // ─── LOCAL STORAGE HELPERS ──────────────────────────────────────────────────
 const getLocalApps = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_local_applications') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_local_applications') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const saveLocalApp = (app) => {
@@ -68,7 +83,10 @@ const saveLocalApp = (app) => {
 };
 
 const getLocalInquiries = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_local_inquiries') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_local_inquiries') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const saveLocalInquiry = (inq) => {
@@ -79,7 +97,10 @@ const saveLocalInquiry = (inq) => {
 };
 
 const getLocalSubscribers = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_local_subscribers') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_local_subscribers') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const saveLocalSubscriber = (sub) => {
@@ -91,7 +112,10 @@ const saveLocalSubscriber = (sub) => {
 };
 
 const getLocalCerts = () => {
-  try { return JSON.parse(localStorage.getItem('appifyra_local_certificates') || '[]'); } catch (e) { return []; }
+  try {
+    const res = JSON.parse(localStorage.getItem('appifyra_local_certificates') || '[]');
+    return Array.isArray(res) ? res : [];
+  } catch (e) { return []; }
 };
 
 const saveLocalCert = (cert) => {
@@ -115,7 +139,7 @@ export const saveSubscriber = async (email) => {
       body: JSON.stringify({ email: cleanEmail })
     });
     const data = await res.json();
-    if (data.success) return { success: true, id: data.id };
+    if (data && data.success) return { success: true, id: data.id };
   } catch (error) {}
 
   return { success: true, id: newSub.id };
@@ -126,22 +150,28 @@ export const getAllSubscribers = async () => {
   let mongoSubs = [];
   try {
     const res = await fetch(`${API_BASE}/api/subscribers`);
-    const data = await res.json();
-    if (data.success && Array.isArray(data.data)) mongoSubs = data.data;
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.data)) mongoSubs = data.data;
+    }
   } catch (error) {}
 
   const localSubs = getLocalSubscribers();
-  const combined = [...localSubs, ...mongoSubs];
+  const combined = Array.isArray(localSubs) && Array.isArray(mongoSubs) ? [...localSubs, ...mongoSubs] : [];
   const uniqueMap = new Map();
-  combined.forEach(s => {
-    const subIdStr = String(s.id || s._id || '');
-    const emailStr = String(s.email || '').toLowerCase();
-    if (deleted.includes(subIdStr) || deleted.includes(emailStr)) return;
 
-    if (emailStr && !uniqueMap.has(emailStr)) {
-      uniqueMap.set(emailStr, s);
-    }
-  });
+  if (Array.isArray(combined)) {
+    combined.forEach(s => {
+      if (!s || typeof s !== 'object') return;
+      const subIdStr = String(s.id || s._id || '');
+      const emailStr = String(s.email || '').toLowerCase();
+      if (deleted.includes(subIdStr) || deleted.includes(emailStr)) return;
+
+      if (emailStr && !uniqueMap.has(emailStr)) {
+        uniqueMap.set(emailStr, s);
+      }
+    });
+  }
 
   return Array.from(uniqueMap.values());
 };
@@ -161,7 +191,7 @@ export const updateSubscriber = async (subId, newEmail) => {
       body: JSON.stringify({ email: cleanEmail })
     });
     const data = await res.json();
-    return data.success;
+    return !!(data && data.success);
   } catch (error) { return true; }
 };
 
@@ -200,7 +230,7 @@ export const saveContactInquiry = async (inquiryData) => {
       body: JSON.stringify(inquiryData)
     });
     const data = await res.json();
-    if (data.success) return { success: true, id: data.id };
+    if (data && data.success) return { success: true, id: data.id };
   } catch (error) {}
 
   return { success: true, id: newInq.id };
@@ -211,22 +241,28 @@ export const getContactInquiries = async () => {
   let mongoInqs = [];
   try {
     const res = await fetch(`${API_BASE}/api/inquiries`);
-    const data = await res.json();
-    if (data.success && Array.isArray(data.data)) mongoInqs = data.data;
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.data)) mongoInqs = data.data;
+    }
   } catch (error) {}
 
   const localInqs = getLocalInquiries();
-  const combined = [...localInqs, ...mongoInqs];
+  const combined = Array.isArray(localInqs) && Array.isArray(mongoInqs) ? [...localInqs, ...mongoInqs] : [];
   const uniqueMap = new Map();
-  combined.forEach(item => {
-    const idStr = String(item.id || item._id || '');
-    const emailStr = String(item.email || '').toLowerCase();
-    const compKey = `${item.email}_${item.subject}`;
 
-    if (deleted.includes(idStr) || deleted.includes(emailStr) || deleted.includes(compKey)) return;
+  if (Array.isArray(combined)) {
+    combined.forEach(item => {
+      if (!item || typeof item !== 'object') return;
+      const idStr = String(item.id || item._id || '');
+      const emailStr = String(item.email || '').toLowerCase();
+      const compKey = `${item.email}_${item.subject}`;
 
-    if (!uniqueMap.has(compKey)) uniqueMap.set(compKey, item);
-  });
+      if (deleted.includes(idStr) || deleted.includes(emailStr) || deleted.includes(compKey)) return;
+
+      if (!uniqueMap.has(compKey)) uniqueMap.set(compKey, item);
+    });
+  }
 
   return Array.from(uniqueMap.values());
 };
@@ -245,7 +281,7 @@ export const updateInquiry = async (inquiryId, updateData) => {
       body: JSON.stringify(updateData)
     });
     const data = await res.json();
-    return data.success;
+    return !!(data && data.success);
   } catch (error) { return true; }
 };
 
@@ -284,7 +320,7 @@ export const saveInternshipApplication = async (appData) => {
       body: JSON.stringify(appData)
     });
     const data = await res.json();
-    if (data.success) return { success: true, id: data.id };
+    if (data && data.success) return { success: true, id: data.id };
   } catch (error) {}
 
   return { success: true, id: newApp.id };
@@ -295,22 +331,28 @@ export const getAllApplications = async () => {
   let mongoApps = [];
   try {
     const res = await fetch(`${API_BASE}/api/applications`);
-    const data = await res.json();
-    if (data.success && Array.isArray(data.data)) mongoApps = data.data;
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.data)) mongoApps = data.data;
+    }
   } catch (error) {}
 
   const localApps = getLocalApps();
-  const combined = [...localApps, ...mongoApps];
+  const combined = Array.isArray(localApps) && Array.isArray(mongoApps) ? [...localApps, ...mongoApps] : [];
   const uniqueMap = new Map();
-  combined.forEach(item => {
-    const idStr = String(item.id || item._id || '');
-    const emailStr = String(item.email || '').toLowerCase();
-    const compKey = `${item.email}_${item.duration}_${item.domain}`;
 
-    if (deleted.includes(idStr) || deleted.includes(emailStr) || deleted.includes(compKey)) return;
+  if (Array.isArray(combined)) {
+    combined.forEach(item => {
+      if (!item || typeof item !== 'object') return;
+      const idStr = String(item.id || item._id || '');
+      const emailStr = String(item.email || '').toLowerCase();
+      const compKey = `${item.email}_${item.duration}_${item.domain}`;
 
-    if (!uniqueMap.has(compKey)) uniqueMap.set(compKey, item);
-  });
+      if (deleted.includes(idStr) || deleted.includes(emailStr) || deleted.includes(compKey)) return;
+
+      if (!uniqueMap.has(compKey)) uniqueMap.set(compKey, item);
+    });
+  }
 
   return Array.from(uniqueMap.values());
 };
@@ -318,7 +360,7 @@ export const getAllApplications = async () => {
 export const getStudentApplications = async (userEmail) => {
   if (!userEmail) return [];
   const allApps = await getAllApplications();
-  return allApps.filter(app => app.email && app.email.toLowerCase() === userEmail.toLowerCase());
+  return Array.isArray(allApps) ? allApps.filter(app => app && app.email && app.email.toLowerCase() === userEmail.toLowerCase()) : [];
 };
 
 export const updateApplication = async (appId, updateData) => {
@@ -335,7 +377,7 @@ export const updateApplication = async (appId, updateData) => {
       body: JSON.stringify(updateData)
     });
     const data = await res.json();
-    return data.success;
+    return !!(data && data.success);
   } catch (error) { return true; }
 };
 
@@ -378,37 +420,45 @@ export const getAllCertificates = async () => {
   let mongoCerts = [];
   try {
     const res = await fetch(`${API_BASE}/api/certificates`);
-    const data = await res.json();
-    if (data.success && Array.isArray(data.data)) mongoCerts = data.data;
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.data)) mongoCerts = data.data;
+    }
   } catch (e) {}
 
   const localCerts = getLocalCerts();
-  const combined = [...localCerts, ...mongoCerts];
+  const combined = Array.isArray(localCerts) && Array.isArray(mongoCerts) ? [...localCerts, ...mongoCerts] : [];
   const uniqueMap = new Map();
 
-  combined.forEach(c => {
-    const certIdStr = String(c.certificateId || c.id || c._id || '').toUpperCase();
-    const mongoIdStr = String(c._id || c.id || '').toUpperCase();
-    const studentEmailStr = String(c.studentEmail || c.email || '').toLowerCase();
+  if (Array.isArray(combined)) {
+    combined.forEach(c => {
+      if (!c || typeof c !== 'object') return;
+      const certIdStr = String(c.certificateId || c.id || c._id || '').toUpperCase();
+      const mongoIdStr = String(c._id || c.id || '').toUpperCase();
+      const studentEmailStr = String(c.studentEmail || c.email || '').toLowerCase();
 
-    if (deleted.includes(certIdStr) || deleted.includes(mongoIdStr) || deleted.includes(studentEmailStr)) return;
+      if (deleted.includes(certIdStr) || deleted.includes(mongoIdStr) || deleted.includes(studentEmailStr)) return;
 
-    if (certIdStr && !uniqueMap.has(certIdStr)) {
-      uniqueMap.set(certIdStr, c);
-    }
-  });
+      if (certIdStr && !uniqueMap.has(certIdStr)) {
+        uniqueMap.set(certIdStr, c);
+      }
+    });
+  }
 
   // Include static JSON fallback certificates if not deleted
-  (staticCertificates || []).forEach(sc => {
-    const certIdStr = String(sc.certificateId || '').toUpperCase();
-    const studentEmailStr = String(sc.studentEmail || '').toLowerCase();
+  if (Array.isArray(staticCertificates)) {
+    staticCertificates.forEach(sc => {
+      if (!sc || typeof sc !== 'object') return;
+      const certIdStr = String(sc.certificateId || '').toUpperCase();
+      const studentEmailStr = String(sc.studentEmail || '').toLowerCase();
 
-    if (deleted.includes(certIdStr) || deleted.includes(studentEmailStr)) return;
+      if (deleted.includes(certIdStr) || deleted.includes(studentEmailStr)) return;
 
-    if (certIdStr && !uniqueMap.has(certIdStr)) {
-      uniqueMap.set(certIdStr, sc);
-    }
-  });
+      if (certIdStr && !uniqueMap.has(certIdStr)) {
+        uniqueMap.set(certIdStr, sc);
+      }
+    });
+  }
 
   return Array.from(uniqueMap.values());
 };
@@ -416,18 +466,20 @@ export const getAllCertificates = async () => {
 export const getStudentCertificates = async (userEmail) => {
   if (!userEmail) return [];
   const allCerts = await getAllCertificates();
-  return allCerts.filter(c => c.studentEmail && c.studentEmail.toLowerCase() === userEmail.toLowerCase());
+  return Array.isArray(allCerts) ? allCerts.filter(c => c && c.studentEmail && c.studentEmail.toLowerCase() === userEmail.toLowerCase()) : [];
 };
 
 export const getNextCertificateId = async () => {
   try {
     const res = await fetch(`${API_BASE}/api/certificates/next-id`);
-    const data = await res.json();
-    if (data.success && data.nextId) return data.nextId;
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && data.nextId) return data.nextId;
+    }
   } catch (e) {}
 
   const allCerts = await getAllCertificates();
-  const num = allCerts.length + 1;
+  const num = Array.isArray(allCerts) ? allCerts.length + 1 : 1;
   return `APP-2026-${String(num).padStart(3, '0')}`;
 };
 
@@ -441,7 +493,7 @@ export const issueCertificate = async (certData) => {
       body: JSON.stringify(certData)
     });
     const data = await res.json();
-    if (data.success) return { success: true, certificateId: data.certificateId || certData.certificateId };
+    if (data && data.success) return { success: true, certificateId: data.certificateId || certData.certificateId };
   } catch (error) {}
 
   return { success: true, certificateId: certData.certificateId };
@@ -461,7 +513,7 @@ export const updateIssuedCertificate = async (certId, updateData) => {
       body: JSON.stringify(updateData)
     });
     const data = await res.json();
-    return data.success;
+    return !!(data && data.success);
   } catch (error) { return true; }
 };
 
@@ -503,23 +555,25 @@ export const lookupCertificate = async (queryStr) => {
 
   try {
     const res = await fetch(`${API_BASE}/api/certificates/verify/${encodeURIComponent(queryUpper)}`);
-    const data = await res.json();
-    if (data.success && data.data) {
-      const c = data.data;
-      const certIdStr = String(c.certificateId || c.id || c._id || '').toUpperCase();
-      const mongoIdStr = String(c._id || c.id || '').toUpperCase();
-      const studentEmailStr = String(c.studentEmail || c.email || '').toLowerCase();
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && data.data) {
+        const c = data.data;
+        const certIdStr = String(c.certificateId || c.id || c._id || '').toUpperCase();
+        const mongoIdStr = String(c._id || c.id || '').toUpperCase();
+        const studentEmailStr = String(c.studentEmail || c.email || '').toLowerCase();
 
-      if (deleted.includes(certIdStr) || deleted.includes(mongoIdStr) || deleted.includes(studentEmailStr)) {
-        return null;
+        if (deleted.includes(certIdStr) || deleted.includes(mongoIdStr) || deleted.includes(studentEmailStr)) {
+          return null;
+        }
+        return c;
       }
-      return c;
     }
   } catch (e) {}
 
   const allCerts = await getAllCertificates();
-  return allCerts.find(c => {
+  return Array.isArray(allCerts) ? (allCerts.find(c => {
     const id = (c.certificateId || c.id || '').trim().toUpperCase();
     return id === queryUpper;
-  }) || null;
+  }) || null) : null;
 };
