@@ -1,0 +1,181 @@
+/* Custom overrides for Appifyra React */
+
+.font-monospace {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+/* Remove min-height forcing empty gap in Hero section */
+.hero-style-three {
+  min-height: auto !important;
+}
+
+.brand {
+  margin-top: 0 !important;
+}
+
+/* Infinite Marquee CSS Animation for Brand Section */
+.cs-brand-inner {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  gap: 20px;
+}
+
+.cs-brand-inner.marquee-left {
+  animation: scrollMarqueeLeft 30s linear infinite !important;
+}
+
+.cs-brand-inner.marquee-right {
+  animation: scrollMarqueeRight 30s linear infinite !important;
+}
+
+.cs-brand-inner:hover {
+  animation-play-state: paused !important;
+}
+
+@keyframes scrollMarqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollMarqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Row Status Change Glow Pulse Animation */
+@keyframes statusGlowPulse {
+  0% {
+    background-color: rgba(174, 109, 254, 0.35);
+    box-shadow: inset 0 0 15px rgba(174, 109, 254, 0.5);
+  }
+  50% {
+    background-color: rgba(74, 222, 128, 0.35);
+    box-shadow: inset 0 0 20px rgba(74, 222, 128, 0.6);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.02);
+    box-shadow: none;
+  }
+}
+
+.row-status-updating {
+  animation: statusGlowPulse 0.9s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.status-badge-anim {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Sleek Table Button Hover Effects */
+.btn-action-pill {
+  transition: all 0.2s ease !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.btn-action-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Dynamic Interactive Hover Effects for Service Cards */
+.service-hover-card {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease !important;
+  cursor: pointer;
+}
+
+.service-hover-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(174, 109, 254, 0.5) !important;
+  background-color: rgba(67, 29, 171, 0.15) !important;
+  box-shadow: 0 20px 45px rgba(174, 109, 254, 0.3) !important;
+}
+
+.service-icon-box {
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+.service-hover-card:hover .service-icon-box {
+  transform: scale(1.12);
+  background-color: rgba(174, 109, 254, 0.25) !important;
+  border-color: rgba(174, 109, 254, 0.5) !important;
+}
+
+.service-arrow-icon {
+  transition: transform 0.3s ease, color 0.3s ease !important;
+}
+
+.service-hover-card:hover .service-arrow-icon {
+  transform: translateX(6px);
+  color: #4ade80 !important;
+}
+
+/* Print Media Queries for Perfect 1-Page Landscape Certificate PDF Download */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    background-color: #010315 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide scrollbars completely during print */
+  ::-webkit-scrollbar, *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Hide header, footer, background elements, navigation buttons */
+  header, footer, nav, .btn, button, .no-print {
+    display: none !important;
+  }
+
+  .modal-backdrop-custom {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #010315 !important;
+    backdrop-filter: none !important;
+    padding: 24px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .printable-cert-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 30px 50px !important;
+    background: linear-gradient(135deg, rgba(6, 40, 26, 0.98) 0%, rgba(1, 3, 21, 0.98) 100%) !important;
+    border: 2px solid rgba(74, 222, 128, 0.5) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+}

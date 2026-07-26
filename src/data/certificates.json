@@ -1,0 +1,46 @@
+{
+  "APP-2025-WD01": {
+    "certificateId": "APP-2025-WD01",
+    "studentName": "Rahul Sharma",
+    "domain": "Web Development Internship",
+    "issueDate": "January 15, 2025",
+    "validUntil": "Lifetime",
+    "status": "Verified",
+    "grade": "Excellence (A+)",
+    "issuer": "Team Appifyra",
+    "skills": ["React.js", "JavaScript (ES6+)", "HTML5 & CSS3", "REST APIs", "Git & GitHub"]
+  },
+  "APP-2025-AD02": {
+    "certificateId": "APP-2025-AD02",
+    "studentName": "Priya Patel",
+    "domain": "App Development Internship",
+    "issueDate": "February 10, 2025",
+    "validUntil": "Lifetime",
+    "status": "Verified",
+    "grade": "Distinction",
+    "issuer": "Team Appifyra",
+    "skills": ["Flutter", "Dart", "Firebase Integration", "UI/UX Design", "State Management"]
+  },
+  "APP-2025-CS03": {
+    "certificateId": "APP-2025-CS03",
+    "studentName": "Aman Kumar",
+    "domain": "Cloud Services & DevOps Internship",
+    "issueDate": "March 05, 2025",
+    "validUntil": "Lifetime",
+    "status": "Verified",
+    "grade": "Excellence (A+)",
+    "issuer": "Team Appifyra",
+    "skills": ["AWS Cloud Services", "Docker", "Kubernetes", "CI/CD Pipelines", "Linux Admin"]
+  },
+  "APP-2025-GD04": {
+    "certificateId": "APP-2025-GD04",
+    "studentName": "Ananya Roy",
+    "domain": "Graphic Design Internship",
+    "issueDate": "April 20, 2025",
+    "validUntil": "Lifetime",
+    "status": "Verified",
+    "grade": "Excellence (A+)",
+    "issuer": "Team Appifyra",
+    "skills": ["Figma", "Adobe Illustrator", "Brand Identity", "UI Layout Design"]
+  }
+}
