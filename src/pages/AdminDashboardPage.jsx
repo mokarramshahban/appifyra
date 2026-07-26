@@ -201,18 +201,20 @@ export default function AdminDashboardPage() {
     e.preventDefault();
     if (!editingApp) return;
     setUpdatingId(editingApp.id);
+
     await updateApplication(editingApp.id, appEditForm);
     setApplications(prev => prev.map(a => a.id === editingApp.id ? { ...a, ...appEditForm } : a));
     
-    // Send Automated Email on Edit Save
+    // Send Automated Email Notification to Candidate on Edit Save
     if (appEditForm.email) {
-      sendStatusUpdateEmail({
+      const emailRes = await sendStatusUpdateEmail({
         studentEmail: appEditForm.email,
-        studentName: appEditForm.fullName,
-        status: appEditForm.status,
-        domain: appEditForm.domain,
-        duration: appEditForm.duration
+        studentName: appEditForm.fullName || 'Candidate',
+        status: appEditForm.status || 'Under Review',
+        domain: appEditForm.domain || 'Software Program',
+        duration: appEditForm.duration || '45-Days'
       });
+      console.log(`✅ Edit save status email dispatch result for ${appEditForm.email}:`, emailRes);
     }
 
     setEditingApp(null);
@@ -563,20 +565,8 @@ export default function AdminDashboardPage() {
                           </span>
                         </td>
                         <td>
-                          <div className="d-flex align-items-center gap-2 flex-wrap" style={{ minWidth: '300px' }}>
-                            <select
-                              className="form-select form-select-sm text-white"
-                              style={{ backgroundColor: '#090536', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '8px', width: '130px', fontSize: '12px' }}
-                              value={app.status || 'Under Review'}
-                              onChange={(e) => handleStatusChange(app.id, e.target.value)}
-                            >
-                              <option value="Under Review">Under Review</option>
-                              <option value="Approved">Approved</option>
-                              <option value="Rejected">Rejected</option>
-                              <option value="Completed">Completed</option>
-                            </select>
-
-                            <button onClick={() => handleOpenEditApp(app)} className="btn btn-sm btn-outline-info btn-action-pill py-1 px-2" style={{ fontSize: '12px' }} title="Edit Candidate Info">
+                          <div className="d-flex align-items-center gap-2 flex-wrap">
+                            <button onClick={() => handleOpenEditApp(app)} className="btn btn-sm btn-outline-info btn-action-pill py-1 px-2" style={{ fontSize: '12px' }} title="Edit Candidate Info & Status">
                               <i className="fas fa-edit me-1"></i> Edit
                             </button>
 
@@ -668,20 +658,8 @@ export default function AdminDashboardPage() {
                           </span>
                         </td>
                         <td>
-                          <div className="d-flex align-items-center gap-2 flex-wrap" style={{ minWidth: '300px' }}>
-                            <select
-                              className="form-select form-select-sm text-white"
-                              style={{ backgroundColor: '#090536', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '8px', width: '130px', fontSize: '12px' }}
-                              value={app.status || 'Under Review'}
-                              onChange={(e) => handleStatusChange(app.id, e.target.value)}
-                            >
-                              <option value="Under Review">Under Review</option>
-                              <option value="Approved">Approved</option>
-                              <option value="Rejected">Rejected</option>
-                              <option value="Completed">Completed</option>
-                            </select>
-
-                            <button onClick={() => handleOpenEditApp(app)} className="btn btn-sm btn-outline-info btn-action-pill py-1 px-2" style={{ fontSize: '12px' }} title="Edit Candidate Info">
+                          <div className="d-flex align-items-center gap-2 flex-wrap">
+                            <button onClick={() => handleOpenEditApp(app)} className="btn btn-sm btn-outline-info btn-action-pill py-1 px-2" style={{ fontSize: '12px' }} title="Edit Candidate Info & Status">
                               <i className="fas fa-edit me-1"></i> Edit
                             </button>
 
