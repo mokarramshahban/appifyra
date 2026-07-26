@@ -127,7 +127,7 @@ export default function Header() {
                       >
                         <li>
                           <Link to="/verify" className="py-2 px-3 text-white d-flex align-items-center gap-2">
-                            <i className="far fa-certificate" style={{ color: '#38bdf8' }}></i>
+                            <i className="fas fa-certificate" style={{ color: '#38bdf8' }}></i>
                             <span>Verify Certificate</span>
                           </Link>
                         </li>
@@ -193,16 +193,6 @@ export default function Header() {
                             >
                               <i className={`fas ${isAdmin ? 'fa-user-shield text-success' : 'fa-th-large text-primary'}`}></i>
                               <span>{isAdmin ? "Admin Panel" : "My Dashboard"}</span>
-                            </Link>
-                          </li>
-                          <li className="mb-2">
-                            <Link 
-                              to="/verify" 
-                              className="text-white d-flex align-items-center gap-2 py-1"
-                              onClick={() => setIsProfileMenuOpen(false)}
-                            >
-                              <i className="far fa-certificate text-info"></i>
-                              <span>Verify Certificate</span>
                             </Link>
                           </li>
                           <li className="pt-2" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>

@@ -112,6 +112,37 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   UNIVERSAL INTERACTIVE HOVER ANIMATIONS
+   ────────────────────────────────────────────────────────────────────────── */
+.interactive-hover-card {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease !important;
+  cursor: pointer;
+}
+
+.interactive-hover-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(174, 109, 254, 0.6) !important;
+  box-shadow: 0 20px 40px rgba(174, 109, 254, 0.25) !important;
+}
+
+.interactive-hover-card:hover .hover-icon-scale {
+  transform: scale(1.18) rotate(5deg);
+}
+
+.hover-icon-scale {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-glow-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+}
+
+.btn-glow-hover:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(174, 109, 254, 0.5) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    SKELETON SHIMMER ANIMATION & LOADING UI
    ────────────────────────────────────────────────────────────────────────── */
 @keyframes skeletonShimmer {

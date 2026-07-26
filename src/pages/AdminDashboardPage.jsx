@@ -414,7 +414,7 @@ export default function AdminDashboardPage() {
               </div>
             </div>
 
-            <button onClick={loadAllData} className="btn btn-outline-light btn-sm" title="Refresh All Data">
+            <button onClick={loadAllData} className="btn btn-outline-light btn-sm btn-glow-hover" title="Refresh All Data">
               <i className="fas fa-sync-alt me-1"></i> Refresh Data
             </button>
           </div>
@@ -423,7 +423,7 @@ export default function AdminDashboardPage() {
           <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top border-secondary">
             <button 
               onClick={() => setActiveTab('hero-quick')}
-              className={`btn ${activeTab === 'hero-quick' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'hero-quick' ? 'btn-primary' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               🚀 1. Hero Quick Applies ({heroQuickApps.length})
@@ -431,7 +431,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('full-internship')}
-              className={`btn ${activeTab === 'full-internship' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'full-internship' ? 'btn-primary' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               🎓 2. Full Internship Applications ({fullInternshipApps.length})
@@ -439,7 +439,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('contact-inquiries')}
-              className={`btn ${activeTab === 'contact-inquiries' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'contact-inquiries' ? 'btn-primary' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               ✉️ 3. Contact Inquiries ({inquiries.length})
@@ -447,7 +447,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('subscribers')}
-              className={`btn ${activeTab === 'subscribers' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'subscribers' ? 'btn-primary' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               📩 4. Community Subscribers ({subscribers.length})
@@ -455,7 +455,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('issued-certs')}
-              className={`btn ${activeTab === 'issued-certs' ? 'btn-info text-dark font-weight-bold' : 'btn-outline-info'}`}
+              className={`btn btn-glow-hover ${activeTab === 'issued-certs' ? 'btn-info text-dark font-weight-bold' : 'btn-outline-info'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               🏅 Issued Certificates ({issuedCerts.length})
@@ -466,7 +466,7 @@ export default function AdminDashboardPage() {
                 setActiveTab('issue-cert');
                 loadNextCertId();
               }}
-              className={`btn ${activeTab === 'issue-cert' ? 'btn-success' : 'btn-outline-success'}`}
+              className={`btn btn-glow-hover ${activeTab === 'issue-cert' ? 'btn-success' : 'btn-outline-success'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               📜 Issue Certificate Tool

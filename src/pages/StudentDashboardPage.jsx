@@ -32,13 +32,13 @@ export default function StudentDashboardPage() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Approved':
-        return <span className="badge bg-success"><i className="fas fa-check-circle me-1"></i> Approved</span>;
+        return <span className="badge bg-success px-3 py-2" style={{ borderRadius: '20px', fontWeight: '600' }}><i className="fas fa-check-circle me-1"></i> Approved</span>;
       case 'Completed':
-        return <span className="badge bg-info text-dark"><i className="fas fa-award me-1"></i> Completed</span>;
+        return <span className="badge bg-info text-dark px-3 py-2" style={{ borderRadius: '20px', fontWeight: '700' }}><i className="fas fa-award me-1"></i> Completed</span>;
       case 'Rejected':
-        return <span className="badge bg-danger"><i className="fas fa-times-circle me-1"></i> Rejected</span>;
+        return <span className="badge bg-danger px-3 py-2" style={{ borderRadius: '20px', fontWeight: '600' }}><i className="fas fa-times-circle me-1"></i> Rejected</span>;
       default:
-        return <span className="badge bg-warning text-dark"><i className="fas fa-clock me-1"></i> Under Review</span>;
+        return <span className="badge bg-warning text-dark px-3 py-2" style={{ borderRadius: '20px', fontWeight: '700' }}><i className="fas fa-clock me-1"></i> Under Review</span>;
     }
   };
 
@@ -55,39 +55,42 @@ export default function StudentDashboardPage() {
           style={{
             borderRadius: '24px',
             background: 'linear-gradient(135deg, rgba(67, 29, 171, 0.4) 0%, rgba(1, 3, 21, 0.95) 100%)',
-            border: '1px solid rgba(174, 109, 254, 0.3)'
+            border: '1px solid rgba(174, 109, 254, 0.3)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)'
           }}
         >
           <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div className="d-flex align-items-center gap-3">
               <UserAvatar name={currentUser?.displayName || currentUser?.email} size={64} borderColor="#ae6dfe" />
               <div>
-                <span className="badge bg-primary mb-1">STUDENT PORTAL</span>
-                <h2 className="text-white mb-0" style={{ fontWeight: '700' }}>Welcome, {currentUser?.displayName || 'Student'}</h2>
+                <span className="badge bg-primary px-3 py-1 mb-2" style={{ borderRadius: '15px', fontWeight: '700', fontSize: '11px', letterSpacing: '0.5px' }}>
+                  <i className="fas fa-user-graduate me-1"></i> STUDENT PORTAL
+                </span>
+                <h2 className="text-white mb-0" style={{ fontWeight: '800' }}>Welcome back, {currentUser?.displayName || 'Student'}!</h2>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>{currentUser?.email}</p>
               </div>
             </div>
-            <Link to="/internship" className="btn btn-primary px-4 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
-              <i className="fas fa-plus-circle me-1"></i> Apply for New Internship
+            <Link to="/internship" className="btn btn-primary btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px rgba(67, 29, 171, 0.4)' }}>
+              <i className="fas fa-plus-circle me-2"></i> Apply for New Internship
             </Link>
           </div>
 
           {/* Student Dashboard Navigation Tabs */}
-          <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top border-secondary">
+          <div className="d-flex flex-wrap gap-3 mt-4 pt-4 border-top border-secondary">
             <button 
               onClick={() => setActiveTab('applications')}
-              className={`btn ${activeTab === 'applications' ? 'btn-primary' : 'btn-outline-light'}`}
-              style={{ borderRadius: '10px', fontSize: '14px', fontWeight: '600' }}
+              className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'applications' ? 'btn-primary' : 'btn-outline-light'}`}
+              style={{ borderRadius: '12px', fontSize: '14px', fontWeight: '700' }}
             >
-              📋 My Applications ({applications.length})
+              <i className="fas fa-list-check me-2"></i> My Applications ({applications.length})
             </button>
 
             <button 
               onClick={() => setActiveTab('certificates')}
-              className={`btn ${activeTab === 'certificates' ? 'btn-success' : 'btn-outline-success'}`}
-              style={{ borderRadius: '10px', fontSize: '14px', fontWeight: '600' }}
+              className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'certificates' ? 'btn-success' : 'btn-outline-success'}`}
+              style={{ borderRadius: '12px', fontSize: '14px', fontWeight: '700' }}
             >
-              🏅 My Issued Certificates ({certificates.length})
+              <i className="fas fa-award me-2"></i> My Issued Certificates ({certificates.length})
             </button>
           </div>
         </div>
@@ -102,21 +105,21 @@ export default function StudentDashboardPage() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              backgroundColor: 'rgba(0, 0, 0, 0.88)',
               zIndex: 9999,
-              backdropFilter: 'blur(8px)'
+              backdropFilter: 'blur(10px)'
             }}
           >
             <div 
               className="printable-cert-card p-4 p-md-5 text-white pos-rel w-100"
               style={{
-                maxWidth: '900px',
-                maxHeight: '90vh',
+                maxWidth: '920px',
+                maxHeight: '92vh',
                 overflowY: 'auto',
                 borderRadius: '24px',
                 border: '3px double #4ade80',
                 background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(74, 222, 128, 0.25)'
+                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(74, 222, 128, 0.25)'
               }}
             >
               {/* Modal Top Close Bar (UI Only, Hidden in PDF Print) */}
@@ -204,7 +207,7 @@ export default function StudentDashboardPage() {
                   Issued by <strong>Appifyra Certification Board</strong>
                 </span>
                 <div className="d-flex gap-2 no-print">
-                  <button onClick={handlePrintCert} className="btn btn-success px-4" style={{ borderRadius: '10px', fontWeight: '700' }}>
+                  <button onClick={handlePrintCert} className="btn btn-success btn-glow-hover px-4" style={{ borderRadius: '10px', fontWeight: '700' }}>
                     <i className="fas fa-download me-2"></i> Download / Print PDF
                   </button>
                   <button onClick={() => setPreviewCert(null)} className="btn btn-outline-light px-3" style={{ borderRadius: '10px' }}>
@@ -221,7 +224,7 @@ export default function StudentDashboardPage() {
           <div className="mb-5 no-print">
             <div className="d-flex align-items-center justify-content-between mb-4">
               <h3 className="text-white mb-0" style={{ fontWeight: '700' }}>My Internship Applications</h3>
-              <span className="text-muted" style={{ fontSize: '14px' }}>Total Applications: {applications.length}</span>
+              <span className="badge bg-primary px-3 py-2" style={{ fontSize: '13px' }}>Total: {applications.length}</span>
             </div>
 
             {loading ? (
@@ -230,18 +233,18 @@ export default function StudentDashboardPage() {
               <div 
                 className="p-5 text-center text-white"
                 style={{
-                  borderRadius: '16px',
+                  borderRadius: '20px',
                   backgroundColor: 'rgba(255, 255, 255, 0.03)',
                   border: '1px dashed rgba(255, 255, 255, 0.15)'
                 }}
               >
-                <i className="fas fa-folder-open mb-3 text-muted" style={{ fontSize: '42px' }}></i>
-                <h4 className="text-white">No Submitted Applications Yet</h4>
-                <p className="text-muted" style={{ maxWidth: '450px', margin: '0 auto 20px' }}>
+                <i className="fas fa-folder-open mb-3 text-muted" style={{ fontSize: '48px' }}></i>
+                <h4 className="text-white fw-bold">No Submitted Applications Yet</h4>
+                <p className="text-muted" style={{ maxWidth: '450px', margin: '0 auto 20px', fontSize: '14px' }}>
                   You haven't submitted any internship applications yet. Choose from our 45-Day or 6-Month programs to get started!
                 </p>
-                <Link to="/internship" className="btn btn-outline-light" style={{ borderRadius: '8px' }}>
-                  Browse Internship Programs
+                <Link to="/internship" className="btn btn-primary btn-glow-hover px-4 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
+                  <i className="fas fa-graduation-cap me-2"></i> Browse Internship Programs
                 </Link>
               </div>
             ) : (
@@ -249,30 +252,31 @@ export default function StudentDashboardPage() {
                 {applications.map((app) => (
                   <div className="col-lg-6" key={app.id}>
                     <div 
-                      className="p-4 text-white h-100 pos-rel"
+                      className="p-4 text-white h-100 pos-rel interactive-hover-card"
                       style={{
-                        borderRadius: '16px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)'
+                        borderRadius: '20px',
+                        backgroundColor: 'rgba(15, 18, 41, 0.75)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        backdropFilter: 'blur(12px)'
                       }}
                     >
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="badge px-3 py-2" style={{ backgroundColor: 'rgba(103, 128, 210, 0.2)', color: '#a5b4fc', border: '1px solid rgba(103, 128, 210, 0.3)' }}>
+                        <span className="badge px-3 py-2" style={{ backgroundColor: 'rgba(103, 128, 210, 0.2)', color: '#a5b4fc', border: '1px solid rgba(103, 128, 210, 0.3)', fontWeight: '700' }}>
                           {app.duration}
                         </span>
                         {getStatusBadge(app.status)}
                       </div>
 
-                      <h4 className="text-white mb-2" style={{ fontWeight: '600' }}>{app.domain}</h4>
+                      <h4 className="text-white mb-2" style={{ fontWeight: '700' }}>{app.domain}</h4>
                       <p className="text-muted mb-3" style={{ fontSize: '14px' }}>
-                        <i className="fas fa-university me-1"></i> {app.college} ({app.degree})
+                        <i className="fas fa-university me-1 text-primary"></i> {app.college} ({app.degree})
                       </p>
 
                       <div className="pt-3 d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', fontSize: '13px' }}>
                         <span className="text-muted">
                           Applied: {app.createdAt ? new Date(app.createdAt).toLocaleDateString() : 'Recent'}
                         </span>
-                        <span className="text-white font-monospace">
+                        <span className="text-white-50 font-monospace">
                           ID: {app.id.substring(0, 8)}
                         </span>
                       </div>
@@ -292,25 +296,23 @@ export default function StudentDashboardPage() {
                 <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>My Issued Certificates</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Official credentials issued by Appifyra Certification Board.</p>
               </div>
-              <span className="badge bg-success px-3 py-2" style={{ fontSize: '14px' }}>Total Certificates: {certificates.length}</span>
+              <span className="badge bg-success px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {certificates.length}</span>
             </div>
 
             {loading ? (
-              <div className="text-center py-5 text-white">
-                <i className="fas fa-spinner fa-spin me-2"></i> Loading certificates...
-              </div>
+              <CardSkeletonGrid count={4} />
             ) : certificates.length === 0 ? (
               <div 
                 className="p-5 text-center text-white"
                 style={{
-                  borderRadius: '16px',
+                  borderRadius: '20px',
                   backgroundColor: 'rgba(255, 255, 255, 0.03)',
                   border: '1px dashed rgba(255, 255, 255, 0.15)'
                 }}
               >
-                <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '42px' }}></i>
-                <h4 className="text-white">No Issued Certificates Yet</h4>
-                <p className="text-muted" style={{ maxWidth: '480px', margin: '0 auto 20px' }}>
+                <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '48px' }}></i>
+                <h4 className="text-white fw-bold">No Issued Certificates Yet</h4>
+                <p className="text-muted" style={{ maxWidth: '480px', margin: '0 auto 20px', fontSize: '14px' }}>
                   Once you complete your internship track, your verified completion certificate will be issued here by the administration.
                 </p>
               </div>
@@ -319,24 +321,24 @@ export default function StudentDashboardPage() {
                 {certificates.map((cert) => (
                   <div className="col-lg-6" key={cert.id || cert.certificateId}>
                     <div 
-                      className="p-4 text-white h-100 pos-rel d-flex flex-column justify-content-between"
+                      className="p-4 text-white h-100 pos-rel d-flex flex-column justify-content-between interactive-hover-card"
                       style={{
                         borderRadius: '20px',
-                        background: 'linear-gradient(135deg, rgba(67, 29, 171, 0.25) 0%, rgba(1, 3, 21, 0.95) 100%)',
-                        border: '1px solid rgba(74, 222, 128, 0.4)'
+                        background: 'linear-gradient(135deg, rgba(67, 29, 171, 0.3) 0%, rgba(1, 3, 21, 0.95) 100%)',
+                        border: '1px solid rgba(74, 222, 128, 0.45)'
                       }}
                     >
                       <div>
                         <div className="d-flex justify-content-between align-items-center mb-3">
-                          <span className="badge bg-warning text-dark font-monospace" style={{ fontSize: '13px', fontWeight: '700' }}>
+                          <span className="badge bg-warning text-dark font-monospace px-3 py-2" style={{ fontSize: '13px', fontWeight: '800' }}>
                             <i className="fas fa-certificate me-1"></i> {cert.certificateId}
                           </span>
-                          <span className="badge bg-success">
+                          <span className="badge bg-success px-3 py-2" style={{ fontWeight: '700' }}>
                             <i className="fas fa-check-circle me-1"></i> Verified Credential
                           </span>
                         </div>
 
-                        <h4 className="text-white mb-2" style={{ fontWeight: '700' }}>
+                        <h4 className="text-white mb-2" style={{ fontWeight: '800' }}>
                           {cert.courseTitle || cert.domain}
                         </h4>
                         <p className="text-muted mb-2" style={{ fontSize: '14px' }}>
@@ -345,7 +347,7 @@ export default function StudentDashboardPage() {
 
                         <div className="d-flex align-items-center gap-2 mb-3">
                           <span className="text-muted" style={{ fontSize: '13px' }}>Grade:</span>
-                          <span className="badge bg-primary px-3 py-1" style={{ fontSize: '13px' }}>
+                          <span className="badge bg-primary px-3 py-1" style={{ fontSize: '13px', fontWeight: '700' }}>
                             {cert.performanceGrade || cert.grade || 'Excellence (A+)'}
                           </span>
                         </div>
@@ -359,7 +361,7 @@ export default function StudentDashboardPage() {
                         <div className="d-flex gap-2">
                           <button 
                             onClick={() => setPreviewCert(cert)} 
-                            className="btn btn-sm btn-info text-dark px-3"
+                            className="btn btn-sm btn-info btn-glow-hover text-dark px-3"
                             style={{ borderRadius: '8px', fontSize: '12px', fontWeight: '700' }}
                           >
                             <i className="fas fa-eye me-1"></i> View Certificate
@@ -367,7 +369,7 @@ export default function StudentDashboardPage() {
                           
                           <button 
                             onClick={() => setPreviewCert(cert)} 
-                            className="btn btn-sm btn-success px-3"
+                            className="btn btn-sm btn-success btn-glow-hover px-3"
                             style={{ borderRadius: '8px', fontSize: '12px', fontWeight: '700' }}
                           >
                             <i className="fas fa-download me-1"></i> Download PDF
