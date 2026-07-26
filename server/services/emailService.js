@@ -4,20 +4,66 @@ import dns from 'dns';
 // Force Node.js process-wide DNS to prefer IPv4 over IPv6
 dns.setDefaultResultOrder('ipv4first');
 
-// Create Nodemailer Transporter using Gmail service + TLS settings
-const createSmtpTransporter = () => {
+// ─── Custom Nodemailer Transporter ──────────────────────────────────────────
+// Uses Nodemailer's custom transport plugin system to send via HTTPS Port 443 when on Render cloud hosts,
+// and via standard Nodemailer Gmail SMTP when running locally on localhost.
+const createCustomTransporter = () => {
   return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASS
-    },
-    tls: {
-      rejectUnauthorized: false
-    },
-    connectionTimeout: 15000,
-    greetingTimeout: 15000,
-    socketTimeout: 20000
+    name: 'appifyra-nodemailer-transport',
+    version: '1.0.0',
+    send: async (mail, callback) => {
+      try {
+        const input = mail.data;
+        const toEmail = Array.isArray(input.to) ? input.to[0] : input.to;
+        const apiKey = process.env.BREVO_API_KEY || process.env.RESEND_API_KEY;
+
+        // If BREVO_API_KEY is present, send via Brevo's HTTPS API over Port 443 (bypasses Render SMTP port block)
+        if (apiKey && (apiKey.startsWith('xkeysib-') || apiKey.includes('api'))) {
+          const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+            method: 'POST',
+            headers: {
+              'accept': 'application/json',
+              'content-type': 'application/json',
+              'api-key': apiKey
+            },
+            body: JSON.stringify({
+              sender: { name: 'Appifyra', email: process.env.GMAIL_USER || 'appifyra@gmail.com' },
+              to: [{ email: toEmail }],
+              subject: input.subject,
+              htmlContent: input.html
+            })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            console.log(`✅ Nodemailer HTTPS Transport sent email to ${toEmail}: ${data.messageId || data.id}`);
+            return callback(null, { messageId: data.messageId || data.id });
+          }
+          console.warn('⚠️ Brevo HTTPS error, falling back to Gmail SMTP:', data.message || JSON.stringify(data));
+        }
+
+        // Direct Nodemailer Gmail Transporter
+        const smtpTransporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_APP_PASS
+          },
+          tls: {
+            rejectUnauthorized: false
+          },
+          connectionTimeout: 15000,
+          greetingTimeout: 15000,
+          socketTimeout: 20000
+        });
+
+        const info = await smtpTransporter.sendMail(input);
+        console.log(`✅ Nodemailer SMTP sent email to ${toEmail}: ${info.messageId}`);
+        return callback(null, info);
+      } catch (err) {
+        console.error('❌ Nodemailer custom transport error:', err.message);
+        return callback(err);
+      }
+    }
   });
 };
 
@@ -357,23 +403,17 @@ export const broadcastNewsletterTemplate = ({ subject, messageHtml }) => ({
 // ─── Core Send Email Function ────────────────────────────────────────────────
 export const sendEmail = async ({ to, subject, html }) => {
   try {
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASS) {
-      console.warn('⚠️ GMAIL_USER or GMAIL_APP_PASS missing in environment.');
-      return { success: false, error: 'Email credentials missing' };
-    }
-
-    const transporter = createSmtpTransporter();
+    const transporter = createCustomTransporter();
     const info = await transporter.sendMail({
-      from: `"Appifyra" <${process.env.GMAIL_USER}>`,
+      from: `"Appifyra" <${process.env.GMAIL_USER || 'appifyra@gmail.com'}>`,
       to,
       subject,
       html
     });
 
-    console.log(`✅ Email sent via Nodemailer to ${to}: ${info.messageId}`);
     return { success: true, messageId: info.messageId };
-  } catch (smtpErr) {
-    console.warn(`⚠️ Nodemailer SMTP encountered network delay (${smtpErr.message}).`);
-    return { success: false, error: smtpErr.message };
+  } catch (err) {
+    console.error(`❌ Nodemailer send error to ${to}:`, err.message);
+    return { success: false, error: err.message };
   }
 };
