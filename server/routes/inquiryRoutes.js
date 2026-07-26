@@ -1,8 +1,38 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Inquiry from '../models/Inquiry.js';
 import { sendEmail, contactReceivedTemplate, inquiryStatusTemplate } from '../services/emailService.js';
 
 const router = express.Router();
+
+const findInq = async (id) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Inquiry.findById(id);
+  }
+  return await Inquiry.findOne({ $or: [{ _id: id }, { id: id }] });
+};
+
+const updateInq = async (id, updateData) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Inquiry.findByIdAndUpdate(id, updateData, { new: true });
+  }
+  const found = await Inquiry.findOne({ $or: [{ _id: id }, { id: id }] });
+  if (found) {
+    return await Inquiry.findByIdAndUpdate(found._id, updateData, { new: true });
+  }
+  return null;
+};
+
+const deleteInq = async (id) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Inquiry.findByIdAndDelete(id);
+  }
+  const found = await Inquiry.findOne({ $or: [{ _id: id }, { id: id }] });
+  if (found) {
+    return await Inquiry.findByIdAndDelete(found._id);
+  }
+  return null;
+};
 
 // POST /api/inquiries -> Save Contact/Service Message & Send Confirmation Email
 router.post('/', async (req, res) => {
@@ -22,7 +52,7 @@ router.post('/', async (req, res) => {
       }).catch(err => console.error('Inquiry submit email error:', err));
     }
 
-    res.status(201).json({ success: true, id: savedInquiry._id, data: savedInquiry });
+    res.status(201).json({ success: true, id: savedInquiry._id.toString(), data: savedInquiry });
   } catch (error) {
     console.error('Error saving inquiry:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -47,14 +77,15 @@ router.get('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oldInquiry = await Inquiry.findById(id);
-    const updated = await Inquiry.findByIdAndUpdate(id, req.body, { new: true });
+    const oldInquiry = await findInq(id);
+    const updated = await updateInq(id, req.body);
+
     if (!updated) {
       return res.status(404).json({ success: false, message: 'Inquiry not found' });
     }
 
     // Send email update to client if status or note changed
-    if (updated.email && (oldInquiry.status !== updated.status || req.body.sendNotification)) {
+    if (updated.email && (oldInquiry?.status !== updated.status || req.body.sendNotification)) {
       sendEmail({
         to: updated.email,
         ...inquiryStatusTemplate({
@@ -76,7 +107,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Inquiry.findByIdAndDelete(id);
+    await deleteInq(id);
     res.json({ success: true, message: 'Inquiry deleted successfully' });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

@@ -1,8 +1,41 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Application from '../models/Application.js';
 import { sendEmail, appReceivedTemplate, statusUpdateTemplate } from '../services/emailService.js';
 
 const router = express.Router();
+
+// Helper to safely find application by Mongo ObjectId or custom string ID
+const findApp = async (id) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Application.findById(id);
+  }
+  return await Application.findOne({ $or: [{ _id: id }, { id: id }] });
+};
+
+// Helper to safely update application
+const updateApp = async (id, updateData) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Application.findByIdAndUpdate(id, updateData, { new: true });
+  }
+  const found = await Application.findOne({ $or: [{ _id: id }, { id: id }] });
+  if (found) {
+    return await Application.findByIdAndUpdate(found._id, updateData, { new: true });
+  }
+  return null;
+};
+
+// Helper to safely delete application
+const deleteApp = async (id) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Application.findByIdAndDelete(id);
+  }
+  const found = await Application.findOne({ $or: [{ _id: id }, { id: id }] });
+  if (found) {
+    return await Application.findByIdAndDelete(found._id);
+  }
+  return null;
+};
 
 // POST /api/applications -> Save Application & Send Automatic Candidate Email
 router.post('/', async (req, res) => {
@@ -22,7 +55,7 @@ router.post('/', async (req, res) => {
       }).catch(err => console.error('App submit email error:', err));
     }
 
-    res.status(201).json({ success: true, id: savedApp._id, data: savedApp });
+    res.status(201).json({ success: true, id: savedApp._id.toString(), data: savedApp });
   } catch (error) {
     console.error('Error saving application:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -64,14 +97,15 @@ router.get('/student/:email', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oldApp = await Application.findById(id);
-    const updated = await Application.findByIdAndUpdate(id, req.body, { new: true });
+    const oldApp = await findApp(id);
+    const updated = await updateApp(id, req.body);
+
     if (!updated) {
       return res.status(404).json({ success: false, message: 'Application not found' });
     }
 
     // Automatically send status update email if status or details changed
-    if (updated.email && (oldApp.status !== updated.status || req.body.sendEmailNotification)) {
+    if (updated.email && (oldApp?.status !== updated.status || req.body.sendEmailNotification)) {
       sendEmail({
         to: updated.email,
         ...statusUpdateTemplate({
@@ -95,7 +129,8 @@ router.patch('/:id/status', async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
-    const updated = await Application.findByIdAndUpdate(id, { status }, { new: true });
+    const updated = await updateApp(id, { status });
+
     if (!updated) {
       return res.status(404).json({ success: false, message: 'Application not found' });
     }
@@ -124,7 +159,7 @@ router.patch('/:id/status', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Application.findByIdAndDelete(id);
+    await deleteApp(id);
     res.json({ success: true, message: 'Application deleted successfully' });
   } catch (error) {
     console.error('Error deleting application:', error);
