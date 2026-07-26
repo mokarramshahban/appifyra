@@ -1,12 +1,16 @@
 import nodemailer from 'nodemailer';
 
 // Create Gmail SMTP Transporter
+// host: smtp.gmail.com, port: 465, family: 4 forces IPv4 to bypass cloud host (Render) IPv6 ENETUNREACH errors
 const createTransporter = () => {
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    family: 4,
     auth: {
-      user: process.env.GMAIL_USER,       // appifyra@gmail.com
-      pass: process.env.GMAIL_APP_PASS    // Gmail App Password (16-char)
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASS
     }
   });
 };
@@ -51,6 +55,12 @@ const footerStyle = `
   color: #94a3b8;
 `;
 
+const LOGO_HTML = `
+  <a href="https://appifyra.vercel.app" target="_blank" style="text-decoration:none; display:inline-block;">
+    <img src="https://appifyra.vercel.app/assets/img/logo/logo-white.png" alt="Appifyra" style="height:38px; border:0; outline:none; vertical-align:middle;" />
+  </a>
+`;
+
 // ─── Template 1: Internship Application Received ────────────────────────────
 export const appReceivedTemplate = ({ studentName, domain, duration }) => ({
   subject: `✅ Application Received — Appifyra Internship Program`,
@@ -58,8 +68,8 @@ export const appReceivedTemplate = ({ studentName, domain, duration }) => ({
     <div style="${baseEmailStyle}">
       <div style="${cardStyle}">
         <div style="${headerStyle}">
-          <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800; tracking-wide:1px;">Appifyra</h1>
-          <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Internship Admissions Team</p>
+          ${LOGO_HTML}
+          <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Internship Admissions Team</p>
         </div>
         <div style="${bodyStyle}">
           <p style="font-size:17px; color:#ffffff; font-weight:600; margin-top:0;">Dear ${studentName},</p>
@@ -119,8 +129,8 @@ export const statusUpdateTemplate = ({ studentName, status, domain, duration }) 
       <div style="${baseEmailStyle}">
         <div style="${cardStyle}">
           <div style="${headerStyle}">
-            <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800;">Appifyra</h1>
-            <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Application Status Notification</p>
+            ${LOGO_HTML}
+            <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Application Status Notification</p>
           </div>
           <div style="${bodyStyle}">
             <p style="font-size:17px; color:#ffffff; font-weight:600; margin-top:0;">Dear ${studentName},</p>
@@ -162,8 +172,8 @@ export const certIssuedTemplate = ({ studentName, certificateId, domain, grade, 
     <div style="${baseEmailStyle}">
       <div style="${cardStyle}">
         <div style="${headerStyle}">
-          <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800;">Appifyra</h1>
-          <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Official Credential Issuance</p>
+          ${LOGO_HTML}
+          <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Official Credential Issuance</p>
         </div>
         <div style="${bodyStyle}">
           <p style="font-size:17px; color:#ffffff; font-weight:600; margin-top:0;">Dear ${studentName},</p>
@@ -214,8 +224,8 @@ export const contactReceivedTemplate = ({ fullName, subject, serviceType }) => (
     <div style="${baseEmailStyle}">
       <div style="${cardStyle}">
         <div style="${headerStyle}">
-          <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800;">Appifyra</h1>
-          <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Client Services & Development Team</p>
+          ${LOGO_HTML}
+          <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Client Services & Development Team</p>
         </div>
         <div style="${bodyStyle}">
           <p style="font-size:17px; color:#ffffff; font-weight:600; margin-top:0;">Dear ${fullName},</p>
@@ -251,8 +261,8 @@ export const inquiryStatusTemplate = ({ fullName, serviceType, status, message }
     <div style="${baseEmailStyle}">
       <div style="${cardStyle}">
         <div style="${headerStyle}">
-          <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800;">Appifyra</h1>
-          <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Client Services Update</p>
+          ${LOGO_HTML}
+          <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Client Services Update</p>
         </div>
         <div style="${bodyStyle}">
           <p style="font-size:17px; color:#ffffff; font-weight:600; margin-top:0;">Dear ${fullName},</p>
@@ -295,8 +305,8 @@ export const newsletterWelcomeTemplate = ({ email }) => ({
     <div style="${baseEmailStyle}">
       <div style="${cardStyle}">
         <div style="${headerStyle}">
-          <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800;">Appifyra</h1>
-          <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Community Newsletter</p>
+          ${LOGO_HTML}
+          <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Community Newsletter</p>
         </div>
         <div style="${bodyStyle}">
           <p style="font-size:17px; color:#ffffff; font-weight:600; margin-top:0;">Hello!</p>
@@ -323,8 +333,8 @@ export const broadcastNewsletterTemplate = ({ subject, messageHtml }) => ({
     <div style="${baseEmailStyle}">
       <div style="${cardStyle}">
         <div style="${headerStyle}">
-          <h1 style="color:#ffffff; margin:0; font-size:24px; font-weight:800;">Appifyra</h1>
-          <p style="color:#e0d3ff; margin:6px 0 0 0; font-size:14px;">Community Broadcast</p>
+          ${LOGO_HTML}
+          <p style="color:#e0d3ff; margin:8px 0 0 0; font-size:13px; font-weight:500;">Community Broadcast</p>
         </div>
         <div style="${bodyStyle}">
           ${messageHtml}
