@@ -4,15 +4,37 @@ import dns from 'dns';
 // Force Node.js process-wide DNS to prefer IPv4 over IPv6
 dns.setDefaultResultOrder('ipv4first');
 
-// Create Gmail SMTP Transporter using Nodemailer's built-in Gmail service handler
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASS
-    }
-  });
+// Singleton Pooled Transporter
+// Persistent pooling maintains a single open SMTP socket connection, bypassing cloud host socket creation blocks
+let globalTransporter = null;
+
+const getTransporter = () => {
+  if (!globalTransporter) {
+    globalTransporter = nodemailer.createTransport({
+      pool: true,
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // STARTTLS for port 587
+      requireTLS: true,
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASS
+      },
+      maxConnections: 3,
+      maxMessages: 100,
+      connectionTimeout: 20000,
+      socketTimeout: 20000
+    });
+
+    globalTransporter.verify((err) => {
+      if (err) {
+        console.error('⚠️ Nodemailer SMTP Pool Connection Error:', err.message);
+      } else {
+        console.log('✅ Nodemailer Persistent SMTP Pool Verified & Ready!');
+      }
+    });
+  }
+  return globalTransporter;
 };
 
 // ─── Base Styles ─────────────────────────────────────────────────────────────
@@ -355,7 +377,7 @@ export const sendEmail = async ({ to, subject, html }) => {
       console.warn('⚠️ GMAIL_USER or GMAIL_APP_PASS missing in environment.');
       return { success: false, error: 'Email credentials missing' };
     }
-    const transporter = createTransporter();
+    const transporter = getTransporter();
     const info = await transporter.sendMail({
       from: `"Appifyra" <${process.env.GMAIL_USER}>`,
       to,
