@@ -118,6 +118,17 @@ router.post('/broadcast', async (req, res) => {
   }
 });
 
+// GET /api/email/test-send -> Synchronous test email dispatch to diagnose Nodemailer error
+router.get('/test-send', async (req, res) => {
+  try {
+    const template = appReceivedTemplate({ studentName: 'Render Live Test', domain: 'Full Stack', duration: '45-Days' });
+    const result = await sendEmail({ to: 'smokarram07@gmail.com', ...template });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message, stack: err.stack });
+  }
+});
+
 // GET /api/email/test
 router.get('/test', async (req, res) => {
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASS) {

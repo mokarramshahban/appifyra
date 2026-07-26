@@ -4,23 +4,10 @@ import dns from 'dns';
 // Force Node.js process-wide DNS to prefer IPv4 over IPv6
 dns.setDefaultResultOrder('ipv4first');
 
-// Custom IPv4-only DNS lookup function to prevent cloud host (Render) IPv6 ENETUNREACH errors
-const ipv4Lookup = (hostname, options, callback) => {
-  return dns.lookup(hostname, { family: 4 }, callback);
-};
-
-// Create Gmail SMTP Transporter
-// Port 587 + STARTTLS (secure: false, requireTLS: true) bypasses cloud host (Render) port 465 firewall blocks
+// Create Gmail SMTP Transporter using Nodemailer's built-in Gmail service handler
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    requireTLS: true,
-    lookup: ipv4Lookup,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
+    service: 'gmail',
     auth: {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_APP_PASS
