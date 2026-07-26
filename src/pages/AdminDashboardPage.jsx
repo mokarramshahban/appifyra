@@ -43,6 +43,12 @@ export default function AdminDashboardPage() {
   const [editingCert, setEditingCert] = useState(null);
   const [certEditForm, setCertEditForm] = useState({ studentName: '', studentEmail: '', domain: '', performanceGrade: '' });
 
+  // Form Saving State
+  const [isSavingAppEdit, setIsSavingAppEdit] = useState(false);
+  const [isSavingInqEdit, setIsSavingInqEdit] = useState(false);
+  const [isSavingSubEdit, setIsSavingSubEdit] = useState(false);
+  const [isSavingCertEdit, setIsSavingCertEdit] = useState(false);
+
   // Broadcast Newsletter Form State
   const [newsletterSubject, setNewsletterSubject] = useState('');
   const [newsletterMessage, setNewsletterMessage] = useState('');
@@ -173,9 +179,16 @@ export default function AdminDashboardPage() {
   const handleSaveEditSub = async (e) => {
     e.preventDefault();
     if (!editingSub) return;
-    await updateSubscriber(editingSub.id, subEditEmail);
-    setSubscribers(prev => prev.map(s => s.id === editingSub.id ? { ...s, email: subEditEmail } : s));
-    setEditingSub(null);
+    setIsSavingSubEdit(true);
+    try {
+      await updateSubscriber(editingSub.id, subEditEmail);
+      setSubscribers(prev => prev.map(s => s.id === editingSub.id ? { ...s, email: subEditEmail } : s));
+      setEditingSub(null);
+    } catch (err) {
+      console.error('Error saving subscriber edit:', err);
+    } finally {
+      setIsSavingSubEdit(false);
+    }
   };
 
   // Application Delete & Edit
@@ -200,25 +213,29 @@ export default function AdminDashboardPage() {
   const handleSaveEditApp = async (e) => {
     e.preventDefault();
     if (!editingApp) return;
-    setUpdatingId(editingApp.id);
+    setIsSavingAppEdit(true);
 
-    await updateApplication(editingApp.id, appEditForm);
-    setApplications(prev => prev.map(a => a.id === editingApp.id ? { ...a, ...appEditForm } : a));
-    
-    // Send Automated Email Notification to Candidate on Edit Save
-    if (appEditForm.email) {
-      const emailRes = await sendStatusUpdateEmail({
-        studentEmail: appEditForm.email,
-        studentName: appEditForm.fullName || 'Candidate',
-        status: appEditForm.status || 'Under Review',
-        domain: appEditForm.domain || 'Software Program',
-        duration: appEditForm.duration || '45-Days'
-      });
-      console.log(`✅ Edit save status email dispatch result for ${appEditForm.email}:`, emailRes);
+    try {
+      await updateApplication(editingApp.id, appEditForm);
+      setApplications(prev => prev.map(a => a.id === editingApp.id ? { ...a, ...appEditForm } : a));
+      
+      // Fire-and-forget background email notification
+      if (appEditForm.email) {
+        sendStatusUpdateEmail({
+          studentEmail: appEditForm.email,
+          studentName: appEditForm.fullName || 'Candidate',
+          status: appEditForm.status || 'Under Review',
+          domain: appEditForm.domain || 'Software Program',
+          duration: appEditForm.duration || '45-Days'
+        }).catch(err => console.error('Status update email dispatch error:', err));
+      }
+
+      setEditingApp(null);
+    } catch (err) {
+      console.error('Error saving application edit:', err);
+    } finally {
+      setIsSavingAppEdit(false);
     }
-
-    setEditingApp(null);
-    setTimeout(() => setUpdatingId(null), 900);
   };
 
   // Inquiry Delete & Edit
@@ -242,9 +259,16 @@ export default function AdminDashboardPage() {
   const handleSaveEditInq = async (e) => {
     e.preventDefault();
     if (!editingInq) return;
-    await updateInquiry(editingInq.id, inqEditForm);
-    setInquiries(prev => prev.map(i => i.id === editingInq.id ? { ...i, ...inqEditForm } : i));
-    setEditingInq(null);
+    setIsSavingInqEdit(true);
+    try {
+      await updateInquiry(editingInq.id, inqEditForm);
+      setInquiries(prev => prev.map(i => i.id === editingInq.id ? { ...i, ...inqEditForm } : i));
+      setEditingInq(null);
+    } catch (err) {
+      console.error('Error saving inquiry edit:', err);
+    } finally {
+      setIsSavingInqEdit(false);
+    }
   };
 
   // Issue Certificate & Quick Issue with Automated Email Dispatch
@@ -456,8 +480,19 @@ export default function AdminDashboardPage() {
                   </select>
                 </div>
                 <div className="col-12 mt-3 d-flex gap-2">
-                  <button type="submit" className="btn btn-success"><i className="fas fa-save me-1"></i> Save Changes</button>
-                  <button type="button" onClick={() => setEditingApp(null)} className="btn btn-secondary">Cancel</button>
+                  <button 
+                    type="submit" 
+                    disabled={isSavingAppEdit} 
+                    className="btn btn-success px-4 py-2 font-weight-bold"
+                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                  >
+                    {isSavingAppEdit ? (
+                      <span><i className="fas fa-spinner fa-spin me-2"></i> Saving & Sending Notification...</span>
+                    ) : (
+                      <span><i className="fas fa-save me-1"></i> Save Changes</span>
+                    )}
+                  </button>
+                  <button type="button" onClick={() => setEditingApp(null)} className="btn btn-secondary" style={{ borderRadius: '10px' }}>Cancel</button>
                 </div>
               </div>
             </form>
@@ -487,8 +522,19 @@ export default function AdminDashboardPage() {
                   <textarea rows="3" className="form-control text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }} value={inqEditForm.message} onChange={(e) => setInqEditForm({ ...inqEditForm, message: e.target.value })} required></textarea>
                 </div>
                 <div className="col-12 mt-3 d-flex gap-2">
-                  <button type="submit" className="btn btn-success"><i className="fas fa-save me-1"></i> Save Changes</button>
-                  <button type="button" onClick={() => setEditingInq(null)} className="btn btn-secondary">Cancel</button>
+                  <button 
+                    type="submit" 
+                    disabled={isSavingInqEdit} 
+                    className="btn btn-success px-4 py-2 font-weight-bold"
+                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                  >
+                    {isSavingInqEdit ? (
+                      <span><i className="fas fa-spinner fa-spin me-2"></i> Saving Inquiry...</span>
+                    ) : (
+                      <span><i className="fas fa-save me-1"></i> Save Changes</span>
+                    )}
+                  </button>
+                  <button type="button" onClick={() => setEditingInq(null)} className="btn btn-secondary" style={{ borderRadius: '10px' }}>Cancel</button>
                 </div>
               </div>
             </form>
@@ -506,8 +552,19 @@ export default function AdminDashboardPage() {
                   <input type="email" className="form-control text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }} value={subEditEmail} onChange={(e) => setSubEditEmail(e.target.value)} required />
                 </div>
                 <div className="col-12 d-flex gap-2">
-                  <button type="submit" className="btn btn-success"><i className="fas fa-save me-1"></i> Save Email</button>
-                  <button type="button" onClick={() => setEditingSub(null)} className="btn btn-secondary">Cancel</button>
+                  <button 
+                    type="submit" 
+                    disabled={isSavingSubEdit} 
+                    className="btn btn-success px-4 py-2 font-weight-bold"
+                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                  >
+                    {isSavingSubEdit ? (
+                      <span><i className="fas fa-spinner fa-spin me-2"></i> Saving Email...</span>
+                    ) : (
+                      <span><i className="fas fa-save me-1"></i> Save Email</span>
+                    )}
+                  </button>
+                  <button type="button" onClick={() => setEditingSub(null)} className="btn btn-secondary" style={{ borderRadius: '10px' }}>Cancel</button>
                 </div>
               </div>
             </form>

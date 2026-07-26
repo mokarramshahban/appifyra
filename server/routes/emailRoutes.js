@@ -19,9 +19,12 @@ router.post('/certificate-issued', async (req, res) => {
       return res.status(400).json({ success: false, message: 'studentEmail, studentName, and certificateId are required.' });
     }
 
+    // Respond immediately so UI doesn't hang
+    res.json({ success: true, message: 'Certificate email dispatch initiated.' });
+
+    // Background email send
     const template = certIssuedTemplate({ studentName, certificateId, domain, grade, issueDate });
-    const result = await sendEmail({ to: studentEmail, ...template });
-    res.json(result);
+    sendEmail({ to: studentEmail, ...template }).catch(err => console.error('Cert email error:', err));
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -35,9 +38,12 @@ router.post('/status-update', async (req, res) => {
       return res.status(400).json({ success: false, message: 'studentEmail, studentName, and status are required.' });
     }
 
+    // Respond immediately so UI doesn't hang
+    res.json({ success: true, message: 'Status update email dispatch initiated.' });
+
+    // Background email send
     const template = statusUpdateTemplate({ studentName, status, domain, duration });
-    const result = await sendEmail({ to: studentEmail, ...template });
-    res.json(result);
+    sendEmail({ to: studentEmail, ...template }).catch(err => console.error('Status update email error:', err));
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -51,9 +57,10 @@ router.post('/application-received', async (req, res) => {
       return res.status(400).json({ success: false, message: 'studentEmail and studentName are required.' });
     }
 
+    res.json({ success: true, message: 'Application received email dispatch initiated.' });
+
     const template = appReceivedTemplate({ studentName, domain, duration });
-    const result = await sendEmail({ to: studentEmail, ...template });
-    res.json(result);
+    sendEmail({ to: studentEmail, ...template }).catch(err => console.error('App received email error:', err));
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -67,9 +74,10 @@ router.post('/contact-received', async (req, res) => {
       return res.status(400).json({ success: false, message: 'email and fullName are required.' });
     }
 
+    res.json({ success: true, message: 'Contact received email dispatch initiated.' });
+
     const template = contactReceivedTemplate({ fullName, subject, serviceType });
-    const result = await sendEmail({ to: email, ...template });
-    res.json(result);
+    sendEmail({ to: email, ...template }).catch(err => console.error('Contact email error:', err));
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -84,7 +92,6 @@ router.post('/broadcast', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Subject and message are required.' });
     }
 
-    // Fetch all active subscribers from MongoDB
     const subscribers = await Subscriber.find();
     if (!subscribers || subscribers.length === 0) {
       return res.status(400).json({ success: false, message: 'No subscribers found in database.' });
@@ -93,23 +100,18 @@ router.post('/broadcast', async (req, res) => {
     const recipientEmails = subscribers.map(s => s.email).filter(Boolean);
     const template = broadcastNewsletterTemplate({ subject, messageHtml: message.replace(/\n/g, '<br/>') });
 
-    let sentCount = 0;
-    let failedCount = 0;
-
-    // Send emails in batches
-    for (const recipient of recipientEmails) {
-      const result = await sendEmail({ to: recipient, ...template });
-      if (result.success) sentCount++;
-      else failedCount++;
-    }
-
     res.json({
       success: true,
-      message: `Broadcast complete! Sent to ${sentCount} subscribers (${failedCount} failed).`,
-      totalSubscribers: recipientEmails.length,
-      sentCount,
-      failedCount
+      message: `Broadcast initiated to ${recipientEmails.length} subscribers! Emails are sending in the background.`,
+      totalSubscribers: recipientEmails.length
     });
+
+    // Background broadcast loop
+    (async () => {
+      for (const recipient of recipientEmails) {
+        await sendEmail({ to: recipient, ...template }).catch(err => console.error(`Broadcast item error ${recipient}:`, err));
+      }
+    })();
   } catch (err) {
     console.error('Error broadcasting newsletter:', err);
     res.status(500).json({ success: false, error: err.message });
