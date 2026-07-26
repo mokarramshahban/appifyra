@@ -130,23 +130,28 @@ export default function AdminDashboardPage() {
   // Handle Application Status Change & Automated Email Dispatch
   const handleStatusChange = async (appId, newStatus) => {
     setUpdatingId(appId);
-    const targetApp = applications.find(a => a.id === appId);
-    const ok = await updateApplication(appId, { ...(targetApp || {}), status: newStatus });
-    if (ok) {
-      const targetApp = applications.find(a => a.id === appId);
-      setApplications(prev => prev.map(a => a.id === appId ? { ...a, status: newStatus } : a));
+    const targetApp = applications.find(a => a.id === appId || a._id === appId);
+    const updatedObj = { ...(targetApp || {}), status: newStatus };
+    
+    await updateApplication(appId, updatedObj);
+    setApplications(prev => prev.map(a => (a.id === appId || a._id === appId) ? { ...a, status: newStatus } : a));
 
-      // Automated Email Notification to Candidate on Status Change
-      if (targetApp && targetApp.email) {
-        sendStatusUpdateEmail({
-          studentEmail: targetApp.email,
-          studentName: targetApp.fullName,
-          status: newStatus,
-          domain: targetApp.domain,
-          duration: targetApp.duration
-        });
-      }
+    const emailToUse = targetApp?.email || targetApp?.studentEmail;
+    const nameToUse = targetApp?.fullName || targetApp?.studentName || targetApp?.name || 'Candidate';
+    const domainToUse = targetApp?.domain || targetApp?.target_domain || targetApp?.courseTitle || 'Software Program';
+    const durationToUse = targetApp?.duration || targetApp?.internship_duration || '45-Days';
+
+    if (emailToUse) {
+      const emailRes = await sendStatusUpdateEmail({
+        studentEmail: emailToUse,
+        studentName: nameToUse,
+        status: newStatus,
+        domain: domainToUse,
+        duration: durationToUse
+      });
+      console.log(`✅ Status email dispatch result for ${emailToUse}:`, emailRes);
     }
+
     setTimeout(() => {
       setUpdatingId(null);
     }, 900);
