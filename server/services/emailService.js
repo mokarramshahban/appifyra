@@ -10,11 +10,13 @@ const ipv4Lookup = (hostname, options, callback) => {
 };
 
 // Create Gmail SMTP Transporter
+// Port 587 + STARTTLS (secure: false, requireTLS: true) bypasses cloud host (Render) port 465 firewall blocks
 const createTransporter = () => {
   return nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
+    requireTLS: true,
     lookup: ipv4Lookup,
     connectionTimeout: 10000,
     greetingTimeout: 10000,
