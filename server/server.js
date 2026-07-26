@@ -3,6 +3,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dns from 'dns';
+
+// Force Node.js process-wide to prefer IPv4 addresses over IPv6 (fixes cloud host ENETUNREACH)
+dns.setDefaultResultOrder('ipv4first');
 import rateLimit from 'express-rate-limit';
 import { connectDB } from './config/db.js';
 
