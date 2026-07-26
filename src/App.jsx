@@ -11,10 +11,12 @@ import InternshipPage from './pages/InternshipPage';
 import StudentDashboardPage from './pages/StudentDashboardPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import ProtectedRoute from './components/layout/ProtectedRoute';
+import Preloader from './components/common/Preloader';
 
 export default function App() {
   return (
     <>
+      <Preloader />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import staticCertificates from '../data/certificates.json';
 import { lookupCertificate } from '../services/dbService';
 
 export default function CertificateVerificationPage() {
+  const [searchParams] = useSearchParams();
   const [searchId, setSearchId] = useState('');
   const [result, setResult] = useState(null);
   const [searched, setSearched] = useState(false);
@@ -20,6 +22,14 @@ export default function CertificateVerificationPage() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    const urlId = searchParams.get('id');
+    if (urlId) {
+      setSearchId(urlId);
+      handleVerify(urlId);
+    }
+  }, [searchParams]);
+
   const handleQuickSample = (id) => {
     setSearchId(id);
     handleVerify(id);
@@ -31,27 +41,31 @@ export default function CertificateVerificationPage() {
     setSearched(false);
   };
 
+  const handlePrintCert = () => {
+    window.print();
+  };
+
   return (
     <div className="pt-140 pb-100 pos-rel">
       <div className="container">
         {/* Section Header */}
-        <div className="sec-title--two sec-title--three text-center mb-50">
-          <span className="sub-title wow fadeInDown" data-wow-duration="600ms">
+        <div className="sec-title--two sec-title--three text-center mb-50 no-print">
+          <span className="sub-title">
             <img src="/assets/img/icon/check-mark.png" alt="Verification Shield" style={{ width: '18px', height: '18px', marginRight: '6px' }} />
             <span>Official Credential Registry</span>
           </span>
-          <h2 className="title wow fadeInDown" data-wow-duration="600ms">
+          <h2 className="title text-white">
             Verify Certificate Credibility
           </h2>
           <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: '#9da1b4' }}>
-            Enter your unique Appifyra Certificate ID below to verify authenticity, candidate details, student email identity, internship domain, and skill competencies.
+            Enter your unique Appifyra Certificate ID below to verify authenticity, candidate details, student email identity, internship domain, and completion grade.
           </p>
         </div>
 
         {/* Verification Form Box */}
         <div className="row justify-content-center">
-          <div className="col-lg-8">
-            <div className="contact-two pos-rel p-4 p-md-5 mb-5" style={{ borderRadius: '20px', border: '1px solid rgba(255, 255, 255, 0.1)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, rgba(1, 3, 21, 0.95) 100%)' }}>
+          <div className="col-lg-10">
+            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid rgba(255, 255, 255, 0.1)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, rgba(1, 3, 21, 0.95) 100%)' }}>
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -65,7 +79,7 @@ export default function CertificateVerificationPage() {
                   <input
                     type="text"
                     className="form-control text-white"
-                    placeholder="e.g. APP-2025-WD01"
+                    placeholder="e.g. APP-2026-001"
                     value={searchId}
                     onChange={(e) => setSearchId(e.target.value)}
                     style={{
@@ -89,7 +103,7 @@ export default function CertificateVerificationPage() {
                       borderRadius: '0 10px 10px 0'
                     }}
                   >
-                    {loading ? <i className="fas fa-spinner fa-spin"></i> : <span><i className="far fa-search me-2"></i> Verify</span>}
+                    {loading ? <i className="fas fa-spinner fa-spin"></i> : <span><i className="far fa-search me-2"></i> Verify Credential</span>}
                   </button>
                 </div>
               </form>
@@ -125,104 +139,102 @@ export default function CertificateVerificationPage() {
               </div>
             </div>
 
-            {/* Verification Result Section */}
+            {/* Verification Result Section: Formal Landscape Certificate Canvas */}
             {searched && !loading && (
               <div>
                 {result ? (
-                  <div 
-                    className="verified-card pos-rel p-4 p-md-5 text-white" 
-                    style={{
-                      borderRadius: '24px',
-                      border: '2px solid rgba(74, 222, 128, 0.4)',
-                      background: 'linear-gradient(135deg, rgba(6, 40, 26, 0.95) 0%, rgba(1, 3, 21, 0.98) 100%)',
-                      boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(74, 222, 128, 0.15)'
-                    }}
-                  >
-                    {/* Header Badge */}
-                    <div className="d-flex justify-content-between align-items-center pb-4 mb-4" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                      <div className="d-flex align-items-center gap-2">
-                        <span 
-                          style={{
-                            backgroundColor: 'rgba(74, 222, 128, 0.2)',
-                            color: '#4ade80',
-                            padding: '8px 16px',
-                            borderRadius: '30px',
-                            fontSize: '13px',
-                            fontWeight: '700',
-                            letterSpacing: '1px'
-                          }}
-                        >
-                          <i className="fas fa-check-circle me-1"></i> OFFICIAL VERIFIED CREDENTIAL
-                        </span>
-                      </div>
-                      <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra" style={{ height: '32px' }} />
+                  <div>
+                    {/* Top Action Control Bar */}
+                    <div className="d-flex justify-content-between align-items-center mb-4 no-print">
+                      <span className="badge bg-success px-3 py-2" style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px' }}>
+                        <i className="fas fa-check-circle me-1"></i> VERIFIED OFFICIAL CREDENTIAL
+                      </span>
+                      <button onClick={handlePrintCert} className="btn btn-success px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px rgba(74, 222, 128, 0.4)' }}>
+                        <i className="fas fa-download me-2"></i> Download / Print PDF Certificate
+                      </button>
                     </div>
 
-                    {/* Main Details Grid */}
-                    <div className="row g-4 mb-4">
-                      <div className="col-md-6">
-                        <span className="text-muted text-uppercase" style={{ fontSize: '12px', letterSpacing: '1px' }}>Candidate Name & Identity</span>
-                        <h3 className="text-white mt-1 mb-0" style={{ fontWeight: '700' }}>{result.studentName}</h3>
-                        {result.studentEmail && (
-                          <div style={{ color: '#38bdf8', fontSize: '13px', marginTop: '2px' }}>
-                            <i className="fas fa-envelope me-1"></i> {result.studentEmail}
+                    {/* Official Certificate Canvas Frame */}
+                    <div 
+                      className="printable-cert-card p-4 p-md-5 text-white pos-rel w-100"
+                      style={{
+                        borderRadius: '24px',
+                        border: '3px double #4ade80',
+                        background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
+                        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(74, 222, 128, 0.25)'
+                      }}
+                    >
+                      <div className="text-center py-4">
+                        <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra" style={{ height: '56px', marginBottom: '20px' }} />
+                        <h2 className="text-uppercase mb-1" style={{ letterSpacing: '6px', fontSize: '20px', color: '#a5b4fc', fontWeight: '700' }}>
+                          Certificate of Completion
+                        </h2>
+                        <p className="text-muted mb-4" style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                          This Credential is Proudly Awarded To
+                        </p>
+                        
+                        <h1 className="text-white mb-3" style={{ fontWeight: '800', fontSize: '42px', color: '#4ade80', letterSpacing: '1px' }}>
+                          {result.studentName}
+                        </h1>
+
+                        <p className="text-muted mb-2" style={{ fontSize: '14px' }}>
+                          for successfully fulfilling all training requirements and completing the industrial internship in
+                        </p>
+                        
+                        {(() => {
+                          const fullStr = String(result.courseTitle || result.domain || '').trim();
+                          const match = fullStr.match(/^(.*?)\s*\((.*?)\)$/);
+                          const title = match ? match[1].trim() : fullStr;
+                          const rawDuration = match ? match[2].trim() : (result.duration || null);
+                          const cleanDuration = rawDuration ? rawDuration.replace(/-/g, ' ') : null;
+                          
+                          return (
+                            <div className="mb-4">
+                              <h3 className="mb-2" style={{ color: '#c084fc', fontWeight: '700', fontSize: '30px' }}>
+                                {title}
+                              </h3>
+                              {cleanDuration && (
+                                <div style={{ color: '#a5b4fc', fontSize: '15px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                                  (Completed over an intensive tenure of {cleanDuration})
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })()}
+
+                        {/* Certificate Badges & Signatory Footer Grid */}
+                        <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                          <div className="row align-items-center">
+                            <div className="col-4 text-start">
+                              <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
+                              <strong className="text-warning font-monospace d-block mb-2" style={{ fontSize: '16px' }}>{result.certificateId}</strong>
+                              <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Issue Date</span>
+                              <strong className="text-white" style={{ fontSize: '14px' }}>{result.issueDate || 'July 26, 2026'}</strong>
+                            </div>
+
+                            <div className="col-4 text-center">
+                              <div 
+                                className="d-inline-flex flex-column align-items-center justify-content-center"
+                                style={{
+                                  border: '2px dashed #4ade80',
+                                  borderRadius: '50%',
+                                  width: '84px',
+                                  height: '84px',
+                                  background: 'rgba(74, 222, 128, 0.08)'
+                                }}
+                              >
+                                <i className="fas fa-award text-success mb-1" style={{ fontSize: '24px' }}></i>
+                                <span style={{ fontSize: '9px', fontWeight: '800', color: '#4ade80', letterSpacing: '0.5px' }}>VERIFIED</span>
+                              </div>
+                            </div>
+
+                            <div className="col-4 text-end">
+                              <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Performance Grade</span>
+                              <strong className="text-info d-block" style={{ fontSize: '16px' }}>{result.performanceGrade || result.grade || 'Excellence (A+)'}</strong>
+                            </div>
                           </div>
-                        )}
-                      </div>
-                      <div className="col-md-6">
-                        <span className="text-muted text-uppercase" style={{ fontSize: '12px', letterSpacing: '1px' }}>Domain / Program</span>
-                        <h4 className="mt-1" style={{ color: '#c084fc', fontWeight: '600' }}>{result.domain}</h4>
-                      </div>
-                      <div className="col-md-4">
-                        <span className="text-muted text-uppercase" style={{ fontSize: '12px', letterSpacing: '1px' }}>Certificate ID</span>
-                        <p className="font-monospace text-white mt-1 mb-0" style={{ fontWeight: '600' }}>{result.certificateId}</p>
-                      </div>
-                      <div className="col-md-4">
-                        <span className="text-muted text-uppercase" style={{ fontSize: '12px', letterSpacing: '1px' }}>Issue Date</span>
-                        <p className="text-white mt-1 mb-0">{result.issueDate}</p>
-                      </div>
-                      <div className="col-md-4">
-                        <span className="text-muted text-uppercase" style={{ fontSize: '12px', letterSpacing: '1px' }}>Performance Grade</span>
-                        <p className="mt-1 mb-0" style={{ color: '#38bdf8', fontWeight: '600' }}>{result.grade || 'Verified'}</p>
-                      </div>
-                    </div>
-
-                    {/* Verified Skills */}
-                    {result.skills && result.skills.length > 0 && (
-                      <div className="pt-3 pb-3 mb-4" style={{ borderTop: '1px dashed rgba(255, 255, 255, 0.1)' }}>
-                        <span className="text-muted text-uppercase d-block mb-2" style={{ fontSize: '12px', letterSpacing: '1px' }}>Verified Competencies</span>
-                        <div className="d-flex flex-wrap gap-2">
-                          {(Array.isArray(result.skills) ? result.skills : result.skills.split(',')).map((skill, idx) => (
-                            <span 
-                              key={idx}
-                              style={{
-                                backgroundColor: 'rgba(168, 85, 247, 0.15)',
-                                color: '#e9d5ff',
-                                border: '1px solid rgba(168, 85, 247, 0.3)',
-                                padding: '4px 12px',
-                                borderRadius: '20px',
-                                fontSize: '13px'
-                              }}
-                            >
-                              {typeof skill === 'string' ? skill.trim() : skill}
-                            </span>
-                          ))}
                         </div>
                       </div>
-                    )}
-
-                    {/* Footer / Actions */}
-                    <div className="d-flex justify-content-between align-items-center pt-3" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                      <span className="text-muted" style={{ fontSize: '13px' }}>
-                        Issued by <strong className="text-white">{result.issuer || 'Team Appifyra'}</strong> • Status: <strong style={{ color: '#4ade80' }}>Active</strong>
-                      </span>
-                      <button 
-                        onClick={() => window.print()} 
-                        className="btn btn-outline-light btn-sm"
-                        style={{ borderRadius: '8px' }}
-                      >
-                        <i className="far fa-print me-1"></i> Print Certificate Record
-                      </button>
                     </div>
                   </div>
                 ) : (

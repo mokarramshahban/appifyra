@@ -17,10 +17,10 @@ export default function HeroSection() {
   });
   const [customDomain, setCustomDomain] = useState('');
 
-  // Service Request Form State
+  // Service Request Form State (No Pricing / No Budget)
   const [serviceForm, setServiceForm] = useState({
     serviceType: 'Web Application Development',
-    budget: '$500 - $1,500',
+    timeline: '1 - 2 Weeks (Rapid Prototype)',
     message: ''
   });
 
@@ -67,8 +67,7 @@ export default function HeroSection() {
           phone: 'Quick Submitted via Homepage',
           subject: serviceForm.serviceType,
           serviceType: serviceForm.serviceType,
-          budget: serviceForm.budget,
-          message: serviceForm.message || `Service inquiry for ${serviceForm.serviceType}`,
+          message: serviceForm.message ? `${serviceForm.message} (Timeline: ${serviceForm.timeline})` : `Service inquiry for ${serviceForm.serviceType} (Timeline: ${serviceForm.timeline})`,
           userUid: activeUser.uid || 'client_user'
         };
         await saveContactInquiry(payload);
@@ -371,17 +370,17 @@ export default function HeroSection() {
                         </div>
 
                         <div className="col-12">
-                          <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Estimated Budget *</label>
+                          <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Target Timeline / Launch Goal *</label>
                           <select 
                             className="form-select text-white"
                             style={{ backgroundColor: '#090536', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px' }}
-                            value={serviceForm.budget}
-                            onChange={(e) => setServiceForm({ ...serviceForm, budget: e.target.value })}
+                            value={serviceForm.timeline}
+                            onChange={(e) => setServiceForm({ ...serviceForm, timeline: e.target.value })}
                           >
-                            <option value="$300 - $700">$300 - $700 (Starter / MVP)</option>
-                            <option value="$700 - $1,500">$700 - $1,500 (Standard Business)</option>
-                            <option value="$1,500 - $3,500">$1,500 - $3,500 (Growth Application)</option>
-                            <option value="$3,500+">$3,500+ (Enterprise Custom System)</option>
+                            <option value="1 - 2 Weeks (Rapid Prototype)">1 - 2 Weeks (Rapid Prototype)</option>
+                            <option value="1 Month (Standard Launch)">1 Month (Standard Launch)</option>
+                            <option value="2 - 3 Months (Full Enterprise Scope)">2 - 3 Months (Full Enterprise Scope)</option>
+                            <option value="Flexible / Exploring Requirements">Flexible / Exploring Requirements</option>
                           </select>
                         </div>
 

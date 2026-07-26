@@ -19,6 +19,7 @@ import {
 } from '../services/dbService';
 import { sendCertificateEmail, sendStatusUpdateEmail, sendNewsletterBroadcast } from '../services/emailService';
 import UserAvatar from '../components/common/UserAvatar';
+import { TableSkeleton } from '../components/common/SkeletonLoader';
 
 export default function AdminDashboardPage() {
   const { currentUser } = useAuth();
@@ -166,8 +167,8 @@ export default function AdminDashboardPage() {
   // Subscriber Actions
   const handleDeleteSub = async (sub) => {
     if (window.confirm(`Delete subscriber email ${sub.email}?`)) {
-      await deleteSubscriber(sub.id);
-      setSubscribers(prev => prev.filter(s => s.id !== sub.id));
+      await deleteSubscriber(sub.id || sub._id, sub.email);
+      setSubscribers(prev => prev.filter(s => s.id !== sub.id && s._id !== sub.id));
     }
   };
 
@@ -611,7 +612,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {loading ? (
-              <div className="text-center py-5 text-white"><i className="fas fa-spinner fa-spin me-2"></i> Loading Quick Submissions...</div>
+              <TableSkeleton rows={5} cols={6} />
             ) : heroQuickApps.length === 0 ? (
               <div className="p-5 text-center text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px' }}>
                 <i className="fas fa-inbox mb-3 text-muted" style={{ fontSize: '38px' }}></i>
@@ -685,7 +686,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {loading ? (
-              <div className="text-center py-5 text-white"><i className="fas fa-spinner fa-spin me-2"></i> Loading Full Applications...</div>
+              <TableSkeleton rows={5} cols={6} />
             ) : fullInternshipApps.length === 0 ? (
               <div className="p-5 text-center text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px' }}>
                 <i className="fas fa-user-graduate mb-3 text-muted" style={{ fontSize: '38px' }}></i>
@@ -778,7 +779,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {loading ? (
-              <div className="text-center py-5 text-white"><i className="fas fa-spinner fa-spin me-2"></i> Loading Inquiries...</div>
+              <TableSkeleton rows={5} cols={6} />
             ) : inquiries.length === 0 ? (
               <div className="p-5 text-center text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px' }}>
                 <i className="fas fa-envelope-open-text mb-3 text-muted" style={{ fontSize: '38px' }}></i>
@@ -907,7 +908,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {loading ? (
-              <div className="text-center py-5 text-white"><i className="fas fa-spinner fa-spin me-2"></i> Loading Subscribers...</div>
+              <TableSkeleton rows={4} cols={3} />
             ) : subscribers.length === 0 ? (
               <div className="p-5 text-center text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px' }}>
                 <i className="fas fa-paper-plane mb-3 text-muted" style={{ fontSize: '38px' }}></i>
@@ -1035,7 +1036,7 @@ export default function AdminDashboardPage() {
             )}
 
             {loading ? (
-              <div className="text-center py-5 text-white"><i className="fas fa-spinner fa-spin me-2"></i> Loading Issued Certificates...</div>
+              <TableSkeleton rows={5} cols={6} />
             ) : issuedCerts.length === 0 ? (
               <div className="p-5 text-center text-white" style={{ backgroundColor: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px' }}>
                 <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '38px' }}></i>

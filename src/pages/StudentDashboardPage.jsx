@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { getStudentApplications, getStudentCertificates } from '../services/dbService';
 import { Link } from 'react-router-dom';
 import UserAvatar from '../components/common/UserAvatar';
+import { CardSkeletonGrid } from '../components/common/SkeletonLoader';
 
 export default function StudentDashboardPage() {
   const { currentUser } = useAuth();
@@ -109,13 +110,13 @@ export default function StudentDashboardPage() {
             <div 
               className="printable-cert-card p-4 p-md-5 text-white pos-rel w-100"
               style={{
-                maxWidth: '850px',
+                maxWidth: '900px',
                 maxHeight: '90vh',
                 overflowY: 'auto',
                 borderRadius: '24px',
-                border: '2px solid rgba(74, 222, 128, 0.5)',
-                background: 'linear-gradient(135deg, rgba(6, 40, 26, 0.98) 0%, rgba(1, 3, 21, 0.98) 100%)',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(74, 222, 128, 0.2)'
+                border: '3px double #4ade80',
+                background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
+                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(74, 222, 128, 0.25)'
               }}
             >
               {/* Modal Top Close Bar (UI Only, Hidden in PDF Print) */}
@@ -130,34 +131,69 @@ export default function StudentDashboardPage() {
 
               {/* Formal Clean Certificate Canvas Body */}
               <div className="text-center py-4">
-                <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra" style={{ height: '54px', marginBottom: '24px' }} />
-                <h4 className="text-uppercase mb-2" style={{ letterSpacing: '5px', fontSize: '15px', color: '#a5b4fc', fontWeight: '700' }}>
+                <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra" style={{ height: '56px', marginBottom: '20px' }} />
+                <h2 className="text-uppercase mb-1" style={{ letterSpacing: '6px', fontSize: '20px', color: '#a5b4fc', fontWeight: '700' }}>
                   Certificate of Completion
-                </h4>
-                <p className="text-muted mb-4" style={{ fontSize: '14px' }}>This is to certify that</p>
+                </h2>
+                <p className="text-muted mb-4" style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase' }}>This Credential is Proudly Awarded To</p>
                 
-                <h1 className="text-white mb-2" style={{ fontWeight: '800', fontSize: '40px', color: '#4ade80', letterSpacing: '1px' }}>
+                <h1 className="text-white mb-3" style={{ fontWeight: '800', fontSize: '42px', color: '#4ade80', letterSpacing: '1px' }}>
                   {previewCert.studentName}
                 </h1>
-                <p className="text-info mb-4" style={{ fontSize: '14px' }}>({previewCert.studentEmail})</p>
 
-                <p className="text-muted mb-2" style={{ fontSize: '14px' }}>has successfully completed the industrial internship program in</p>
-                <h3 className="mb-4" style={{ color: '#c084fc', fontWeight: '700', fontSize: '26px' }}>
-                  {previewCert.courseTitle || previewCert.domain}
-                </h3>
+                <p className="text-muted mb-2" style={{ fontSize: '14px' }}>for successfully fulfilling all training requirements and completing the industrial internship in</p>
+                
+                {(() => {
+                  const fullStr = String(previewCert.courseTitle || previewCert.domain || '').trim();
+                  const match = fullStr.match(/^(.*?)\s*\((.*?)\)$/);
+                  const title = match ? match[1].trim() : fullStr;
+                  const rawDuration = match ? match[2].trim() : (previewCert.duration || null);
+                  const cleanDuration = rawDuration ? rawDuration.replace(/-/g, ' ') : null;
+                  
+                  return (
+                    <div className="mb-4">
+                      <h3 className="mb-2" style={{ color: '#c084fc', fontWeight: '700', fontSize: '30px' }}>
+                        {title}
+                      </h3>
+                      {cleanDuration && (
+                        <div style={{ color: '#a5b4fc', fontSize: '15px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                          (Completed over an intensive tenure of {cleanDuration})
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
 
-                <div className="d-flex flex-wrap justify-content-center gap-5 py-4 my-4" style={{ backgroundColor: 'rgba(255, 255, 255, 0.04)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                  <div>
-                    <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
-                    <strong className="text-warning font-monospace" style={{ fontSize: '17px' }}>{previewCert.certificateId}</strong>
-                  </div>
-                  <div>
-                    <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Performance Grade</span>
-                    <strong className="text-info" style={{ fontSize: '17px' }}>{previewCert.performanceGrade || previewCert.grade || 'Excellence (A+)'}</strong>
-                  </div>
-                  <div>
-                    <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Issue Date</span>
-                    <strong className="text-white" style={{ fontSize: '17px' }}>{previewCert.issueDate || 'July 26, 2026'}</strong>
+                {/* Certificate Badges & Signatory Footer Grid */}
+                <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                  <div className="row align-items-center">
+                    <div className="col-4 text-start">
+                      <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
+                      <strong className="text-warning font-monospace d-block mb-2" style={{ fontSize: '16px' }}>{previewCert.certificateId}</strong>
+                      <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Issue Date</span>
+                      <strong className="text-white" style={{ fontSize: '14px' }}>{previewCert.issueDate || 'July 26, 2026'}</strong>
+                    </div>
+
+                    <div className="col-4 text-center">
+                      <div 
+                        className="d-inline-flex flex-column align-items-center justify-content-center"
+                        style={{
+                          border: '2px dashed #4ade80',
+                          borderRadius: '50%',
+                          width: '84px',
+                          height: '84px',
+                          background: 'rgba(74, 222, 128, 0.08)'
+                        }}
+                      >
+                        <i className="fas fa-award text-success mb-1" style={{ fontSize: '24px' }}></i>
+                        <span style={{ fontSize: '9px', fontWeight: '800', color: '#4ade80', letterSpacing: '0.5px' }}>VERIFIED</span>
+                      </div>
+                    </div>
+
+                    <div className="col-4 text-end">
+                      <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Performance Grade</span>
+                      <strong className="text-info d-block" style={{ fontSize: '16px' }}>{previewCert.performanceGrade || previewCert.grade || 'Excellence (A+)'}</strong>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -189,9 +225,7 @@ export default function StudentDashboardPage() {
             </div>
 
             {loading ? (
-              <div className="text-center py-5 text-white">
-                <i className="fas fa-spinner fa-spin me-2"></i> Loading application status...
-              </div>
+              <CardSkeletonGrid count={4} />
             ) : applications.length === 0 ? (
               <div 
                 className="p-5 text-center text-white"

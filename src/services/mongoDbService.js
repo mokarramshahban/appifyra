@@ -2,7 +2,58 @@ import staticCertificates from '../data/certificates.json';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-// LocalStorage helpers
+// ─── DELETED BLACKLIST TRACKERS ─────────────────────────────────────────────
+const getDeletedCertificates = () => {
+  try { return JSON.parse(localStorage.getItem('appifyra_deleted_certificates') || '[]'); } catch (e) { return []; }
+};
+
+const addDeletedCertificate = (certId, mongoId) => {
+  try {
+    const current = getDeletedCertificates();
+    const additions = [certId, mongoId].filter(Boolean).map(id => String(id).trim().toUpperCase());
+    const updated = Array.from(new Set([...current, ...additions]));
+    localStorage.setItem('appifyra_deleted_certificates', JSON.stringify(updated));
+  } catch (e) {}
+};
+
+const getDeletedApplications = () => {
+  try { return JSON.parse(localStorage.getItem('appifyra_deleted_applications') || '[]'); } catch (e) { return []; }
+};
+
+const addDeletedApplication = (appId) => {
+  try {
+    const current = getDeletedApplications();
+    const updated = Array.from(new Set([...current, String(appId)]));
+    localStorage.setItem('appifyra_deleted_applications', JSON.stringify(updated));
+  } catch (e) {}
+};
+
+const getDeletedInquiries = () => {
+  try { return JSON.parse(localStorage.getItem('appifyra_deleted_inquiries') || '[]'); } catch (e) { return []; }
+};
+
+const addDeletedInquiry = (inquiryId) => {
+  try {
+    const current = getDeletedInquiries();
+    const updated = Array.from(new Set([...current, String(inquiryId)]));
+    localStorage.setItem('appifyra_deleted_inquiries', JSON.stringify(updated));
+  } catch (e) {}
+};
+
+const getDeletedSubscribers = () => {
+  try { return JSON.parse(localStorage.getItem('appifyra_deleted_subscribers') || '[]'); } catch (e) { return []; }
+};
+
+const addDeletedSubscriber = (subId, email) => {
+  try {
+    const current = getDeletedSubscribers();
+    const additions = [subId, email].filter(Boolean).map(x => String(x).trim().toLowerCase());
+    const updated = Array.from(new Set([...current, ...additions]));
+    localStorage.setItem('appifyra_deleted_subscribers', JSON.stringify(updated));
+  } catch (e) {}
+};
+
+// ─── LOCAL STORAGE HELPERS ──────────────────────────────────────────────────
 const getLocalApps = () => {
   try { return JSON.parse(localStorage.getItem('appifyra_local_applications') || '[]'); } catch (e) { return []; }
 };
@@ -49,7 +100,7 @@ const saveLocalCert = (cert) => {
   } catch (e) {}
 };
 
-// Save Newsletter Subscriber
+// ─── SUBSCRIBERS CRUD ───────────────────────────────────────────────────────
 export const saveSubscriber = async (email) => {
   const cleanEmail = email.trim().toLowerCase();
   const newSub = { id: `sub_${Date.now()}`, email: cleanEmail, subscribedAt: new Date().toISOString() };
@@ -68,8 +119,8 @@ export const saveSubscriber = async (email) => {
   return { success: true, id: newSub.id };
 };
 
-// Admin: Get All Subscribers
 export const getAllSubscribers = async () => {
+  const deleted = getDeletedSubscribers();
   let mongoSubs = [];
   try {
     const res = await fetch(`${API_BASE}/api/subscribers`);
@@ -81,15 +132,18 @@ export const getAllSubscribers = async () => {
   const combined = [...localSubs, ...mongoSubs];
   const uniqueMap = new Map();
   combined.forEach(s => {
-    if (s.email && !uniqueMap.has(s.email.toLowerCase())) {
-      uniqueMap.set(s.email.toLowerCase(), s);
+    const subIdStr = String(s.id || s._id || '');
+    const emailStr = String(s.email || '').toLowerCase();
+    if (deleted.includes(subIdStr) || deleted.includes(emailStr)) return;
+
+    if (emailStr && !uniqueMap.has(emailStr)) {
+      uniqueMap.set(emailStr, s);
     }
   });
 
   return Array.from(uniqueMap.values());
 };
 
-// Admin: Update Subscriber Email
 export const updateSubscriber = async (subId, newEmail) => {
   const cleanEmail = newEmail.trim().toLowerCase();
   try {
@@ -109,11 +163,11 @@ export const updateSubscriber = async (subId, newEmail) => {
   } catch (e) { return true; }
 };
 
-// Admin: Delete Subscriber
-export const deleteSubscriber = async (subId) => {
+export const deleteSubscriber = async (subId, email) => {
+  addDeletedSubscriber(subId, email);
   try {
     const local = getLocalSubscribers();
-    const updated = local.filter(s => s.id !== subId && s._id !== subId);
+    const updated = local.filter(s => s.id !== subId && s._id !== subId && s.email !== email);
     localStorage.setItem('appifyra_local_subscribers', JSON.stringify(updated));
   } catch (e) {}
 
@@ -124,25 +178,7 @@ export const deleteSubscriber = async (subId) => {
   return true;
 };
 
-// Save Internship Application
-export const saveInternshipApplication = async (appData) => {
-  const newApp = { id: `app_${Date.now()}`, ...appData, status: 'Under Review', createdAt: new Date().toISOString() };
-  saveLocalApp(newApp);
-
-  try {
-    const res = await fetch(`${API_BASE}/api/applications`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(appData)
-    });
-    const data = await res.json();
-    if (data.success) return { success: true, id: data.id };
-  } catch (error) {}
-
-  return { success: true, id: newApp.id };
-};
-
-// Save Contact Inquiry
+// ─── CONTACT INQUIRIES CRUD ─────────────────────────────────────────────────
 export const saveContactInquiry = async (inquiryData) => {
   const newInq = { id: `inq_${Date.now()}`, ...inquiryData, createdAt: new Date().toISOString() };
   saveLocalInquiry(newInq);
@@ -160,8 +196,8 @@ export const saveContactInquiry = async (inquiryData) => {
   return { success: true, id: newInq.id };
 };
 
-// Admin: Get All Contact Inquiries
 export const getContactInquiries = async () => {
+  const deleted = getDeletedInquiries();
   let mongoInqs = [];
   try {
     const res = await fetch(`${API_BASE}/api/inquiries`);
@@ -173,6 +209,9 @@ export const getContactInquiries = async () => {
   const combined = [...localInqs, ...mongoInqs];
   const uniqueMap = new Map();
   combined.forEach(item => {
+    const idStr = String(item.id || item._id || '');
+    if (deleted.includes(idStr)) return;
+
     const key = `${item.email}_${item.subject}`;
     if (!uniqueMap.has(key)) uniqueMap.set(key, item);
   });
@@ -180,7 +219,6 @@ export const getContactInquiries = async () => {
   return Array.from(uniqueMap.values());
 };
 
-// Admin: Update Contact Inquiry
 export const updateInquiry = async (inquiryId, updateData) => {
   try {
     const local = getLocalInquiries();
@@ -199,8 +237,8 @@ export const updateInquiry = async (inquiryId, updateData) => {
   } catch (error) { return true; }
 };
 
-// Admin: Delete Contact Inquiry
 export const deleteInquiry = async (inquiryId) => {
+  addDeletedInquiry(inquiryId);
   try {
     const local = getLocalInquiries();
     const updated = local.filter(item => item.id !== inquiryId && item._id !== inquiryId);
@@ -214,8 +252,26 @@ export const deleteInquiry = async (inquiryId) => {
   return true;
 };
 
-// Admin: Get All Student Applications
+// ─── INTERNSHIP APPLICATIONS CRUD ──────────────────────────────────────────
+export const saveInternshipApplication = async (appData) => {
+  const newApp = { id: `app_${Date.now()}`, ...appData, status: 'Under Review', createdAt: new Date().toISOString() };
+  saveLocalApp(newApp);
+
+  try {
+    const res = await fetch(`${API_BASE}/api/applications`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(appData)
+    });
+    const data = await res.json();
+    if (data.success) return { success: true, id: data.id };
+  } catch (error) {}
+
+  return { success: true, id: newApp.id };
+};
+
 export const getAllApplications = async () => {
+  const deleted = getDeletedApplications();
   let mongoApps = [];
   try {
     const res = await fetch(`${API_BASE}/api/applications`);
@@ -227,6 +283,9 @@ export const getAllApplications = async () => {
   const combined = [...localApps, ...mongoApps];
   const uniqueMap = new Map();
   combined.forEach(item => {
+    const idStr = String(item.id || item._id || '');
+    if (deleted.includes(idStr)) return;
+
     const key = `${item.email}_${item.duration}_${item.domain}`;
     if (!uniqueMap.has(key)) uniqueMap.set(key, item);
   });
@@ -234,14 +293,12 @@ export const getAllApplications = async () => {
   return Array.from(uniqueMap.values());
 };
 
-// Student: Get Own Applications
 export const getStudentApplications = async (userEmail) => {
   if (!userEmail) return [];
   const allApps = await getAllApplications();
   return allApps.filter(app => app.email && app.email.toLowerCase() === userEmail.toLowerCase());
 };
 
-// Admin: Update Application Details
 export const updateApplication = async (appId, updateData) => {
   try {
     const local = getLocalApps();
@@ -260,13 +317,12 @@ export const updateApplication = async (appId, updateData) => {
   } catch (error) { return true; }
 };
 
-// Admin: Update Application Status
 export const updateApplicationStatus = async (appId, newStatus) => {
   return updateApplication(appId, { status: newStatus });
 };
 
-// Admin: Delete Application Record
 export const deleteApplication = async (appId) => {
+  addDeletedApplication(appId);
   try {
     const local = getLocalApps();
     const updated = local.filter(item => item.id !== appId && item._id !== appId);
@@ -280,8 +336,9 @@ export const deleteApplication = async (appId) => {
   return true;
 };
 
-// Admin & Student: Get All Issued Certificates
+// ─── CERTIFICATES CRUD ──────────────────────────────────────────────────────
 export const getAllCertificates = async () => {
+  const deleted = getDeletedCertificates();
   let mongoCerts = [];
   try {
     const res = await fetch(`${API_BASE}/api/certificates`);
@@ -293,15 +350,19 @@ export const getAllCertificates = async () => {
   const combined = [...localCerts, ...mongoCerts];
   const uniqueMap = new Map();
   combined.forEach(c => {
-    if (c.certificateId && !uniqueMap.has(c.certificateId)) {
-      uniqueMap.set(c.certificateId, c);
+    const certIdUpper = String(c.certificateId || '').trim().toUpperCase();
+    const idStr = String(c.id || c._id || '').trim().toUpperCase();
+
+    if (deleted.includes(certIdUpper) || deleted.includes(idStr)) return;
+
+    if (certIdUpper && !uniqueMap.has(certIdUpper)) {
+      uniqueMap.set(certIdUpper, c);
     }
   });
 
   return Array.from(uniqueMap.values());
 };
 
-// Student: Get Student's Issued Certificates
 export const getStudentCertificates = async (userEmail) => {
   if (!userEmail) return [];
   const cleanEmail = userEmail.trim().toLowerCase();
@@ -309,7 +370,6 @@ export const getStudentCertificates = async (userEmail) => {
   return allCerts.filter(c => c.studentEmail && c.studentEmail.toLowerCase() === cleanEmail);
 };
 
-// Admin: Auto-generate Next Sequential Certificate ID
 export const getNextCertificateId = async () => {
   try {
     const res = await fetch(`${API_BASE}/api/certificates/next-id`);
@@ -323,7 +383,6 @@ export const getNextCertificateId = async () => {
   return `APP-${year}-${nextSeq}`;
 };
 
-// Admin: Issue New Certificate
 export const issueCertificate = async (certData) => {
   const cleanId = certData.certificateId.trim().toUpperCase();
   const certObj = { ...certData, certificateId: cleanId, createdAt: new Date().toISOString() };
@@ -342,7 +401,6 @@ export const issueCertificate = async (certData) => {
   return { success: true, certId: cleanId };
 };
 
-// Admin: Update Issued Certificate
 export const updateIssuedCertificate = async (certId, updateData) => {
   try {
     const local = getLocalCerts();
@@ -361,37 +419,59 @@ export const updateIssuedCertificate = async (certId, updateData) => {
   } catch (e) { return true; }
 };
 
-// Admin: Delete Issued Certificate
 export const deleteIssuedCertificate = async (certId, mongoId) => {
+  // Add to deleted blacklist so it immediately disappears everywhere!
+  addDeletedCertificate(certId, mongoId);
+
   try {
     const local = getLocalCerts();
     const updated = local.filter(c => c.certificateId !== certId && c.id !== certId && c.id !== mongoId);
     localStorage.setItem('appifyra_local_certificates', JSON.stringify(updated));
   } catch (e) {}
 
-  if (mongoId) {
+  const targetId = mongoId || certId;
+  if (targetId) {
     try {
-      await fetch(`${API_BASE}/api/certificates/${mongoId}`, { method: 'DELETE' });
+      await fetch(`${API_BASE}/api/certificates/${targetId}`, { method: 'DELETE' });
     } catch (e) {}
   }
   return true;
 };
 
-// Lookup Certificate Credential
+// Lookup Certificate Credential with Deletion Guarantee
 export const lookupCertificate = async (certId) => {
   const cleanId = certId.trim().toUpperCase();
+  const deleted = getDeletedCertificates();
 
-  if (staticCertificates[cleanId]) return staticCertificates[cleanId];
+  // If deleted by Admin, IMMEDIATELY return null (unverified/invalid)
+  if (deleted.includes(cleanId)) {
+    return null;
+  }
 
-  const localCerts = getLocalCerts();
-  const localMatch = localCerts.find(c => c.certificateId === cleanId);
-  if (localMatch) return localMatch;
-
+  // Check MongoDB Atlas API first for latest live status
   try {
     const res = await fetch(`${API_BASE}/api/certificates/${cleanId}`);
     const data = await res.json();
-    if (data.success && data.data) return data.data;
+    if (data.success && data.data) {
+      const mongoIdUpper = String(data.data.id || data.data._id || '').toUpperCase();
+      if (deleted.includes(mongoIdUpper)) return null;
+      return data.data;
+    }
   } catch (e) {}
+
+  // Check LocalStorage
+  const localCerts = getLocalCerts();
+  const localMatch = localCerts.find(c => c.certificateId === cleanId);
+  if (localMatch) {
+    const localIdUpper = String(localMatch.id || localMatch._id || '').toUpperCase();
+    if (deleted.includes(localIdUpper)) return null;
+    return localMatch;
+  }
+
+  // Check static certificates fallback (only if NOT in deleted list)
+  if (staticCertificates[cleanId] && !deleted.includes(cleanId)) {
+    return staticCertificates[cleanId];
+  }
 
   return null;
 };
