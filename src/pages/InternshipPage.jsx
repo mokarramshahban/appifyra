@@ -409,7 +409,7 @@ export default function InternshipPage() {
                         onChange={handleChange}
                         required
                         disabled={!currentUser}
-                        placeholder="John Doe"
+                        placeholder="Enter your full name"
                       />
                     </div>
                     <div className="col-md-6">

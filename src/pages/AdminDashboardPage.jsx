@@ -1181,7 +1181,7 @@ export default function AdminDashboardPage() {
                         <input 
                           type="text" 
                           className="form-control text-white"
-                          placeholder="e.g. Mokarram Shahban"
+                          placeholder="Enter candidate full name"
                           style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px' }}
                           value={certForm.studentName}
                           onChange={(e) => setCertForm({ ...certForm, studentName: e.target.value })}
