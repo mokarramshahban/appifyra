@@ -166,9 +166,10 @@ export default function AdminDashboardPage() {
 
   // Subscriber Actions
   const handleDeleteSub = async (sub) => {
+    const targetId = sub.id || sub._id;
     if (window.confirm(`Delete subscriber email ${sub.email}?`)) {
-      await deleteSubscriber(sub.id || sub._id, sub.email);
-      setSubscribers(prev => prev.filter(s => s.id !== sub.id && s._id !== sub.id));
+      await deleteSubscriber(targetId, sub.email);
+      setSubscribers(prev => prev.filter(s => s.id !== sub.id && s.id !== sub._id && s._id !== sub.id && s._id !== sub._id && s.email !== sub.email));
     }
   };
 
@@ -182,8 +183,8 @@ export default function AdminDashboardPage() {
     if (!editingSub) return;
     setIsSavingSubEdit(true);
     try {
-      await updateSubscriber(editingSub.id, subEditEmail);
-      setSubscribers(prev => prev.map(s => s.id === editingSub.id ? { ...s, email: subEditEmail } : s));
+      await updateSubscriber(editingSub.id || editingSub._id, subEditEmail);
+      setSubscribers(prev => prev.map(s => (s.id === editingSub.id || s._id === editingSub.id || s.email === editingSub.email) ? { ...s, email: subEditEmail } : s));
       setEditingSub(null);
     } catch (err) {
       console.error('Error saving subscriber edit:', err);
@@ -194,9 +195,10 @@ export default function AdminDashboardPage() {
 
   // Application Delete & Edit
   const handleDeleteApp = async (app) => {
-    if (window.confirm(`Delete application for ${app.fullName}?`)) {
-      await deleteApplication(app.id);
-      setApplications(prev => prev.filter(a => a.id !== app.id));
+    const targetId = app.id || app._id;
+    if (window.confirm(`Delete application for ${app.fullName || app.email}?`)) {
+      await deleteApplication(targetId, app);
+      setApplications(prev => prev.filter(a => a.id !== app.id && a.id !== app._id && a._id !== app.id && a._id !== app._id && a.email !== app.email));
     }
   };
 
@@ -217,8 +219,8 @@ export default function AdminDashboardPage() {
     setIsSavingAppEdit(true);
 
     try {
-      await updateApplication(editingApp.id, appEditForm);
-      setApplications(prev => prev.map(a => a.id === editingApp.id ? { ...a, ...appEditForm } : a));
+      await updateApplication(editingApp.id || editingApp._id, appEditForm);
+      setApplications(prev => prev.map(a => (a.id === editingApp.id || a._id === editingApp.id) ? { ...a, ...appEditForm } : a));
       
       // Fire-and-forget background email notification
       if (appEditForm.email) {
@@ -241,9 +243,10 @@ export default function AdminDashboardPage() {
 
   // Inquiry Delete & Edit
   const handleDeleteInquiry = async (inq) => {
-    if (window.confirm(`Delete inquiry from ${inq.fullName}?`)) {
-      await deleteInquiry(inq.id);
-      setInquiries(prev => prev.filter(i => i.id !== inq.id));
+    const targetId = inq.id || inq._id;
+    if (window.confirm(`Delete inquiry from ${inq.fullName || inq.email}?`)) {
+      await deleteInquiry(targetId, inq);
+      setInquiries(prev => prev.filter(i => i.id !== inq.id && i.id !== inq._id && i._id !== inq.id && i._id !== inq._id && i.email !== inq.email));
     }
   };
 
@@ -262,8 +265,8 @@ export default function AdminDashboardPage() {
     if (!editingInq) return;
     setIsSavingInqEdit(true);
     try {
-      await updateInquiry(editingInq.id, inqEditForm);
-      setInquiries(prev => prev.map(i => i.id === editingInq.id ? { ...i, ...inqEditForm } : i));
+      await updateInquiry(editingInq.id || editingInq._id, inqEditForm);
+      setInquiries(prev => prev.map(i => (i.id === editingInq.id || i._id === editingInq.id) ? { ...i, ...inqEditForm } : i));
       setEditingInq(null);
     } catch (err) {
       console.error('Error saving inquiry edit:', err);
@@ -325,9 +328,10 @@ export default function AdminDashboardPage() {
 
   // Certificate Delete & Edit
   const handleDeleteCert = async (cert) => {
-    if (window.confirm(`Are you sure you want to delete Certificate ${cert.certificateId}?`)) {
-      await deleteIssuedCertificate(cert.certificateId, cert.id);
-      setIssuedCerts(prev => prev.filter(c => c.certificateId !== cert.certificateId && c.id !== cert.id));
+    const certId = cert.certificateId || cert.id || cert._id;
+    if (window.confirm(`Are you sure you want to delete Certificate ${certId}?`)) {
+      await deleteIssuedCertificate(certId, cert);
+      setIssuedCerts(prev => prev.filter(c => c.certificateId !== cert.certificateId && c.id !== cert.id && c._id !== cert._id));
     }
   };
 
