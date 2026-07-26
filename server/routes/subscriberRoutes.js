@@ -1,8 +1,29 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Subscriber from '../models/Subscriber.js';
 import { sendEmail, newsletterWelcomeTemplate } from '../services/emailService.js';
 
 const router = express.Router();
+
+const updateSub = async (id, email) => {
+  const cleanEmail = email.trim().toLowerCase();
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    const updated = await Subscriber.findByIdAndUpdate(id, { email: cleanEmail }, { new: true });
+    if (updated) return updated;
+  }
+  return await Subscriber.findOneAndUpdate(
+    { email: cleanEmail },
+    { email: cleanEmail },
+    { upsert: true, new: true }
+  );
+};
+
+const deleteSub = async (id) => {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    return await Subscriber.findByIdAndDelete(id);
+  }
+  return await Subscriber.findOneAndDelete({ $or: [{ id: id }, { email: id.trim().toLowerCase() }] });
+};
 
 // POST /api/subscribers -> Save New Subscriber Email & Send Welcome Email
 router.post('/', async (req, res) => {
@@ -21,15 +42,15 @@ router.post('/', async (req, res) => {
       isNew = true;
     }
 
-    // Send welcome email on subscription (non-blocking)
+    res.status(201).json({ success: true, id: sub._id.toString(), data: sub });
+
+    // Send welcome email on subscription (non-blocking background)
     if (isNew) {
       sendEmail({
         to: cleanEmail,
         ...newsletterWelcomeTemplate({ email: cleanEmail })
       }).catch(err => console.error('Subscriber welcome email error:', err));
     }
-
-    res.status(201).json({ success: true, id: sub._id, data: sub });
   } catch (error) {
     console.error('Error saving subscriber:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -55,11 +76,8 @@ router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { email } = req.body;
-    const updated = await Subscriber.findByIdAndUpdate(id, { email: email.trim().toLowerCase() }, { new: true });
-    if (!updated) {
-      return res.status(404).json({ success: false, message: 'Subscriber not found' });
-    }
-    res.json({ success: true, data: updated });
+    const updated = await updateSub(id, email);
+    res.json({ success: true, data: updated || { id, email } });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -69,7 +87,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Subscriber.findByIdAndDelete(id);
+    await deleteSub(id);
     res.json({ success: true, message: 'Subscriber deleted successfully' });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

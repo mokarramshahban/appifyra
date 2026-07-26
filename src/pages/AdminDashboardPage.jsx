@@ -343,15 +343,43 @@ export default function AdminDashboardPage() {
   const handleSaveEditCert = async (e) => {
     e.preventDefault();
     if (!editingCert) return;
-    const targetId = editingCert.id || editingCert.certificateId;
-    await updateIssuedCertificate(targetId, certEditForm);
+    setIsSavingCertEdit(true);
 
-    setIssuedCerts(prev => prev.map(c => 
-      (c.certificateId === editingCert.certificateId || c.id === editingCert.id)
-        ? { ...c, ...certEditForm }
-        : c
-    ));
-    setEditingCert(null);
+    try {
+      const targetId = editingCert.id || editingCert.certificateId;
+      await updateIssuedCertificate(targetId, {
+        certificateId: editingCert.certificateId,
+        studentName: certEditForm.studentName,
+        studentEmail: certEditForm.studentEmail,
+        courseTitle: certEditForm.domain,
+        domain: certEditForm.domain,
+        performanceGrade: certEditForm.performanceGrade
+      });
+
+      setIssuedCerts(prev => prev.map(c => 
+        (c.certificateId === editingCert.certificateId || c.id === editingCert.id)
+          ? { ...c, ...certEditForm }
+          : c
+      ));
+
+      // Automated Email Trigger on Certificate Edit
+      if (certEditForm.studentEmail) {
+        sendCertIssuedEmail({
+          studentEmail: certEditForm.studentEmail,
+          studentName: certEditForm.studentName,
+          certificateId: editingCert.certificateId,
+          domain: certEditForm.domain,
+          grade: certEditForm.performanceGrade,
+          issueDate: editingCert.issueDate || new Date().toLocaleDateString()
+        }).catch(err => console.error('Cert edit email trigger error:', err));
+      }
+
+      setEditingCert(null);
+    } catch (err) {
+      console.error('Error saving certificate edit:', err);
+    } finally {
+      setIsSavingCertEdit(false);
+    }
   };
 
   // Filter Form Submissions by Form Source
@@ -987,8 +1015,19 @@ export default function AdminDashboardPage() {
                       </select>
                     </div>
                     <div className="col-12 mt-3 d-flex gap-2">
-                      <button type="submit" className="btn btn-success"><i className="fas fa-save me-1"></i> Save Changes</button>
-                      <button type="button" onClick={() => setEditingCert(null)} className="btn btn-secondary">Cancel</button>
+                      <button 
+                        type="submit" 
+                        disabled={isSavingCertEdit} 
+                        className="btn btn-success px-4 py-2 font-weight-bold"
+                        style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                      >
+                        {isSavingCertEdit ? (
+                          <span><i className="fas fa-spinner fa-spin me-2"></i> Saving & Sending Email...</span>
+                        ) : (
+                          <span><i className="fas fa-save me-1"></i> Save Changes</span>
+                        )}
+                      </button>
+                      <button type="button" onClick={() => setEditingCert(null)} className="btn btn-secondary" style={{ borderRadius: '10px' }}>Cancel</button>
                     </div>
                   </div>
                 </form>
