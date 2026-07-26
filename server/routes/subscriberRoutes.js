@@ -1,9 +1,10 @@
 import express from 'express';
 import Subscriber from '../models/Subscriber.js';
+import { sendEmail, newsletterWelcomeTemplate } from '../services/emailService.js';
 
 const router = express.Router();
 
-// POST /api/subscribers -> Save New Subscriber Email
+// POST /api/subscribers -> Save New Subscriber Email & Send Welcome Email
 router.post('/', async (req, res) => {
   try {
     const { email } = req.body;
@@ -13,9 +14,19 @@ router.post('/', async (req, res) => {
 
     const cleanEmail = email.trim().toLowerCase();
     let sub = await Subscriber.findOne({ email: cleanEmail });
+    let isNew = false;
     if (!sub) {
       sub = new Subscriber({ email: cleanEmail });
       await sub.save();
+      isNew = true;
+    }
+
+    // Send welcome email on subscription (non-blocking)
+    if (isNew) {
+      sendEmail({
+        to: cleanEmail,
+        ...newsletterWelcomeTemplate({ email: cleanEmail })
+      }).catch(err => console.error('Subscriber welcome email error:', err));
     }
 
     res.status(201).json({ success: true, id: sub._id, data: sub });

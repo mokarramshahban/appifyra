@@ -14,12 +14,12 @@ const postEmail = async (endpoint, payload) => {
     if (data.success) {
       console.log(`✅ Email dispatched via /api/email/${endpoint}`);
     } else {
-      console.warn(`⚠️ Email not sent: ${data.message || data.error}`);
+      console.warn(`⚠️ Email warning: ${data.message || data.error}`);
     }
     return data;
   } catch (err) {
     console.warn('Email service unavailable (backend offline):', err.message);
-    return { success: false };
+    return { success: false, error: err.message };
   }
 };
 
@@ -35,6 +35,10 @@ export const sendStatusUpdateEmail = ({ studentEmail, studentName, status, domai
 export const sendAppReceivedEmail = ({ studentEmail, studentName, domain, duration }) =>
   postEmail('application-received', { studentEmail, studentName, domain, duration });
 
-// Send contact message received confirmation to user
-export const sendContactReceivedEmail = ({ email, fullName, subject }) =>
-  postEmail('contact-received', { email, fullName, subject });
+// Send contact/service message received confirmation to user
+export const sendContactReceivedEmail = ({ email, fullName, subject, serviceType }) =>
+  postEmail('contact-received', { email, fullName, subject, serviceType });
+
+// Send broadcast newsletter to all subscribers
+export const sendNewsletterBroadcast = ({ subject, message }) =>
+  postEmail('broadcast', { subject, message });

@@ -1,5 +1,6 @@
 import express from 'express';
 import Certificate from '../models/Certificate.js';
+import { sendEmail, certIssuedTemplate } from '../services/emailService.js';
 
 const router = express.Router();
 
@@ -52,6 +53,20 @@ router.post('/issue', async (req, res) => {
       },
       { upsert: true, new: true }
     );
+
+    // Send automated certificate email to candidate (non-blocking)
+    if (cert.studentEmail && cert.studentName) {
+      sendEmail({
+        to: cert.studentEmail,
+        ...certIssuedTemplate({
+          studentName: cert.studentName,
+          certificateId: cert.certificateId,
+          domain: cert.courseTitle || domain || 'Software Internship',
+          grade: cert.performanceGrade,
+          issueDate: cert.issueDate
+        })
+      }).catch(err => console.error('Certificate email trigger error:', err));
+    }
 
     res.status(201).json({ success: true, certId: cert.certificateId, data: cert });
   } catch (error) {

@@ -1,13 +1,27 @@
 import express from 'express';
 import Application from '../models/Application.js';
+import { sendEmail, appReceivedTemplate, statusUpdateTemplate } from '../services/emailService.js';
 
 const router = express.Router();
 
-// POST /api/applications -> Save Application
+// POST /api/applications -> Save Application & Send Automatic Candidate Email
 router.post('/', async (req, res) => {
   try {
     const app = new Application(req.body);
     const savedApp = await app.save();
+
+    // Automatically send confirmation email to student (non-blocking)
+    if (savedApp.email && savedApp.fullName) {
+      sendEmail({
+        to: savedApp.email,
+        ...appReceivedTemplate({
+          studentName: savedApp.fullName,
+          domain: savedApp.domain || 'Software Track',
+          duration: savedApp.duration || '45-Days'
+        })
+      }).catch(err => console.error('App submit email error:', err));
+    }
+
     res.status(201).json({ success: true, id: savedApp._id, data: savedApp });
   } catch (error) {
     console.error('Error saving application:', error);
@@ -46,14 +60,29 @@ router.get('/student/:email', async (req, res) => {
   }
 });
 
-// PUT /api/applications/:id -> Update Application Details
+// PUT /api/applications/:id -> Update Application Details & Send Email if Status Changed
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    const oldApp = await Application.findById(id);
     const updated = await Application.findByIdAndUpdate(id, req.body, { new: true });
     if (!updated) {
       return res.status(404).json({ success: false, message: 'Application not found' });
     }
+
+    // Automatically send status update email if status or details changed
+    if (updated.email && (oldApp.status !== updated.status || req.body.sendEmailNotification)) {
+      sendEmail({
+        to: updated.email,
+        ...statusUpdateTemplate({
+          studentName: updated.fullName,
+          status: updated.status,
+          domain: updated.domain,
+          duration: updated.duration
+        })
+      }).catch(err => console.error('Status email error:', err));
+    }
+
     res.json({ success: true, data: updated });
   } catch (error) {
     console.error('Error updating application:', error);
@@ -61,7 +90,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// PATCH /api/applications/:id/status -> Update Application Status
+// PATCH /api/applications/:id/status -> Update Application Status & Send Email
 router.patch('/:id/status', async (req, res) => {
   try {
     const { id } = req.params;
@@ -70,6 +99,20 @@ router.patch('/:id/status', async (req, res) => {
     if (!updated) {
       return res.status(404).json({ success: false, message: 'Application not found' });
     }
+
+    // Automatically send email on status update
+    if (updated.email && updated.fullName) {
+      sendEmail({
+        to: updated.email,
+        ...statusUpdateTemplate({
+          studentName: updated.fullName,
+          status: updated.status,
+          domain: updated.domain,
+          duration: updated.duration
+        })
+      }).catch(err => console.error('Status patch email error:', err));
+    }
+
     res.json({ success: true, data: updated });
   } catch (error) {
     console.error('Error updating status:', error);

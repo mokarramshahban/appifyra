@@ -17,7 +17,7 @@ import {
   deleteIssuedCertificate,
   getNextCertificateId 
 } from '../services/dbService';
-import { sendCertificateEmail, sendStatusUpdateEmail } from '../services/emailService';
+import { sendCertificateEmail, sendStatusUpdateEmail, sendNewsletterBroadcast } from '../services/emailService';
 import UserAvatar from '../components/common/UserAvatar';
 
 export default function AdminDashboardPage() {
@@ -42,6 +42,52 @@ export default function AdminDashboardPage() {
 
   const [editingCert, setEditingCert] = useState(null);
   const [certEditForm, setCertEditForm] = useState({ studentName: '', studentEmail: '', domain: '', performanceGrade: '' });
+
+  // Broadcast Newsletter Form State
+  const [newsletterSubject, setNewsletterSubject] = useState('');
+  const [newsletterMessage, setNewsletterMessage] = useState('');
+  const [isSendingBroadcast, setIsSendingBroadcast] = useState(false);
+  const [broadcastStatus, setBroadcastStatus] = useState('');
+
+  // Handle Broadcast Newsletter Send
+  const handleSendBroadcast = async (e) => {
+    e.preventDefault();
+    if (!newsletterSubject.trim() || !newsletterMessage.trim()) {
+      setBroadcastStatus('❌ Please enter both subject and message content.');
+      return;
+    }
+
+    if (!subscribers || subscribers.length === 0) {
+      setBroadcastStatus('❌ No subscribers found in database.');
+      return;
+    }
+
+    if (!window.confirm(`Are you sure you want to send this broadcast email to all ${subscribers.length} subscribers?`)) {
+      return;
+    }
+
+    setIsSendingBroadcast(true);
+    setBroadcastStatus('⌛ Broadcasting email to all subscribers...');
+
+    try {
+      const result = await sendNewsletterBroadcast({
+        subject: newsletterSubject.trim(),
+        message: newsletterMessage.trim()
+      });
+
+      if (result && result.success) {
+        setBroadcastStatus(`✅ ${result.message || 'Broadcast newsletter sent successfully!'}`);
+        setNewsletterSubject('');
+        setNewsletterMessage('');
+      } else {
+        setBroadcastStatus(`❌ Broadcast error: ${result ? (result.error || result.message) : 'Server failed to respond'}`);
+      }
+    } catch (err) {
+      setBroadcastStatus(`❌ Broadcast failed: ${err.message}`);
+    } finally {
+      setIsSendingBroadcast(false);
+    }
+  };
 
   // Issue Certificate Form State
   const gradeOptions = ['Excellence (A+)', 'Very Good (A)', 'Good (B+)', 'Satisfactory (B)', 'Pass (C)'];
@@ -717,15 +763,78 @@ export default function AdminDashboardPage() {
           </div>
         )}
 
-        {/* Section 4: Community Newsletter Subscribers */}
+        {/* Section 4: Community Newsletter Subscribers & Broadcast Tool */}
         {activeTab === 'subscribers' && (
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Form 4: Community Newsletter Subscribers</h3>
-                <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Emails submitted from the Footer Stay Updated / Newsletter box.</p>
+                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Community Newsletter & Broadcast Tool</h3>
+                <p className="text-muted mb-0" style={{ fontSize: '14px' }}>View all community subscribers and compose broadcast emails to send to all.</p>
               </div>
               <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total Subscribers: {subscribers.length}</span>
+            </div>
+
+            {/* Broadcast Newsletter Composer Box */}
+            <div className="p-4 mb-4 text-white" style={{ backgroundColor: 'rgba(67, 29, 171, 0.35)', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '20px' }}>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <h4 className="text-white mb-0" style={{ fontWeight: '700' }}>
+                  <i className="fas fa-bullhorn text-warning me-2"></i> Send Broadcast Newsletter to All Subscribers
+                </h4>
+                <span className="badge bg-success" style={{ fontSize: '12px' }}>
+                  Target: {subscribers.length} Recipient{subscribers.length === 1 ? '' : 's'}
+                </span>
+              </div>
+
+              {broadcastStatus && (
+                <div className={`alert py-2 mb-3 ${broadcastStatus.startsWith('✅') ? 'alert-success' : broadcastStatus.startsWith('⌛') ? 'alert-info' : 'alert-danger'}`} style={{ fontSize: '14px' }}>
+                  {broadcastStatus}
+                </div>
+              )}
+
+              <form onSubmit={handleSendBroadcast}>
+                <div className="row g-3">
+                  <div className="col-12">
+                    <label className="form-label text-white-50 mb-1" style={{ fontSize: '13px' }}>Newsletter Subject Line *</label>
+                    <input 
+                      type="text"
+                      className="form-control text-white"
+                      style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px' }}
+                      placeholder="e.g. 📢 New Tech Cohorts Open & Industry Updates"
+                      value={newsletterSubject}
+                      onChange={(e) => setNewsletterSubject(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="col-12">
+                    <label className="form-label text-white-50 mb-1" style={{ fontSize: '13px' }}>Newsletter Message Content (HTML or Text) *</label>
+                    <textarea 
+                      className="form-control text-white"
+                      rows={4}
+                      style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px', fontSize: '14px' }}
+                      placeholder="Type your announcement, newsletter content, or update message here..."
+                      value={newsletterMessage}
+                      onChange={(e) => setNewsletterMessage(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="col-12 d-flex justify-content-end">
+                    <button
+                      type="submit"
+                      disabled={isSendingBroadcast || subscribers.length === 0}
+                      className="btn btn-warning text-dark font-weight-bold px-4 py-2"
+                      style={{ borderRadius: '10px' }}
+                    >
+                      {isSendingBroadcast ? (
+                        <span><i className="fas fa-spinner fa-spin me-2"></i> Sending Broadcast...</span>
+                      ) : (
+                        <span><i className="fas fa-paper-plane me-2"></i> Send Broadcast to All {subscribers.length} Subscribers</span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
 
             {loading ? (

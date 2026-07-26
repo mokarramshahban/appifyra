@@ -1,14 +1,28 @@
 import express from 'express';
 import Inquiry from '../models/Inquiry.js';
+import { sendEmail, contactReceivedTemplate, inquiryStatusTemplate } from '../services/emailService.js';
 
 const router = express.Router();
 
-// POST /api/inquiries -> Save Contact Message
+// POST /api/inquiries -> Save Contact/Service Message & Send Confirmation Email
 router.post('/', async (req, res) => {
   try {
     const inquiry = new Inquiry(req.body);
     const savedInquiry = await inquiry.save();
-    res.status(201).json({ success: true, id: savedInquiry._id });
+
+    // Send confirmation email to client/user (non-blocking)
+    if (savedInquiry.email && savedInquiry.fullName) {
+      sendEmail({
+        to: savedInquiry.email,
+        ...contactReceivedTemplate({
+          fullName: savedInquiry.fullName,
+          subject: savedInquiry.subject,
+          serviceType: savedInquiry.serviceType
+        })
+      }).catch(err => console.error('Inquiry submit email error:', err));
+    }
+
+    res.status(201).json({ success: true, id: savedInquiry._id, data: savedInquiry });
   } catch (error) {
     console.error('Error saving inquiry:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -29,14 +43,29 @@ router.get('/', async (req, res) => {
   }
 });
 
-// PUT /api/inquiries/:id -> Update Inquiry Details
+// PUT /api/inquiries/:id -> Update Inquiry Details & Status & Send Email to Client
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    const oldInquiry = await Inquiry.findById(id);
     const updated = await Inquiry.findByIdAndUpdate(id, req.body, { new: true });
     if (!updated) {
       return res.status(404).json({ success: false, message: 'Inquiry not found' });
     }
+
+    // Send email update to client if status or note changed
+    if (updated.email && (oldInquiry.status !== updated.status || req.body.sendNotification)) {
+      sendEmail({
+        to: updated.email,
+        ...inquiryStatusTemplate({
+          fullName: updated.fullName,
+          serviceType: updated.serviceType || updated.subject,
+          status: updated.status,
+          message: req.body.customNote || updated.adminNotes || ''
+        })
+      }).catch(err => console.error('Inquiry update email error:', err));
+    }
+
     res.json({ success: true, data: updated });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

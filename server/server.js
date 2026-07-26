@@ -20,6 +20,9 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy for rate limiting behind Render/Vercel reverse proxies
+app.set('trust proxy', 1);
+
 // Connect to MongoDB Database
 connectDB();
 
