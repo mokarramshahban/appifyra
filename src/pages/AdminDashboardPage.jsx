@@ -364,7 +364,7 @@ export default function AdminDashboardPage() {
 
       // Automated Email Trigger on Certificate Edit
       if (certEditForm.studentEmail) {
-        sendCertIssuedEmail({
+        sendCertificateEmail({
           studentEmail: certEditForm.studentEmail,
           studentName: certEditForm.studentName,
           certificateId: editingCert.certificateId,
