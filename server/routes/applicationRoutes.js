@@ -5,23 +5,42 @@ import { sendEmail, appReceivedTemplate, statusUpdateTemplate } from '../service
 
 const router = express.Router();
 
-// Helper to safely find application by Mongo ObjectId or custom string ID
-const findApp = async (id) => {
+// Helper to safely find application by Mongo ObjectId or custom ID / email
+const findApp = async (id, email) => {
   if (mongoose.Types.ObjectId.isValid(id)) {
     return await Application.findById(id);
   }
-  return await Application.findOne({ $or: [{ _id: id }, { id: id }] });
+  if (id) {
+    const foundById = await Application.findOne({ id: id });
+    if (foundById) return foundById;
+  }
+  if (email) {
+    return await Application.findOne({ email: email });
+  }
+  return null;
 };
 
-// Helper to safely update application
+// Helper to safely update application or upsert if legacy local record
 const updateApp = async (id, updateData) => {
   if (mongoose.Types.ObjectId.isValid(id)) {
-    return await Application.findByIdAndUpdate(id, updateData, { new: true });
+    const updated = await Application.findByIdAndUpdate(id, updateData, { new: true });
+    if (updated) return updated;
   }
-  const found = await Application.findOne({ $or: [{ _id: id }, { id: id }] });
-  if (found) {
-    return await Application.findByIdAndUpdate(found._id, updateData, { new: true });
+
+  if (id) {
+    const updatedById = await Application.findOneAndUpdate({ id: id }, updateData, { new: true });
+    if (updatedById) return updatedById;
   }
+
+  if (updateData.email) {
+    // Upsert into MongoDB if legacy local record being updated for first time
+    return await Application.findOneAndUpdate(
+      { email: updateData.email, domain: updateData.domain },
+      { ...updateData, updatedAt: new Date() },
+      { upsert: true, new: true }
+    );
+  }
+
   return null;
 };
 
@@ -30,11 +49,7 @@ const deleteApp = async (id) => {
   if (mongoose.Types.ObjectId.isValid(id)) {
     return await Application.findByIdAndDelete(id);
   }
-  const found = await Application.findOne({ $or: [{ _id: id }, { id: id }] });
-  if (found) {
-    return await Application.findByIdAndDelete(found._id);
-  }
-  return null;
+  return await Application.findOneAndDelete({ id: id });
 };
 
 // POST /api/applications -> Save Application & Send Automatic Candidate Email
@@ -97,27 +112,29 @@ router.get('/student/:email', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oldApp = await findApp(id);
+    const oldApp = await findApp(id, req.body.email);
     const updated = await updateApp(id, req.body);
 
-    if (!updated) {
-      return res.status(404).json({ success: false, message: 'Application not found' });
-    }
+    const targetEmail = req.body.email || updated?.email;
+    const targetName = req.body.fullName || updated?.fullName;
+    const targetStatus = req.body.status || updated?.status || 'Under Review';
+    const targetDomain = req.body.domain || updated?.domain || 'Software Track';
+    const targetDuration = req.body.duration || updated?.duration || '45-Days';
 
     // Automatically send status update email if status or details changed
-    if (updated.email && (oldApp?.status !== updated.status || req.body.sendEmailNotification)) {
+    if (targetEmail && targetName) {
       sendEmail({
-        to: updated.email,
+        to: targetEmail,
         ...statusUpdateTemplate({
-          studentName: updated.fullName,
-          status: updated.status,
-          domain: updated.domain,
-          duration: updated.duration
+          studentName: targetName,
+          status: targetStatus,
+          domain: targetDomain,
+          duration: targetDuration
         })
       }).catch(err => console.error('Status email error:', err));
     }
 
-    res.json({ success: true, data: updated });
+    res.json({ success: true, data: updated || req.body });
   } catch (error) {
     console.error('Error updating application:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -128,27 +145,29 @@ router.put('/:id', async (req, res) => {
 router.patch('/:id/status', async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
+    const { status, email, fullName, domain, duration } = req.body;
+    const oldApp = await findApp(id, email);
     const updated = await updateApp(id, { status });
 
-    if (!updated) {
-      return res.status(404).json({ success: false, message: 'Application not found' });
-    }
+    const targetEmail = email || updated?.email || oldApp?.email;
+    const targetName = fullName || updated?.fullName || oldApp?.fullName;
+    const targetDomain = domain || updated?.domain || oldApp?.domain || 'Software Track';
+    const targetDuration = duration || updated?.duration || oldApp?.duration || '45-Days';
 
     // Automatically send email on status update
-    if (updated.email && updated.fullName) {
+    if (targetEmail && targetName) {
       sendEmail({
-        to: updated.email,
+        to: targetEmail,
         ...statusUpdateTemplate({
-          studentName: updated.fullName,
-          status: updated.status,
-          domain: updated.domain,
-          duration: updated.duration
+          studentName: targetName,
+          status: status,
+          domain: targetDomain,
+          duration: targetDuration
         })
       }).catch(err => console.error('Status patch email error:', err));
     }
 
-    res.json({ success: true, data: updated });
+    res.json({ success: true, data: updated || { id, status } });
   } catch (error) {
     console.error('Error updating status:', error);
     res.status(500).json({ success: false, error: error.message });

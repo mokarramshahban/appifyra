@@ -130,7 +130,8 @@ export default function AdminDashboardPage() {
   // Handle Application Status Change & Automated Email Dispatch
   const handleStatusChange = async (appId, newStatus) => {
     setUpdatingId(appId);
-    const ok = await updateApplicationStatus(appId, newStatus);
+    const targetApp = applications.find(a => a.id === appId);
+    const ok = await updateApplication(appId, { ...(targetApp || {}), status: newStatus });
     if (ok) {
       const targetApp = applications.find(a => a.id === appId);
       setApplications(prev => prev.map(a => a.id === appId ? { ...a, status: newStatus } : a));
