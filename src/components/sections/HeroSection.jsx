@@ -65,7 +65,7 @@ export default function HeroSection() {
     <section 
       className="hero hero-style-two hero-style-three bg_img pos-rel overflow-hidden"
       style={{ 
-        backgroundImage: 'url(/assets/img/bg/hero_bg03.png)',
+        backgroundImage: 'url(/assets/img/bg/hero-bg03.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         paddingTop: '130px',

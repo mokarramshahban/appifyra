@@ -9,7 +9,7 @@ export default function IndustriesSection() {
   ];
 
   return (
-    <section className="industries pt-100 pb-100 pos-rel bg_img" style={{ backgroundImage: 'url(/assets/img/bg/ind-bg.png)' }}>
+    <section className="industries pt-100 pb-100 pos-rel bg_img" style={{ backgroundImage: 'url(/assets/img/bg/service_bg.png)' }}>
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
           <span className="sub-title">

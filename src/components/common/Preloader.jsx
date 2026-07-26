@@ -34,8 +34,8 @@ export default function Preloader() {
       <div id="loader" className="loader">
         <div className="loader-container">
           <div className="loader-icon">
-            <img src="/assets/img/logo/preloader-logo.png" alt="Preloader Logo" style={{ height: '40px' }} />
-          </div>
+              <img src="/assets/img/logo/appifyra.png" alt="Preloader Logo" style={{ height: '40px' }} />
+            </div>
         </div>
       </div>
     </div>
