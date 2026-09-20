@@ -40,10 +40,16 @@ app.use(mongoSanitize()); // Prevent NoSQL Injection by sanitizing '$' and '.' i
 
 const allowedOrigins = process.env.VITE_URL 
   ? [process.env.VITE_URL, 'http://localhost:3000'] 
-  : ['http://localhost:3000', 'https://appifyra.com', 'https://www.appifyra.com'];
+  : [
+      'http://localhost:3000', 
+      'https://appifyra.com', 
+      'https://www.appifyra.com',
+      'https://appifyra.vercel.app' // Added explicitly to support your Vercel deployment
+    ];
 
 app.use(cors({
   origin: (origin, callback) => {
+    // Allow if no origin (e.g. server-to-server), if in whitelist, or if dynamically matching a Vercel preview URL
     if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
       callback(null, true);
     } else {
