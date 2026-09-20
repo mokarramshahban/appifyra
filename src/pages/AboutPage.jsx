@@ -10,16 +10,16 @@ export default function AboutPage() {
   const [openFaq, setOpenFaq] = useState(0);
 
   const stats = [
-    { number: '50+', label: 'Enterprise & Client Projects', icon: 'fas fa-laptop-code', color: '#38bdf8' },
-    { number: '1,200+', label: 'Certified Internship Graduates', icon: 'fas fa-graduation-cap', color: '#4ade80' },
-    { number: '99.8%', label: 'On-Time Production Deployment', icon: 'fas fa-shield-check', color: '#c084fc' },
+    { number: '50+', label: 'Enterprise & Client Projects', icon: 'fas fa-laptop-code', color: 'var(--color-success)' },
+    { number: '1,200+', label: 'Certified Internship Graduates', icon: 'fas fa-graduation-cap', color: 'var(--color-success)' },
+    { number: '99.8%', label: 'On-Time Production Deployment', icon: 'fas fa-shield-check', color: 'var(--color-primary-light)' },
     { number: '24/7', label: 'Dedicated Support & Maintenance', icon: 'fas fa-headset', color: '#f59e0b' }
   ];
 
   const techStack = [
     { name: 'React.js & Next.js', category: 'Frontend Mastery', icon: 'fab fa-react', color: '#61dafb' },
-    { name: 'Flutter & React Native', category: 'Mobile Applications', icon: 'fas fa-mobile-screen-button', color: '#38bdf8' },
-    { name: 'Node.js & Express', category: 'Backend Systems', icon: 'fab fa-node-js', color: '#4ade80' },
+    { name: 'Flutter & React Native', category: 'Mobile Applications', icon: 'fas fa-mobile-screen-button', color: 'var(--color-success)' },
+    { name: 'Node.js & Express', category: 'Backend Systems', icon: 'fab fa-node-js', color: 'var(--color-success)' },
     { name: 'MongoDB & PostgreSQL', category: 'Database Systems', icon: 'fas fa-database', color: '#a855f7' },
     { name: 'AWS & Docker DevOps', category: 'Cloud Infrastructure', icon: 'fab fa-aws', color: '#f59e0b' },
     { name: 'AI & Python Automation', category: 'Machine Learning', icon: 'fab fa-python', color: '#ec4899' }
@@ -29,19 +29,19 @@ export default function AboutPage() {
     {
       title: 'Enterprise Software & IT Services',
       icon: 'fas fa-laptop-code',
-      glow: '#38bdf8',
+      glow: 'var(--color-success)',
       desc: 'We engineer custom web applications, native mobile apps, cloud architecture, and AI integrations designed for high-scale enterprise performance.'
     },
     {
       title: 'Industrial Internship & Skill Academy',
       icon: 'fas fa-graduation-cap',
-      glow: '#4ade80',
+      glow: 'var(--color-success)',
       desc: 'We bridge the academia-industry gap by equipping candidates with hands-on production codebase experience, mentorship, and verified credentials.'
     },
     {
       title: 'UI/UX & Product Experience Design',
       icon: 'fas fa-palette',
-      glow: '#c084fc',
+      glow: 'var(--color-primary-light)',
       desc: 'We craft human-centric interfaces, interactive prototypes, and modern design systems that captivate users and elevate brand equity.'
     }
   ];
@@ -81,10 +81,10 @@ export default function AboutPage() {
             <span 
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
-                backgroundColor: 'rgba(174, 109, 254, 0.12)',
-                border: '1px solid rgba(174, 109, 254, 0.3)',
+                backgroundColor: 'var(--input-border)',
+                border: '1px solid var(--input-border)',
                 borderRadius: '30px',
-                color: '#c084fc',
+                color: 'var(--color-primary-light)',
                 fontSize: '13px',
                 fontWeight: '600'
               }}
@@ -94,7 +94,7 @@ export default function AboutPage() {
             </span>
 
             <h1 
-              className="text-white mb-4" 
+              className="text-main mb-4" 
               style={{ 
                 fontWeight: '800', 
                 fontSize: '48px', 
@@ -105,12 +105,12 @@ export default function AboutPage() {
               Architecting Digital Futures & Empowering Tech Pioneers
             </h1>
 
-            <p style={{ color: '#94a3b8', fontSize: '18px', lineHeight: '1.7' }} className="mb-4">
+            <p style={{ color: 'var(--color-text-muted)', fontSize: '18px', lineHeight: '1.7' }} className="mb-4">
               Appifyra is a modern IT consultancy and industrial skill academy. We deliver high-scale enterprise web applications, mobile platforms, and cloud DevOps while training the next generation of engineers on live production software.
             </p>
 
             <div className="d-flex flex-wrap justify-content-center gap-3">
-              <Link to="/contact" className="btn btn-primary px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px rgba(67, 29, 171, 0.4)' }}>
+              <Link to="/contact" className="btn btn-primary px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
                 <i className="fas fa-paper-plane me-2"></i> Partner With Us
               </Link>
               <Link to="/internship" className="btn btn-outline-light px-4 py-3" style={{ borderRadius: '12px', fontWeight: '600' }}>
@@ -132,13 +132,13 @@ export default function AboutPage() {
           <div className="row g-4">
             <div className="col-lg-6">
               <div 
-                className="p-4 p-md-5 h-100 text-white pos-rel"
+                className="p-4 p-md-5 h-100 text-main pos-rel"
                 style={{
                   borderRadius: '24px',
-                  backgroundColor: 'rgba(15, 18, 41, 0.75)',
-                  border: '1px solid rgba(56, 189, 248, 0.35)',
+                  backgroundColor: 'var(--card-bg)',
+                  border: '1px solid var(--card-bg)',
                   backdropFilter: 'blur(16px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+                  boxShadow: '0 20px 40px var(--card-bg)'
                 }}
               >
                 <div 
@@ -148,15 +148,15 @@ export default function AboutPage() {
                     height: '64px',
                     borderRadius: '18px',
                     background: 'rgba(56, 189, 248, 0.15)',
-                    border: '1px solid rgba(56, 189, 248, 0.4)',
-                    color: '#38bdf8',
+                    border: '1px solid var(--card-bg)',
+                    color: 'var(--color-success)',
                     fontSize: '26px'
                   }}
                 >
                   <i className="fas fa-bullseye"></i>
                 </div>
-                <h3 className="text-white mb-3" style={{ fontWeight: '700' }}>Our Core Mission</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.7' }} className="mb-0">
+                <h3 className="text-main mb-3" style={{ fontWeight: '700' }}>Our Core Mission</h3>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '15px', lineHeight: '1.7' }} className="mb-0">
                   To accelerate business success by crafting secure, scalable software solutions while bridging the academic-industry gap by equipping engineering candidates with authentic production experience.
                 </p>
               </div>
@@ -164,13 +164,13 @@ export default function AboutPage() {
 
             <div className="col-lg-6">
               <div 
-                className="p-4 p-md-5 h-100 text-white pos-rel"
+                className="p-4 p-md-5 h-100 text-main pos-rel"
                 style={{
                   borderRadius: '24px',
-                  backgroundColor: 'rgba(15, 18, 41, 0.75)',
-                  border: '1px solid rgba(192, 132, 252, 0.35)',
+                  backgroundColor: 'var(--card-bg)',
+                  border: '1px solid var(--card-bg)',
                   backdropFilter: 'blur(16px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+                  boxShadow: '0 20px 40px var(--card-bg)'
                 }}
               >
                 <div 
@@ -180,15 +180,15 @@ export default function AboutPage() {
                     height: '64px',
                     borderRadius: '18px',
                     background: 'rgba(192, 132, 252, 0.15)',
-                    border: '1px solid rgba(192, 132, 252, 0.4)',
-                    color: '#c084fc',
+                    border: '1px solid var(--card-bg)',
+                    color: 'var(--color-primary-light)',
                     fontSize: '26px'
                   }}
                 >
                   <i className="fas fa-eye"></i>
                 </div>
-                <h3 className="text-white mb-3" style={{ fontWeight: '700' }}>Our Global Vision</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.7' }} className="mb-0">
+                <h3 className="text-main mb-3" style={{ fontWeight: '700' }}>Our Global Vision</h3>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '15px', lineHeight: '1.7' }} className="mb-0">
                   To stand as a global benchmark for software engineering craftsmanship and talent transformation—empowering enterprises to innovate faster and developers to build thriving tech careers.
                 </p>
               </div>
@@ -205,9 +205,9 @@ export default function AboutPage() {
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
                 backgroundColor: 'rgba(74, 222, 128, 0.12)',
-                border: '1px solid rgba(74, 222, 128, 0.3)',
+                border: '1px solid var(--card-bg)',
                 borderRadius: '30px',
-                color: '#4ade80',
+                color: 'var(--color-success)',
                 fontSize: '13px',
                 fontWeight: '600'
               }}
@@ -215,7 +215,7 @@ export default function AboutPage() {
               <i className="fas fa-layer-group"></i>
               <span>OUR CORE CAPABILITIES</span>
             </span>
-            <h2 className="title text-white" style={{ fontWeight: '800', fontSize: '36px' }}>
+            <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '36px' }}>
               What Drives Appifyra Forward
             </h2>
           </div>
@@ -224,13 +224,13 @@ export default function AboutPage() {
             {pillars.map((pil, idx) => (
               <div className="col-lg-4 col-md-6" key={idx}>
                 <div 
-                  className="p-4 p-md-5 h-100 text-white d-flex flex-column justify-content-between"
+                  className="p-4 p-md-5 h-100 text-main d-flex flex-column justify-content-between"
                   style={{
                     borderRadius: '20px',
-                    backgroundColor: 'rgba(15, 18, 41, 0.75)',
+                    backgroundColor: 'var(--card-bg)',
                     border: '1px solid var(--color-border)',
                     backdropFilter: 'blur(16px)',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)'
+                    boxShadow: '0 10px 30px var(--card-bg)'
                   }}
                 >
                   <div>
@@ -240,7 +240,7 @@ export default function AboutPage() {
                         width: '56px',
                         height: '56px',
                         borderRadius: '14px',
-                        background: `radial-gradient(circle, ${pil.glow}30 0%, rgba(13, 17, 39, 0.95) 100%)`,
+                        background: `radial-gradient(circle, ${pil.glow}30 0%, var(--section-bg) 100%)`,
                         border: `1px solid ${pil.glow}60`,
                         color: pil.glow,
                         fontSize: '24px'
@@ -248,8 +248,8 @@ export default function AboutPage() {
                     >
                       <i className={pil.icon}></i>
                     </div>
-                    <h4 className="text-white mb-3" style={{ fontWeight: '700', fontSize: '20px' }}>{pil.title}</h4>
-                    <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6' }} className="mb-0">
+                    <h4 className="text-main mb-3" style={{ fontWeight: '700', fontSize: '20px' }}>{pil.title}</h4>
+                    <p style={{ color: 'var(--color-text-muted)', fontSize: '14px', lineHeight: '1.6' }} className="mb-0">
                       {pil.desc}
                     </p>
                   </div>
@@ -267,7 +267,7 @@ export default function AboutPage() {
             {stats.map((st, idx) => (
               <div className="col-lg-3 col-md-6" key={idx}>
                 <div 
-                  className="p-4 text-center text-white h-100"
+                  className="p-4 text-center text-main h-100"
                   style={{
                     borderRadius: '20px',
                     backgroundColor: 'var(--color-bg-card-elevated)',
@@ -276,7 +276,7 @@ export default function AboutPage() {
                   }}
                 >
                   <i className={`${st.icon} mb-3`} style={{ fontSize: '32px', color: st.color }}></i>
-                  <h2 className="text-white mb-1" style={{ fontWeight: '800', fontSize: '38px', color: st.color }}>
+                  <h2 className="text-main mb-1" style={{ fontWeight: '800', fontSize: '38px', color: st.color }}>
                     {st.number}
                   </h2>
                   <p className="text-muted mb-0" style={{ fontSize: '14px' }}>
@@ -297,9 +297,9 @@ export default function AboutPage() {
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
                 backgroundColor: 'rgba(56, 189, 248, 0.12)',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                border: '1px solid var(--card-bg)',
                 borderRadius: '30px',
-                color: '#38bdf8',
+                color: 'var(--color-success)',
                 fontSize: '13px',
                 fontWeight: '600'
               }}
@@ -307,7 +307,7 @@ export default function AboutPage() {
               <i className="fas fa-code"></i>
               <span>TECHNOLOGY ECOSYSTEM</span>
             </span>
-            <h2 className="title text-white" style={{ fontWeight: '800', fontSize: '36px' }}>
+            <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '36px' }}>
               Built with Modern Cutting-Edge Stacks
             </h2>
           </div>
@@ -316,7 +316,7 @@ export default function AboutPage() {
             {techStack.map((tech, idx) => (
               <div className="col-lg-4 col-md-6" key={idx}>
                 <div 
-                  className="p-4 text-white d-flex align-items-center gap-3 h-100"
+                  className="p-4 text-main d-flex align-items-center gap-3 h-100"
                   style={{
                     backgroundColor: 'rgba(15, 18, 41, 0.6)',
                     border: '1px solid var(--color-border)',
@@ -339,7 +339,7 @@ export default function AboutPage() {
                     <i className={tech.icon}></i>
                   </div>
                   <div>
-                    <h5 className="text-white mb-0" style={{ fontWeight: '700', fontSize: '16px' }}>{tech.name}</h5>
+                    <h5 className="text-main mb-0" style={{ fontWeight: '700', fontSize: '16px' }}>{tech.name}</h5>
                     <span className="text-muted" style={{ fontSize: '12px' }}>{tech.category}</span>
                   </div>
                 </div>
@@ -353,7 +353,7 @@ export default function AboutPage() {
       <section className="timeline-section mb-100">
         <div className="container">
           <div className="sec-title--two text-center mb-60">
-            <h2 className="title text-white" style={{ fontWeight: '800', fontSize: '36px' }}>
+            <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '36px' }}>
               Our Milestone Journey of Growth
             </h2>
           </div>
@@ -362,25 +362,25 @@ export default function AboutPage() {
             {timeline.map((item, idx) => (
               <div className="col-lg-3 col-md-6" key={idx}>
                 <div 
-                  className="p-4 text-white h-100 pos-rel"
+                  className="p-4 text-main h-100 pos-rel"
                   style={{
                     backgroundColor: 'var(--color-bg-card-elevated)',
-                    border: '1px solid rgba(174, 109, 254, 0.25)',
+                    border: '1px solid var(--input-border)',
                     borderRadius: '20px'
                   }}
                 >
                   <span 
                     className="badge mb-3 px-3 py-2"
                     style={{
-                      backgroundColor: 'rgba(174, 109, 254, 0.2)',
-                      color: '#c084fc',
+                      backgroundColor: 'var(--input-border)',
+                      color: 'var(--color-primary-light)',
                       fontWeight: '800',
                       fontSize: '14px'
                     }}
                   >
                     {item.year}
                   </span>
-                  <h4 className="text-white mb-2" style={{ fontWeight: '700', fontSize: '17px' }}>{item.title}</h4>
+                  <h4 className="text-main mb-2" style={{ fontWeight: '700', fontSize: '17px' }}>{item.title}</h4>
                   <p className="text-muted mb-0" style={{ fontSize: '13px', lineHeight: '1.6' }}>{item.desc}</p>
                 </div>
               </div>
@@ -396,7 +396,7 @@ export default function AboutPage() {
       <section className="faq-section mb-100">
         <div className="container">
           <div className="sec-title--two text-center mb-60">
-            <h2 className="title text-white" style={{ fontWeight: '800', fontSize: '36px' }}>
+            <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '36px' }}>
               Frequently Asked Questions
             </h2>
             <p className="text-muted mx-auto mt-2" style={{ maxWidth: '600px', fontSize: '14px' }}>
@@ -410,10 +410,10 @@ export default function AboutPage() {
                 {faqs.map((faq, idx) => (
                   <div 
                     key={idx}
-                    className="p-4 text-white"
+                    className="p-4 text-main"
                     style={{
                       backgroundColor: 'rgba(15, 18, 41, 0.65)',
-                      border: openFaq === idx ? '1px solid rgba(174, 109, 254, 0.5)' : '1px solid rgba(255, 255, 255, 0.08)',
+                      border: openFaq === idx ? '1px solid var(--input-border)' : '1px solid var(--card-bg)',
                       borderRadius: '16px',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease'
@@ -421,13 +421,13 @@ export default function AboutPage() {
                     onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
                   >
                     <div className="d-flex align-items-center justify-content-between">
-                      <h4 className="text-white mb-0" style={{ fontWeight: '600', fontSize: '17px' }}>
+                      <h4 className="text-main mb-0" style={{ fontWeight: '600', fontSize: '17px' }}>
                         {faq.q}
                       </h4>
                       <i className={`fas ${openFaq === idx ? 'fa-chevron-up text-primary' : 'fa-chevron-down text-muted'}`}></i>
                     </div>
                     {openFaq === idx && (
-                      <p className="text-muted mt-3 mb-0" style={{ fontSize: '14px', lineHeight: '1.6', color: '#cbd5e1' }}>
+                      <p className="text-muted mt-3 mb-0" style={{ fontSize: '14px', lineHeight: '1.6', color: 'var(--color-text-muted)' }}>
                         {faq.a}
                       </p>
                     )}

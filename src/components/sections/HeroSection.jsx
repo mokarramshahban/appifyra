@@ -141,23 +141,23 @@ export default function HeroSection() {
                     className="d-inline-flex align-items-center gap-2 px-3 py-2"
                     style={{
                       backgroundColor: 'rgba(174, 109, 254, 0.18)',
-                      border: '1px solid rgba(174, 109, 254, 0.4)',
+                      border: '1px solid var(--input-border)',
                       borderRadius: '30px',
                       backdropFilter: 'blur(8px)'
                     }}
                   >
                     <span className="badge bg-primary" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
-                    <span className="text-white" style={{ fontSize: '14px', fontWeight: '500' }}>
+                    <span className="text-main" style={{ fontSize: '14px', fontWeight: '500' }}>
                       🚀 Next-Gen IT Services & Verified University Training
                     </span>
                   </div>
                 </div>
 
-                <h1 className="title text-white my-3" style={{ fontWeight: '800', lineHeight: '1.2' }}>
+                <h1 className="title text-main my-3" style={{ fontWeight: '800', lineHeight: '1.2' }}>
                   Empowering Tech Innovation & Industry Training
                 </h1>
                 
-                <p className="content text-white-50 my-2" style={{ fontSize: '17px', maxWidth: '580px', lineHeight: '1.6' }}>
+                <p className="content text-main-50 my-2" style={{ fontSize: '17px', maxWidth: '580px', lineHeight: '1.6' }}>
                   Appifyra delivers enterprise-grade software development, cloud architecture, and degree-aligned industrial internship programs to shape the future of IT.
                 </p>
 
@@ -167,12 +167,12 @@ export default function HeroSection() {
                     to="/services" 
                     className="btn btn-lg"
                     style={{
-                      background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
-                      color: 'var(--color-text-main)',
+                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
+                      color: '#ffffff',
                       fontWeight: '700',
                       padding: '14px 32px',
                       borderRadius: '12px',
-                      boxShadow: '0 10px 25px rgba(67, 29, 171, 0.4)'
+                      boxShadow: 'var(--shadow-primary)'
                     }}
                   >
                     <span>Explore Our Services <i className="far fa-arrow-right ms-2"></i></span>
@@ -188,7 +188,7 @@ export default function HeroSection() {
                       borderColor: 'rgba(255, 255, 255, 0.25)'
                     }}
                   >
-                    <span><i className="far fa-user-graduate me-2" style={{ color: '#ae6dfe' }}></i> View All Programs</span>
+                    <span><i className="far fa-user-graduate me-2" style={{ color: 'var(--color-primary-light)' }}></i> View All Programs</span>
                   </Link>
                 </div>
 
@@ -213,7 +213,7 @@ export default function HeroSection() {
                     <div className="text-muted" style={{ fontSize: '12px' }}>Projects Shipped</div>
                   </div>
                   <div className="col-4">
-                    <div className="h3 mb-0" style={{ fontWeight: '700', color: '#38bdf8' }}>100%</div>
+                    <div className="h3 mb-0" style={{ fontWeight: '700', color: 'var(--color-success)' }}>100%</div>
                     <div className="text-muted" style={{ fontSize: '12px' }}>Verifiable Certs</div>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function HeroSection() {
                   <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '14px', border: '1px solid var(--color-border)' }}>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'btn-primary' : 'btn-link text-white-50 text-decoration-none'}`}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'btn-primary' : 'btn-link text-main-50 text-decoration-none'}`}
                       style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px' }}
                       onClick={() => { setFormTab('internship'); setSubmitted(false); }}
                     >
@@ -244,7 +244,7 @@ export default function HeroSection() {
                     </button>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'btn-primary' : 'btn-link text-white-50 text-decoration-none'}`}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'btn-primary' : 'btn-link text-main-50 text-decoration-none'}`}
                       style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px', backgroundColor: formTab === 'service' ? 'var(--color-primary)' : 'transparent', borderColor: 'transparent' }}
                       onClick={() => { setFormTab('service'); setSubmitted(false); }}
                     >
@@ -256,12 +256,12 @@ export default function HeroSection() {
                     <span className="badge bg-primary px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
                       {formTab === 'internship' ? 'QUICK APPLY' : 'SERVICE INQUIRY'}
                     </span>
-                    <span style={{ color: '#4ade80', fontSize: '13px', fontWeight: '600' }}>
+                    <span style={{ color: 'var(--color-success)', fontSize: '13px', fontWeight: '600' }}>
                       <i className="fas fa-check-circle me-1"></i> {formTab === 'internship' ? 'Open Enrollments' : 'Fast Response (24h)'}
                     </span>
                   </div>
 
-                  <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>
+                  <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>
                     {formTab === 'internship' ? 'Apply for Internship' : 'Hire Us for Your Project'}
                   </h3>
                   <p className="text-muted mb-3" style={{ fontSize: '13px' }}>
@@ -272,9 +272,9 @@ export default function HeroSection() {
                 </div>
 
                 {submitted ? (
-                  <div className="p-4 text-center my-auto" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', borderRadius: '16px', border: '1px solid rgba(74, 222, 128, 0.4)' }}>
-                    <i className="fas fa-check-circle mb-3" style={{ fontSize: '42px', color: '#4ade80' }}></i>
-                    <h4 className="text-white">
+                  <div className="p-4 text-center my-auto" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', borderRadius: '16px', border: '1px solid var(--card-bg)' }}>
+                    <i className="fas fa-check-circle mb-3" style={{ fontSize: '42px', color: 'var(--color-success)' }}></i>
+                    <h4 className="text-main">
                       {formTab === 'internship' ? 'Application Received!' : 'Service Request Received!'}
                     </h4>
                     <p className="text-muted mt-2" style={{ fontSize: '14px' }}>
@@ -304,7 +304,7 @@ export default function HeroSection() {
                         <div className="col-12">
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Program Track *</label>
                           <select 
-                            className="form-select text-white"
+                            className="form-select text-main"
                             style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                             value={internshipForm.duration}
                             onChange={(e) => setInternshipForm({ ...internshipForm, duration: e.target.value })}
@@ -317,7 +317,7 @@ export default function HeroSection() {
                         <div className="col-12">
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Target Domain *</label>
                           <select 
-                            className="form-select text-white"
+                            className="form-select text-main"
                             style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                             value={internshipForm.domain}
                             onChange={(e) => setInternshipForm({ ...internshipForm, domain: e.target.value })}
@@ -338,8 +338,8 @@ export default function HeroSection() {
                             </label>
                             <input 
                               type="text" 
-                              className="form-control text-white"
-                              style={{ backgroundColor: 'var(--input-bg)', border: '1px solid rgba(174, 109, 254, 0.5)', borderRadius: '10px' }}
+                              className="form-control text-main"
+                              style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                               placeholder="e.g. Cyber Security, AI/ML..."
                               value={customDomain}
                               onChange={(e) => setCustomDomain(e.target.value)}
@@ -354,7 +354,7 @@ export default function HeroSection() {
                         <div className="col-12">
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Service Needed *</label>
                           <select 
-                            className="form-select text-white"
+                            className="form-select text-main"
                             style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                             value={serviceForm.serviceType}
                             onChange={(e) => setServiceForm({ ...serviceForm, serviceType: e.target.value })}
@@ -371,7 +371,7 @@ export default function HeroSection() {
                         <div className="col-12">
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Target Timeline / Launch Goal *</label>
                           <select 
-                            className="form-select text-white"
+                            className="form-select text-main"
                             style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                             value={serviceForm.timeline}
                             onChange={(e) => setServiceForm({ ...serviceForm, timeline: e.target.value })}
@@ -386,7 +386,7 @@ export default function HeroSection() {
                         <div className="col-12">
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Project Summary / Requirements *</label>
                           <textarea 
-                            className="form-control text-white"
+                            className="form-control text-main"
                             rows={2}
                             style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px', fontSize: '13px' }}
                             placeholder="Briefly describe what features or application you need built..."
@@ -408,12 +408,13 @@ export default function HeroSection() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="btn btn-lg w-100 text-white font-weight-bold"
+                        className="btn btn-lg w-100 font-weight-bold"
                         style={{
-                          background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
+                          background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
+                          color: '#ffffff',
                           borderRadius: '12px',
                           padding: '14px',
-                          boxShadow: '0 10px 25px rgba(67, 29, 171, 0.5)',
+                          boxShadow: 'var(--shadow-primary)',
                           fontSize: '15px'
                         }}
                       >

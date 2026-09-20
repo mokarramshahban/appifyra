@@ -53,12 +53,12 @@ export default function StudentDashboardPage() {
       <div className="container">
         {/* Welcome Header */}
         <div 
-          className="p-4 p-md-5 mb-5 text-white pos-rel no-print"
+          className="p-4 p-md-5 mb-5 text-main pos-rel no-print"
           style={{
             borderRadius: '24px',
-            background: 'linear-gradient(135deg, rgba(67, 29, 171, 0.4) 0%, rgba(1, 3, 21, 0.95) 100%)',
-            border: '1px solid rgba(174, 109, 254, 0.3)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)'
+            background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)',
+            border: '1px solid var(--input-border)',
+            boxShadow: '0 20px 50px var(--card-bg)'
           }}
         >
           <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -68,11 +68,11 @@ export default function StudentDashboardPage() {
                 <span className="badge bg-primary px-3 py-1 mb-2" style={{ borderRadius: '15px', fontWeight: '700', fontSize: '11px', letterSpacing: '0.5px' }}>
                   <i className="fas fa-user-graduate me-1"></i> STUDENT PORTAL
                 </span>
-                <h2 className="text-white mb-0" style={{ fontWeight: '800' }}>Welcome back, {currentUser?.displayName || 'Student'}!</h2>
+                <h2 className="text-main mb-0" style={{ fontWeight: '800' }}>Welcome back, {currentUser?.displayName || 'Student'}!</h2>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>{currentUser?.email}</p>
               </div>
             </div>
-            <Link to="/internship" className="btn btn-primary btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px rgba(67, 29, 171, 0.4)' }}>
+            <Link to="/internship" className="btn btn-primary btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
               <i className="fas fa-plus-circle me-2"></i> Apply for New Internship
             </Link>
           </div>
@@ -107,13 +107,13 @@ export default function StudentDashboardPage() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.88)',
+              backgroundColor: 'var(--section-bg)',
               zIndex: 9999,
               backdropFilter: 'blur(10px)'
             }}
           >
             <div 
-              className="printable-cert-card p-4 p-md-5 text-white pos-rel w-100"
+              className="printable-cert-card p-4 p-md-5 text-main pos-rel w-100"
               style={{
                 maxWidth: '920px',
                 maxHeight: '92vh',
@@ -121,11 +121,11 @@ export default function StudentDashboardPage() {
                 borderRadius: '24px',
                 border: '3px double #4ade80',
                 background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(74, 222, 128, 0.25)'
+                boxShadow: '0 25px 60px var(--section-bg), 0 0 35px var(--card-bg)'
               }}
             >
               {/* Modal Top Close Bar (UI Only, Hidden in PDF Print) */}
-              <div className="d-flex justify-content-between align-items-center pb-3 mb-3 no-print" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <div className="d-flex justify-content-between align-items-center pb-3 mb-3 no-print" style={{ borderBottom: '1px solid var(--card-border)' }}>
                 <span className="badge bg-success px-3 py-2" style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '1px' }}>
                   <i className="fas fa-check-circle me-1"></i> VERIFIED CREDENTIAL PREVIEW
                 </span>
@@ -137,12 +137,12 @@ export default function StudentDashboardPage() {
               {/* Formal Clean Certificate Canvas Body */}
               <div className="text-center py-4">
                 <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra" style={{ height: '56px', marginBottom: '20px' }} />
-                <h2 className="text-uppercase mb-1" style={{ letterSpacing: '6px', fontSize: '20px', color: '#a5b4fc', fontWeight: '700' }}>
+                <h2 className="text-uppercase mb-1" style={{ letterSpacing: '6px', fontSize: '20px', color: 'var(--color-text-muted)', fontWeight: '700' }}>
                   Certificate of Completion
                 </h2>
                 <p className="text-muted mb-4" style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase' }}>This Credential is Proudly Awarded To</p>
                 
-                <h1 className="text-white mb-3" style={{ fontWeight: '800', fontSize: '42px', color: '#4ade80', letterSpacing: '1px' }}>
+                <h1 className="text-main mb-3" style={{ fontWeight: '800', fontSize: '42px', color: 'var(--color-success)', letterSpacing: '1px' }}>
                   {previewCert.studentName}
                 </h1>
 
@@ -157,11 +157,11 @@ export default function StudentDashboardPage() {
                   
                   return (
                     <div className="mb-4">
-                      <h3 className="mb-2" style={{ color: '#c084fc', fontWeight: '700', fontSize: '30px' }}>
+                      <h3 className="mb-2" style={{ color: 'var(--color-primary-light)', fontWeight: '700', fontSize: '30px' }}>
                         {title}
                       </h3>
                       {cleanDuration && (
-                        <div style={{ color: '#a5b4fc', fontSize: '15px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                        <div style={{ color: 'var(--color-text-muted)', fontSize: '15px', fontWeight: '600', letterSpacing: '0.5px' }}>
                           (Completed over an intensive tenure of {cleanDuration})
                         </div>
                       )}
@@ -170,13 +170,13 @@ export default function StudentDashboardPage() {
                 })()}
 
                 {/* Certificate Badges & Signatory Footer Grid */}
-                <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                <div className="mt-5 pt-4" style={{ borderTop: '1px solid var(--card-border)' }}>
                   <div className="row align-items-center">
                     <div className="col-4 text-start">
                       <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
                       <strong className="text-warning font-monospace d-block mb-2" style={{ fontSize: '16px' }}>{previewCert.certificateId}</strong>
                       <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Issue Date</span>
-                      <strong className="text-white" style={{ fontSize: '14px' }}>{previewCert.issueDate || 'July 26, 2026'}</strong>
+                      <strong className="text-main" style={{ fontSize: '14px' }}>{previewCert.issueDate || 'July 26, 2026'}</strong>
                     </div>
 
                     <div className="col-4 text-center">
@@ -191,7 +191,7 @@ export default function StudentDashboardPage() {
                         }}
                       >
                         <i className="fas fa-award text-success mb-1" style={{ fontSize: '24px' }}></i>
-                        <span style={{ fontSize: '9px', fontWeight: '800', color: '#4ade80', letterSpacing: '0.5px' }}>VERIFIED</span>
+                        <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--color-success)', letterSpacing: '0.5px' }}>VERIFIED</span>
                       </div>
                     </div>
 
@@ -204,7 +204,7 @@ export default function StudentDashboardPage() {
               </div>
 
               {/* Modal Footer Controls */}
-              <div className="d-flex flex-wrap align-items-center justify-content-between pt-4 mt-2" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <div className="d-flex flex-wrap align-items-center justify-content-between pt-4 mt-2" style={{ borderTop: '1px solid var(--card-border)' }}>
                 <span className="text-muted" style={{ fontSize: '13px' }}>
                   Issued by <strong>Appifyra Certification Board</strong>
                 </span>
@@ -225,7 +225,7 @@ export default function StudentDashboardPage() {
         {activeTab === 'applications' && (
           <div className="mb-5 no-print">
             <div className="d-flex align-items-center justify-content-between mb-4">
-              <h3 className="text-white mb-0" style={{ fontWeight: '700' }}>My Internship Applications</h3>
+              <h3 className="text-main mb-0" style={{ fontWeight: '700' }}>My Internship Applications</h3>
               <span className="badge bg-primary px-3 py-2" style={{ fontSize: '13px' }}>Total: {applications.length}</span>
             </div>
 
@@ -233,15 +233,15 @@ export default function StudentDashboardPage() {
               <CardSkeletonGrid count={4} />
             ) : applications.length === 0 ? (
               <div 
-                className="p-5 text-center text-white"
+                className="p-5 text-center text-main"
                 style={{
                   borderRadius: '20px',
                   backgroundColor: 'var(--color-bg-card-elevated)',
-                  border: '1px dashed rgba(255, 255, 255, 0.15)'
+                  border: '1px dashed var(--card-border)'
                 }}
               >
                 <i className="fas fa-folder-open mb-3 text-muted" style={{ fontSize: '48px' }}></i>
-                <h4 className="text-white fw-bold">No Submitted Applications Yet</h4>
+                <h4 className="text-main fw-bold">No Submitted Applications Yet</h4>
                 <p className="text-muted" style={{ maxWidth: '450px', margin: '0 auto 20px', fontSize: '14px' }}>
                   You haven't submitted any internship applications yet. Choose from our 45-Day or 6-Month programs to get started!
                 </p>
@@ -254,31 +254,31 @@ export default function StudentDashboardPage() {
                 {applications.map((app) => (
                   <div className="col-lg-6" key={app.id}>
                     <div 
-                      className="p-4 text-white h-100 pos-rel interactive-hover-card"
+                      className="p-4 text-main h-100 pos-rel interactive-hover-card"
                       style={{
                         borderRadius: '20px',
-                        backgroundColor: 'rgba(15, 18, 41, 0.75)',
+                        backgroundColor: 'var(--card-bg)',
                         border: '1px solid var(--color-border)',
                         backdropFilter: 'blur(12px)'
                       }}
                     >
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="badge px-3 py-2" style={{ backgroundColor: 'rgba(103, 128, 210, 0.2)', color: '#a5b4fc', border: '1px solid rgba(103, 128, 210, 0.3)', fontWeight: '700' }}>
+                        <span className="badge px-3 py-2" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--color-text-muted)', border: '1px solid rgba(103, 128, 210, 0.3)', fontWeight: '700' }}>
                           {app.duration}
                         </span>
                         {getStatusBadge(app.status)}
                       </div>
 
-                      <h4 className="text-white mb-2" style={{ fontWeight: '700' }}>{app.domain}</h4>
+                      <h4 className="text-main mb-2" style={{ fontWeight: '700' }}>{app.domain}</h4>
                       <p className="text-muted mb-3" style={{ fontSize: '14px' }}>
                         <i className="fas fa-university me-1 text-primary"></i> {app.college} ({app.degree})
                       </p>
 
-                      <div className="pt-3 d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', fontSize: '13px' }}>
+                      <div className="pt-3 d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid var(--card-bg)', fontSize: '13px' }}>
                         <span className="text-muted">
                           Applied: {app.createdAt ? new Date(app.createdAt).toLocaleDateString() : 'Recent'}
                         </span>
-                        <span className="text-white-50 font-monospace">
+                        <span className="text-main-50 font-monospace">
                           ID: {app.id.substring(0, 8)}
                         </span>
                       </div>
@@ -295,7 +295,7 @@ export default function StudentDashboardPage() {
           <div className="mb-5 no-print">
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>My Issued Certificates</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>My Issued Certificates</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Official credentials issued by Appifyra Certification Board.</p>
               </div>
               <span className="badge bg-success px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {certificates.length}</span>
@@ -305,15 +305,15 @@ export default function StudentDashboardPage() {
               <CardSkeletonGrid count={4} />
             ) : certificates.length === 0 ? (
               <div 
-                className="p-5 text-center text-white"
+                className="p-5 text-center text-main"
                 style={{
                   borderRadius: '20px',
                   backgroundColor: 'var(--color-bg-card-elevated)',
-                  border: '1px dashed rgba(255, 255, 255, 0.15)'
+                  border: '1px dashed var(--card-border)'
                 }}
               >
                 <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '48px' }}></i>
-                <h4 className="text-white fw-bold">No Issued Certificates Yet</h4>
+                <h4 className="text-main fw-bold">No Issued Certificates Yet</h4>
                 <p className="text-muted" style={{ maxWidth: '480px', margin: '0 auto 20px', fontSize: '14px' }}>
                   Once you complete your internship track, your verified completion certificate will be issued here by the administration.
                 </p>
@@ -323,11 +323,11 @@ export default function StudentDashboardPage() {
                 {certificates.map((cert) => (
                   <div className="col-lg-6" key={cert.id || cert.certificateId}>
                     <div 
-                      className="p-4 text-white h-100 pos-rel d-flex flex-column justify-content-between interactive-hover-card"
+                      className="p-4 text-main h-100 pos-rel d-flex flex-column justify-content-between interactive-hover-card"
                       style={{
                         borderRadius: '20px',
-                        background: 'linear-gradient(135deg, rgba(67, 29, 171, 0.3) 0%, rgba(1, 3, 21, 0.95) 100%)',
-                        border: '1px solid rgba(74, 222, 128, 0.45)'
+                        background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)',
+                        border: '1px solid var(--card-bg)'
                       }}
                     >
                       <div>
@@ -340,11 +340,11 @@ export default function StudentDashboardPage() {
                           </span>
                         </div>
 
-                        <h4 className="text-white mb-2" style={{ fontWeight: '800' }}>
+                        <h4 className="text-main mb-2" style={{ fontWeight: '800' }}>
                           {cert.courseTitle || cert.domain}
                         </h4>
                         <p className="text-muted mb-2" style={{ fontSize: '14px' }}>
-                          Student: <strong className="text-white">{cert.studentName}</strong> ({cert.studentEmail})
+                          Student: <strong className="text-main">{cert.studentName}</strong> ({cert.studentEmail})
                         </p>
 
                         <div className="d-flex align-items-center gap-2 mb-3">
@@ -355,7 +355,7 @@ export default function StudentDashboardPage() {
                         </div>
                       </div>
 
-                      <div className="pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                      <div className="pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2" style={{ borderTop: '1px solid var(--card-border)' }}>
                         <span className="text-muted" style={{ fontSize: '12px' }}>
                           Issued: {cert.issueDate || (cert.issuedAt ? new Date(cert.issuedAt).toLocaleDateString() : 'Recent')}
                         </span>

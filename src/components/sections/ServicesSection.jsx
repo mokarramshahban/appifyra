@@ -57,7 +57,7 @@ export default function ServicesSection() {
     <section id="services" className="service service-style-two service-style-three pt-120 pb-100 pos-rel">
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
-          <span className="sub-title">
+          <span className="sub-title" style={{ backgroundColor: 'var(--badge-bg)', border: '1px solid var(--input-border)', color: 'var(--badge-text)' }}>
             <img src="/assets/img/icon/edit.svg" alt="Edit Icon" style={{ width: '16px', marginRight: '6px' }} />
             <span>ENTERPRISE DIGITAL SOLUTIONS</span>
           </span>

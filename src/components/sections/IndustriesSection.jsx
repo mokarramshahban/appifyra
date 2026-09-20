@@ -5,7 +5,7 @@ export default function IndustriesSection() {
     { 
       title: 'Fintech & Banking', 
       icon: 'fas fa-university', 
-      glowColor: '#38bdf8',
+      glowColor: 'var(--color-success)',
       desc: 'Secure payment processing, digital banking apps, and financial compliance platforms.' 
     },
     { 
@@ -23,7 +23,7 @@ export default function IndustriesSection() {
     { 
       title: 'Education & EdTech', 
       icon: 'fas fa-graduation-cap', 
-      glowColor: '#4ade80',
+      glowColor: 'var(--color-success)',
       desc: 'Interactive LMS platforms, AI learning assistants, and real-time student tracking.' 
     },
     { 
@@ -44,7 +44,7 @@ export default function IndustriesSection() {
     <section 
       className="industries-section pt-100 pb-100 pos-rel" 
       style={{ 
-        background: 'linear-gradient(180deg, #050614 0%, #0c0827 50%, #050614 100%)',
+        backgroundColor: 'var(--section-bg)',
         overflow: 'hidden'
       }}
     >
@@ -57,7 +57,7 @@ export default function IndustriesSection() {
           transform: 'translateX(-50%)',
           width: '600px',
           height: '400px',
-          background: 'radial-gradient(circle, rgba(117, 65, 200, 0.15) 0%, rgba(0,0,0,0) 70%)',
+          background: 'radial-gradient(circle, var(--input-border) 0%, rgba(0,0,0,0) 70%)',
           pointerEvents: 'none',
           zIndex: 0
         }}
@@ -68,10 +68,10 @@ export default function IndustriesSection() {
           <span 
             className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
-              backgroundColor: 'rgba(174, 109, 254, 0.12)',
-              border: '1px solid rgba(174, 109, 254, 0.3)',
+              backgroundColor: 'var(--input-border)',
+              border: '1px solid var(--input-border)',
               borderRadius: '30px',
-              color: '#c084fc',
+              color: 'var(--badge-text)',
               fontSize: '13px',
               fontWeight: '600'
             }}
@@ -80,7 +80,7 @@ export default function IndustriesSection() {
             <span>Industries We Serve</span>
           </span>
           <h2 
-            className="title text-white" 
+            className="title text-main" 
             style={{ 
               fontWeight: '800', 
               fontSize: '36px', 
@@ -89,7 +89,7 @@ export default function IndustriesSection() {
           >
             Tailored Solutions For Diverse Sectors
           </h2>
-          <p className="text-muted mx-auto mt-2" style={{ maxWidth: '640px', fontSize: '15px', color: '#94a3b8' }}>
+          <p className="text-muted mx-auto mt-2" style={{ maxWidth: '640px', fontSize: '15px', color: 'var(--color-text-muted)' }}>
             We architect scalable, high-performance software tailored to the specialized compliance and operational demands of modern global industries.
           </p>
         </div>
@@ -100,13 +100,13 @@ export default function IndustriesSection() {
               <div 
                 className="industry-card p-4 h-100 d-flex flex-column"
                 style={{
-                  backgroundColor: 'rgba(15, 18, 41, 0.65)',
+                  backgroundColor: 'var(--card-bg)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid var(--color-border)',
+                  border: '1px solid var(--input-border)',
                   borderRadius: '20px',
                   transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)'
+                  boxShadow: '0 10px 30px var(--card-bg)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
@@ -115,8 +115,8 @@ export default function IndustriesSection() {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.4)';
+                  e.currentTarget.style.borderColor = 'var(--input-border)';
+                  e.currentTarget.style.boxShadow = '0 10px 30px var(--card-bg)';
                 }}
               >
                 <div className="d-flex align-items-center gap-3 mb-3">
@@ -126,7 +126,7 @@ export default function IndustriesSection() {
                       width: '54px',
                       height: '54px',
                       borderRadius: '14px',
-                      background: `radial-gradient(circle, ${ind.glowColor}25 0%, rgba(13, 17, 39, 0.9) 100%)`,
+                      background: `radial-gradient(circle, ${ind.glowColor}25 0%, var(--section-bg) 100%)`,
                       border: `1px solid ${ind.glowColor}50`,
                       color: ind.glowColor,
                       fontSize: '22px'
@@ -135,13 +135,13 @@ export default function IndustriesSection() {
                     <i className={ind.icon}></i>
                   </div>
                   <div>
-                    <h4 className="text-white mb-0" style={{ fontWeight: '700', fontSize: '18px' }}>
+                    <h4 className="text-main mb-0" style={{ fontWeight: '700', fontSize: '18px' }}>
                       {ind.title}
                     </h4>
                   </div>
                 </div>
 
-                <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6' }} className="mb-0">
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '14px', lineHeight: '1.6' }} className="mb-0">
                   {ind.desc}
                 </p>
               </div>

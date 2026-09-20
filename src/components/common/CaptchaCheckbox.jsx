@@ -32,8 +32,8 @@ export default function CaptchaCheckbox({ isVerified, setIsVerified }) {
             width: '26px',
             height: '26px',
             borderRadius: '6px',
-            border: `2px solid ${isVerified ? '#4ade80' : '#a5b4fc'}`,
-            backgroundColor: isVerified ? '#4ade80' : 'transparent',
+            border: `2px solid ${isVerified ? 'var(--color-success)' : 'var(--color-text-muted)'}`,
+            backgroundColor: isVerified ? 'var(--color-success)' : 'transparent',
             transition: 'all 0.2s ease'
           }}
         >
@@ -49,7 +49,7 @@ export default function CaptchaCheckbox({ isVerified, setIsVerified }) {
       </div>
 
       <div className="text-end" style={{ lineHeight: '1' }}>
-        <i className="fas fa-shield-alt" style={{ color: isVerified ? '#4ade80' : '#818cf8', fontSize: '18px' }}></i>
+        <i className="fas fa-shield-alt" style={{ color: isVerified ? 'var(--color-success)' : 'var(--color-text-muted)', fontSize: '18px' }}></i>
         <div className="text-muted" style={{ fontSize: '9px', marginTop: '2px', letterSpacing: '0.5px' }}>
           Protected by Anti-Bot
         </div>

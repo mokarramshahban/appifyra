@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function UserAvatar({ name, size = 40, bgColor = 'linear-gradient(135deg, #431DAB 0%, #AE6DFE 100%)', borderColor = 'rgba(255, 255, 255, 0.2)' }) {
+export default function UserAvatar({ name, size = 40, bgColor = 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', borderColor = 'rgba(255, 255, 255, 0.2)' }) {
   const initial = name ? name.trim().charAt(0).toUpperCase() : 'U';
 
   return (

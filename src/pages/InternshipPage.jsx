@@ -92,8 +92,8 @@ export default function InternshipPage() {
   };
 
   const domains = [
-    { title: 'Web Application Engineering', icon: 'fas fa-laptop-code', glow: '#38bdf8', desc: 'React.js, Node.js, Express, MongoDB, REST APIs & Live Deployment Pipelines' },
-    { title: 'Mobile App Engineering', icon: 'fas fa-mobile-alt', glow: '#4ade80', desc: 'Flutter, React Native, Mobile UI Architecture, State Management & App Store Logic' },
+    { title: 'Web Application Engineering', icon: 'fas fa-laptop-code', glow: 'var(--color-success)', desc: 'React.js, Node.js, Express, MongoDB, REST APIs & Live Deployment Pipelines' },
+    { title: 'Mobile App Engineering', icon: 'fas fa-mobile-alt', glow: 'var(--color-success)', desc: 'Flutter, React Native, Mobile UI Architecture, State Management & App Store Logic' },
     { title: 'Cloud Architecture & DevOps', icon: 'fas fa-cloud', glow: '#a855f7', desc: 'AWS Infrastructure, Docker Containers, Kubernetes & Automated CI/CD Pipelines' },
     { title: 'Data Analytics & BI Engineering', icon: 'fas fa-chart-bar', glow: '#f59e0b', desc: 'Python Data Pipelines, SQL Analytics, Business Dashboards & Predictive Modeling' },
     { title: 'UI/UX & Product Design', icon: 'fas fa-paint-brush', glow: '#ec4899', desc: 'Figma Systems, User Research, Interactive Wireframes & Visual Brand Identity' },
@@ -101,9 +101,9 @@ export default function InternshipPage() {
   ];
 
   const benefits = [
-    { title: 'Verified Digital Certificate', icon: 'fas fa-certificate', color: '#4ade80', desc: 'Verifiable 24/7 on our public /verify registry with high-res PDF download.' },
-    { title: 'Official LOR & NOC Signoff', icon: 'fas fa-file-alt', color: '#38bdf8', desc: 'Formal university documentation and recommendation letter for top performers.' },
-    { title: 'Live Codebase Mentorship', icon: 'fas fa-user-tie', color: '#c084fc', desc: 'Direct 1-on-1 guidance from senior software engineers on production systems.' },
+    { title: 'Verified Digital Certificate', icon: 'fas fa-certificate', color: 'var(--color-success)', desc: 'Verifiable 24/7 on our public /verify registry with high-res PDF download.' },
+    { title: 'Official LOR & NOC Signoff', icon: 'fas fa-file-alt', color: 'var(--color-success)', desc: 'Formal university documentation and recommendation letter for top performers.' },
+    { title: 'Live Codebase Mentorship', icon: 'fas fa-user-tie', color: 'var(--color-primary-light)', desc: 'Direct 1-on-1 guidance from senior software engineers on production systems.' },
     { title: 'Placement & PPI Opportunity', icon: 'fas fa-briefcase', color: '#f59e0b', desc: 'Pre-Placement Interview (PPI) referrals for outstanding internship candidates.' }
   ];
 
@@ -116,9 +116,9 @@ export default function InternshipPage() {
             className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
               backgroundColor: 'rgba(74, 222, 128, 0.12)',
-              border: '1px solid rgba(74, 222, 128, 0.3)',
+              border: '1px solid var(--card-bg)',
               borderRadius: '30px',
-              color: '#4ade80',
+              color: 'var(--color-success)',
               fontSize: '13px',
               fontWeight: '600'
             }}
@@ -128,7 +128,7 @@ export default function InternshipPage() {
           </span>
 
           <h1 
-            className="title text-white" 
+            className="title text-main" 
             style={{ 
               fontWeight: '800', 
               fontSize: '44px', 
@@ -138,12 +138,12 @@ export default function InternshipPage() {
             Bridge Academic Theory With Live Industrial Software
           </h1>
 
-          <p className="content mt-3 mx-auto" style={{ maxWidth: '740px', color: '#94a3b8', fontSize: '16px', lineHeight: '1.7' }}>
+          <p className="content mt-3 mx-auto" style={{ maxWidth: '740px', color: 'var(--color-text-muted)', fontSize: '16px', lineHeight: '1.7' }}>
             Gain real-world corporate experience, build production codebases alongside senior tech leads, and fulfill your university degree curriculum requirements with Appifyra's accredited internship programs.
           </p>
 
           <div className="d-flex flex-wrap justify-content-center gap-3 mt-4">
-            <a href="#apply-form" className="btn btn-primary btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px rgba(67, 29, 171, 0.4)' }}>
+            <a href="#apply-form" className="btn btn-primary btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
               <i className="fas fa-edit me-2"></i> Apply for Internship Now
             </a>
             <a href="/verify" className="btn btn-outline-light btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '600' }}>
@@ -156,26 +156,26 @@ export default function InternshipPage() {
         <div className="row mb-80 g-4">
           <div className="col-lg-6">
             <div 
-              className="p-4 p-md-5 pos-rel text-white h-100 d-flex flex-column justify-content-between interactive-hover-card"
+              className="p-4 p-md-5 pos-rel text-main h-100 d-flex flex-column justify-content-between interactive-hover-card"
               style={{
                 borderRadius: '24px',
-                border: '1px solid rgba(56, 189, 248, 0.35)',
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(6, 40, 26, 0.95) 100%)',
-                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)'
+                border: '1px solid var(--card-bg)',
+                background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--section-bg) 100%)',
+                boxShadow: '0 15px 35px var(--card-bg)'
               }}
             >
               <div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                  <span className="badge px-3 py-2" style={{ backgroundColor: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.4)', fontSize: '13px', fontWeight: '700' }}>
+                  <span className="badge px-3 py-2" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--color-success)', border: '1px solid var(--card-bg)', fontSize: '13px', fontWeight: '700' }}>
                     SHORT-TERM / SUMMER
                   </span>
-                  <span style={{ color: '#38bdf8', fontWeight: '800', fontSize: '22px' }}>45 Days</span>
+                  <span style={{ color: 'var(--color-success)', fontWeight: '800', fontSize: '22px' }}>45 Days</span>
                 </div>
-                <h3 className="text-white mb-3" style={{ fontWeight: '700' }}>45-Day Summer Internship</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.6' }} className="mb-4">
+                <h3 className="text-main mb-3" style={{ fontWeight: '700' }}>45-Day Summer Internship</h3>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '15px', lineHeight: '1.6' }} className="mb-4">
                   Tailored for college students during summer breaks or short academic project mandates. Build practical skills and receive an official Appifyra Certificate.
                 </p>
-                <ul className="list-unstyled text-white-50 mb-0" style={{ fontSize: '14px' }}>
+                <ul className="list-unstyled text-main-50 mb-0" style={{ fontSize: '14px' }}>
                   <li className="mb-2"><i className="fas fa-check-circle text-info me-2"></i> Intensive hands-on module guidance</li>
                   <li className="mb-2"><i className="fas fa-check-circle text-info me-2"></i> Live production mini-project development</li>
                   <li className="mb-2"><i className="fas fa-check-circle text-info me-2"></i> Official Verified Completion Certificate</li>
@@ -193,26 +193,26 @@ export default function InternshipPage() {
 
           <div className="col-lg-6">
             <div 
-              className="p-4 p-md-5 pos-rel text-white h-100 d-flex flex-column justify-content-between interactive-hover-card"
+              className="p-4 p-md-5 pos-rel text-main h-100 d-flex flex-column justify-content-between interactive-hover-card"
               style={{
                 borderRadius: '24px',
-                border: '1px solid rgba(192, 132, 252, 0.35)',
-                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(67, 29, 171, 0.4) 100%)',
-                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)'
+                border: '1px solid var(--card-bg)',
+                background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--card-bg) 100%)',
+                boxShadow: '0 15px 35px var(--card-bg)'
               }}
             >
               <div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                  <span className="badge px-3 py-2" style={{ backgroundColor: 'rgba(192, 132, 252, 0.2)', color: '#c084fc', border: '1px solid rgba(192, 132, 252, 0.4)', fontSize: '13px', fontWeight: '700' }}>
+                  <span className="badge px-3 py-2" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--color-primary-light)', border: '1px solid var(--card-bg)', fontSize: '13px', fontWeight: '700' }}>
                     SEMESTER INDUSTRIAL
                   </span>
-                  <span style={{ color: '#4ade80', fontWeight: '800', fontSize: '22px' }}>6 Months</span>
+                  <span style={{ color: 'var(--color-success)', fontWeight: '800', fontSize: '22px' }}>6 Months</span>
                 </div>
-                <h3 className="text-white mb-3" style={{ fontWeight: '700' }}>6-Month Industrial Training</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.6' }} className="mb-4">
+                <h3 className="text-main mb-3" style={{ fontWeight: '700' }}>6-Month Industrial Training</h3>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '15px', lineHeight: '1.6' }} className="mb-4">
                   Designed for final-year engineering students requiring full-semester industrial training. Work alongside senior engineers on live client production systems.
                 </p>
-                <ul className="list-unstyled text-white-50 mb-0" style={{ fontSize: '14px' }}>
+                <ul className="list-unstyled text-main-50 mb-0" style={{ fontSize: '14px' }}>
                   <li className="mb-2"><i className="fas fa-check-circle text-success me-2"></i> Full software development lifecycle (SDLC) exposure</li>
                   <li className="mb-2"><i className="fas fa-check-circle text-success me-2"></i> Dedicated 1-on-1 mentorship by senior engineers</li>
                   <li className="mb-2"><i className="fas fa-check-circle text-success me-2"></i> Complete Industrial Training Certificate & NOC signoff</li>
@@ -235,9 +235,9 @@ export default function InternshipPage() {
             className="d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
               backgroundColor: 'rgba(56, 189, 248, 0.12)',
-              border: '1px solid rgba(56, 189, 248, 0.3)',
+              border: '1px solid var(--card-bg)',
               borderRadius: '30px',
-              color: '#38bdf8',
+              color: 'var(--color-success)',
               fontSize: '13px',
               fontWeight: '700'
             }}
@@ -245,7 +245,7 @@ export default function InternshipPage() {
             <i className="fas fa-layer-group"></i>
             <span>TECHNICAL TRACKS</span>
           </span>
-          <h2 className="title text-white" style={{ fontWeight: '800', fontSize: '32px' }}>Available Internship Domains</h2>
+          <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '32px' }}>Available Internship Domains</h2>
         </div>
 
         <div className="row g-4 mb-80">
@@ -254,7 +254,7 @@ export default function InternshipPage() {
               <div 
                 className="p-4 h-100 d-flex flex-column justify-content-between interactive-hover-card" 
                 style={{
-                  backgroundColor: 'rgba(15, 18, 41, 0.75)',
+                  backgroundColor: 'var(--card-bg)',
                   border: '1px solid var(--color-border)',
                   borderRadius: '18px',
                   backdropFilter: 'blur(12px)'
@@ -275,8 +275,8 @@ export default function InternshipPage() {
                   >
                     <i className={d.icon} style={{ color: d.glow }}></i>
                   </div>
-                  <h4 className="text-white mb-2" style={{ fontSize: '18px', fontWeight: '700' }}>{d.title}</h4>
-                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6' }} className="mb-0">{d.desc}</p>
+                  <h4 className="text-main mb-2" style={{ fontSize: '18px', fontWeight: '700' }}>{d.title}</h4>
+                  <p style={{ color: 'var(--color-text-muted)', fontSize: '14px', lineHeight: '1.6' }} className="mb-0">{d.desc}</p>
                 </div>
               </div>
             </div>
@@ -285,9 +285,9 @@ export default function InternshipPage() {
 
         {/* ─── 4. PROGRAM DELIVERABLES & BENEFITS ────────────────────────── */}
         <section className="program-benefits mb-80">
-          <div className="p-4 p-md-5" style={{ backgroundColor: 'rgba(15, 18, 41, 0.8)', border: '1px solid rgba(174, 109, 254, 0.3)', borderRadius: '24px' }}>
+          <div className="p-4 p-md-5" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '24px' }}>
             <div className="sec-title--two text-center mb-50">
-              <h2 className="title text-white" style={{ fontWeight: '800', fontSize: '32px' }}>
+              <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '32px' }}>
                 Program Deliverables & Candidate Benefits
               </h2>
             </div>
@@ -296,8 +296,8 @@ export default function InternshipPage() {
                 <div className="col-lg-3 col-md-6" key={idx}>
                   <div className="p-3 text-center interactive-hover-card" style={{ borderRadius: '16px' }}>
                     <i className={`${b.icon} mb-3 hover-icon-scale d-inline-block`} style={{ fontSize: '34px', color: b.color }}></i>
-                    <h5 className="text-white mb-2" style={{ fontWeight: '700' }}>{b.title}</h5>
-                    <p style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '1.6' }} className="mb-0">{b.desc}</p>
+                    <h5 className="text-main mb-2" style={{ fontWeight: '700' }}>{b.title}</h5>
+                    <p style={{ color: 'var(--color-text-muted)', fontSize: '13px', lineHeight: '1.6' }} className="mb-0">{b.desc}</p>
                   </div>
                 </div>
               ))}
@@ -309,19 +309,19 @@ export default function InternshipPage() {
         <div className="row justify-content-center" id="apply-form">
           <div className="col-lg-9">
             <div 
-              className="p-4 p-md-5 text-white"
+              className="p-4 p-md-5 text-main"
               style={{
                 borderRadius: '24px',
-                border: '1px solid rgba(103, 128, 210, 0.3)',
-                background: 'linear-gradient(180deg, rgba(9, 5, 54, 0.95) 0%, rgba(1, 3, 21, 0.98) 100%)',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+                border: '1px solid var(--card-border)',
+                background: 'linear-gradient(180deg, var(--card-bg) 0%, var(--section-bg) 100%)',
+                boxShadow: '0 20px 50px var(--card-bg)'
               }}
             >
               <div className="text-center mb-4">
                 <span className="badge bg-primary px-3 py-2 mb-2" style={{ fontSize: '13px', fontWeight: '700' }}>
                   <i className="fas fa-check-circle me-1"></i> VERIFIED APPLICATION FORM
                 </span>
-                <h3 className="text-white" style={{ fontWeight: '800', fontSize: '28px' }}>Apply for Internship</h3>
+                <h3 className="text-main" style={{ fontWeight: '800', fontSize: '28px' }}>Apply for Internship</h3>
                 <p className="text-muted" style={{ fontSize: '14px' }}>Authentic identity verification required via Google Sign-In to prevent spam.</p>
               </div>
 
@@ -330,20 +330,20 @@ export default function InternshipPage() {
                 <div 
                   className="p-4 mb-4 text-center"
                   style={{
-                    backgroundColor: 'rgba(67, 29, 171, 0.25)',
-                    border: '1px solid rgba(174, 109, 254, 0.4)',
+                    backgroundColor: 'var(--input-bg)',
+                    border: '1px solid var(--input-border)',
                     borderRadius: '16px'
                   }}
                 >
-                  <i className="fab fa-google mb-2" style={{ fontSize: '36px', color: '#ae6dfe' }}></i>
-                  <h5 className="text-white fw-bold">Google Sign-In Required</h5>
+                  <i className="fab fa-google mb-2" style={{ fontSize: '36px', color: 'var(--color-primary-light)' }}></i>
+                  <h5 className="text-main fw-bold">Google Sign-In Required</h5>
                   <p className="text-muted mb-3" style={{ fontSize: '14px' }}>
                     Sign in with your Google account to verify your identity and unlock the application form.
                   </p>
                   <button 
                     onClick={loginWithGoogle}
                     className="btn btn-primary btn-glow-hover px-4 py-2"
-                    style={{ background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)', border: 'none', borderRadius: '10px', fontWeight: '700' }}
+                    style={{ background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', border: 'none', borderRadius: '10px', fontWeight: '700' }}
                   >
                     <i className="fab fa-google me-2"></i> Sign In with Google to Apply
                   </button>
@@ -352,12 +352,12 @@ export default function InternshipPage() {
 
               {/* Verified User Badge when Logged In */}
               {currentUser && (
-                <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', border: '1px solid rgba(74, 222, 128, 0.3)', borderRadius: '12px' }}>
+                <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', border: '1px solid var(--card-bg)', borderRadius: '12px' }}>
                   <div className="d-flex align-items-center gap-3">
                     <UserAvatar name={currentUser.displayName || currentUser.email} size={40} borderColor="#4ade80" />
                     <div>
-                      <div className="text-white" style={{ fontWeight: '600', fontSize: '15px' }}>{currentUser.displayName}</div>
-                      <div style={{ color: '#4ade80', fontSize: '13px' }}><i className="fas fa-check-circle me-1"></i> Google Verified Account ({currentUser.email})</div>
+                      <div className="text-main" style={{ fontWeight: '600', fontSize: '15px' }}>{currentUser.displayName}</div>
+                      <div style={{ color: 'var(--color-success)', fontSize: '13px' }}><i className="fas fa-check-circle me-1"></i> Google Verified Account ({currentUser.email})</div>
                     </div>
                   </div>
                   <span className="badge bg-success">Authenticated</span>
@@ -369,14 +369,14 @@ export default function InternshipPage() {
                   className="p-4 text-center"
                   style={{
                     backgroundColor: 'rgba(74, 222, 128, 0.1)',
-                    border: '1px solid rgba(74, 222, 128, 0.4)',
+                    border: '1px solid var(--card-bg)',
                     borderRadius: '16px'
                   }}
                 >
-                  <i className="fas fa-check-circle mb-3" style={{ fontSize: '48px', color: '#4ade80' }}></i>
-                  <h4 className="text-white">Application Submitted Successfully!</h4>
+                  <i className="fas fa-check-circle mb-3" style={{ fontSize: '48px', color: 'var(--color-success)' }}></i>
+                  <h4 className="text-main">Application Submitted Successfully!</h4>
                   <p className="text-muted" style={{ maxWidth: '500px', margin: '10px auto 0' }}>
-                    Thank you, <strong>{formData.fullName}</strong>. Your application has been saved to your dashboard and submitted to our team. Track your status on <a href="/dashboard" style={{ color: '#38bdf8' }}>My Dashboard</a>.
+                    Thank you, <strong>{formData.fullName}</strong>. Your application has been saved to your dashboard and submitted to our team. Track your status on <a href="/dashboard" style={{ color: 'var(--color-success)' }}>My Dashboard</a>.
                   </p>
                   <button 
                     onClick={() => {
@@ -403,7 +403,7 @@ export default function InternshipPage() {
                       <input 
                         type="text" 
                         name="fullName"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.fullName}
                         onChange={handleChange}
@@ -417,7 +417,7 @@ export default function InternshipPage() {
                       <input 
                         type="email" 
                         name="email"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.email}
                         onChange={handleChange}
@@ -431,7 +431,7 @@ export default function InternshipPage() {
                       <input 
                         type="tel" 
                         name="phone"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.phone}
                         onChange={handleChange}
@@ -445,7 +445,7 @@ export default function InternshipPage() {
                       <input 
                         type="text" 
                         name="college"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.college}
                         onChange={handleChange}
@@ -459,7 +459,7 @@ export default function InternshipPage() {
                       <input 
                         type="text" 
                         name="degree"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.degree}
                         onChange={handleChange}
@@ -472,7 +472,7 @@ export default function InternshipPage() {
                       <label className="form-label text-muted" style={{ fontSize: '13px' }}>Internship Duration *</label>
                       <select 
                         name="duration"
-                        className="form-select text-white"
+                        className="form-select text-main"
                         style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.duration}
                         onChange={handleChange}
@@ -487,7 +487,7 @@ export default function InternshipPage() {
                       <label className="form-label text-muted" style={{ fontSize: '13px' }}>Target Domain *</label>
                       <select 
                         name="domain"
-                        className="form-select text-white"
+                        className="form-select text-main"
                         style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.domain}
                         onChange={handleChange}
@@ -509,8 +509,8 @@ export default function InternshipPage() {
                         </label>
                         <input 
                           type="text" 
-                          className="form-control text-white"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid rgba(174, 109, 254, 0.5)', borderRadius: '10px' }}
+                          className="form-control text-main"
+                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           placeholder="e.g. Cyber Security, AI/ML, Blockchain..."
                           value={customDomain}
                           onChange={(e) => setCustomDomain(e.target.value)}
@@ -525,7 +525,7 @@ export default function InternshipPage() {
                       <input 
                         type="url" 
                         name="resumeUrl"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.resumeUrl}
                         onChange={handleChange}
@@ -538,7 +538,7 @@ export default function InternshipPage() {
                       <textarea 
                         name="message"
                         rows="3"
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                         value={formData.message}
                         onChange={handleChange}
@@ -562,12 +562,12 @@ export default function InternshipPage() {
                           disabled={isSubmitting}
                           className="btn btn-lg w-100 btn-glow-hover"
                           style={{
-                            background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
+                            background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
                             color: 'var(--color-text-main)',
                             fontWeight: '700',
                             padding: '14px',
                             borderRadius: '12px',
-                            boxShadow: '0 10px 25px rgba(67, 29, 171, 0.4)'
+                            boxShadow: '0 10px 25px var(--card-bg)'
                           }}
                         >
                           {isSubmitting ? (
