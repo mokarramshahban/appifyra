@@ -7,8 +7,8 @@ import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 // Your web app's Firebase configuration loaded securely from environment variables
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  // Hardened Auth Domain prevents default firebaseapp.com redirects for professional SSO
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'auth.appifyra.com',
+  // Use custom domain ONLY if explicitly provided in .env (otherwise defaults to standard firebaseapp.com)
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
