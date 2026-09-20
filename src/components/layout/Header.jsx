@@ -144,6 +144,8 @@ export default function Header() {
                     <div 
                       className="d-flex align-items-center gap-2"
                       onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                      role="button"
+                      aria-label="Toggle profile menu"
                       style={{ 
                         cursor: 'pointer', 
                         padding: '4px 12px 4px 6px', 
@@ -265,6 +267,8 @@ export default function Header() {
             <div 
               className="xb-menu-close xb-hide-xl xb-close" 
               onClick={() => setIsMobileMenuOpen(false)}
+              role="button"
+              aria-label="Close menu"
             ></div>
             <div className="xb-logo-mobile xb-hide-xl">
               <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
