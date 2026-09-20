@@ -16,6 +16,11 @@ const CookieBanner = () => {
     setIsVisible(false);
   };
 
+  const handleReject = () => {
+    localStorage.setItem('cookieConsent', 'false');
+    setIsVisible(false);
+  };
+
   if (!isVisible) return null;
 
   return (
@@ -35,23 +40,42 @@ const CookieBanner = () => {
       boxShadow: '0 -2px 10px rgba(0,0,0,0.5)',
       fontFamily: 'inherit'
     }}>
-      <div style={{ textAlign: 'center', marginBottom: '10px' }}>
-        We use cookies to improve your experience. By continuing to use our site, you agree to our <Link to="/cookie-policy" style={{ color: 'var(--tg-theme-primary)', textDecoration: 'underline' }}>Cookie Policy</Link>.
+      <div style={{ textAlign: 'center', marginBottom: '12px', fontSize: '14px' }}>
+        We use cookies to enhance your browsing experience and analyze our traffic. Please choose whether to accept our cookies.
+        Read more in our <Link to="/cookie-policy" style={{ color: 'var(--tg-theme-primary)', textDecoration: 'underline' }}>Cookie Policy</Link>.
       </div>
-      <button 
-        onClick={handleAccept} 
-        style={{
-          backgroundColor: 'var(--tg-theme-primary)',
-          color: '#fff',
-          border: 'none',
-          padding: '10px 20px',
-          cursor: 'pointer',
-          borderRadius: '4px',
-          fontWeight: 'bold'
-        }}
-      >
-        Accept & Close
-      </button>
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <button 
+          onClick={handleReject} 
+          style={{
+            backgroundColor: 'transparent',
+            color: '#fff',
+            border: '1px solid rgba(255, 255, 255, 0.4)',
+            padding: '8px 20px',
+            cursor: 'pointer',
+            borderRadius: '4px',
+            fontWeight: '600',
+            fontSize: '13px'
+          }}
+        >
+          Decline
+        </button>
+        <button 
+          onClick={handleAccept} 
+          style={{
+            backgroundColor: 'var(--tg-theme-primary)',
+            color: '#fff',
+            border: 'none',
+            padding: '8px 20px',
+            cursor: 'pointer',
+            borderRadius: '4px',
+            fontWeight: '600',
+            fontSize: '13px'
+          }}
+        >
+          Accept All
+        </button>
+      </div>
     </div>
   );
 };
