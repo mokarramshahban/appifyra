@@ -178,7 +178,12 @@ export default function CertificateVerificationPage() {
                         </h1>
 
                         <p className="text-muted mb-2" style={{ fontSize: '14px' }}>
-                          for successfully fulfilling all training requirements and completing the industrial internship in
+                          for successfully fulfilling all training requirements and completing the
+                        </p>
+                        
+                        <p className="text-muted mb-3" style={{ fontSize: '14px', fontWeight: '600', color: 'var(--color-success)' }}>
+                          <i className="fas fa-clock me-2"></i>
+                          {result.duration || '45 Days'} Industrial Internship
                         </p>
                         
                         {(() => {
