@@ -128,7 +128,7 @@ export default function Header() {
                         }}
                       >
                         <li>
-                          <Link to="/verify" className="py-2 px-3 text-white d-flex align-items-center gap-2">
+                          <Link to="/verify" className="py-2 px-3 text-main d-flex align-items-center gap-2">
                             <i className="fas fa-certificate" style={{ color: '#38bdf8' }}></i>
                             <span>Verify Certificate</span>
                           </Link>
@@ -176,16 +176,16 @@ export default function Header() {
                       }}
                     >
                       <UserAvatar name={currentUser.displayName || currentUser.email} size={28} />
-                      <span className="text-white" style={{ fontSize: '13px', fontWeight: '500', maxWidth: '110px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span className="text-main" style={{ fontSize: '13px', fontWeight: '500', maxWidth: '110px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {currentUser.displayName?.split(' ')[0] || 'User'}
                       </span>
-                      <i className="far fa-angle-down text-white-50" style={{ fontSize: '11px', transform: isProfileMenuOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}></i>
+                      <i className="far fa-angle-down text-muted" style={{ fontSize: '11px', transform: isProfileMenuOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}></i>
                     </div>
 
                     {/* Floating Overlay Profile Dropdown */}
                     {isProfileMenuOpen && (
                       <div 
-                        className="p-3 text-white"
+                        className="p-3 text-main"
                         style={{
                           position: 'absolute',
                           top: 'calc(100% + 10px)',
@@ -210,7 +210,7 @@ export default function Header() {
                           <li className="mb-2">
                             <Link 
                               to={isAdmin ? "/admin" : "/dashboard"} 
-                              className="text-white d-flex align-items-center gap-2 py-1"
+                              className="text-main d-flex align-items-center gap-2 py-1"
                               onClick={() => setIsProfileMenuOpen(false)}
                             >
                               <i className={`fas ${isAdmin ? 'fa-user-shield text-success' : 'fa-th-large text-primary'}`}></i>
@@ -233,7 +233,7 @@ export default function Header() {
                 ) : (
                   <button 
                     onClick={loginWithGoogle} 
-                    className="btn btn-sm text-white" 
+                    className="btn btn-sm text-main" 
                     style={{
                       background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
                       borderRadius: '20px',
@@ -276,7 +276,7 @@ export default function Header() {
               ) : (
                 <button 
                   onClick={loginWithGoogle} 
-                  className="btn btn-sm text-white me-2" 
+                  className="btn btn-sm text-main me-2" 
                   style={{ background: '#431DAB', borderRadius: '15px', fontSize: '11px' }}
                 >
                   Sign In

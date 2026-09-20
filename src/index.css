@@ -7,14 +7,14 @@
   --color-success: #4ade80;
   --color-success-dark: #22c55e;
   --color-error: #ef4444;
-  --color-bg-dark: #0B0F19;
-  --color-bg-card: #111827;
-  --color-bg-card-elevated: #1f2937;
-  --color-glassmorphism: rgba(17, 24, 39, 0.85);
-  --color-text-main: #f8fafc;
+  --color-bg-dark: #060813;
+  --color-bg-card: #0d1226;
+  --color-bg-card-elevated: #141b36;
+  --color-glassmorphism: rgba(6, 8, 19, 0.80);
+  --color-text-main: #f1f5f9;
   --color-text-muted: #94a3b8;
-  --color-border: #1f2937;
-  --color-border-light: #374151;
+  --color-border: rgba(30, 41, 59, 0.8);
+  --color-border-light: rgba(51, 65, 85, 0.8);
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -44,7 +44,7 @@
   --color-bg-card: #ffffff;
   --color-bg-card-elevated: #f1f5f9;
   --color-glassmorphism: rgba(255, 255, 255, 0.85);
-  --color-glassmorphism: rgba(17, 24, 39, 0.85);
+  --color-glassmorphism: rgba(6, 8, 19, 0.80);
   --color-text-main: #0f172a;
   --color-text-muted: #475569;
   --color-border: #cbd5e1;
@@ -379,3 +379,63 @@ html, body {
 [data-theme="light"] .header-logo img {
   filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.2);
 }
+
+/* Hardcoded Template Sub-Section Overrides */
+.service-style-three, .contact-area, .about-area {
+  background-color: var(--color-bg-dark) !important;
+  background-image: none !important;
+}
+.hero-style-two {
+  background-color: var(--color-bg-dark) !important;
+  background-image: none !important;
+}
+
+/* Component Tokens */
+:root, [data-theme="dark"] {
+  --header-bg: rgba(6, 8, 19, 0.80);
+  --header-border: rgba(30, 41, 59, 0.8);
+  --nav-text: #cbd5e1;
+  --nav-text-hover: #f8fafc;
+  --card-bg: #0d1226;
+  --card-border: rgba(30, 41, 59, 0.8);
+  --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  --section-bg: #060813;
+  --badge-bg: rgba(59, 130, 246, 0.15);
+  --badge-text: #60a5fa;
+  --input-bg: #141b36;
+  --input-border: #1e293b;
+}
+
+[data-theme="light"] {
+  --header-bg: rgba(255, 255, 255, 0.80);
+  --header-border: rgba(226, 232, 240, 0.8);
+  --nav-text: #334155;
+  --nav-text-hover: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: rgba(226, 232, 240, 0.9);
+  --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --section-bg: #f1f5f9;
+  --badge-bg: #e0e7ff;
+  --badge-text: #3730a3;
+  --input-bg: #f8fafc;
+  --input-border: #cbd5e1;
+}
+
+.stricked-menu, .header-area {
+  background-color: var(--header-bg) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--header-border) !important;
+}
+
+.stricked-menu .main-menu ul li a, .header-area .main-menu ul li a {
+  color: var(--nav-text) !important;
+  transition: color 0.2s ease;
+}
+.stricked-menu .main-menu ul li a:hover, .header-area .main-menu ul li a:hover {
+  color: var(--nav-text-hover) !important;
+}
+
+/* Base resets */
+.text-white { color: var(--color-text-main) !important; }
+.bg-dark { background-color: var(--color-bg-dark) !important; }
+.text-main { color: var(--color-text-main) !important; }

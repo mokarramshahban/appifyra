@@ -61,8 +61,8 @@ export default function ServicesSection() {
             <img src="/assets/img/icon/edit.svg" alt="Edit Icon" style={{ width: '16px', marginRight: '6px' }} />
             <span>ENTERPRISE DIGITAL SOLUTIONS</span>
           </span>
-          <h2 className="title text-white mb-2" style={{ fontWeight: '800' }}>Our Engineering & Creative Capabilities</h2>
-          <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: '#9da1b4', fontSize: '15px' }}>
+          <h2 className="title text-main mb-2" style={{ fontWeight: '800' }}>Our Engineering & Creative Capabilities</h2>
+          <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: 'var(--color-text-muted)', fontSize: '15px' }}>
             We design, engineer, and scale modern web applications, mobile products, and cloud infrastructure tailored to elevate your business.
           </p>
         </div>
@@ -71,9 +71,9 @@ export default function ServicesSection() {
           {services.map((s) => (
             <div className="col-lg-4 col-md-6" key={s.id}>
               <div 
-                className="service-hover-card p-4 p-md-5 h-100 pos-rel d-flex flex-column justify-content-between text-white"
+                className="service-hover-card p-4 p-md-5 h-100 pos-rel d-flex flex-column justify-content-between text-main"
                 style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.025)',
+                  backgroundColor: 'var(--card-bg)',
                   border: '1px solid var(--color-border)',
                   borderRadius: '24px',
                   boxShadow: `0 10px 30px ${s.glow}`
@@ -85,7 +85,7 @@ export default function ServicesSection() {
                       className="service-icon-box p-3 d-flex align-items-center justify-content-center"
                       style={{
                         borderRadius: '16px',
-                        backgroundColor: 'var(--color-bg-card-elevated)',
+                        backgroundColor: 'var(--input-bg)',
                         border: '1px solid var(--color-border)',
                         width: '54px',
                         height: '54px'
@@ -96,7 +96,7 @@ export default function ServicesSection() {
                     <span className="font-monospace text-muted" style={{ fontSize: '20px', fontWeight: '700' }}>{s.id}</span>
                   </div>
 
-                  <h3 className="text-white mb-3" style={{ fontSize: '20px', fontWeight: '700' }}>{s.title}</h3>
+                  <h3 className="text-main mb-3" style={{ fontSize: '20px', fontWeight: '700' }}>{s.title}</h3>
                   <p className="text-muted mb-4" style={{ fontSize: '14px', lineHeight: '1.6' }}>{s.content}</p>
 
                   <div className="d-flex flex-wrap gap-2 mb-4">
@@ -104,12 +104,12 @@ export default function ServicesSection() {
                       <span 
                         key={idx} 
                         style={{
-                          backgroundColor: 'rgba(103, 128, 210, 0.15)',
-                          color: '#a5b4fc',
+                          backgroundColor: 'var(--badge-bg)',
+                          color: 'var(--badge-text)',
                           padding: '4px 12px',
                           borderRadius: '14px',
                           fontSize: '12px',
-                          border: '1px solid rgba(165, 180, 252, 0.2)'
+                          border: '1px solid var(--input-border)'
                         }}
                       >
                         {tag}
@@ -118,7 +118,7 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                <Link to="/services" className="service-arrow-icon text-white d-flex align-items-center gap-2" style={{ fontWeight: '600', fontSize: '14px', color: '#ae6dfe' }}>
+                <Link to="/services" className="service-arrow-icon text-main d-flex align-items-center gap-2" style={{ fontWeight: '600', fontSize: '14px', color: 'var(--color-primary)' }}>
                   <span>Explore Service</span>
                   <i className="far fa-arrow-right" style={{ fontSize: '12px' }}></i>
                 </Link>
