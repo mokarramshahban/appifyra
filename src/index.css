@@ -7,13 +7,14 @@
   --color-success: #4ade80;
   --color-success-dark: #22c55e;
   --color-error: #ef4444;
-  --color-bg-dark: #010315;
-  --color-bg-card: rgba(9, 5, 54, 0.88);
-  --color-bg-card-elevated: rgba(255, 255, 255, 0.06);
+  --color-bg-dark: #0B0F19;
+  --color-bg-card: #111827;
+  --color-bg-card-elevated: #1f2937;
+  --color-glassmorphism: rgba(17, 24, 39, 0.85);
   --color-text-main: #f8fafc;
   --color-text-muted: #94a3b8;
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-border-light: rgba(255, 255, 255, 0.2);
+  --color-border: #1f2937;
+  --color-border-light: #374151;
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -41,11 +42,13 @@
   --color-error: #dc2626;
   --color-bg-dark: #f8fafc; 
   --color-bg-card: #ffffff;
-  --color-bg-card-elevated: rgba(0, 0, 0, 0.04);
+  --color-bg-card-elevated: #f1f5f9;
+  --color-glassmorphism: rgba(255, 255, 255, 0.85);
+  --color-glassmorphism: rgba(17, 24, 39, 0.85);
   --color-text-main: #0f172a;
   --color-text-muted: #475569;
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-border-light: rgba(0, 0, 0, 0.2);
+  --color-border: #cbd5e1;
+  --color-border-light: #e2e8f0;
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
@@ -348,4 +351,31 @@ html, body {
   .no-print {
     display: none !important;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   LAYOUT & NAVBAR REFACTOR (GLASSMORPHISM)
+   ────────────────────────────────────────────────────────────────────────── */
+.stricked-menu, .header-area {
+  background-color: var(--color-glassmorphism) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stricked-menu .main-menu ul li a, .header-area .main-menu ul li a {
+  color: var(--color-text-main) !important;
+}
+
+/* Prevent footer overly dark texture in light mode */
+[data-theme="light"] .footer {
+  background-image: none !important;
+}
+
+[data-theme="light"] .stricked-menu, [data-theme="light"] .header-area {
+  background-color: var(--color-glassmorphism) !important;
+}
+
+/* Invert White Logo against Light Headers */
+[data-theme="light"] .header-logo img {
+  filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.2);
 }
