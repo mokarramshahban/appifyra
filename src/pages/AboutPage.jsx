@@ -147,7 +147,7 @@ export default function AboutPage() {
                     width: '64px',
                     height: '64px',
                     borderRadius: '18px',
-                    background: 'rgba(56, 189, 248, 0.15)',
+                    background: 'var(--card-bg)',
                     border: '1px solid var(--card-bg)',
                     color: 'var(--color-success)',
                     fontSize: '26px'
@@ -179,7 +179,7 @@ export default function AboutPage() {
                     width: '64px',
                     height: '64px',
                     borderRadius: '18px',
-                    background: 'rgba(192, 132, 252, 0.15)',
+                    background: 'var(--card-bg)',
                     border: '1px solid var(--card-bg)',
                     color: 'var(--color-primary-light)',
                     fontSize: '26px'
@@ -204,7 +204,7 @@ export default function AboutPage() {
             <span 
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
-                backgroundColor: 'rgba(74, 222, 128, 0.12)',
+                backgroundColor: 'var(--badge-bg)',
                 border: '1px solid var(--card-bg)',
                 borderRadius: '30px',
                 color: 'var(--color-success)',
@@ -228,7 +228,7 @@ export default function AboutPage() {
                   style={{
                     borderRadius: '20px',
                     backgroundColor: 'var(--card-bg)',
-                    border: '1px solid var(--color-border)',
+                    border: '1px solid var(--input-border)',
                     backdropFilter: 'blur(16px)',
                     boxShadow: '0 10px 30px var(--card-bg)'
                   }}
@@ -270,8 +270,8 @@ export default function AboutPage() {
                   className="p-4 text-center text-main h-100"
                   style={{
                     borderRadius: '20px',
-                    backgroundColor: 'var(--color-bg-card-elevated)',
-                    border: '1px solid var(--color-border)',
+                    backgroundColor: 'var(--input-bg)',
+                    border: '1px solid var(--input-border)',
                     transition: 'all 0.3s ease'
                   }}
                 >
@@ -296,7 +296,7 @@ export default function AboutPage() {
             <span 
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
-                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                backgroundColor: 'var(--badge-bg)',
                 border: '1px solid var(--card-bg)',
                 borderRadius: '30px',
                 color: 'var(--color-success)',
@@ -318,8 +318,8 @@ export default function AboutPage() {
                 <div 
                   className="p-4 text-main d-flex align-items-center gap-3 h-100"
                   style={{
-                    backgroundColor: 'rgba(15, 18, 41, 0.6)',
-                    border: '1px solid var(--color-border)',
+                    backgroundColor: 'var(--card-bg)',
+                    border: '1px solid var(--input-border)',
                     borderRadius: '16px',
                     transition: 'all 0.3s ease'
                   }}
@@ -364,7 +364,7 @@ export default function AboutPage() {
                 <div 
                   className="p-4 text-main h-100 pos-rel"
                   style={{
-                    backgroundColor: 'var(--color-bg-card-elevated)',
+                    backgroundColor: 'var(--input-bg)',
                     border: '1px solid var(--input-border)',
                     borderRadius: '20px'
                   }}
@@ -412,7 +412,7 @@ export default function AboutPage() {
                     key={idx}
                     className="p-4 text-main"
                     style={{
-                      backgroundColor: 'rgba(15, 18, 41, 0.65)',
+                      backgroundColor: 'var(--card-bg)',
                       border: openFaq === idx ? '1px solid var(--input-border)' : '1px solid var(--card-bg)',
                       borderRadius: '16px',
                       cursor: 'pointer',

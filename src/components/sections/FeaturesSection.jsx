@@ -8,7 +8,7 @@ export default function FeaturesSection() {
       title: 'Custom Web Development',
       content: 'We engineer dynamic, user-centric web applications built with React, Next.js, and Node.js for maximum performance.',
       tags: ['React.js', 'Next.js', 'REST APIs'],
-      glow: 'rgba(56, 189, 248, 0.15)'
+      glow: 'var(--card-bg)'
     },
     {
       id: '02',
@@ -58,7 +58,7 @@ export default function FeaturesSection() {
                 className="service-hover-card p-4 h-100 pos-rel d-flex flex-column justify-content-between text-main"
                 style={{
                   backgroundColor: 'var(--card-bg)',
-                  border: '1px solid var(--color-border)',
+                  border: '1px solid var(--input-border)',
                   borderRadius: '20px',
                   boxShadow: `0 10px 30px ${feature.glow}`
                 }}
@@ -70,7 +70,7 @@ export default function FeaturesSection() {
                       style={{
                         borderRadius: '16px',
                         backgroundColor: 'var(--input-bg)',
-                        border: '1px solid var(--color-border)',
+                        border: '1px solid var(--input-border)',
                         width: '56px',
                         height: '56px'
                       }}

@@ -115,7 +115,7 @@ export default function InternshipPage() {
           <span 
             className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
-              backgroundColor: 'rgba(74, 222, 128, 0.12)',
+              backgroundColor: 'var(--badge-bg)',
               border: '1px solid var(--card-bg)',
               borderRadius: '30px',
               color: 'var(--color-success)',
@@ -234,7 +234,7 @@ export default function InternshipPage() {
           <span 
             className="d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
-              backgroundColor: 'rgba(56, 189, 248, 0.12)',
+              backgroundColor: 'var(--badge-bg)',
               border: '1px solid var(--card-bg)',
               borderRadius: '30px',
               color: 'var(--color-success)',
@@ -255,7 +255,7 @@ export default function InternshipPage() {
                 className="p-4 h-100 d-flex flex-column justify-content-between interactive-hover-card" 
                 style={{
                   backgroundColor: 'var(--card-bg)',
-                  border: '1px solid var(--color-border)',
+                  border: '1px solid var(--input-border)',
                   borderRadius: '18px',
                   backdropFilter: 'blur(12px)'
                 }}
@@ -352,7 +352,7 @@ export default function InternshipPage() {
 
               {/* Verified User Badge when Logged In */}
               {currentUser && (
-                <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', border: '1px solid var(--card-bg)', borderRadius: '12px' }}>
+                <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--card-bg)', borderRadius: '12px' }}>
                   <div className="d-flex align-items-center gap-3">
                     <UserAvatar name={currentUser.displayName || currentUser.email} size={40} borderColor="#4ade80" />
                     <div>
@@ -368,7 +368,7 @@ export default function InternshipPage() {
                 <div 
                   className="p-4 text-center"
                   style={{
-                    backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                    backgroundColor: 'var(--card-bg)',
                     border: '1px solid var(--card-bg)',
                     borderRadius: '16px'
                   }}
@@ -404,7 +404,7 @@ export default function InternshipPage() {
                         type="text" 
                         name="fullName"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.fullName}
                         onChange={handleChange}
                         required
@@ -418,7 +418,7 @@ export default function InternshipPage() {
                         type="email" 
                         name="email"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -432,7 +432,7 @@ export default function InternshipPage() {
                         type="tel" 
                         name="phone"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.phone}
                         onChange={handleChange}
                         required
@@ -446,7 +446,7 @@ export default function InternshipPage() {
                         type="text" 
                         name="college"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.college}
                         onChange={handleChange}
                         required
@@ -460,7 +460,7 @@ export default function InternshipPage() {
                         type="text" 
                         name="degree"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.degree}
                         onChange={handleChange}
                         required
@@ -473,7 +473,7 @@ export default function InternshipPage() {
                       <select 
                         name="duration"
                         className="form-select text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.duration}
                         onChange={handleChange}
                         required
@@ -488,7 +488,7 @@ export default function InternshipPage() {
                       <select 
                         name="domain"
                         className="form-select text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.domain}
                         onChange={handleChange}
                         required
@@ -510,7 +510,7 @@ export default function InternshipPage() {
                         <input 
                           type="text" 
                           className="form-control text-main"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           placeholder="e.g. Cyber Security, AI/ML, Blockchain..."
                           value={customDomain}
                           onChange={(e) => setCustomDomain(e.target.value)}
@@ -526,7 +526,7 @@ export default function InternshipPage() {
                         type="url" 
                         name="resumeUrl"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.resumeUrl}
                         onChange={handleChange}
                         disabled={!currentUser}
@@ -539,7 +539,7 @@ export default function InternshipPage() {
                         name="message"
                         rows="3"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                         value={formData.message}
                         onChange={handleChange}
                         disabled={!currentUser}

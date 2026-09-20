@@ -45,7 +45,7 @@ export default function QuickVerifySection() {
                     value={certId}
                     onChange={(e) => setCertId(e.target.value)}
                     style={{
-                      backgroundColor: 'var(--color-bg-card-elevated)',
+                      backgroundColor: 'var(--input-bg)',
                       border: '1px solid var(--color-border-light)',
                       borderRadius: '12px 0 0 12px',
                       padding: '14px 20px'

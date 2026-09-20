@@ -65,7 +65,7 @@ export default function CertificateVerificationPage() {
         {/* Verification Form Box */}
         <div className="row justify-content-center">
           <div className="col-lg-10">
-            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--color-border)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, var(--section-bg) 100%)' }}>
+            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--input-border)', background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)' }}>
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -83,7 +83,7 @@ export default function CertificateVerificationPage() {
                     value={searchId}
                     onChange={(e) => setSearchId(e.target.value)}
                     style={{
-                      backgroundColor: 'var(--color-bg-card-elevated)',
+                      backgroundColor: 'var(--input-bg)',
                       border: '1px solid var(--card-border)',
                       borderRadius: '10px 0 0 10px',
                       padding: '14px 20px',
@@ -117,7 +117,7 @@ export default function CertificateVerificationPage() {
                     onClick={() => handleQuickSample(id)}
                     className="btn btn-sm"
                     style={{
-                      backgroundColor: 'rgba(103, 128, 210, 0.15)',
+                      backgroundColor: 'var(--input-border)',
                       color: 'var(--color-text-muted)',
                       border: '1px solid var(--card-bg)',
                       borderRadius: '6px',
@@ -220,7 +220,7 @@ export default function CertificateVerificationPage() {
                                   borderRadius: '50%',
                                   width: '84px',
                                   height: '84px',
-                                  background: 'rgba(74, 222, 128, 0.08)'
+                                  background: 'var(--card-bg)'
                                 }}
                               >
                                 <i className="fas fa-award text-success mb-1" style={{ fontSize: '24px' }}></i>

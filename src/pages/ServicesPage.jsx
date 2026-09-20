@@ -86,7 +86,7 @@ export default function ServicesPage() {
                   style={{
                     borderRadius: '24px',
                     border: '1px solid var(--card-bg)',
-                    background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.8) 0%, var(--section-bg) 100%)'
+                    backgroundColor: 'var(--card-bg)'
                   }}
                 >
                   <span className="badge px-3 py-2 mb-3" style={{ backgroundColor: 'var(--input-border)', color: 'var(--color-primary-light)', border: '1px solid var(--input-border)', fontSize: '12px' }}>
@@ -98,7 +98,7 @@ export default function ServicesPage() {
                   <div className="pt-3" style={{ borderTop: '1px solid var(--card-bg)' }}>
                     <ul className="list-unstyled row g-2 mb-0">
                       {detail.highlights.map((h, i) => (
-                        <li className="col-md-6 text-main-50" style={{ fontSize: '14px' }} key={i}>
+                        <li className="col-md-6 text-muted" style={{ fontSize: '14px' }} key={i}>
                           <i className="fas fa-check-circle text-primary me-2"></i> {h}
                         </li>
                       ))}
