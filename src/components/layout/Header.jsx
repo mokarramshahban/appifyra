@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import UserAvatar from '../common/UserAvatar';
 
 export default function Header() {
@@ -11,6 +12,7 @@ export default function Header() {
   
   const location = useLocation();
   const { currentUser, loginWithGoogle, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const isAdmin = currentUser?.email === 'appifyra@gmail.com';
   const profileRef = useRef(null);
 
@@ -137,8 +139,26 @@ export default function Header() {
                 </ul>
               </nav>
 
-              {/* User Profile & Auth Widget */}
-              <div className="ms-4 d-none d-xl-block" ref={profileRef} style={{ position: 'relative' }}>
+              {/* Theme Toggle & User Profile */}
+              <div className="ms-4 d-none d-xl-flex align-items-center gap-3" ref={profileRef} style={{ position: 'relative' }}>
+                
+                {/* Theme Toggle Button */}
+                <button 
+                  onClick={toggleTheme}
+                  className="btn btn-sm"
+                  style={{
+                    width: '36px', height: '36px', borderRadius: '50%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'var(--color-text-main)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.3s ease'
+                  }}
+                  aria-label="Toggle Theme"
+                >
+                  <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
+                </button>
+
                 {currentUser ? (
                   <div style={{ position: 'relative' }}>
                     <div 
@@ -230,6 +250,21 @@ export default function Header() {
 
             {/* Mobile Header Buttons */}
             <div className="header-bar-mobile side-menu d-xl-none d-flex align-items-center gap-2">
+              <button 
+                onClick={toggleTheme}
+                className="btn btn-sm me-1"
+                style={{
+                  width: '32px', height: '32px', borderRadius: '50%',
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: 'var(--color-text-main)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}
+                aria-label="Toggle Theme"
+              >
+                <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} style={{ fontSize: '13px' }}></i>
+              </button>
+
               {currentUser ? (
                 <button 
                   onClick={logout} 

@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   GLOBAL DESIGN VARIABLES & STANDARDIZATION
+   GLOBAL DESIGN VARIABLES & STANDARDIZATION (DARK MODE DEFAULT)
    ────────────────────────────────────────────────────────────────────────── */
-:root {
+:root, [data-theme="dark"] {
   --color-primary: #431DAB;
   --color-primary-light: #AE6DFE;
   --color-success: #4ade80;
@@ -11,6 +11,7 @@
   --color-bg-card: rgba(9, 5, 54, 0.88);
   --color-text-main: #f8fafc;
   --color-text-muted: #94a3b8;
+  --color-border: rgba(255, 255, 255, 0.12);
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -26,10 +27,31 @@
   --focus-ring: 0 0 0 3px rgba(174, 109, 254, 0.5);
 }
 
+/* LIGHT MODE OVERRIDES */
+[data-theme="light"] {
+  --color-primary: #431DAB;
+  --color-primary-light: #7c3aed;
+  --color-success: #16a34a;
+  --color-success-dark: #15803d;
+  --color-error: #dc2626;
+  --color-bg-dark: #f8fafc; /* actually highly light background */
+  --color-bg-card: #ffffff;
+  --color-text-main: #0f172a;
+  --color-text-muted: #475569;
+  --color-border: rgba(0, 0, 0, 0.1);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+  --shadow-primary: 0 10px 25px rgba(67, 29, 171, 0.2);
+}
+
 /* Global Typography & Core Overrides */
 body {
+  background-color: var(--color-bg-dark) !important;
   color: var(--color-text-main);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
