@@ -1,13 +1,99 @@
-/* Custom overrides for Appifyra React */
+/* ─────────────────────────────────────────────────────────────────────────────
+   GLOBAL DESIGN VARIABLES & STANDARDIZATION
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  --color-primary: #431DAB;
+  --color-primary-light: #AE6DFE;
+  --color-success: #4ade80;
+  --color-success-dark: #22c55e;
+  --color-error: #ef4444;
+  --color-bg-dark: #010315;
+  --color-bg-card: rgba(9, 5, 54, 0.88);
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-primary: 0 10px 25px rgba(67, 29, 171, 0.4);
+  
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --focus-ring: 0 0 0 3px rgba(174, 109, 254, 0.5);
+}
 
-.font-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+/* Global Typography & Core Overrides */
+body {
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2 !important;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Standardized Universal Focus & Interactive States */
+input, select, textarea {
+  border-radius: var(--radius-sm) !important;
+  transition: var(--transition-smooth) !important;
+  font-family: inherit;
+  padding: 12px 16px !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none !important;
+  border-color: var(--color-primary-light) !important;
+  box-shadow: var(--focus-ring) !important;
+}
+
+/* Button Normalization & Disabled States */
+.btn {
+  border-radius: var(--radius-md) !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring) !important;
+}
+
+.btn:disabled, button:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
+}
+
+.btn-glow-hover:disabled:hover {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: none !important;
 }
 
 /* Global Mobile Overflow Fix */
 html, body {
   overflow-x: hidden;
   width: 100%;
+}
+
+/* Restrict Ultra-Wide Monitors */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px !important;
+  }
+}
+
+/* Custom overrides for Appifyra React */
+.font-monospace {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
 /* Remove min-height forcing empty gap in Hero section */
@@ -75,77 +161,79 @@ html, body {
 
 /* Sleek Table Button Hover Effects */
 .btn-action-pill {
-  transition: all 0.2s ease !important;
-  border-radius: 8px !important;
+  transition: var(--transition-smooth) !important;
+  border-radius: var(--radius-sm) !important;
   font-weight: 600 !important;
 }
 
 .btn-action-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Dynamic Interactive Hover Effects for Service Cards */
 .service-hover-card {
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease !important;
+  transition: var(--transition-smooth) !important;
   cursor: pointer;
+  border-radius: var(--radius-lg);
 }
 
 .service-hover-card:hover {
-  transform: translateY(-8px) !important;
-  border-color: rgba(174, 109, 254, 0.5) !important;
-  background-color: rgba(67, 29, 171, 0.15) !important;
-  box-shadow: 0 20px 45px rgba(174, 109, 254, 0.3) !important;
+  transform: translateY(-6px) !important;
+  border-color: rgba(174, 109, 254, 0.4) !important;
+  background-color: rgba(67, 29, 171, 0.12) !important;
+  box-shadow: var(--shadow-primary) !important;
 }
 
 .service-icon-box {
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease !important;
+  transition: var(--transition-smooth) !important;
 }
 
 .service-hover-card:hover .service-icon-box {
-  transform: scale(1.12);
-  background-color: rgba(174, 109, 254, 0.25) !important;
-  border-color: rgba(174, 109, 254, 0.5) !important;
+  transform: scale(1.10);
+  background-color: rgba(174, 109, 254, 0.2) !important;
+  border-color: rgba(174, 109, 254, 0.4) !important;
 }
 
 .service-arrow-icon {
-  transition: transform 0.3s ease, color 0.3s ease !important;
+  transition: var(--transition-smooth) !important;
 }
 
 .service-hover-card:hover .service-arrow-icon {
-  transform: translateX(6px);
-  color: #4ade80 !important;
+  transform: translateX(4px);
+  color: var(--color-success) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    UNIVERSAL INTERACTIVE HOVER ANIMATIONS
    ────────────────────────────────────────────────────────────────────────── */
 .interactive-hover-card {
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease !important;
+  transition: var(--transition-smooth) !important;
   cursor: pointer;
+  border-radius: var(--radius-lg);
 }
 
 .interactive-hover-card:hover {
-  transform: translateY(-8px) !important;
-  border-color: rgba(174, 109, 254, 0.6) !important;
-  box-shadow: 0 20px 40px rgba(174, 109, 254, 0.25) !important;
+  transform: translateY(-6px) !important;
+  border-color: rgba(174, 109, 254, 0.5) !important;
+  box-shadow: var(--shadow-lg) !important;
 }
 
 .interactive-hover-card:hover .hover-icon-scale {
-  transform: scale(1.18) rotate(5deg);
+  transform: scale(1.12) rotate(4deg);
 }
 
 .hover-icon-scale {
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: var(--transition-smooth) !important;
 }
 
 .btn-glow-hover {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+  transition: var(--transition-smooth) !important;
 }
 
 .btn-glow-hover:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(174, 109, 254, 0.5) !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-primary) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
