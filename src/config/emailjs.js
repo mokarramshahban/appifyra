@@ -5,7 +5,7 @@
 // 3. Get your Public Key from Account Settings
 
 export const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_appifyra',   // Replace with your EmailJS Service ID
-  TEMPLATE_ID: 'template_appifyra', // Replace with your EmailJS Template ID
-  PUBLIC_KEY: 'user_appifyra_key'   // Replace with your EmailJS Public Key
+  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_appifyra',
+  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_appifyra',
+  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'user_appifyra_key'
 };

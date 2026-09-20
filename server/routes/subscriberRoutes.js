@@ -1,9 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { z } from 'zod';
 import Subscriber from '../models/Subscriber.js';
 import { sendEmail, newsletterWelcomeTemplate } from '../services/emailService.js';
 
 const router = express.Router();
+
+const subscriberSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(150),
+}).passthrough();
 
 const updateSub = async (id, email) => {
   const cleanEmail = email.trim().toLowerCase();
@@ -28,12 +33,12 @@ const deleteSub = async (id) => {
 // POST /api/subscribers -> Save New Subscriber Email & Send Welcome Email
 router.post('/', async (req, res) => {
   try {
-    const { email } = req.body;
-    if (!email) {
-      return res.status(400).json({ success: false, message: 'Email address is required' });
+    const validationResult = subscriberSchema.safeParse(req.body);
+    if (!validationResult.success) {
+      return res.status(400).json({ success: false, error: 'Invalid input data', details: validationResult.error.errors });
     }
 
-    const cleanEmail = email.trim().toLowerCase();
+    const cleanEmail = validationResult.data.email;
     let sub = await Subscriber.findOne({ email: cleanEmail });
     let isNew = false;
     if (!sub) {
@@ -53,7 +58,7 @@ router.post('/', async (req, res) => {
     }
   } catch (error) {
     console.error('Error saving subscriber:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -67,7 +72,7 @@ router.get('/', async (req, res) => {
     }));
     res.json({ success: true, data: formatted });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -79,7 +84,7 @@ router.put('/:id', async (req, res) => {
     const updated = await updateSub(id, email);
     res.json({ success: true, data: updated || { id, email } });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -90,7 +95,7 @@ router.delete('/:id', async (req, res) => {
     await deleteSub(id);
     res.json({ success: true, message: 'Subscriber deleted successfully' });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
