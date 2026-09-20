@@ -19,8 +19,10 @@ export default function StudentDashboardPage() {
     async function loadData() {
       if (currentUser?.email) {
         setLoading(true);
-        const appList = await getStudentApplications(currentUser.email);
-        const certList = await getStudentCertificates(currentUser.email);
+        const [appList, certList] = await Promise.all([
+          getStudentApplications(currentUser.email),
+          getStudentCertificates(currentUser.email)
+        ]);
         setApplications(appList);
         setCertificates(certList);
       }

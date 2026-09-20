@@ -92,10 +92,15 @@ router.post('/', async (req, res) => {
 // GET /api/applications -> Get All Applications
 router.get('/', async (req, res) => {
   try {
-    const apps = await Application.find().sort({ createdAt: -1 });
+    res.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+    const apps = await Application.find()
+      .select('-__v')
+      .lean()
+      .sort({ createdAt: -1 });
+
     const formatted = apps.map(doc => ({
       id: doc._id.toString(),
-      ...doc.toObject()
+      ...doc
     }));
     res.json({ success: true, data: formatted });
   } catch (error) {
@@ -108,10 +113,16 @@ router.get('/', async (req, res) => {
 router.get('/student/:email', async (req, res) => {
   try {
     const { email } = req.params;
-    const apps = await Application.find({ email: email }).sort({ createdAt: -1 });
+    res.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+    
+    const apps = await Application.find({ email: email })
+      .select('-__v')
+      .lean()
+      .sort({ createdAt: -1 });
+
     const formatted = apps.map(doc => ({
       id: doc._id.toString(),
-      ...doc.toObject()
+      ...doc
     }));
     res.json({ success: true, data: formatted });
   } catch (error) {

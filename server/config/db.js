@@ -5,7 +5,9 @@ export const connectDB = async () => {
     const conn = await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'appifyra',
       serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 10000
+      connectTimeoutMS: 10000,
+      maxPoolSize: 50, // Optimize read-heavy parallelism
+      minPoolSize: 10,
     });
     console.log(`✅ MongoDB Connected Successfully: ${conn.connection.host}`);
   } catch (error) {
