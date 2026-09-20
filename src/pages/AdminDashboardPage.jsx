@@ -113,10 +113,12 @@ export default function AdminDashboardPage() {
 
   const loadAllData = async () => {
     setLoading(true);
-    const appData = await getAllApplications();
-    const inqData = await getContactInquiries();
-    const subData = await getAllSubscribers();
-    const certData = await getAllCertificates();
+    const [appData, inqData, subData, certData] = await Promise.all([
+      getAllApplications(),
+      getContactInquiries(),
+      getAllSubscribers(),
+      getAllCertificates()
+    ]);
     setApplications(appData);
     setInquiries(inqData);
     setSubscribers(subData);

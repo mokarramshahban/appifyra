@@ -36,7 +36,8 @@ const deleteCert = async (id) => {
 // GET /api/certificates -> Get All Issued Certificates
 router.get('/', async (req, res) => {
   try {
-    const certs = await Certificate.find().sort({ createdAt: -1 });
+    res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+    const certs = await Certificate.find().select("-__v").lean().sort({ createdAt: -1 });
     const formatted = certs.map(c => ({
       id: c._id.toString(),
       ...c.toObject()

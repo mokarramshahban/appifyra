@@ -2,6 +2,33 @@ import staticCertificates from '../data/certificates.json';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
+// ─── SIMPLE FRONTEND MEMORY CACHE TO PREVENT ROUTE-SWITCH WATERFALLS ───────
+const fetchCache = new Map();
+const CACHE_TTL_MS = 60000; // 60 seconds
+
+const fetchWithCache = async (url, options = {}) => {
+  // Only cache standalone GET requests
+  if (options.method && options.method !== 'GET') {
+    return fetch(url, options);
+  }
+  const now = Date.now();
+  if (fetchCache.has(url)) {
+    const { data, timestamp } = fetchCache.get(url);
+    if (now - timestamp < CACHE_TTL_MS) {
+      return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }
+  }
+  const res = await fetchWithCache(url, options);
+  if (res.ok) {
+    const clone = res.clone();
+    try {
+      const data = await clone.json();
+      fetchCache.set(url, { data, timestamp: now });
+    } catch (e) {}
+  }
+  return res;
+};
+
 // ─── DELETED BLACKLIST TRACKERS ─────────────────────────────────────────────
 const getDeletedCertificates = () => {
   try {
@@ -133,7 +160,7 @@ export const saveSubscriber = async (email) => {
   saveLocalSubscriber(newSub);
 
   try {
-    const res = await fetch(`${API_BASE}/api/subscribers`, {
+    const res = await fetchWithCache(`${API_BASE}/api/subscribers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: cleanEmail })
@@ -149,7 +176,7 @@ export const getAllSubscribers = async () => {
   const deleted = getDeletedSubscribers();
   let mongoSubs = [];
   try {
-    const res = await fetch(`${API_BASE}/api/subscribers`);
+    const res = await fetchWithCache(`${API_BASE}/api/subscribers`);
     if (res.ok) {
       const data = await res.json();
       if (data && data.success && Array.isArray(data.data)) mongoSubs = data.data;
@@ -185,7 +212,7 @@ export const updateSubscriber = async (subId, newEmail) => {
   } catch (e) {}
 
   try {
-    const res = await fetch(`${API_BASE}/api/subscribers/${subId}`, {
+    const res = await fetchWithCache(`${API_BASE}/api/subscribers/${subId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: cleanEmail })
@@ -212,7 +239,7 @@ export const deleteSubscriber = async (subIdOrEmail, extraEmail) => {
   } catch (e) {}
 
   try {
-    if (subId) await fetch(`${API_BASE}/api/subscribers/${subId}`, { method: 'DELETE' });
+    if (subId) await fetchWithCache(`${API_BASE}/api/subscribers/${subId}`, { method: 'DELETE' });
   } catch (e) {}
 
   return true;
@@ -224,7 +251,7 @@ export const saveContactInquiry = async (inquiryData) => {
   saveLocalInquiry(newInq);
 
   try {
-    const res = await fetch(`${API_BASE}/api/inquiries`, {
+    const res = await fetchWithCache(`${API_BASE}/api/inquiries`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inquiryData)
@@ -240,7 +267,7 @@ export const getContactInquiries = async () => {
   const deleted = getDeletedInquiries();
   let mongoInqs = [];
   try {
-    const res = await fetch(`${API_BASE}/api/inquiries`);
+    const res = await fetchWithCache(`${API_BASE}/api/inquiries`);
     if (res.ok) {
       const data = await res.json();
       if (data && data.success && Array.isArray(data.data)) mongoInqs = data.data;
@@ -275,7 +302,7 @@ export const updateInquiry = async (inquiryId, updateData) => {
   } catch (e) {}
 
   try {
-    const res = await fetch(`${API_BASE}/api/inquiries/${inquiryId}`, {
+    const res = await fetchWithCache(`${API_BASE}/api/inquiries/${inquiryId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateData)
@@ -302,7 +329,7 @@ export const deleteInquiry = async (inquiryIdOrObj, extraObj) => {
   } catch (e) {}
 
   try {
-    if (inquiryId) await fetch(`${API_BASE}/api/inquiries/${inquiryId}`, { method: 'DELETE' });
+    if (inquiryId) await fetchWithCache(`${API_BASE}/api/inquiries/${inquiryId}`, { method: 'DELETE' });
   } catch (e) {}
 
   return true;
@@ -314,7 +341,7 @@ export const saveInternshipApplication = async (appData) => {
   saveLocalApp(newApp);
 
   try {
-    const res = await fetch(`${API_BASE}/api/applications`, {
+    const res = await fetchWithCache(`${API_BASE}/api/applications`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(appData)
@@ -330,7 +357,7 @@ export const getAllApplications = async () => {
   const deleted = getDeletedApplications();
   let mongoApps = [];
   try {
-    const res = await fetch(`${API_BASE}/api/applications`);
+    const res = await fetchWithCache(`${API_BASE}/api/applications`);
     if (res.ok) {
       const data = await res.json();
       if (data && data.success && Array.isArray(data.data)) mongoApps = data.data;
@@ -371,7 +398,7 @@ export const updateApplication = async (appId, updateData) => {
   } catch (e) {}
 
   try {
-    const res = await fetch(`${API_BASE}/api/applications/${appId}`, {
+    const res = await fetchWithCache(`${API_BASE}/api/applications/${appId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateData)
@@ -408,7 +435,7 @@ export const deleteApplication = async (appIdOrObj, extraObj) => {
   } catch (e) {}
 
   try {
-    if (appId) await fetch(`${API_BASE}/api/applications/${appId}`, { method: 'DELETE' });
+    if (appId) await fetchWithCache(`${API_BASE}/api/applications/${appId}`, { method: 'DELETE' });
   } catch (error) {}
 
   return true;
@@ -419,7 +446,7 @@ export const getAllCertificates = async () => {
   const deleted = getDeletedCertificates();
   let mongoCerts = [];
   try {
-    const res = await fetch(`${API_BASE}/api/certificates`);
+    const res = await fetchWithCache(`${API_BASE}/api/certificates`);
     if (res.ok) {
       const data = await res.json();
       if (data && data.success && Array.isArray(data.data)) mongoCerts = data.data;
@@ -471,7 +498,7 @@ export const getStudentCertificates = async (userEmail) => {
 
 export const getNextCertificateId = async () => {
   try {
-    const res = await fetch(`${API_BASE}/api/certificates/next-id`);
+    const res = await fetchWithCache(`${API_BASE}/api/certificates/next-id`);
     if (res.ok) {
       const data = await res.json();
       if (data && data.success && data.nextId) return data.nextId;
@@ -487,7 +514,7 @@ export const issueCertificate = async (certData) => {
   saveLocalCert(certData);
 
   try {
-    const res = await fetch(`${API_BASE}/api/certificates`, {
+    const res = await fetchWithCache(`${API_BASE}/api/certificates`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(certData)
@@ -507,7 +534,7 @@ export const updateIssuedCertificate = async (certId, updateData) => {
   } catch (e) {}
 
   try {
-    const res = await fetch(`${API_BASE}/api/certificates/${certId}`, {
+    const res = await fetchWithCache(`${API_BASE}/api/certificates/${certId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateData)
@@ -540,7 +567,7 @@ export const deleteIssuedCertificate = async (certIdOrObj, extraCert) => {
   } catch (e) {}
 
   try {
-    if (certId) await fetch(`${API_BASE}/api/certificates/${certId}`, { method: 'DELETE' });
+    if (certId) await fetchWithCache(`${API_BASE}/api/certificates/${certId}`, { method: 'DELETE' });
   } catch (e) {}
 
   return true;
@@ -554,7 +581,7 @@ export const lookupCertificate = async (queryStr) => {
   if (deleted.includes(queryUpper)) return null;
 
   try {
-    const res = await fetch(`${API_BASE}/api/certificates/verify/${encodeURIComponent(queryUpper)}`);
+    const res = await fetchWithCache(`${API_BASE}/api/certificates/verify/${encodeURIComponent(queryUpper)}`);
     if (res.ok) {
       const data = await res.json();
       if (data && data.success && data.data) {

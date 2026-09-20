@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 const certificateSchema = new mongoose.Schema(
   {
-    certificateId: { type: String, required: true, unique: true, uppercase: true },
+    certificateId: { type: String, required: true, unique: true, uppercase: true, index: true },
     studentName: { type: String, required: true },
-    studentEmail: { type: String, required: true },
+    studentEmail: { type: String, required: true, index: true },
     courseTitle: { type: String, required: true },
     duration: { type: String, required: true },
     performanceGrade: { type: String, required: true },

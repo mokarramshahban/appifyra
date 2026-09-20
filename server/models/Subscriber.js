@@ -5,7 +5,9 @@ const subscriberSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    lowercase: true
+    lowercase: true,
+    unique: true,
+    index: true
   },
   subscribedAt: {
     type: Date,

@@ -89,7 +89,8 @@ router.post('/', async (req, res) => {
 // GET /api/inquiries -> Get All Inquiries
 router.get('/', async (req, res) => {
   try {
-    const inquiries = await Inquiry.find().sort({ createdAt: -1 });
+    res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+    const inquiries = await Inquiry.find().select("-__v").lean().sort({ createdAt: -1 });
     const formatted = inquiries.map(doc => ({
       id: doc._id.toString(),
       ...doc.toObject()

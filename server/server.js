@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
+import compression from 'compression';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -34,6 +35,7 @@ connectDB();
 
 // Middleware
 app.use(helmet());
+app.use(compression()); // ✅ Enable Gzip/Brotli payload compression
 app.use(mongoSanitize()); // Prevent NoSQL Injection by sanitizing '$' and '.' in req.body/params/query
 
 const allowedOrigins = process.env.VITE_URL 

@@ -65,7 +65,8 @@ router.post('/', async (req, res) => {
 // GET /api/subscribers -> Get All Subscribers
 router.get('/', async (req, res) => {
   try {
-    const subs = await Subscriber.find().sort({ subscribedAt: -1 });
+    res.set("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+    const subs = await Subscriber.find().select("-__v").lean().sort({ subscribedAt: -1 });
     const formatted = subs.map(doc => ({
       id: doc._id.toString(),
       ...doc.toObject()
