@@ -2,7 +2,7 @@ import React from 'react';
 
 export function TableSkeleton({ rows = 4, cols = 6 }) {
   return (
-    <div className="table-responsive" style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '20px' }}>
+    <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)', padding: '20px' }}>
       <table className="table table-dark mb-0 align-middle">
         <thead>
           <tr>
@@ -38,8 +38,8 @@ export function CardSkeletonGrid({ count = 4 }) {
             className="p-4" 
             style={{ 
               borderRadius: '16px', 
-              backgroundColor: 'rgba(255, 255, 255, 0.03)', 
-              border: '1px solid rgba(255, 255, 255, 0.1)' 
+              backgroundColor: 'var(--color-bg-card-elevated)', 
+              border: '1px solid var(--color-border)' 
             }}
           >
             <div className="d-flex justify-content-between align-items-center mb-3">

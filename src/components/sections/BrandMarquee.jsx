@@ -16,7 +16,7 @@ export default function BrandMarquee() {
   const rightLoop = [...rightBrands, ...rightBrands];
 
   return (
-    <section className="brand py-5 overflow-hidden pos-rel" style={{ backgroundColor: '#010315', borderTop: '1px solid rgba(255, 255, 255, 0.05)', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+    <section className="brand py-5 overflow-hidden pos-rel" style={{ backgroundColor: 'var(--color-bg-dark)', borderTop: '1px solid rgba(255, 255, 255, 0.05)', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-4">
@@ -57,8 +57,8 @@ export default function BrandMarquee() {
               className="cs-brand-item px-3" 
               key={`left-${idx}`}
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backgroundColor: 'var(--color-bg-card-elevated)',
+                border: '1px solid var(--color-border)',
                 borderRadius: '16px',
                 padding: '16px 28px',
                 display: 'flex',
@@ -82,8 +82,8 @@ export default function BrandMarquee() {
               className="cs-brand-item px-3" 
               key={`right-${idx}`}
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backgroundColor: 'var(--color-bg-card-elevated)',
+                border: '1px solid var(--color-border)',
                 borderRadius: '16px',
                 padding: '16px 28px',
                 display: 'flex',

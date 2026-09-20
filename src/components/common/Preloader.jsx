@@ -40,7 +40,7 @@ export default function Preloader() {
         left: 0,
         width: '100vw',
         height: '100vh',
-        backgroundColor: '#010315',
+        backgroundColor: 'var(--color-bg-dark)',
         zIndex: 999999,
         display: 'flex',
         flexDirection: 'column',

@@ -107,7 +107,7 @@ export default function HeroSection() {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          opacity: 0.28,
+          opacity: 'var(--video-opacity, 0.28)',
           zIndex: 0,
           pointerEvents: 'none'
         }}
@@ -115,13 +115,13 @@ export default function HeroSection() {
 
       {/* Dark Gradient Mask Overlay */}
       <div 
+        className="hero-video-gradient-mask"
         style={{
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'radial-gradient(circle at center, rgba(1, 3, 21, 0.4) 0%, rgba(1, 3, 21, 0.85) 100%)',
           zIndex: 1,
           pointerEvents: 'none'
         }}
@@ -168,7 +168,7 @@ export default function HeroSection() {
                     className="btn btn-lg"
                     style={{
                       background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
-                      color: '#fff',
+                      color: 'var(--color-text-main)',
                       fontWeight: '700',
                       padding: '14px 32px',
                       borderRadius: '12px',
@@ -196,8 +196,8 @@ export default function HeroSection() {
                 <div 
                   className="row g-3 p-3 text-white mt-3 mb-0"
                   style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    backgroundColor: 'var(--color-bg-card-elevated)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: '16px',
                     backdropFilter: 'blur(10px)',
                     width: '100%',
@@ -234,7 +234,7 @@ export default function HeroSection() {
               >
                 <div>
                   {/* Form Mode Selector Tabs */}
-                  <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', borderRadius: '14px', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
+                  <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '14px', border: '1px solid var(--color-border)' }}>
                     <button
                       type="button"
                       className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'btn-primary' : 'btn-link text-white-50 text-decoration-none'}`}
@@ -306,7 +306,7 @@ export default function HeroSection() {
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Program Track *</label>
                           <select 
                             className="form-select text-white"
-                            style={{ backgroundColor: '#090536', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px' }}
+                            style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
                             value={internshipForm.duration}
                             onChange={(e) => setInternshipForm({ ...internshipForm, duration: e.target.value })}
                           >
@@ -319,7 +319,7 @@ export default function HeroSection() {
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Target Domain *</label>
                           <select 
                             className="form-select text-white"
-                            style={{ backgroundColor: '#090536', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px' }}
+                            style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
                             value={internshipForm.domain}
                             onChange={(e) => setInternshipForm({ ...internshipForm, domain: e.target.value })}
                           >
@@ -340,7 +340,7 @@ export default function HeroSection() {
                             <input 
                               type="text" 
                               className="form-control text-white"
-                              style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(174, 109, 254, 0.5)', borderRadius: '10px' }}
+                              style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid rgba(174, 109, 254, 0.5)', borderRadius: '10px' }}
                               placeholder="e.g. Cyber Security, AI/ML..."
                               value={customDomain}
                               onChange={(e) => setCustomDomain(e.target.value)}
@@ -356,7 +356,7 @@ export default function HeroSection() {
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Service Needed *</label>
                           <select 
                             className="form-select text-white"
-                            style={{ backgroundColor: '#090536', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px' }}
+                            style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
                             value={serviceForm.serviceType}
                             onChange={(e) => setServiceForm({ ...serviceForm, serviceType: e.target.value })}
                           >
@@ -373,7 +373,7 @@ export default function HeroSection() {
                           <label className="form-label text-muted mb-1" style={{ fontSize: '13px' }}>Target Timeline / Launch Goal *</label>
                           <select 
                             className="form-select text-white"
-                            style={{ backgroundColor: '#090536', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px' }}
+                            style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
                             value={serviceForm.timeline}
                             onChange={(e) => setServiceForm({ ...serviceForm, timeline: e.target.value })}
                           >
@@ -389,7 +389,7 @@ export default function HeroSection() {
                           <textarea 
                             className="form-control text-white"
                             rows={2}
-                            style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '10px', fontSize: '13px' }}
+                            style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border-light)', borderRadius: '10px', fontSize: '13px' }}
                             placeholder="Briefly describe what features or application you need built..."
                             value={serviceForm.message}
                             onChange={(e) => setServiceForm({ ...serviceForm, message: e.target.value })}

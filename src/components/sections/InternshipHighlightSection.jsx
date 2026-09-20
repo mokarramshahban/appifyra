@@ -44,7 +44,7 @@ export default function InternshipHighlightSection() {
             >
               <div>
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                  <span className="badge px-3 py-2" style={{ backgroundColor: '#431DAB', color: '#fff', fontSize: '12px', letterSpacing: '0.5px' }}>
+                  <span className="badge px-3 py-2" style={{ backgroundColor: '#431DAB', color: 'var(--color-text-main)', fontSize: '12px', letterSpacing: '0.5px' }}>
                     SUMMER / SHORT-TERM
                   </span>
                   <span style={{ color: '#ae6dfe', fontWeight: '800', fontSize: '20px' }}>45 Days Track</span>

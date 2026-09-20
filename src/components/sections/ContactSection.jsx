@@ -86,7 +86,7 @@ export default function ContactSection() {
     <section 
       id="contact" 
       className="contact pt-140 pb-100 pos-rel" 
-      style={{ backgroundColor: '#010315' }}
+      style={{ backgroundColor: 'var(--color-bg-dark)' }}
     >
       <div className="container">
         <div 
@@ -103,8 +103,8 @@ export default function ContactSection() {
               <div 
                 className="p-4 p-md-5 text-white h-100 d-flex flex-column justify-content-between"
                 style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: 'var(--color-bg-card-elevated)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '20px'
                 }}
               >
@@ -118,7 +118,7 @@ export default function ContactSection() {
                   </p>
                   
                   <div className="d-flex flex-column gap-3 mb-4">
-                    <div className="d-flex align-items-center gap-3 p-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.04)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                    <div className="d-flex align-items-center gap-3 p-3" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '12px', border: '1px solid var(--color-border)' }}>
                       <div className="d-flex align-items-center justify-content-center bg-info text-dark rounded-circle" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
                         <i className="fas fa-envelope"></i>
                       </div>
@@ -137,8 +137,8 @@ export default function ContactSection() {
               <div 
                 className="p-4 p-md-5 h-100"
                 style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  backgroundColor: 'var(--color-bg-card-elevated)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '20px'
                 }}
               >
@@ -220,7 +220,7 @@ export default function ContactSection() {
                           type="text" 
                           name="fullName"
                           className="form-control text-white"
-                          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={formData.fullName}
                           onChange={handleChange}
                           required
@@ -234,7 +234,7 @@ export default function ContactSection() {
                           type="email" 
                           name="email"
                           className="form-control text-white"
-                          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={formData.email}
                           onChange={handleChange}
                           required
@@ -248,7 +248,7 @@ export default function ContactSection() {
                           type="text" 
                           name="subject"
                           className="form-control text-white"
-                          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={formData.subject}
                           onChange={handleChange}
                           required
@@ -262,7 +262,7 @@ export default function ContactSection() {
                           name="message"
                           rows="4"
                           className="form-control text-white"
-                          style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={formData.message}
                           onChange={handleChange}
                           required
@@ -287,7 +287,7 @@ export default function ContactSection() {
                             className="btn btn-lg w-100"
                             style={{
                               background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
-                              color: '#fff',
+                              color: 'var(--color-text-main)',
                               fontWeight: '700',
                               padding: '14px',
                               borderRadius: '12px'

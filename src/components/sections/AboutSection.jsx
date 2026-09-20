@@ -47,7 +47,7 @@ export default function AboutSection() {
                     className="img-fluid mb-4"
                     style={{ borderRadius: '16px', maxHeight: '280px', objectFit: 'cover' }}
                   />
-                  <div className="d-flex align-items-center justify-content-center gap-3 p-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.04)', borderRadius: '14px' }}>
+                  <div className="d-flex align-items-center justify-content-center gap-3 p-3" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '14px' }}>
                     <h3 className="text-primary mb-0" style={{ fontWeight: '800', fontSize: '32px' }}>10+</h3>
                     <span className="text-white text-start" style={{ fontSize: '14px', maxWidth: '280px' }}>
                       Skilled team members dedicated to engineering excellence.

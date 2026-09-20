@@ -65,7 +65,7 @@ export default function CertificateVerificationPage() {
         {/* Verification Form Box */}
         <div className="row justify-content-center">
           <div className="col-lg-10">
-            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid rgba(255, 255, 255, 0.1)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, rgba(1, 3, 21, 0.95) 100%)' }}>
+            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--color-border)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, rgba(1, 3, 21, 0.95) 100%)' }}>
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -83,12 +83,12 @@ export default function CertificateVerificationPage() {
                     value={searchId}
                     onChange={(e) => setSearchId(e.target.value)}
                     style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      backgroundColor: 'var(--color-bg-card-elevated)',
                       border: '1px solid rgba(103, 128, 210, 0.4)',
                       borderRadius: '10px 0 0 10px',
                       padding: '14px 20px',
                       fontSize: '16px',
-                      color: '#ffffff'
+                      color: 'var(--color-text-main)'
                     }}
                   />
                   <button
@@ -97,7 +97,7 @@ export default function CertificateVerificationPage() {
                     className="btn"
                     style={{
                       background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
-                      color: '#fff',
+                      color: 'var(--color-text-main)',
                       padding: '0 30px',
                       fontWeight: '600',
                       borderRadius: '0 10px 10px 0'

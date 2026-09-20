@@ -13,7 +13,7 @@ export default function QuickVerifySection() {
   };
 
   return (
-    <section className="pt-80 pb-80 pos-rel" style={{ backgroundColor: '#010315', borderTop: '1px solid rgba(255, 255, 255, 0.08)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+    <section className="pt-80 pb-80 pos-rel" style={{ backgroundColor: 'var(--color-bg-dark)', borderTop: '1px solid rgba(255, 255, 255, 0.08)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
       <div className="container">
         <div 
           className="p-4 p-md-5 text-white pos-rel"
@@ -45,8 +45,8 @@ export default function QuickVerifySection() {
                     value={certId}
                     onChange={(e) => setCertId(e.target.value)}
                     style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      backgroundColor: 'var(--color-bg-card-elevated)',
+                      border: '1px solid var(--color-border-light)',
                       borderRadius: '12px 0 0 12px',
                       padding: '14px 20px'
                     }}
@@ -56,7 +56,7 @@ export default function QuickVerifySection() {
                     className="btn px-4"
                     style={{
                       background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
-                      color: '#fff',
+                      color: 'var(--color-text-main)',
                       fontWeight: '700',
                       borderRadius: '0 12px 12px 0'
                     }}

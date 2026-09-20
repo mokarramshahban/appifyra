@@ -119,7 +119,7 @@ export default function Header() {
                           top: '100%', 
                           left: 0,
                           minWidth: '210px',
-                          backgroundColor: '#090536',
+                          backgroundColor: 'var(--color-bg-card)',
                           border: '1px solid rgba(174, 109, 254, 0.3)',
                           borderRadius: '12px',
                           padding: '10px 0',
@@ -148,8 +148,8 @@ export default function Header() {
                   className="btn btn-sm"
                   style={{
                     width: '36px', height: '36px', borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    backgroundColor: 'var(--color-bg-card-elevated)',
+                    border: '1px solid var(--color-border-light)',
                     color: 'var(--color-text-main)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     transition: 'all 0.3s ease'
@@ -170,8 +170,8 @@ export default function Header() {
                         cursor: 'pointer', 
                         padding: '4px 12px 4px 6px', 
                         borderRadius: '30px', 
-                        backgroundColor: 'rgba(255, 255, 255, 0.08)', 
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        backgroundColor: 'var(--color-bg-card-elevated)', 
+                        border: '1px solid var(--color-border-light)',
                         transition: 'all 0.2s'
                       }}
                     >
@@ -191,7 +191,7 @@ export default function Header() {
                           top: 'calc(100% + 10px)',
                           right: 0,
                           minWidth: '220px',
-                          backgroundColor: '#090536',
+                          backgroundColor: 'var(--color-bg-card)',
                           border: '1px solid rgba(174, 109, 254, 0.4)',
                           borderRadius: '16px',
                           boxShadow: '0 15px 35px rgba(0, 0, 0, 0.7)',
@@ -255,8 +255,8 @@ export default function Header() {
                 className="btn btn-sm me-1"
                 style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  backgroundColor: 'var(--color-bg-card-elevated)',
+                  border: '1px solid var(--color-border-light)',
                   color: 'var(--color-text-main)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}
