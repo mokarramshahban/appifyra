@@ -31,7 +31,7 @@ export default function Footer() {
   return (
     <footer 
       className="footer bg_img footer-style-two footer-style-three pt-120 pos-rel" 
-      style={{ backgroundColor: '#010315', backgroundImage: 'url(/assets/img/bg/footer_overly.png)' }}
+      style={{ backgroundColor: 'var(--color-bg-dark)', backgroundImage: 'url(/assets/img/bg/footer_overly.png)' }}
     >
       <div className="container">
         <div className="xb-footer">

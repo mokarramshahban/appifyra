@@ -228,7 +228,7 @@ export default function AboutPage() {
                   style={{
                     borderRadius: '20px',
                     backgroundColor: 'rgba(15, 18, 41, 0.75)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    border: '1px solid var(--color-border)',
                     backdropFilter: 'blur(16px)',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)'
                   }}
@@ -270,8 +270,8 @@ export default function AboutPage() {
                   className="p-4 text-center text-white h-100"
                   style={{
                     borderRadius: '20px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    backgroundColor: 'var(--color-bg-card-elevated)',
+                    border: '1px solid var(--color-border)',
                     transition: 'all 0.3s ease'
                   }}
                 >
@@ -319,7 +319,7 @@ export default function AboutPage() {
                   className="p-4 text-white d-flex align-items-center gap-3 h-100"
                   style={{
                     backgroundColor: 'rgba(15, 18, 41, 0.6)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: '16px',
                     transition: 'all 0.3s ease'
                   }}
@@ -364,7 +364,7 @@ export default function AboutPage() {
                 <div 
                   className="p-4 text-white h-100 pos-rel"
                   style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    backgroundColor: 'var(--color-bg-card-elevated)',
                     border: '1px solid rgba(174, 109, 254, 0.25)',
                     borderRadius: '20px'
                   }}

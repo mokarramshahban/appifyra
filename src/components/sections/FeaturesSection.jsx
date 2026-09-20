@@ -37,7 +37,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="cs-feature pos-rel pt-100 pb-80 z-1" style={{ backgroundColor: '#010315' }}>
+    <section className="cs-feature pos-rel pt-100 pb-80 z-1" style={{ backgroundColor: 'var(--color-bg-dark)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="sec-title--two sec-title--three text-center mb-50">
@@ -58,7 +58,7 @@ export default function FeaturesSection() {
                 className="service-hover-card p-4 h-100 pos-rel d-flex flex-column justify-content-between text-white"
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.025)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '20px',
                   boxShadow: `0 10px 30px ${feature.glow}`
                 }}
@@ -69,8 +69,8 @@ export default function FeaturesSection() {
                       className="service-icon-box p-3 d-flex align-items-center justify-content-center"
                       style={{
                         borderRadius: '16px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        backgroundColor: 'var(--color-bg-card-elevated)',
+                        border: '1px solid var(--color-border)',
                         width: '56px',
                         height: '56px'
                       }}

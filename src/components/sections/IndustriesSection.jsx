@@ -103,7 +103,7 @@ export default function IndustriesSection() {
                   backgroundColor: 'rgba(15, 18, 41, 0.65)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '20px',
                   transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)'

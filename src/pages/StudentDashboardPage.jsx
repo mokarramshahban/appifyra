@@ -236,7 +236,7 @@ export default function StudentDashboardPage() {
                 className="p-5 text-center text-white"
                 style={{
                   borderRadius: '20px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  backgroundColor: 'var(--color-bg-card-elevated)',
                   border: '1px dashed rgba(255, 255, 255, 0.15)'
                 }}
               >
@@ -258,7 +258,7 @@ export default function StudentDashboardPage() {
                       style={{
                         borderRadius: '20px',
                         backgroundColor: 'rgba(15, 18, 41, 0.75)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        border: '1px solid var(--color-border)',
                         backdropFilter: 'blur(12px)'
                       }}
                     >
@@ -308,7 +308,7 @@ export default function StudentDashboardPage() {
                 className="p-5 text-center text-white"
                 style={{
                   borderRadius: '20px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  backgroundColor: 'var(--color-bg-card-elevated)',
                   border: '1px dashed rgba(255, 255, 255, 0.15)'
                 }}
               >

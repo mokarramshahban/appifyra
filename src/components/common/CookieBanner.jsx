@@ -30,7 +30,7 @@ const CookieBanner = () => {
       left: 0,
       width: '100%',
       backgroundColor: '#111',
-      color: '#fff',
+      color: 'var(--color-text-main)',
       padding: '15px 20px',
       display: 'flex',
       flexDirection: 'column',
@@ -49,7 +49,7 @@ const CookieBanner = () => {
           onClick={handleReject} 
           style={{
             backgroundColor: 'transparent',
-            color: '#fff',
+            color: 'var(--color-text-main)',
             border: '1px solid rgba(255, 255, 255, 0.4)',
             padding: '8px 20px',
             cursor: 'pointer',
@@ -64,7 +64,7 @@ const CookieBanner = () => {
           onClick={handleAccept} 
           style={{
             backgroundColor: 'var(--tg-theme-primary)',
-            color: '#fff',
+            color: 'var(--color-text-main)',
             border: 'none',
             padding: '8px 20px',
             cursor: 'pointer',
