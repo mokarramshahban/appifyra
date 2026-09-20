@@ -148,7 +148,7 @@ export default function Header() {
                   className="btn btn-sm"
                   style={{
                     width: '36px', height: '36px', borderRadius: '50%',
-                    backgroundColor: 'var(--color-bg-card-elevated)',
+                    backgroundColor: 'var(--input-bg)',
                     border: '1px solid var(--color-border-light)',
                     color: 'var(--color-text-main)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -170,7 +170,7 @@ export default function Header() {
                         cursor: 'pointer', 
                         padding: '4px 12px 4px 6px', 
                         borderRadius: '30px', 
-                        backgroundColor: 'var(--color-bg-card-elevated)', 
+                        backgroundColor: 'var(--input-bg)', 
                         border: '1px solid var(--color-border-light)',
                         transition: 'all 0.2s'
                       }}
@@ -198,7 +198,7 @@ export default function Header() {
                           zIndex: 9999
                         }}
                       >
-                        <div className="pb-2 mb-2 d-flex align-items-center gap-2" style={{ borderBottom: '1px solid var(--color-border)' }}>
+                        <div className="pb-2 mb-2 d-flex align-items-center gap-2" style={{ borderBottom: '1px solid var(--input-border)' }}>
                           <UserAvatar name={currentUser.displayName || currentUser.email} size={32} />
                           <div style={{ overflow: 'hidden' }}>
                             <div style={{ fontSize: '13px', fontWeight: '600' }}>{currentUser.displayName}</div>
@@ -217,7 +217,7 @@ export default function Header() {
                               <span>{isAdmin ? "Admin Panel" : "My Dashboard"}</span>
                             </Link>
                           </li>
-                          <li className="pt-2" style={{ borderTop: '1px solid var(--color-border)' }}>
+                          <li className="pt-2" style={{ borderTop: '1px solid var(--input-border)' }}>
                             <button 
                               onClick={logout} 
                               className="btn btn-sm btn-outline-danger w-100 text-start d-flex align-items-center gap-2"
@@ -255,7 +255,7 @@ export default function Header() {
                 className="btn btn-sm me-1"
                 style={{
                   width: '32px', height: '32px', borderRadius: '50%',
-                  backgroundColor: 'var(--color-bg-card-elevated)',
+                  backgroundColor: 'var(--input-bg)',
                   border: '1px solid var(--color-border-light)',
                   color: 'var(--color-text-main)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'

@@ -57,7 +57,7 @@ export default function Preloader() {
           position: 'absolute',
           width: '350px',
           height: '350px',
-          background: 'radial-gradient(circle, rgba(174, 109, 254, 0.25) 0%, rgba(0, 0, 0, 0) 70%)',
+          background: 'radial-gradient(circle, var(--card-border) 0%, rgba(0, 0, 0, 0) 70%)',
           borderRadius: '50%',
           filter: 'blur(30px)',
           animation: 'pulseGlow 2s infinite ease-in-out'
@@ -72,7 +72,7 @@ export default function Preloader() {
             alt="Appifyra" 
             style={{ 
               height: '52px',
-              filter: 'drop-shadow(0 0 15px rgba(174, 109, 254, 0.5))'
+              filter: 'drop-shadow(0 0 15px var(--card-border))'
             }} 
           />
         </div>
@@ -82,7 +82,7 @@ export default function Preloader() {
           style={{
             width: '220px',
             height: '4px',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'var(--card-border)',
             borderRadius: '10px',
             overflow: 'hidden',
             margin: '0 auto 16px'

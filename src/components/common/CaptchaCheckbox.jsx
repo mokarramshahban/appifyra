@@ -17,8 +17,8 @@ export default function CaptchaCheckbox({ isVerified, setIsVerified }) {
       className="d-flex align-items-center justify-content-between p-3 mb-3"
       onClick={handleClick}
       style={{
-        backgroundColor: 'var(--color-bg-card-elevated)',
-        border: `1px solid ${isVerified ? 'rgba(74, 222, 128, 0.4)' : 'rgba(255, 255, 255, 0.15)'}`,
+        backgroundColor: 'var(--input-bg)',
+        border: `1px solid ${isVerified ? 'rgba(74, 222, 128, 0.4)' : 'var(--card-border)'}`,
         borderRadius: '12px',
         cursor: isVerified ? 'default' : 'pointer',
         maxWidth: '320px',

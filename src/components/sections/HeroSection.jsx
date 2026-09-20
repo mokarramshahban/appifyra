@@ -233,7 +233,7 @@ export default function HeroSection() {
               >
                 <div>
                   {/* Form Mode Selector Tabs */}
-                  <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '14px', border: '1px solid var(--color-border)' }}>
+                  <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '14px', border: '1px solid var(--input-border)' }}>
                     <button
                       type="button"
                       className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'btn-primary' : 'btn-link text-main-50 text-decoration-none'}`}

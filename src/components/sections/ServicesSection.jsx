@@ -9,7 +9,7 @@ export default function ServicesSection() {
       content: 'High-performance React, Next.js, and Node.js web applications engineered for speed, enterprise scalability, and flawless user experiences.',
       tags: ['React.js', 'Next.js', 'Node.js', 'REST APIs'],
       icon: '/assets/img/icon/airdrop-white.svg',
-      glow: 'rgba(56, 189, 248, 0.15)'
+      glow: 'var(--card-bg)'
     },
     {
       id: '02',
@@ -74,7 +74,7 @@ export default function ServicesSection() {
                 className="service-hover-card p-4 p-md-5 h-100 pos-rel d-flex flex-column justify-content-between text-main"
                 style={{
                   backgroundColor: 'var(--card-bg)',
-                  border: '1px solid var(--color-border)',
+                  border: '1px solid var(--input-border)',
                   borderRadius: '24px',
                   boxShadow: `0 10px 30px ${s.glow}`
                 }}
@@ -86,7 +86,7 @@ export default function ServicesSection() {
                       style={{
                         borderRadius: '16px',
                         backgroundColor: 'var(--input-bg)',
-                        border: '1px solid var(--color-border)',
+                        border: '1px solid var(--input-border)',
                         width: '54px',
                         height: '54px'
                       }}

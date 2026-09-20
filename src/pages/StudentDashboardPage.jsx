@@ -187,7 +187,7 @@ export default function StudentDashboardPage() {
                           borderRadius: '50%',
                           width: '84px',
                           height: '84px',
-                          background: 'rgba(74, 222, 128, 0.08)'
+                          background: 'var(--card-bg)'
                         }}
                       >
                         <i className="fas fa-award text-success mb-1" style={{ fontSize: '24px' }}></i>
@@ -236,7 +236,7 @@ export default function StudentDashboardPage() {
                 className="p-5 text-center text-main"
                 style={{
                   borderRadius: '20px',
-                  backgroundColor: 'var(--color-bg-card-elevated)',
+                  backgroundColor: 'var(--input-bg)',
                   border: '1px dashed var(--card-border)'
                 }}
               >
@@ -258,12 +258,12 @@ export default function StudentDashboardPage() {
                       style={{
                         borderRadius: '20px',
                         backgroundColor: 'var(--card-bg)',
-                        border: '1px solid var(--color-border)',
+                        border: '1px solid var(--input-border)',
                         backdropFilter: 'blur(12px)'
                       }}
                     >
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="badge px-3 py-2" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--color-text-muted)', border: '1px solid rgba(103, 128, 210, 0.3)', fontWeight: '700' }}>
+                        <span className="badge px-3 py-2" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--color-text-muted)', border: '1px solid var(--input-border)', fontWeight: '700' }}>
                           {app.duration}
                         </span>
                         {getStatusBadge(app.status)}
@@ -308,7 +308,7 @@ export default function StudentDashboardPage() {
                 className="p-5 text-center text-main"
                 style={{
                   borderRadius: '20px',
-                  backgroundColor: 'var(--color-bg-card-elevated)',
+                  backgroundColor: 'var(--input-bg)',
                   border: '1px dashed var(--card-border)'
                 }}
               >

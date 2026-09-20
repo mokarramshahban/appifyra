@@ -2,7 +2,7 @@ import React from 'react';
 
 export function TableSkeleton({ rows = 4, cols = 6 }) {
   return (
-    <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)', padding: '20px' }}>
+    <div className="table-responsive" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px', border: '1px solid var(--input-border)', padding: '20px' }}>
       <table className="table table-dark mb-0 align-middle">
         <thead>
           <tr>
@@ -38,8 +38,8 @@ export function CardSkeletonGrid({ count = 4 }) {
             className="p-4" 
             style={{ 
               borderRadius: '16px', 
-              backgroundColor: 'var(--color-bg-card-elevated)', 
-              border: '1px solid var(--color-border)' 
+              backgroundColor: 'var(--input-bg)', 
+              border: '1px solid var(--input-border)' 
             }}
           >
             <div className="d-flex justify-content-between align-items-center mb-3">
@@ -48,7 +48,7 @@ export function CardSkeletonGrid({ count = 4 }) {
             </div>
             <div className="skeleton-shimmer mb-2" style={{ height: '28px', width: '70%', borderRadius: '6px' }} />
             <div className="skeleton-shimmer mb-3" style={{ height: '18px', width: '50%', borderRadius: '6px' }} />
-            <div className="pt-3 d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+            <div className="pt-3 d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid var(--card-border)' }}>
               <div className="skeleton-shimmer" style={{ height: '16px', width: '120px', borderRadius: '4px' }} />
               <div className="skeleton-shimmer" style={{ height: '16px', width: '80px', borderRadius: '4px' }} />
             </div>

@@ -488,11 +488,11 @@ export default function AdminDashboardPage() {
               <div className="row g-3">
                 <div className="col-md-6">
                   <label className="form-label text-muted">Full Name</label>
-                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.fullName} onChange={(e) => setAppEditForm({ ...appEditForm, fullName: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={appEditForm.fullName} onChange={(e) => setAppEditForm({ ...appEditForm, fullName: e.target.value })} required />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label text-muted">Email Address</label>
-                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.email} onChange={(e) => setAppEditForm({ ...appEditForm, email: e.target.value })} required />
+                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={appEditForm.email} onChange={(e) => setAppEditForm({ ...appEditForm, email: e.target.value })} required />
                 </div>
                 <div className="col-md-4">
                   <label className="form-label text-muted">Program Track</label>
@@ -503,7 +503,7 @@ export default function AdminDashboardPage() {
                 </div>
                 <div className="col-md-4">
                   <label className="form-label text-muted">Target Domain</label>
-                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.domain} onChange={(e) => setAppEditForm({ ...appEditForm, domain: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={appEditForm.domain} onChange={(e) => setAppEditForm({ ...appEditForm, domain: e.target.value })} required />
                 </div>
                 <div className="col-md-4">
                   <label className="form-label text-muted">Application Status</label>
@@ -519,7 +519,7 @@ export default function AdminDashboardPage() {
                     type="submit" 
                     disabled={isSavingAppEdit} 
                     className="btn btn-success px-4 py-2 font-weight-bold"
-                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                   >
                     {isSavingAppEdit ? (
                       <span><i className="fas fa-spinner fa-spin me-2"></i> Saving & Sending Notification...</span>
@@ -542,26 +542,26 @@ export default function AdminDashboardPage() {
               <div className="row g-3">
                 <div className="col-md-6">
                   <label className="form-label text-muted">Sender Name</label>
-                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.fullName} onChange={(e) => setInqEditForm({ ...inqEditForm, fullName: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={inqEditForm.fullName} onChange={(e) => setInqEditForm({ ...inqEditForm, fullName: e.target.value })} required />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label text-muted">Sender Email</label>
-                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.email} onChange={(e) => setInqEditForm({ ...inqEditForm, email: e.target.value })} required />
+                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={inqEditForm.email} onChange={(e) => setInqEditForm({ ...inqEditForm, email: e.target.value })} required />
                 </div>
                 <div className="col-12">
                   <label className="form-label text-muted">Subject / Topic</label>
-                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.subject} onChange={(e) => setInqEditForm({ ...inqEditForm, subject: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={inqEditForm.subject} onChange={(e) => setInqEditForm({ ...inqEditForm, subject: e.target.value })} required />
                 </div>
                 <div className="col-12">
                   <label className="form-label text-muted">Message Body</label>
-                  <textarea rows="3" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.message} onChange={(e) => setInqEditForm({ ...inqEditForm, message: e.target.value })} required></textarea>
+                  <textarea rows="3" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={inqEditForm.message} onChange={(e) => setInqEditForm({ ...inqEditForm, message: e.target.value })} required></textarea>
                 </div>
                 <div className="col-12 mt-3 d-flex gap-2">
                   <button 
                     type="submit" 
                     disabled={isSavingInqEdit} 
                     className="btn btn-success px-4 py-2 font-weight-bold"
-                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                   >
                     {isSavingInqEdit ? (
                       <span><i className="fas fa-spinner fa-spin me-2"></i> Saving Inquiry...</span>
@@ -584,14 +584,14 @@ export default function AdminDashboardPage() {
               <div className="row g-3">
                 <div className="col-md-8">
                   <label className="form-label text-muted">Email Address</label>
-                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={subEditEmail} onChange={(e) => setSubEditEmail(e.target.value)} required />
+                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--input-bg)' }} value={subEditEmail} onChange={(e) => setSubEditEmail(e.target.value)} required />
                 </div>
                 <div className="col-12 d-flex gap-2">
                   <button 
                     type="submit" 
                     disabled={isSavingSubEdit} 
                     className="btn btn-success px-4 py-2 font-weight-bold"
-                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                    style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                   >
                     {isSavingSubEdit ? (
                       <span><i className="fas fa-spinner fa-spin me-2"></i> Saving Email...</span>
@@ -620,16 +620,16 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : heroQuickApps.length === 0 ? (
-              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px' }}>
                 <i className="fas fa-inbox mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Hero Quick Submissions Yet</h4>
                 <p className="text-muted">Applications submitted via the homepage Quick Apply form will appear here.</p>
               </div>
             ) : (
-              <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+              <div className="table-responsive" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px', border: '1px solid var(--input-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                    <tr style={{ backgroundColor: 'var(--input-bg)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Candidate Name</th>
                       <th>Candidate Email</th>
                       <th>Program Track</th>
@@ -694,16 +694,16 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : fullInternshipApps.length === 0 ? (
-              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px' }}>
                 <i className="fas fa-user-graduate mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Full Applications Yet</h4>
                 <p className="text-muted">Applications submitted from the Internship Program page will appear here.</p>
               </div>
             ) : (
-              <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+              <div className="table-responsive" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px', border: '1px solid var(--input-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                    <tr style={{ backgroundColor: 'var(--input-bg)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Candidate Name</th>
                       <th>Email & Phone</th>
                       <th>University & Degree</th>
@@ -787,16 +787,16 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : inquiries.length === 0 ? (
-              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px' }}>
                 <i className="fas fa-envelope-open-text mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Contact Inquiries Yet</h4>
                 <p className="text-muted">Messages submitted via the Contact Us section will appear here.</p>
               </div>
             ) : (
-              <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+              <div className="table-responsive" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px', border: '1px solid var(--input-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                    <tr style={{ backgroundColor: 'var(--input-bg)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Sender Name</th>
                       <th>Email Address</th>
                       <th>Subject / Topic</th>
@@ -874,7 +874,7 @@ export default function AdminDashboardPage() {
                     <input 
                       type="text"
                       className="form-control text-main"
-                      style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
+                      style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                       placeholder="e.g. 📢 New Tech Cohorts Open & Industry Updates"
                       value={newsletterSubject}
                       onChange={(e) => setNewsletterSubject(e.target.value)}
@@ -887,7 +887,7 @@ export default function AdminDashboardPage() {
                     <textarea 
                       className="form-control text-main"
                       rows={4}
-                      style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border-light)', borderRadius: '10px', fontSize: '14px' }}
+                      style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px', fontSize: '14px' }}
                       placeholder="Type your announcement, newsletter content, or update message here..."
                       value={newsletterMessage}
                       onChange={(e) => setNewsletterMessage(e.target.value)}
@@ -916,16 +916,16 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={4} cols={3} />
             ) : subscribers.length === 0 ? (
-              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px' }}>
                 <i className="fas fa-paper-plane mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Newsletter Subscribers Yet</h4>
                 <p className="text-muted">Emails submitted via the footer "Stay Updated" form will appear here.</p>
               </div>
             ) : (
-              <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+              <div className="table-responsive" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px', border: '1px solid var(--input-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                    <tr style={{ backgroundColor: 'var(--input-bg)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Subscriber Email</th>
                       <th>Subscribed Date</th>
                       <th style={{ minWidth: '180px' }}>Actions Control</th>
@@ -982,7 +982,7 @@ export default function AdminDashboardPage() {
                       <input 
                         type="text" 
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)' }}
+                        style={{ backgroundColor: 'var(--input-bg)' }}
                         value={certEditForm.studentName}
                         onChange={(e) => setCertEditForm({ ...certEditForm, studentName: e.target.value })}
                         required
@@ -993,7 +993,7 @@ export default function AdminDashboardPage() {
                       <input 
                         type="email" 
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)' }}
+                        style={{ backgroundColor: 'var(--input-bg)' }}
                         value={certEditForm.studentEmail}
                         onChange={(e) => setCertEditForm({ ...certEditForm, studentEmail: e.target.value })}
                         required
@@ -1004,7 +1004,7 @@ export default function AdminDashboardPage() {
                       <input 
                         type="text" 
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card-elevated)' }}
+                        style={{ backgroundColor: 'var(--input-bg)' }}
                         value={certEditForm.domain}
                         onChange={(e) => setCertEditForm({ ...certEditForm, domain: e.target.value })}
                         required
@@ -1026,7 +1026,7 @@ export default function AdminDashboardPage() {
                         type="submit" 
                         disabled={isSavingCertEdit} 
                         className="btn btn-success px-4 py-2 font-weight-bold"
-                        style={{ borderRadius: '10px', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)' }}
+                        style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                       >
                         {isSavingCertEdit ? (
                           <span><i className="fas fa-spinner fa-spin me-2"></i> Saving & Sending Email...</span>
@@ -1044,16 +1044,16 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : issuedCerts.length === 0 ? (
-              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px' }}>
                 <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Issued Certificates Found</h4>
                 <p className="text-muted">Certificates issued to completed students will appear here.</p>
               </div>
             ) : (
-              <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+              <div className="table-responsive" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '16px', border: '1px solid var(--input-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                    <tr style={{ backgroundColor: 'var(--input-bg)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Certificate ID</th>
                       <th>Student Name</th>
                       <th>Student Email</th>
@@ -1108,7 +1108,7 @@ export default function AdminDashboardPage() {
                 style={{
                   borderRadius: '24px',
                   border: '1px solid var(--card-bg)',
-                  backgroundColor: 'rgba(9, 5, 54, 0.9)',
+                  backgroundColor: 'var(--card-bg)',
                   boxShadow: '0 20px 50px var(--card-bg)'
                 }}
               >
@@ -1163,7 +1163,7 @@ export default function AdminDashboardPage() {
                         <input 
                           type="text" 
                           className="form-control text-warning font-monospace fw-bold"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={certForm.certificateId}
                           onChange={(e) => setCertForm({ ...certForm, certificateId: e.target.value })}
                           required
@@ -1175,7 +1175,7 @@ export default function AdminDashboardPage() {
                         <input 
                           type="text" 
                           className="form-control text-main"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={certForm.issueDate}
                           onChange={(e) => setCertForm({ ...certForm, issueDate: e.target.value })}
                           required
@@ -1188,7 +1188,7 @@ export default function AdminDashboardPage() {
                           type="text" 
                           className="form-control text-main"
                           placeholder="Enter candidate full name"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={certForm.studentName}
                           onChange={(e) => setCertForm({ ...certForm, studentName: e.target.value })}
                           required
@@ -1201,7 +1201,7 @@ export default function AdminDashboardPage() {
                           type="email" 
                           className="form-control text-main"
                           placeholder="candidate@gmail.com"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={certForm.studentEmail}
                           onChange={(e) => setCertForm({ ...certForm, studentEmail: e.target.value })}
                           required
@@ -1214,7 +1214,7 @@ export default function AdminDashboardPage() {
                           type="text" 
                           className="form-control text-main"
                           placeholder="e.g. Web Development (45-Days)"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={certForm.domain}
                           onChange={(e) => setCertForm({ ...certForm, domain: e.target.value })}
                           required
@@ -1225,7 +1225,7 @@ export default function AdminDashboardPage() {
                         <label className="form-label text-muted">Performance Grade *</label>
                         <select 
                           className="form-select text-main"
-                          style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={certForm.grade}
                           onChange={(e) => setCertForm({ ...certForm, grade: e.target.value })}
                         >
