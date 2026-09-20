@@ -1,9 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { z } from 'zod';
 import Application from '../models/Application.js';
 import { sendEmail, appReceivedTemplate, statusUpdateTemplate } from '../services/emailService.js';
 
 const router = express.Router();
+
+const applicationSchema = z.object({
+  fullName: z.string().min(1).max(150),
+  email: z.string().email().max(150),
+  phone: z.string().max(20).optional(),
+}).passthrough(); // allows other fields but strictly validates critical ones
 
 // Helper to safely find application by Mongo ObjectId or custom ID / email
 const findApp = async (id, email) => {
@@ -14,7 +21,7 @@ const findApp = async (id, email) => {
     const foundById = await Application.findOne({ id: id });
     if (foundById) return foundById;
   }
-  if (email) {
+  if (email && typeof email === 'string') {
     return await Application.findOne({ email: email });
   }
   return null;
@@ -32,7 +39,7 @@ const updateApp = async (id, updateData) => {
     if (updatedById) return updatedById;
   }
 
-  if (updateData.email) {
+  if (updateData.email && typeof updateData.email === 'string') {
     // Upsert into MongoDB if legacy local record being updated for first time
     return await Application.findOneAndUpdate(
       { email: updateData.email, domain: updateData.domain },
@@ -55,6 +62,11 @@ const deleteApp = async (id) => {
 // POST /api/applications -> Save Application & Send Automatic Candidate Email
 router.post('/', async (req, res) => {
   try {
+    const validationResult = applicationSchema.safeParse(req.body);
+    if (!validationResult.success) {
+      return res.status(400).json({ success: false, error: 'Invalid input data', details: validationResult.error.errors });
+    }
+
     const app = new Application(req.body);
     const savedApp = await app.save();
 
@@ -73,7 +85,7 @@ router.post('/', async (req, res) => {
     res.status(201).json({ success: true, id: savedApp._id.toString(), data: savedApp });
   } catch (error) {
     console.error('Error saving application:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -88,7 +100,7 @@ router.get('/', async (req, res) => {
     res.json({ success: true, data: formatted });
   } catch (error) {
     console.error('Error fetching applications:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -104,7 +116,7 @@ router.get('/student/:email', async (req, res) => {
     res.json({ success: true, data: formatted });
   } catch (error) {
     console.error('Error fetching student applications:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -137,7 +149,7 @@ router.put('/:id', async (req, res) => {
     res.json({ success: true, data: updated || req.body });
   } catch (error) {
     console.error('Error updating application:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -170,7 +182,7 @@ router.patch('/:id/status', async (req, res) => {
     res.json({ success: true, data: updated || { id, status } });
   } catch (error) {
     console.error('Error updating status:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -182,7 +194,7 @@ router.delete('/:id', async (req, res) => {
     res.json({ success: true, message: 'Application deleted successfully' });
   } catch (error) {
     console.error('Error deleting application:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 

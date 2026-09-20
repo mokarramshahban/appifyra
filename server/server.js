@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -31,8 +33,25 @@ app.set('trust proxy', 1);
 connectDB();
 
 // Middleware
-app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
+app.use(helmet());
+app.use(mongoSanitize()); // Prevent NoSQL Injection by sanitizing '$' and '.' in req.body/params/query
+
+const allowedOrigins = process.env.VITE_URL 
+  ? [process.env.VITE_URL, 'http://localhost:3000'] 
+  : ['http://localhost:3000', 'https://appifyra.com', 'https://www.appifyra.com'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by Strict CORS'));
+    }
+  },
+  credentials: true
+}));
+
+app.use(express.json({ limit: '10kb' })); // Mitigate Large Payload DoS
 
 // General API Rate Limiter (300 requests per 15 mins per IP for smooth admin & student dashboard reads)
 const generalLimiter = rateLimit({
@@ -75,6 +94,17 @@ app.get('/api/health', (req, res) => {
 // Render Anti-Sleep Optimization Route
 app.get('/health', (req, res) => {
   res.status(200).send('OK');
+});
+
+// Global Error Handler (Prevents stack trace leaks)
+app.use((err, req, res, next) => {
+  console.error('Unhandled Error:', err.message);
+  res.status(err.status || 500).json({
+    success: false,
+    message: process.env.NODE_ENV === 'production' 
+      ? 'An unexpected internal server error occurred.' 
+      : err.message
+  });
 });
 
 // Start Express Server

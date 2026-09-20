@@ -1,9 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { z } from 'zod';
 import Inquiry from '../models/Inquiry.js';
 import { sendEmail, contactReceivedTemplate, inquiryStatusTemplate } from '../services/emailService.js';
 
 const router = express.Router();
+
+const inquirySchema = z.object({
+  fullName: z.string().min(1).max(150),
+  email: z.string().email().max(150),
+  subject: z.string().max(250).optional(),
+  message: z.string().max(5000).optional(),
+}).passthrough();
 
 const findInq = async (id, email) => {
   if (mongoose.Types.ObjectId.isValid(id)) {
@@ -13,7 +21,7 @@ const findInq = async (id, email) => {
     const foundById = await Inquiry.findOne({ id: id });
     if (foundById) return foundById;
   }
-  if (email) {
+  if (email && typeof email === 'string') {
     return await Inquiry.findOne({ email: email });
   }
   return null;
@@ -30,7 +38,7 @@ const updateInq = async (id, updateData) => {
     if (updatedById) return updatedById;
   }
 
-  if (updateData.email) {
+  if (updateData.email && typeof updateData.email === 'string') {
     return await Inquiry.findOneAndUpdate(
       { email: updateData.email },
       { ...updateData, updatedAt: new Date() },
@@ -51,6 +59,11 @@ const deleteInq = async (id) => {
 // POST /api/inquiries -> Save Contact/Service Message & Send Confirmation Email
 router.post('/', async (req, res) => {
   try {
+    const validationResult = inquirySchema.safeParse(req.body);
+    if (!validationResult.success) {
+      return res.status(400).json({ success: false, error: 'Invalid input data', details: validationResult.error.errors });
+    }
+
     const inquiry = new Inquiry(req.body);
     const savedInquiry = await inquiry.save();
 
@@ -69,7 +82,7 @@ router.post('/', async (req, res) => {
     res.status(201).json({ success: true, id: savedInquiry._id.toString(), data: savedInquiry });
   } catch (error) {
     console.error('Error saving inquiry:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -83,7 +96,7 @@ router.get('/', async (req, res) => {
     }));
     res.json({ success: true, data: formatted });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -114,7 +127,7 @@ router.put('/:id', async (req, res) => {
 
     res.json({ success: true, data: updated || req.body });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -125,7 +138,7 @@ router.delete('/:id', async (req, res) => {
     await deleteInq(id);
     res.json({ success: true, message: 'Inquiry deleted successfully' });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 

@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
     res.json({ success: true, data: formatted });
   } catch (error) {
     console.error('Error fetching certificates:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -101,7 +101,7 @@ router.post('/issue', async (req, res) => {
     }
   } catch (error) {
     console.error('Error issuing certificate:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -130,7 +130,7 @@ router.put('/:id', async (req, res) => {
     }
   } catch (error) {
     console.error('Error updating certificate:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -142,7 +142,7 @@ router.delete('/:id', async (req, res) => {
     res.json({ success: true, message: 'Certificate deleted successfully' });
   } catch (error) {
     console.error('Error deleting certificate:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
@@ -157,7 +157,7 @@ router.get('/:id', async (req, res) => {
     res.json({ success: true, data: cert });
   } catch (error) {
     console.error('Error looking up certificate:', error);
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: process.env.NODE_ENV === 'production' ? 'Internal server error' : error.message });
   }
 });
 
