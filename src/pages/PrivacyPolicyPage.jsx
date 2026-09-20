@@ -15,7 +15,7 @@ const PrivacyPolicyPage = () => {
               <h4 className="mt-4">2. How We Use Information</h4>
               <p>We use the information we collect to operate, maintain, and improve our services, as well as to communicate with you.</p>
               <h4 className="mt-4">3. Data Security</h4>
-              <p>We implement a variety of security measures to maintain the safety of your personal information. However, no data transmission over the Internet can be guaranteed to be 100% secure.</p>
+              <p>We use commercially reasonable technical and administrative measures designed to secure your personal information from accidental loss and unauthorized access. While we strive to protect your data, no system is completely impenetrable, and we cannot guarantee the absolute security of your information.</p>
               <h4 className="mt-4">4. Updates to this Policy</h4>
               <p>We may update this Privacy Policy from time to time. We encourage users to frequently check this page for any changes.</p>
               <p className="mt-4">For any questions or concerns, please visit our <Link to="/contact">Contact</Link> page.</p>
