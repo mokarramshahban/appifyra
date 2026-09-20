@@ -22,6 +22,18 @@
     <meta name="google-site-verification" content="uInfghlWIgUh3Q3DJgEhOK_S5KRVv8f4y13d5B4R-Ig" />
     <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon"/>
 
+    <!-- Immediate Theme Initialization to prevent FOIT (Flash of Incorrect Theme) -->
+    <script>
+      (function() {
+        try {
+          var storedTheme = localStorage.getItem('appifyra_theme');
+          var systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          var theme = storedTheme ? storedTheme : (systemLight ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- css include -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
