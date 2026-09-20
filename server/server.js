@@ -34,26 +34,28 @@ app.set('trust proxy', 1);
 connectDB();
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }, // ✅ Fixes Vercel/Render cross-domain API blocking
+  crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" } // ✅ Fixes Firebase popup issues if passing through backend
+}));
 app.use(compression()); // ✅ Enable Gzip/Brotli payload compression
 app.use(mongoSanitize()); // Prevent NoSQL Injection by sanitizing '$' and '.' in req.body/params/query
 
-const allowedOrigins = process.env.VITE_URL 
-  ? [process.env.VITE_URL, 'http://localhost:3000'] 
-  : [
-      'http://localhost:3000', 
-      'https://appifyra.com', 
-      'https://www.appifyra.com',
-      'https://appifyra.vercel.app' // Added explicitly to support your Vercel deployment
-    ];
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'https://appifyra.com', 
+  'https://www.appifyra.com',
+  'https://appifyra.vercel.app'
+];
+if (process.env.VITE_URL) allowedOrigins.push(process.env.VITE_URL);
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow if no origin (e.g. server-to-server), if in whitelist, or if dynamically matching a Vercel preview URL
-    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+    // Safely allow CORS: Server-to-server, explicit whitelist, OR any Vercel preview domain
+    if (!origin || allowedOrigins.includes(origin) || String(origin).includes('vercel.app')) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by Strict CORS'));
+      callback(null, false); // Block gracefully instead of throwing 500 error
     }
   },
   credentials: true
