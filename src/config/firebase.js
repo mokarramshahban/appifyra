@@ -2,11 +2,13 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { initializeFirestore, getFirestore } from 'firebase/firestore';
 import { getAnalytics, isSupported } from 'firebase/analytics';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 // Your web app's Firebase configuration loaded securely from environment variables
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  // Hardened Auth Domain prevents default firebaseapp.com redirects for professional SSO
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'auth.appifyra.com',
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
@@ -21,6 +23,21 @@ try {
 } catch (e) {
   console.warn("Firebase App Init Failed:", e);
   app = null;
+}
+
+// Optional Step 3: App Check (ReCaptcha V3) to prevent Auth endpoint bot abuse
+if (app && typeof window !== 'undefined') {
+  try {
+    // Only initialize if a site key is provided in the environment
+    if (import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
+      initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),
+        isTokenAutoRefreshEnabled: true
+      });
+    }
+  } catch (e) {
+    console.warn("Firebase App Check Init Failed:", e);
+  }
 }
 
 let tmpAuth = null;
