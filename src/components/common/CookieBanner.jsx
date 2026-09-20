@@ -37,7 +37,7 @@ const CookieBanner = () => {
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 9999,
-      boxShadow: '0 -2px 10px rgba(0,0,0,0.5)',
+      boxShadow: '0 -2px 10px var(--card-bg)',
       fontFamily: 'inherit'
     }}>
       <div style={{ textAlign: 'center', marginBottom: '12px', fontSize: '14px' }}>

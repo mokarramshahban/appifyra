@@ -403,11 +403,11 @@ export default function AdminDashboardPage() {
       <div className="container">
         {/* Admin Header */}
         <div 
-          className="p-4 p-md-5 mb-5 text-white pos-rel"
+          className="p-4 p-md-5 mb-5 text-main pos-rel"
           style={{
             borderRadius: '24px',
-            background: 'linear-gradient(135deg, rgba(67, 29, 171, 0.6) 0%, rgba(1, 3, 21, 0.98) 100%)',
-            border: '1px solid rgba(174, 109, 254, 0.4)'
+            background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)',
+            border: '1px solid var(--input-border)'
           }}
         >
           <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -415,7 +415,7 @@ export default function AdminDashboardPage() {
               <UserAvatar name={currentUser?.displayName || currentUser?.email || 'Admin'} size={64} borderColor="#4ade80" />
               <div>
                 <span className="badge bg-success mb-1">ADMINISTRATOR CONTROL PANEL</span>
-                <h2 className="text-white mb-0" style={{ fontWeight: '700' }}>Appifyra Admin Portal</h2>
+                <h2 className="text-main mb-0" style={{ fontWeight: '700' }}>Appifyra Admin Portal</h2>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Logged in as: {currentUser?.email}</p>
               </div>
             </div>
@@ -482,32 +482,32 @@ export default function AdminDashboardPage() {
 
         {/* Global Application Edit Overlay */}
         {editingApp && (
-          <div className="p-4 mb-4 text-white" style={{ backgroundColor: 'rgba(67, 29, 171, 0.3)', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '16px' }}>
-            <h4 className="text-white mb-3"><i className="fas fa-edit me-2"></i> Edit Application for {editingApp.fullName}</h4>
+          <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+            <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Application for {editingApp.fullName}</h4>
             <form onSubmit={handleSaveEditApp}>
               <div className="row g-3">
                 <div className="col-md-6">
                   <label className="form-label text-muted">Full Name</label>
-                  <input type="text" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.fullName} onChange={(e) => setAppEditForm({ ...appEditForm, fullName: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.fullName} onChange={(e) => setAppEditForm({ ...appEditForm, fullName: e.target.value })} required />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label text-muted">Email Address</label>
-                  <input type="email" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.email} onChange={(e) => setAppEditForm({ ...appEditForm, email: e.target.value })} required />
+                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.email} onChange={(e) => setAppEditForm({ ...appEditForm, email: e.target.value })} required />
                 </div>
                 <div className="col-md-4">
                   <label className="form-label text-muted">Program Track</label>
-                  <select className="form-select text-white" style={{ backgroundColor: 'var(--color-bg-card)' }} value={appEditForm.duration} onChange={(e) => setAppEditForm({ ...appEditForm, duration: e.target.value })}>
+                  <select className="form-select text-main" style={{ backgroundColor: 'var(--color-bg-card)' }} value={appEditForm.duration} onChange={(e) => setAppEditForm({ ...appEditForm, duration: e.target.value })}>
                     <option value="45-Days">45-Days</option>
                     <option value="6-Months">6-Months</option>
                   </select>
                 </div>
                 <div className="col-md-4">
                   <label className="form-label text-muted">Target Domain</label>
-                  <input type="text" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.domain} onChange={(e) => setAppEditForm({ ...appEditForm, domain: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={appEditForm.domain} onChange={(e) => setAppEditForm({ ...appEditForm, domain: e.target.value })} required />
                 </div>
                 <div className="col-md-4">
                   <label className="form-label text-muted">Application Status</label>
-                  <select className="form-select text-white" style={{ backgroundColor: 'var(--color-bg-card)' }} value={appEditForm.status} onChange={(e) => setAppEditForm({ ...appEditForm, status: e.target.value })}>
+                  <select className="form-select text-main" style={{ backgroundColor: 'var(--color-bg-card)' }} value={appEditForm.status} onChange={(e) => setAppEditForm({ ...appEditForm, status: e.target.value })}>
                     <option value="Under Review">Under Review</option>
                     <option value="Approved">Approved</option>
                     <option value="Rejected">Rejected</option>
@@ -536,25 +536,25 @@ export default function AdminDashboardPage() {
 
         {/* Global Inquiry Edit Overlay */}
         {editingInq && (
-          <div className="p-4 mb-4 text-white" style={{ backgroundColor: 'rgba(67, 29, 171, 0.3)', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '16px' }}>
-            <h4 className="text-white mb-3"><i className="fas fa-edit me-2"></i> Edit Contact Inquiry from {editingInq.fullName}</h4>
+          <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+            <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Contact Inquiry from {editingInq.fullName}</h4>
             <form onSubmit={handleSaveEditInq}>
               <div className="row g-3">
                 <div className="col-md-6">
                   <label className="form-label text-muted">Sender Name</label>
-                  <input type="text" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.fullName} onChange={(e) => setInqEditForm({ ...inqEditForm, fullName: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.fullName} onChange={(e) => setInqEditForm({ ...inqEditForm, fullName: e.target.value })} required />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label text-muted">Sender Email</label>
-                  <input type="email" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.email} onChange={(e) => setInqEditForm({ ...inqEditForm, email: e.target.value })} required />
+                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.email} onChange={(e) => setInqEditForm({ ...inqEditForm, email: e.target.value })} required />
                 </div>
                 <div className="col-12">
                   <label className="form-label text-muted">Subject / Topic</label>
-                  <input type="text" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.subject} onChange={(e) => setInqEditForm({ ...inqEditForm, subject: e.target.value })} required />
+                  <input type="text" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.subject} onChange={(e) => setInqEditForm({ ...inqEditForm, subject: e.target.value })} required />
                 </div>
                 <div className="col-12">
                   <label className="form-label text-muted">Message Body</label>
-                  <textarea rows="3" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.message} onChange={(e) => setInqEditForm({ ...inqEditForm, message: e.target.value })} required></textarea>
+                  <textarea rows="3" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={inqEditForm.message} onChange={(e) => setInqEditForm({ ...inqEditForm, message: e.target.value })} required></textarea>
                 </div>
                 <div className="col-12 mt-3 d-flex gap-2">
                   <button 
@@ -578,13 +578,13 @@ export default function AdminDashboardPage() {
 
         {/* Global Subscriber Edit Overlay */}
         {editingSub && (
-          <div className="p-4 mb-4 text-white" style={{ backgroundColor: 'rgba(67, 29, 171, 0.3)', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '16px' }}>
-            <h4 className="text-white mb-3"><i className="fas fa-edit me-2"></i> Edit Subscriber Email</h4>
+          <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+            <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Subscriber Email</h4>
             <form onSubmit={handleSaveEditSub}>
               <div className="row g-3">
                 <div className="col-md-8">
                   <label className="form-label text-muted">Email Address</label>
-                  <input type="email" className="form-control text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={subEditEmail} onChange={(e) => setSubEditEmail(e.target.value)} required />
+                  <input type="email" className="form-control text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)' }} value={subEditEmail} onChange={(e) => setSubEditEmail(e.target.value)} required />
                 </div>
                 <div className="col-12 d-flex gap-2">
                   <button 
@@ -611,7 +611,7 @@ export default function AdminDashboardPage() {
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Form 1: Hero Quick Apply Submissions</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Form 1: Hero Quick Apply Submissions</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Submissions received directly from the Homepage Hero Quick Form.</p>
               </div>
               <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total: {heroQuickApps.length}</span>
@@ -620,7 +620,7 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : heroQuickApps.length === 0 ? (
-              <div className="p-5 text-center text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
                 <i className="fas fa-inbox mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Hero Quick Submissions Yet</h4>
                 <p className="text-muted">Applications submitted via the homepage Quick Apply form will appear here.</p>
@@ -629,7 +629,7 @@ export default function AdminDashboardPage() {
               <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: '#a5b4fc' }}>
+                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Candidate Name</th>
                       <th>Candidate Email</th>
                       <th>Program Track</th>
@@ -644,12 +644,12 @@ export default function AdminDashboardPage() {
                         <td>
                           <div className="d-flex align-items-center gap-2">
                             <UserAvatar name={app.fullName} size={32} />
-                            <strong className="text-white">{app.fullName}</strong>
+                            <strong className="text-main">{app.fullName}</strong>
                           </div>
                         </td>
                         <td className="text-info">{app.email}</td>
                         <td><span className="badge bg-secondary">{app.duration}</span></td>
-                        <td style={{ color: '#c084fc', fontWeight: '600' }}>{app.domain}</td>
+                        <td style={{ color: 'var(--color-primary-light)', fontWeight: '600' }}>{app.domain}</td>
                         <td>
                           <span className={`badge status-badge-anim ${app.status === 'Approved' ? 'bg-success' : app.status === 'Completed' ? 'bg-info text-dark' : app.status === 'Rejected' ? 'bg-danger' : 'bg-warning text-dark'}`}>
                             {updatingId === app.id ? <i className="fas fa-spinner fa-spin me-1"></i> : null}
@@ -685,7 +685,7 @@ export default function AdminDashboardPage() {
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Form 2: Full Internship Applications</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Form 2: Full Internship Applications</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Detailed candidate applications submitted from the /internship page.</p>
               </div>
               <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total: {fullInternshipApps.length}</span>
@@ -694,7 +694,7 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : fullInternshipApps.length === 0 ? (
-              <div className="p-5 text-center text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
                 <i className="fas fa-user-graduate mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Full Applications Yet</h4>
                 <p className="text-muted">Applications submitted from the Internship Program page will appear here.</p>
@@ -703,7 +703,7 @@ export default function AdminDashboardPage() {
               <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: '#a5b4fc' }}>
+                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Candidate Name</th>
                       <th>Email & Phone</th>
                       <th>University & Degree</th>
@@ -719,7 +719,7 @@ export default function AdminDashboardPage() {
                         <td>
                           <div className="d-flex align-items-center gap-2">
                             <UserAvatar name={app.fullName} size={32} />
-                            <strong className="text-white">{app.fullName}</strong>
+                            <strong className="text-main">{app.fullName}</strong>
                           </div>
                         </td>
                         <td style={{ fontSize: '13px' }}>
@@ -732,11 +732,11 @@ export default function AdminDashboardPage() {
                         </td>
                         <td>
                           <span className="badge bg-secondary me-1">{app.duration}</span>
-                          <div style={{ fontSize: '13px', color: '#c084fc', marginTop: '2px' }}>{app.domain}</div>
+                          <div style={{ fontSize: '13px', color: 'var(--color-primary-light)', marginTop: '2px' }}>{app.domain}</div>
                         </td>
                         <td>
                           {app.resumeUrl ? (
-                            <a href={app.resumeUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: '#38bdf8' }}>
+                            <a href={app.resumeUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: 'var(--color-success)' }}>
                               <i className="fas fa-file-pdf me-1"></i> View Resume
                             </a>
                           ) : (
@@ -778,7 +778,7 @@ export default function AdminDashboardPage() {
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Form 3: Contact & General Inquiries</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Form 3: Contact & General Inquiries</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Inquiry messages submitted from the /contact page form.</p>
               </div>
               <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total: {inquiries.length}</span>
@@ -787,7 +787,7 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : inquiries.length === 0 ? (
-              <div className="p-5 text-center text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
                 <i className="fas fa-envelope-open-text mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Contact Inquiries Yet</h4>
                 <p className="text-muted">Messages submitted via the Contact Us section will appear here.</p>
@@ -796,7 +796,7 @@ export default function AdminDashboardPage() {
               <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: '#a5b4fc' }}>
+                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Sender Name</th>
                       <th>Email Address</th>
                       <th>Subject / Topic</th>
@@ -811,11 +811,11 @@ export default function AdminDashboardPage() {
                         <td>
                           <div className="d-flex align-items-center gap-2">
                             <UserAvatar name={inq.fullName} size={32} />
-                            <strong className="text-white">{inq.fullName}</strong>
+                            <strong className="text-main">{inq.fullName}</strong>
                           </div>
                         </td>
                         <td className="text-info">{inq.email}</td>
-                        <td style={{ color: '#c084fc', fontWeight: '600' }}>{inq.subject}</td>
+                        <td style={{ color: 'var(--color-primary-light)', fontWeight: '600' }}>{inq.subject}</td>
                         <td style={{ fontSize: '13px', maxWidth: '280px' }}>{inq.message}</td>
                         <td className="text-muted" style={{ fontSize: '12px' }}>
                           {inq.createdAt ? new Date(inq.createdAt).toLocaleDateString() : 'Recent'}
@@ -844,16 +844,16 @@ export default function AdminDashboardPage() {
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Community Newsletter & Broadcast Tool</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Community Newsletter & Broadcast Tool</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>View all community subscribers and compose broadcast emails to send to all.</p>
               </div>
               <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total Subscribers: {subscribers.length}</span>
             </div>
 
             {/* Broadcast Newsletter Composer Box */}
-            <div className="p-4 mb-4 text-white" style={{ backgroundColor: 'rgba(67, 29, 171, 0.35)', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '20px' }}>
+            <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '20px' }}>
               <div className="d-flex align-items-center justify-content-between mb-3">
-                <h4 className="text-white mb-0" style={{ fontWeight: '700' }}>
+                <h4 className="text-main mb-0" style={{ fontWeight: '700' }}>
                   <i className="fas fa-bullhorn text-warning me-2"></i> Send Broadcast Newsletter to All Subscribers
                 </h4>
                 <span className="badge bg-success" style={{ fontSize: '12px' }}>
@@ -870,10 +870,10 @@ export default function AdminDashboardPage() {
               <form onSubmit={handleSendBroadcast}>
                 <div className="row g-3">
                   <div className="col-12">
-                    <label className="form-label text-white-50 mb-1" style={{ fontSize: '13px' }}>Newsletter Subject Line *</label>
+                    <label className="form-label text-main-50 mb-1" style={{ fontSize: '13px' }}>Newsletter Subject Line *</label>
                     <input 
                       type="text"
-                      className="form-control text-white"
+                      className="form-control text-main"
                       style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
                       placeholder="e.g. 📢 New Tech Cohorts Open & Industry Updates"
                       value={newsletterSubject}
@@ -883,9 +883,9 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <div className="col-12">
-                    <label className="form-label text-white-50 mb-1" style={{ fontSize: '13px' }}>Newsletter Message Content (HTML or Text) *</label>
+                    <label className="form-label text-main-50 mb-1" style={{ fontSize: '13px' }}>Newsletter Message Content (HTML or Text) *</label>
                     <textarea 
-                      className="form-control text-white"
+                      className="form-control text-main"
                       rows={4}
                       style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border-light)', borderRadius: '10px', fontSize: '14px' }}
                       placeholder="Type your announcement, newsletter content, or update message here..."
@@ -916,7 +916,7 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={4} cols={3} />
             ) : subscribers.length === 0 ? (
-              <div className="p-5 text-center text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
                 <i className="fas fa-paper-plane mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Newsletter Subscribers Yet</h4>
                 <p className="text-muted">Emails submitted via the footer "Stay Updated" form will appear here.</p>
@@ -925,7 +925,7 @@ export default function AdminDashboardPage() {
               <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: '#a5b4fc' }}>
+                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Subscriber Email</th>
                       <th>Subscribed Date</th>
                       <th style={{ minWidth: '180px' }}>Actions Control</th>
@@ -965,7 +965,7 @@ export default function AdminDashboardPage() {
           <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Issued Certificates Management</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Issued Certificates Management</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>View, update student info/grade, or delete issued certificate records.</p>
               </div>
               <span className="badge bg-info text-dark px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {issuedCerts.length}</span>
@@ -973,15 +973,15 @@ export default function AdminDashboardPage() {
 
             {/* Edit Certificate Form Overlay */}
             {editingCert && (
-              <div className="p-4 mb-4 text-white" style={{ backgroundColor: 'rgba(67, 29, 171, 0.3)', border: '1px solid rgba(174, 109, 254, 0.4)', borderRadius: '16px' }}>
-                <h4 className="text-white mb-3"><i className="fas fa-edit me-2"></i> Update Certificate: {editingCert.certificateId}</h4>
+              <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+                <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Update Certificate: {editingCert.certificateId}</h4>
                 <form onSubmit={handleSaveEditCert}>
                   <div className="row g-3">
                     <div className="col-md-6">
                       <label className="form-label text-muted">Student Name</label>
                       <input 
                         type="text" 
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)' }}
                         value={certEditForm.studentName}
                         onChange={(e) => setCertEditForm({ ...certEditForm, studentName: e.target.value })}
@@ -992,7 +992,7 @@ export default function AdminDashboardPage() {
                       <label className="form-label text-muted">Student Email</label>
                       <input 
                         type="email" 
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)' }}
                         value={certEditForm.studentEmail}
                         onChange={(e) => setCertEditForm({ ...certEditForm, studentEmail: e.target.value })}
@@ -1003,7 +1003,7 @@ export default function AdminDashboardPage() {
                       <label className="form-label text-muted">Program Domain Title</label>
                       <input 
                         type="text" 
-                        className="form-control text-white"
+                        className="form-control text-main"
                         style={{ backgroundColor: 'var(--color-bg-card-elevated)' }}
                         value={certEditForm.domain}
                         onChange={(e) => setCertEditForm({ ...certEditForm, domain: e.target.value })}
@@ -1013,7 +1013,7 @@ export default function AdminDashboardPage() {
                     <div className="col-md-6">
                       <label className="form-label text-muted">Performance Grade</label>
                       <select 
-                        className="form-select text-white" 
+                        className="form-select text-main" 
                         style={{ backgroundColor: 'var(--color-bg-card)' }} 
                         value={certEditForm.performanceGrade} 
                         onChange={(e) => setCertEditForm({ ...certEditForm, performanceGrade: e.target.value })}
@@ -1044,7 +1044,7 @@ export default function AdminDashboardPage() {
             {loading ? (
               <TableSkeleton rows={5} cols={6} />
             ) : issuedCerts.length === 0 ? (
-              <div className="p-5 text-center text-white" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
+              <div className="p-5 text-center text-main" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px' }}>
                 <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '38px' }}></i>
                 <h4>No Issued Certificates Found</h4>
                 <p className="text-muted">Certificates issued to completed students will appear here.</p>
@@ -1053,7 +1053,7 @@ export default function AdminDashboardPage() {
               <div className="table-responsive" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
                 <table className="table table-dark table-hover mb-0 align-middle">
                   <thead>
-                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: '#a5b4fc' }}>
+                    <tr style={{ backgroundColor: 'var(--color-bg-card-elevated)', fontSize: '13px', color: 'var(--color-text-muted)' }}>
                       <th>Certificate ID</th>
                       <th>Student Name</th>
                       <th>Student Email</th>
@@ -1070,11 +1070,11 @@ export default function AdminDashboardPage() {
                         <td>
                           <div className="d-flex align-items-center gap-2">
                             <UserAvatar name={cert.studentName} size={32} />
-                            <strong className="text-white">{cert.studentName}</strong>
+                            <strong className="text-main">{cert.studentName}</strong>
                           </div>
                         </td>
                         <td className="text-info">{cert.studentEmail}</td>
-                        <td style={{ color: '#c084fc', fontWeight: '600' }}>{cert.courseTitle || cert.domain}</td>
+                        <td style={{ color: 'var(--color-primary-light)', fontWeight: '600' }}>{cert.courseTitle || cert.domain}</td>
                         <td><span className="badge bg-primary">{cert.performanceGrade || cert.grade || 'Excellence (A+)'}</span></td>
                         <td className="text-muted" style={{ fontSize: '12px' }}>{cert.issueDate || 'Recent'}</td>
                         <td>
@@ -1104,28 +1104,28 @@ export default function AdminDashboardPage() {
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div 
-                className="p-4 p-md-5 text-white pos-rel"
+                className="p-4 p-md-5 text-main pos-rel"
                 style={{
                   borderRadius: '24px',
-                  border: '1px solid rgba(74, 222, 128, 0.4)',
+                  border: '1px solid var(--card-bg)',
                   backgroundColor: 'rgba(9, 5, 54, 0.9)',
-                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)'
+                  boxShadow: '0 20px 50px var(--card-bg)'
                 }}
               >
-                <div className="d-flex align-items-center justify-content-between mb-4 pb-3" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                <div className="d-flex align-items-center justify-content-between mb-4 pb-3" style={{ borderBottom: '1px solid var(--card-border)' }}>
                   <div>
                     <span className="badge bg-success mb-1">OFFICIAL ISSUANCE TOOL</span>
-                    <h3 className="text-white mb-0" style={{ fontWeight: '700' }}>Issue New Internship Certificate</h3>
+                    <h3 className="text-main mb-0" style={{ fontWeight: '700' }}>Issue New Internship Certificate</h3>
                   </div>
                   <i className="fas fa-certificate text-success" style={{ fontSize: '36px' }}></i>
                 </div>
 
                 {certSubmitted ? (
-                  <div className="p-4 text-center" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', borderRadius: '16px', border: '1px solid rgba(74, 222, 128, 0.4)' }}>
-                    <i className="fas fa-check-circle mb-3" style={{ fontSize: '48px', color: '#4ade80' }}></i>
-                    <h3 className="text-white">Certificate Issued & Email Dispatched Successfully!</h3>
+                  <div className="p-4 text-center" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', borderRadius: '16px', border: '1px solid var(--card-bg)' }}>
+                    <i className="fas fa-check-circle mb-3" style={{ fontSize: '48px', color: 'var(--color-success)' }}></i>
+                    <h3 className="text-main">Certificate Issued & Email Dispatched Successfully!</h3>
                     <p className="text-muted mt-2">
-                      Certificate ID <strong className="text-warning">{certForm.certificateId}</strong> has been issued to <strong className="text-white">{certForm.studentName}</strong> ({certForm.studentEmail}) and stored in MongoDB. An automated notification email was sent via EmailJS.
+                      Certificate ID <strong className="text-warning">{certForm.certificateId}</strong> has been issued to <strong className="text-main">{certForm.studentName}</strong> ({certForm.studentEmail}) and stored in MongoDB. An automated notification email was sent via EmailJS.
                     </p>
                     <div className="d-flex justify-content-center gap-3 mt-4">
                       <a 
@@ -1174,7 +1174,7 @@ export default function AdminDashboardPage() {
                         <label className="form-label text-muted">Issue Date *</label>
                         <input 
                           type="text" 
-                          className="form-control text-white"
+                          className="form-control text-main"
                           style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={certForm.issueDate}
                           onChange={(e) => setCertForm({ ...certForm, issueDate: e.target.value })}
@@ -1186,7 +1186,7 @@ export default function AdminDashboardPage() {
                         <label className="form-label text-muted">Student Candidate Name *</label>
                         <input 
                           type="text" 
-                          className="form-control text-white"
+                          className="form-control text-main"
                           placeholder="Enter candidate full name"
                           style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={certForm.studentName}
@@ -1199,7 +1199,7 @@ export default function AdminDashboardPage() {
                         <label className="form-label text-muted">Student Email Address *</label>
                         <input 
                           type="email" 
-                          className="form-control text-white"
+                          className="form-control text-main"
                           placeholder="candidate@gmail.com"
                           style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={certForm.studentEmail}
@@ -1212,7 +1212,7 @@ export default function AdminDashboardPage() {
                         <label className="form-label text-muted">Program Track / Domain Title *</label>
                         <input 
                           type="text" 
-                          className="form-control text-white"
+                          className="form-control text-main"
                           placeholder="e.g. Web Development (45-Days)"
                           style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
                           value={certForm.domain}
@@ -1224,7 +1224,7 @@ export default function AdminDashboardPage() {
                       <div className="col-md-6">
                         <label className="form-label text-muted">Performance Grade *</label>
                         <select 
-                          className="form-select text-white"
+                          className="form-select text-main"
                           style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--color-border-light)', borderRadius: '10px' }}
                           value={certForm.grade}
                           onChange={(e) => setCertForm({ ...certForm, grade: e.target.value })}

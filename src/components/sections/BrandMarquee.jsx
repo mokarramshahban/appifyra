@@ -16,16 +16,16 @@ export default function BrandMarquee() {
   const rightLoop = [...rightBrands, ...rightBrands];
 
   return (
-    <section className="brand py-5 overflow-hidden pos-rel" style={{ backgroundColor: 'var(--color-bg-dark)', borderTop: '1px solid rgba(255, 255, 255, 0.05)', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+    <section className="brand py-5 overflow-hidden pos-rel" style={{ backgroundColor: 'var(--section-bg)', borderTop: '1px solid var(--input-bg)', borderBottom: '1px solid var(--input-bg)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-4">
           <span 
             className="badge px-3 py-2 mb-2"
             style={{
-              backgroundColor: 'rgba(174, 109, 254, 0.12)',
-              color: '#ae6dfe',
-              border: '1px solid rgba(174, 109, 254, 0.25)',
+              backgroundColor: 'var(--badge-bg)',
+              color: 'var(--badge-text)',
+              border: '1px solid var(--badge-bg)',
               borderRadius: '20px',
               fontSize: '13px',
               fontWeight: '600'
@@ -33,7 +33,7 @@ export default function BrandMarquee() {
           >
             GLOBAL TRUSTED PARTNERS
           </span>
-          <h3 className="text-white mb-1" style={{ fontWeight: '700', fontSize: '26px' }}>
+          <h3 className="text-main mb-1" style={{ fontWeight: '700', fontSize: '26px' }}>
             50+ Clients & Tech Partners Worldwide
           </h3>
           <p className="text-muted mb-0" style={{ fontSize: '14px' }}>
@@ -57,8 +57,8 @@ export default function BrandMarquee() {
               className="cs-brand-item px-3" 
               key={`left-${idx}`}
               style={{
-                backgroundColor: 'var(--color-bg-card-elevated)',
-                border: '1px solid var(--color-border)',
+                backgroundColor: 'var(--input-bg)',
+                border: '1px solid var(--input-border)',
                 borderRadius: '16px',
                 padding: '16px 28px',
                 display: 'flex',
@@ -82,8 +82,8 @@ export default function BrandMarquee() {
               className="cs-brand-item px-3" 
               key={`right-${idx}`}
               style={{
-                backgroundColor: 'var(--color-bg-card-elevated)',
-                border: '1px solid var(--color-border)',
+                backgroundColor: 'var(--input-bg)',
+                border: '1px solid var(--input-border)',
                 borderRadius: '16px',
                 padding: '16px 28px',
                 display: 'flex',

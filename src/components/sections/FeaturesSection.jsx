@@ -37,7 +37,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="cs-feature pos-rel pt-100 pb-80 z-1" style={{ backgroundColor: 'var(--color-bg-dark)' }}>
+    <section className="cs-feature pos-rel pt-100 pb-80 z-1" style={{ backgroundColor: 'var(--section-bg)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="sec-title--two sec-title--three text-center mb-50">
@@ -45,8 +45,8 @@ export default function FeaturesSection() {
             <img src="/assets/img/icon/magic02.svg" alt="Magic Icon" style={{ width: '16px', marginRight: '6px' }} />
             <span>ENGINEERING EXCELLENCE</span>
           </span>
-          <h2 className="title text-white mb-2" style={{ fontWeight: '800' }}>Engineered for Performance & Scalability</h2>
-          <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: '#9da1b4', fontSize: '15px' }}>
+          <h2 className="title text-main mb-2" style={{ fontWeight: '800' }}>Engineered for Performance & Scalability</h2>
+          <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: 'var(--color-text-muted)', fontSize: '15px' }}>
             Our core technology Pillars drive digital transformation for startups, enterprises, and university students worldwide.
           </p>
         </div>
@@ -55,9 +55,9 @@ export default function FeaturesSection() {
           {features.map((feature, idx) => (
             <div className="col-lg-3 col-md-6" key={idx}>
               <div 
-                className="service-hover-card p-4 h-100 pos-rel d-flex flex-column justify-content-between text-white"
+                className="service-hover-card p-4 h-100 pos-rel d-flex flex-column justify-content-between text-main"
                 style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.025)',
+                  backgroundColor: 'var(--card-bg)',
                   border: '1px solid var(--color-border)',
                   borderRadius: '20px',
                   boxShadow: `0 10px 30px ${feature.glow}`
@@ -69,7 +69,7 @@ export default function FeaturesSection() {
                       className="service-icon-box p-3 d-flex align-items-center justify-content-center"
                       style={{
                         borderRadius: '16px',
-                        backgroundColor: 'var(--color-bg-card-elevated)',
+                        backgroundColor: 'var(--input-bg)',
                         border: '1px solid var(--color-border)',
                         width: '56px',
                         height: '56px'
@@ -80,7 +80,7 @@ export default function FeaturesSection() {
                     <span className="font-monospace text-muted" style={{ fontSize: '18px', fontWeight: '700' }}>{feature.id}</span>
                   </div>
 
-                  <h3 className="text-white mb-3" style={{ fontSize: '19px', fontWeight: '700', lineHeight: '1.3' }}>
+                  <h3 className="text-main mb-3" style={{ fontSize: '19px', fontWeight: '700', lineHeight: '1.3' }}>
                     {feature.title}
                   </h3>
                   <p className="text-muted mb-4" style={{ fontSize: '13px', lineHeight: '1.6' }}>
@@ -88,17 +88,17 @@ export default function FeaturesSection() {
                   </p>
                 </div>
 
-                <div className="d-flex flex-wrap gap-2 pt-3" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                <div className="d-flex flex-wrap gap-2 pt-3" style={{ borderTop: '1px solid var(--card-bg)' }}>
                   {feature.tags.map((tag, tIdx) => (
                     <span 
                       key={tIdx}
                       style={{
-                        backgroundColor: 'rgba(103, 128, 210, 0.12)',
-                        color: '#a5b4fc',
+                        backgroundColor: 'var(--badge-bg)',
+                        color: 'var(--badge-text)',
                         padding: '3px 10px',
                         borderRadius: '12px',
                         fontSize: '11px',
-                        border: '1px solid rgba(165, 180, 252, 0.2)'
+                        border: '1px solid var(--input-border)'
                       }}
                     >
                       {tag}

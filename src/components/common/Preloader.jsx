@@ -100,7 +100,7 @@ export default function Preloader() {
           />
         </div>
 
-        <span style={{ color: '#a5b4fc', fontSize: '13px', letterSpacing: '1.5px', textTransform: 'uppercase', fontWeight: '600' }}>
+        <span style={{ color: 'var(--color-text-muted)', fontSize: '13px', letterSpacing: '1.5px', textTransform: 'uppercase', fontWeight: '600' }}>
           Loading Appifyra...
         </span>
       </div>

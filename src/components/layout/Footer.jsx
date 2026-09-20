@@ -31,7 +31,7 @@ export default function Footer() {
   return (
     <footer 
       className="footer bg_img footer-style-two footer-style-three pt-120 pos-rel" 
-      style={{ backgroundColor: 'var(--color-bg-dark)', backgroundImage: 'url(/assets/img/bg/footer_overly.png)' }}
+      style={{ backgroundColor: 'var(--section-bg)', backgroundImage: 'url(/assets/img/bg/footer_overly.png)' }}
     >
       <div className="container">
         <div className="xb-footer">
@@ -104,13 +104,13 @@ export default function Footer() {
                 />
 
                 {errorMsg && (
-                  <p style={{ color: '#f87171', fontSize: '12px', marginTop: '4px' }}>
+                  <p style={{ color: 'var(--color-error)', fontSize: '12px', marginTop: '4px' }}>
                     {errorMsg}
                   </p>
                 )}
 
                 {submitted && (
-                  <p style={{ color: '#4ade80', fontSize: '13px', marginTop: '8px' }}>
+                  <p style={{ color: 'var(--color-success)', fontSize: '13px', marginTop: '8px' }}>
                     Thank you for subscribing!
                   </p>
                 )}
@@ -121,9 +121,9 @@ export default function Footer() {
           <div className="footer-copyright mt-50 ul_li_between border-top border-secondary pt-4 pb-4">
             <p className="copyright mb-0">Copyright © 2025 <Link to="/">Appifyra</Link>. All rights reserved.</p>
             <div className="legal-links d-flex align-items-center gap-3">
-              <Link to="/privacy-policy" style={{ fontSize: '14px', color: '#a0a0a0' }}>Privacy Policy</Link>
-              <Link to="/terms-of-service" style={{ fontSize: '14px', color: '#a0a0a0' }}>Terms of Service</Link>
-              <Link to="/cookie-policy" style={{ fontSize: '14px', color: '#a0a0a0' }}>Cookie Policy</Link>
+              <Link to="/privacy-policy" style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>Privacy Policy</Link>
+              <Link to="/terms-of-service" style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>Terms of Service</Link>
+              <Link to="/cookie-policy" style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>Cookie Policy</Link>
             </div>
           </div>
         </div>

@@ -123,13 +123,13 @@ export default function Header() {
                           border: '1px solid rgba(174, 109, 254, 0.3)',
                           borderRadius: '12px',
                           padding: '10px 0',
-                          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)',
+                          boxShadow: '0 10px 30px var(--card-bg)',
                           zIndex: 9999
                         }}
                       >
                         <li>
                           <Link to="/verify" className="py-2 px-3 text-main d-flex align-items-center gap-2">
-                            <i className="fas fa-certificate" style={{ color: '#38bdf8' }}></i>
+                            <i className="fas fa-certificate" style={{ color: 'var(--color-success)' }}></i>
                             <span>Verify Certificate</span>
                           </Link>
                         </li>
@@ -191,14 +191,14 @@ export default function Header() {
                           top: 'calc(100% + 10px)',
                           right: 0,
                           minWidth: '220px',
-                          backgroundColor: 'var(--color-bg-card)',
-                          border: '1px solid rgba(174, 109, 254, 0.4)',
+                          backgroundColor: 'var(--card-bg)',
+                          border: '1px solid var(--card-border)',
                           borderRadius: '16px',
                           boxShadow: '0 15px 35px rgba(0, 0, 0, 0.7)',
                           zIndex: 9999
                         }}
                       >
-                        <div className="pb-2 mb-2 d-flex align-items-center gap-2" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <div className="pb-2 mb-2 d-flex align-items-center gap-2" style={{ borderBottom: '1px solid var(--color-border)' }}>
                           <UserAvatar name={currentUser.displayName || currentUser.email} size={32} />
                           <div style={{ overflow: 'hidden' }}>
                             <div style={{ fontSize: '13px', fontWeight: '600' }}>{currentUser.displayName}</div>
@@ -217,7 +217,7 @@ export default function Header() {
                               <span>{isAdmin ? "Admin Panel" : "My Dashboard"}</span>
                             </Link>
                           </li>
-                          <li className="pt-2" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                          <li className="pt-2" style={{ borderTop: '1px solid var(--color-border)' }}>
                             <button 
                               onClick={logout} 
                               className="btn btn-sm btn-outline-danger w-100 text-start d-flex align-items-center gap-2"
@@ -235,7 +235,7 @@ export default function Header() {
                     onClick={loginWithGoogle} 
                     className="btn btn-sm text-main" 
                     style={{
-                      background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
+                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
                       borderRadius: '20px',
                       fontSize: '13px',
                       fontWeight: '600',
@@ -277,7 +277,7 @@ export default function Header() {
                 <button 
                   onClick={loginWithGoogle} 
                   className="btn btn-sm text-main me-2" 
-                  style={{ background: '#431DAB', borderRadius: '15px', fontSize: '11px' }}
+                  style={{ background: 'var(--color-primary)', borderRadius: '15px', fontSize: '11px' }}
                 >
                   Sign In
                 </button>

@@ -44,7 +44,6 @@
   --color-bg-card: #ffffff;
   --color-bg-card-elevated: #f1f5f9;
   --color-glassmorphism: rgba(255, 255, 255, 0.85);
-  --color-glassmorphism: rgba(6, 8, 19, 0.80);
   --color-text-main: #0f172a;
   --color-text-muted: #475569;
   --color-border: #cbd5e1;
@@ -353,44 +352,7 @@ html, body {
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   LAYOUT & NAVBAR REFACTOR (GLASSMORPHISM)
-   ────────────────────────────────────────────────────────────────────────── */
-.stricked-menu, .header-area {
-  background-color: var(--color-glassmorphism) !important;
-  backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.stricked-menu .main-menu ul li a, .header-area .main-menu ul li a {
-  color: var(--color-text-main) !important;
-}
-
-/* Prevent footer overly dark texture in light mode */
-[data-theme="light"] .footer {
-  background-image: none !important;
-}
-
-[data-theme="light"] .stricked-menu, [data-theme="light"] .header-area {
-  background-color: var(--color-glassmorphism) !important;
-}
-
-/* Invert White Logo against Light Headers */
-[data-theme="light"] .header-logo img {
-  filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.2);
-}
-
-/* Hardcoded Template Sub-Section Overrides */
-.service-style-three, .contact-area, .about-area {
-  background-color: var(--color-bg-dark) !important;
-  background-image: none !important;
-}
-.hero-style-two {
-  background-color: var(--color-bg-dark) !important;
-  background-image: none !important;
-}
-
-/* Component Tokens */
+/* Component Tokens & Theme Standardization */
 :root, [data-theme="dark"] {
   --header-bg: rgba(6, 8, 19, 0.80);
   --header-border: rgba(30, 41, 59, 0.8);
@@ -414,17 +376,21 @@ html, body {
   --card-bg: #ffffff;
   --card-border: rgba(226, 232, 240, 0.9);
   --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --section-bg: #f1f5f9;
+  --section-bg: #f8fafc;
   --badge-bg: #e0e7ff;
   --badge-text: #3730a3;
   --input-bg: #f8fafc;
   --input-border: #cbd5e1;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   LAYOUT & NAVBAR REFACTOR (GLASSMORPHISM)
+   ────────────────────────────────────────────────────────────────────────── */
 .stricked-menu, .header-area {
   background-color: var(--header-bg) !important;
   backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid var(--header-border) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .stricked-menu .main-menu ul li a, .header-area .main-menu ul li a {
@@ -435,7 +401,35 @@ html, body {
   color: var(--nav-text-hover) !important;
 }
 
+/* Invert White Logo against Light Headers */
+[data-theme="light"] .header-logo img {
+  filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.2);
+}
+
+/* Hardcoded Template Sub-Section Overrides */
+.service-style-three, .contact-area, .about-area, .hero-style-two, .brand-area, .footer, .cta-area {
+  background-color: var(--section-bg) !important;
+  background-image: none !important;
+  transition: background-color 0.3s ease;
+}
+
 /* Base resets */
 .text-white { color: var(--color-text-main) !important; }
 .bg-dark { background-color: var(--color-bg-dark) !important; }
 .text-main { color: var(--color-text-main) !important; }
+
+/* Global Form Resets to ensure readability across themes */
+input, textarea, select {
+  background-color: var(--input-bg) !important;
+  border: 1px solid var(--input-border) !important;
+  color: var(--color-text-main) !important;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: var(--focus-ring) !important;
+}
+
+/* Invert Client Logos in Light Mode */
+[data-theme="light"] .cs-brand-item img {
+  filter: invert(1) hue-rotate(180deg) brightness(0.6) contrast(1.2) !important;
+}

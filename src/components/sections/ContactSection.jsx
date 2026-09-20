@@ -86,25 +86,25 @@ export default function ContactSection() {
     <section 
       id="contact" 
       className="contact pt-140 pb-100 pos-rel" 
-      style={{ backgroundColor: 'var(--color-bg-dark)' }}
+      style={{ backgroundColor: 'var(--section-bg)' }}
     >
       <div className="container">
         <div 
           className="pos-rel p-4 p-md-5" 
           style={{
-            backgroundColor: 'rgba(9, 5, 54, 0.65)',
+            backgroundColor: 'var(--card-bg)',
             borderRadius: '24px',
-            border: '1px solid rgba(174, 109, 254, 0.3)'
+            border: '1px solid var(--input-border)'
           }}
         >
           <div className="row align-items-stretch g-4">
             {/* Contact Details & Info */}
             <div className="col-lg-5">
               <div 
-                className="p-4 p-md-5 text-white h-100 d-flex flex-column justify-content-between"
+                className="p-4 p-md-5 text-main h-100 d-flex flex-column justify-content-between"
                 style={{
-                  backgroundColor: 'var(--color-bg-card-elevated)',
-                  border: '1px solid var(--color-border)',
+                  backgroundColor: 'var(--input-bg)',
+                  border: '1px solid var(--input-border)',
                   borderRadius: '20px'
                 }}
               >
@@ -112,19 +112,19 @@ export default function ContactSection() {
                   <span className="badge bg-primary mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
                     <i className="fas fa-paper-plane me-1"></i> Get In Touch
                   </span>
-                  <h2 className="text-white mb-3" style={{ fontWeight: '800', fontSize: '36px' }}>Let's Connect</h2>
+                  <h2 className="text-main mb-3" style={{ fontWeight: '800', fontSize: '36px' }}>Let's Connect</h2>
                   <p className="text-muted mb-4" style={{ fontSize: '14px', lineHeight: '1.6' }}>
                     Have a project in mind or questions about our internship programs & digital services? Reach out to us directly or send an inquiry.
                   </p>
                   
                   <div className="d-flex flex-column gap-3 mb-4">
-                    <div className="d-flex align-items-center gap-3 p-3" style={{ backgroundColor: 'var(--color-bg-card-elevated)', borderRadius: '12px', border: '1px solid var(--color-border)' }}>
+                    <div className="d-flex align-items-center gap-3 p-3" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '12px', border: '1px solid var(--input-border)' }}>
                       <div className="d-flex align-items-center justify-content-center bg-info text-dark rounded-circle" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
                         <i className="fas fa-envelope"></i>
                       </div>
                       <div>
                         <span className="text-muted d-block" style={{ fontSize: '12px' }}>Email Address</span>
-                        <strong className="text-white" style={{ fontSize: '15px' }}>appifyra@gmail.com</strong>
+                        <strong className="text-main" style={{ fontSize: '15px' }}>appifyra@gmail.com</strong>
                       </div>
                     </div>
                   </div>
@@ -137,12 +137,12 @@ export default function ContactSection() {
               <div 
                 className="p-4 p-md-5 h-100"
                 style={{
-                  backgroundColor: 'var(--color-bg-card-elevated)',
-                  border: '1px solid var(--color-border)',
+                  backgroundColor: 'var(--input-bg)',
+                  border: '1px solid var(--input-border)',
                   borderRadius: '20px'
                 }}
               >
-                <h3 className="text-white mb-1" style={{ fontWeight: '700' }}>Send Us a Message</h3>
+                <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Send Us a Message</h3>
                 <p className="text-muted mb-4" style={{ fontSize: '14px' }}>Verified identity required via Google Sign-In.</p>
 
                 {/* Login Banner when Logged Out */}
@@ -151,18 +151,18 @@ export default function ContactSection() {
                     className="p-3 mb-4 text-center"
                     style={{
                       backgroundColor: 'rgba(67, 29, 171, 0.25)',
-                      border: '1px solid rgba(174, 109, 254, 0.4)',
+                      border: '1px solid var(--input-border)',
                       borderRadius: '12px'
                     }}
                   >
-                    <p className="text-white mb-2" style={{ fontSize: '14px', fontWeight: '500' }}>
+                    <p className="text-main mb-2" style={{ fontSize: '14px', fontWeight: '500' }}>
                       Sign in with Google to enable message sending
                     </p>
                     <button 
                       type="button"
                       onClick={loginWithGoogle}
-                      className="btn btn-sm text-white px-4 py-2"
-                      style={{ background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)', borderRadius: '8px', fontWeight: '600' }}
+                      className="btn btn-sm text-main px-4 py-2"
+                      style={{ background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', borderRadius: '8px', fontWeight: '600' }}
                     >
                       <i className="fab fa-google me-2"></i> Sign In with Google
                     </button>
@@ -171,10 +171,10 @@ export default function ContactSection() {
 
                 {/* Verified User Badge when Logged In */}
                 {currentUser && (
-                  <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'rgba(74, 222, 128, 0.1)', border: '1px solid rgba(74, 222, 128, 0.3)', borderRadius: '12px' }}>
+                  <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: '12px' }}>
                     <div className="d-flex align-items-center gap-2">
                       <UserAvatar name={currentUser.displayName || currentUser.email} size={32} borderColor="#4ade80" />
-                      <span className="text-white" style={{ fontSize: '14px', fontWeight: '600' }}>{currentUser.displayName} ({currentUser.email})</span>
+                      <span className="text-main" style={{ fontSize: '14px', fontWeight: '600' }}>{currentUser.displayName} ({currentUser.email})</span>
                     </div>
                     <span className="badge bg-success" style={{ fontSize: '11px' }}>Verified</span>
                   </div>
@@ -184,13 +184,13 @@ export default function ContactSection() {
                   <div 
                     className="p-4 text-center"
                     style={{
-                      backgroundColor: 'rgba(74, 222, 128, 0.1)',
-                      border: '1px solid rgba(74, 222, 128, 0.4)',
+                      backgroundColor: 'var(--card-bg)',
+                      border: '1px solid var(--card-bg)',
                       borderRadius: '16px'
                     }}
                   >
-                    <i className="fas fa-paper-plane mb-3" style={{ fontSize: '42px', color: '#4ade80' }}></i>
-                    <h4 className="text-white">Message Sent Successfully!</h4>
+                    <i className="fas fa-paper-plane mb-3" style={{ fontSize: '42px', color: 'var(--color-success)' }}></i>
+                    <h4 className="text-main">Message Sent Successfully!</h4>
                     <p className="text-muted mt-2">
                       Thank you, <strong>{formData.fullName}</strong>. Your message has been saved to database and sent to <strong>appifyra@gmail.com</strong>.
                     </p>
@@ -219,8 +219,8 @@ export default function ContactSection() {
                         <input 
                           type="text" 
                           name="fullName"
-                          className="form-control text-white"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          className="form-control text-main"
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={formData.fullName}
                           onChange={handleChange}
                           required
@@ -233,8 +233,8 @@ export default function ContactSection() {
                         <input 
                           type="email" 
                           name="email"
-                          className="form-control text-white"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          className="form-control text-main"
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={formData.email}
                           onChange={handleChange}
                           required
@@ -247,8 +247,8 @@ export default function ContactSection() {
                         <input 
                           type="text" 
                           name="subject"
-                          className="form-control text-white"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          className="form-control text-main"
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={formData.subject}
                           onChange={handleChange}
                           required
@@ -261,8 +261,8 @@ export default function ContactSection() {
                         <textarea 
                           name="message"
                           rows="4"
-                          className="form-control text-white"
-                          style={{ backgroundColor: 'var(--color-bg-card-elevated)', border: '1px solid var(--color-border)', borderRadius: '10px' }}
+                          className="form-control text-main"
+                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
                           value={formData.message}
                           onChange={handleChange}
                           required
@@ -286,7 +286,7 @@ export default function ContactSection() {
                             disabled={isSubmitting}
                             className="btn btn-lg w-100"
                             style={{
-                              background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
+                              background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
                               color: 'var(--color-text-main)',
                               fontWeight: '700',
                               padding: '14px',

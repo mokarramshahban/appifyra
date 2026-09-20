@@ -54,10 +54,10 @@ export default function CertificateVerificationPage() {
             <img src="/assets/img/icon/check-mark.png" alt="Verification Shield" style={{ width: '18px', height: '18px', marginRight: '6px' }} />
             <span>Official Credential Registry</span>
           </span>
-          <h2 className="title text-white">
+          <h2 className="title text-main">
             Verify Certificate Credibility
           </h2>
-          <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: '#9da1b4' }}>
+          <p className="content mt-15" style={{ maxWidth: '680px', margin: '0 auto', color: 'var(--color-text-muted)' }}>
             Enter your unique Appifyra Certificate ID below to verify authenticity, candidate details, student email identity, internship domain, and completion grade.
           </p>
         </div>
@@ -65,26 +65,26 @@ export default function CertificateVerificationPage() {
         {/* Verification Form Box */}
         <div className="row justify-content-center">
           <div className="col-lg-10">
-            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--color-border)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, rgba(1, 3, 21, 0.95) 100%)' }}>
+            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--color-border)', background: 'linear-gradient(135deg, rgba(9, 5, 54, 0.9) 0%, var(--section-bg) 100%)' }}>
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleVerify();
                 }}
               >
-                <label className="text-white mb-2" style={{ fontWeight: '500' }}>
+                <label className="text-main mb-2" style={{ fontWeight: '500' }}>
                   Certificate ID / Serial Number:
                 </label>
                 <div className="input-group mb-3">
                   <input
                     type="text"
-                    className="form-control text-white"
+                    className="form-control text-main"
                     placeholder="e.g. APP-2026-001"
                     value={searchId}
                     onChange={(e) => setSearchId(e.target.value)}
                     style={{
                       backgroundColor: 'var(--color-bg-card-elevated)',
-                      border: '1px solid rgba(103, 128, 210, 0.4)',
+                      border: '1px solid var(--card-border)',
                       borderRadius: '10px 0 0 10px',
                       padding: '14px 20px',
                       fontSize: '16px',
@@ -96,7 +96,7 @@ export default function CertificateVerificationPage() {
                     disabled={loading}
                     className="btn"
                     style={{
-                      background: 'linear-gradient(90deg, #431DAB 0%, #AE6DFE 100%)',
+                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
                       color: 'var(--color-text-main)',
                       padding: '0 30px',
                       fontWeight: '600',
@@ -118,8 +118,8 @@ export default function CertificateVerificationPage() {
                     className="btn btn-sm"
                     style={{
                       backgroundColor: 'rgba(103, 128, 210, 0.15)',
-                      color: '#a5b4fc',
-                      border: '1px solid rgba(165, 180, 252, 0.25)',
+                      color: 'var(--color-text-muted)',
+                      border: '1px solid var(--card-bg)',
                       borderRadius: '6px',
                       fontSize: '12px'
                     }}
@@ -131,7 +131,7 @@ export default function CertificateVerificationPage() {
                   <button
                     onClick={handleClear}
                     className="btn btn-sm btn-outline-secondary ms-auto"
-                    style={{ fontSize: '12px', color: '#9da1b4' }}
+                    style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}
                   >
                     Reset
                   </button>
@@ -149,31 +149,31 @@ export default function CertificateVerificationPage() {
                       <span className="badge bg-success px-3 py-2" style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px' }}>
                         <i className="fas fa-check-circle me-1"></i> VERIFIED OFFICIAL CREDENTIAL
                       </span>
-                      <button onClick={handlePrintCert} className="btn btn-success px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px rgba(74, 222, 128, 0.4)' }}>
+                      <button onClick={handlePrintCert} className="btn btn-success px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px var(--card-bg)' }}>
                         <i className="fas fa-download me-2"></i> Download / Print PDF Certificate
                       </button>
                     </div>
 
                     {/* Official Certificate Canvas Frame */}
                     <div 
-                      className="printable-cert-card p-4 p-md-5 text-white pos-rel w-100"
+                      className="printable-cert-card p-4 p-md-5 text-main pos-rel w-100"
                       style={{
                         borderRadius: '24px',
                         border: '3px double #4ade80',
                         background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
-                        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(74, 222, 128, 0.25)'
+                        boxShadow: '0 25px 60px var(--section-bg), 0 0 30px var(--card-bg)'
                       }}
                     >
                       <div className="text-center py-4">
                         <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra" style={{ height: '56px', marginBottom: '20px' }} />
-                        <h2 className="text-uppercase mb-1" style={{ letterSpacing: '6px', fontSize: '20px', color: '#a5b4fc', fontWeight: '700' }}>
+                        <h2 className="text-uppercase mb-1" style={{ letterSpacing: '6px', fontSize: '20px', color: 'var(--color-text-muted)', fontWeight: '700' }}>
                           Certificate of Completion
                         </h2>
                         <p className="text-muted mb-4" style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase' }}>
                           This Credential is Proudly Awarded To
                         </p>
                         
-                        <h1 className="text-white mb-3" style={{ fontWeight: '800', fontSize: '42px', color: '#4ade80', letterSpacing: '1px' }}>
+                        <h1 className="text-main mb-3" style={{ fontWeight: '800', fontSize: '42px', color: 'var(--color-success)', letterSpacing: '1px' }}>
                           {result.studentName}
                         </h1>
 
@@ -190,11 +190,11 @@ export default function CertificateVerificationPage() {
                           
                           return (
                             <div className="mb-4">
-                              <h3 className="mb-2" style={{ color: '#c084fc', fontWeight: '700', fontSize: '30px' }}>
+                              <h3 className="mb-2" style={{ color: 'var(--color-primary-light)', fontWeight: '700', fontSize: '30px' }}>
                                 {title}
                               </h3>
                               {cleanDuration && (
-                                <div style={{ color: '#a5b4fc', fontSize: '15px', fontWeight: '600', letterSpacing: '0.5px' }}>
+                                <div style={{ color: 'var(--color-text-muted)', fontSize: '15px', fontWeight: '600', letterSpacing: '0.5px' }}>
                                   (Completed over an intensive tenure of {cleanDuration})
                                 </div>
                               )}
@@ -203,13 +203,13 @@ export default function CertificateVerificationPage() {
                         })()}
 
                         {/* Certificate Badges & Signatory Footer Grid */}
-                        <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                        <div className="mt-5 pt-4" style={{ borderTop: '1px solid var(--card-border)' }}>
                           <div className="row align-items-center">
                             <div className="col-4 text-start">
                               <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
                               <strong className="text-warning font-monospace d-block mb-2" style={{ fontSize: '16px' }}>{result.certificateId}</strong>
                               <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Issue Date</span>
-                              <strong className="text-white" style={{ fontSize: '14px' }}>{result.issueDate || 'July 26, 2026'}</strong>
+                              <strong className="text-main" style={{ fontSize: '14px' }}>{result.issueDate || 'July 26, 2026'}</strong>
                             </div>
 
                             <div className="col-4 text-center">
@@ -224,7 +224,7 @@ export default function CertificateVerificationPage() {
                                 }}
                               >
                                 <i className="fas fa-award text-success mb-1" style={{ fontSize: '24px' }}></i>
-                                <span style={{ fontSize: '9px', fontWeight: '800', color: '#4ade80', letterSpacing: '0.5px' }}>VERIFIED</span>
+                                <span style={{ fontSize: '9px', fontWeight: '800', color: 'var(--color-success)', letterSpacing: '0.5px' }}>VERIFIED</span>
                               </div>
                             </div>
 
@@ -239,18 +239,18 @@ export default function CertificateVerificationPage() {
                   </div>
                 ) : (
                   <div 
-                    className="unverified-card p-4 p-md-5 text-center text-white"
+                    className="unverified-card p-4 p-md-5 text-center text-main"
                     style={{
                       borderRadius: '24px',
-                      border: '2px solid rgba(248, 113, 113, 0.4)',
-                      background: 'linear-gradient(135deg, rgba(40, 10, 10, 0.95) 0%, rgba(1, 3, 21, 0.98) 100%)'
+                      border: '2px solid var(--card-bg)',
+                      background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--section-bg) 100%)'
                     }}
                   >
                     <div className="mb-3">
                       <span 
                         style={{
-                          backgroundColor: 'rgba(248, 113, 113, 0.2)',
-                          color: '#f87171',
+                          backgroundColor: 'var(--card-bg)',
+                          color: 'var(--color-error)',
                           padding: '12px 20px',
                           borderRadius: '50px',
                           fontSize: '14px',
@@ -260,7 +260,7 @@ export default function CertificateVerificationPage() {
                         <i className="fas fa-exclamation-triangle me-2"></i> INVALID OR UNVERIFIED CERTIFICATE ID
                       </span>
                     </div>
-                    <h4 className="mt-4 text-white">No Matching Credential Found</h4>
+                    <h4 className="mt-4 text-main">No Matching Credential Found</h4>
                     <p className="text-muted" style={{ maxWidth: '500px', margin: '10px auto 0' }}>
                       The Certificate ID "<strong>{searchId}</strong>" was not found in Appifyra's database. Please check for spelling mistakes or contact support.
                     </p>
