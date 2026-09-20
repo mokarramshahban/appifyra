@@ -118,9 +118,13 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="footer-copyright mt-50 ul_li_between border-top border-secondary pt-4">
+          <div className="footer-copyright mt-50 ul_li_between border-top border-secondary pt-4 pb-4">
             <p className="copyright mb-0">Copyright © 2025 <Link to="/">Appifyra</Link>. All rights reserved.</p>
-            <p className="mb-0">Developed in-house by <Link to="/">Team Appifyra</Link></p>
+            <div className="legal-links d-flex align-items-center gap-3">
+              <Link to="/privacy-policy" style={{ fontSize: '14px', color: '#a0a0a0' }}>Privacy Policy</Link>
+              <Link to="/terms-of-service" style={{ fontSize: '14px', color: '#a0a0a0' }}>Terms of Service</Link>
+              <Link to="/cookie-policy" style={{ fontSize: '14px', color: '#a0a0a0' }}>Cookie Policy</Link>
+            </div>
           </div>
         </div>
       </div>

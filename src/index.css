@@ -4,6 +4,12 @@
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
+/* Global Mobile Overflow Fix */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* Remove min-height forcing empty gap in Hero section */
 .hero-style-three {
   min-height: auto !important;

@@ -7,6 +7,14 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
-    hmr: false
+    hmr: false,
+    headers: {
+      'Cache-Control': 'public, max-age=31536000, immutable'
+    }
+  },
+  preview: {
+    headers: {
+      'Cache-Control': 'public, max-age=31536000, immutable'
+    }
   }
 })

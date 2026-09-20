@@ -15,20 +15,41 @@ const firebaseConfig = {
 };
 
 // Singleton App Instance to prevent HMR duplicate app init
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+let app;
+try {
+  app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+} catch (e) {
+  console.warn("Firebase App Init Failed:", e);
+  app = null;
+}
 
-export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
+let tmpAuth = null;
+let tmpProvider = null;
+if (app) {
+  try {
+    tmpAuth = getAuth(app);
+    tmpProvider = new GoogleAuthProvider();
+  } catch (e) {
+    console.warn("Firebase Auth Init Failed. Check API Key.", e);
+  }
+}
+
+export const auth = tmpAuth;
+export const googleProvider = tmpProvider;
 
 // Initialize Firestore with forced HTTP Long Polling to bypass AdBlocker / Privacy extension channel blocks
-let firestoreDb;
-try {
-  firestoreDb = initializeFirestore(app, {
-    experimentalForceLongPolling: true,
-    useFetchStreams: false
-  });
-} catch (e) {
-  firestoreDb = getFirestore(app);
+let firestoreDb = null;
+if (app) {
+  try {
+    firestoreDb = initializeFirestore(app, {
+      experimentalForceLongPolling: true,
+      useFetchStreams: false
+    });
+  } catch (e) {
+    try {
+      firestoreDb = getFirestore(app);
+    } catch (ignore) {}
+  }
 }
 
 export const db = firestoreDb;

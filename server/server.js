@@ -72,6 +72,11 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Appifyra Express + MongoDB API Online with Rate Limiting Security 🛡️' });
 });
 
+// Render Anti-Sleep Optimization Route
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Start Express Server
 app.listen(PORT, () => {
   console.log(`🚀 Appifyra Backend API running on port ${PORT}`);

@@ -13,14 +13,28 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+    if (!auth) {
+      console.warn("Firebase Auth not configured. Default to logged out state.");
       setLoading(false);
-    });
-    return unsubscribe;
+      return;
+    }
+    try {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setCurrentUser(user);
+        setLoading(false);
+      });
+      return unsubscribe;
+    } catch (err) {
+      console.warn("Firebase Auth Error:", err);
+      setLoading(false);
+    }
   }, []);
 
   const loginWithGoogle = async () => {
+    if (!auth || !googleProvider) {
+      alert("Auth is disabled because Firebase is not configured.");
+      return null;
+    }
     try {
       const result = await signInWithPopup(auth, googleProvider);
       setCurrentUser(result.user);
@@ -33,6 +47,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
+    if (!auth) return setCurrentUser(null);
     try {
       await signOut(auth);
     } catch (e) {
