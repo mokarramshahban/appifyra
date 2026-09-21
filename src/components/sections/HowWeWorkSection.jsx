@@ -27,15 +27,15 @@ export default function HowWeWorkSection() {
   ];
 
   return (
-    <section className="work">
+    <section className="work w-full bg-slate-50 dark:bg-[#060813] dark:bg-[url('/assets/img/bg/work-bg.png')] dark:bg-cover dark:bg-center">
       <div className="container">
-        <div className="xb-work-wrap pos-rel pt-100 pb-155 bg-slate-50 dark:bg-[#060813] dark:bg-[url('/assets/img/bg/work-bg.png')] dark:bg-cover dark:bg-center">
+        <div className="xb-work-wrap pos-rel pt-100 pb-155">
           <div className="sec-title--two sec-title--three text-center mb-60">
-            <span className="sub-title wow fadeInDown" data-wow-duration="600ms">
+            <span className="sub-title wow fadeInDown bg-purple-100 text-purple-900 border border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4" data-wow-duration="600ms">
               <img src="/assets/img/icon/work.svg" alt="Work Icon" />
               <span>How we works</span>
             </span>
-            <h2 className="title wow fadeInDown" data-wow-duration="600ms">
+            <h2 className="title wow fadeInDown text-slate-900 font-bold dark:text-white" data-wow-duration="600ms">
               Our Comprehensive Workflow
             </h2>
           </div>
@@ -48,7 +48,7 @@ export default function HowWeWorkSection() {
                     <div className="xb-item--icon">
                       <img src={step.icon} alt={step.title} />
                     </div>
-                    <h4 className="xb-item--title">{step.title}</h4>
+                    <h4 className="xb-item--title text-slate-900 font-semibold dark:text-white">{step.title}</h4>
                   </div>
                   <div className="xb-img">
                     <img src={step.img} alt={step.title} />
