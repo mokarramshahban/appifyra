@@ -326,6 +326,12 @@ html, body {
     margin: 0;
   }
 
+  html, body {
+    height: 100vh !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
   body * {
     visibility: hidden !important;
   }
