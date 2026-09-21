@@ -51,10 +51,10 @@ export default function Header() {
   };
 
   return (
-    <header id="xb-header-area" className="header-area header-style-three header-transparent bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-[#060813]/90 dark:border-slate-800" style={{ overflow: 'visible' }}>
+    <header id="xb-header-area" className="w-full sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-[#060813]/90 dark:border-slate-800" style={{ overflow: 'visible' }}>
       <div className={`xb-header stricky original ${isSticky ? 'stricky-fixed stricked-menu' : ''}`} style={{ overflow: 'visible' }}>
         <div className="container" style={{ overflow: 'visible' }}>
-          <div className="header__wrap ul_li_between" style={{ overflow: 'visible' }}>
+          <div className="flex justify-between items-center w-full py-4" style={{ overflow: 'visible' }}>
             {/* Logo */}
             <div className="header-logo">
               <Link to="/">
@@ -63,31 +63,31 @@ export default function Header() {
             </div>
             
             {/* Clean Desktop Navigation Bar */}
-            <div className="main-menu__wrap ul_li navbar navbar-expand-xl">
-              <nav className="main-menu collapse navbar-collapse" style={{ overflow: 'visible' }}>
-                <ul style={{ overflow: 'visible' }}>
+            <div className="main-menu__wrap flex items-center">
+              <nav className="main-menu">
+                <ul className="hidden lg:flex md:flex items-center gap-6" style={{ margin: 0, padding: 0, listStyle: "none" }}>
                   <li>
-                    <NavLink to="/" end className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/" end className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Home</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>About Us</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/services" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/services" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Services</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/internship" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/internship" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Internship</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Contact</span>
                     </NavLink>
                   </li>
