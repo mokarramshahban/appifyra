@@ -113,9 +113,12 @@ export default function InternshipPage() {
         {/* ─── 1. HERO BANNER ────────────────────────────────────────────── */}
         <div className="sec-title--two sec-title--three text-center mb-60">
           <span 
-            className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3 !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4"
+            className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
+              backgroundColor: 'var(--badge-bg)',
+              
               borderRadius: '30px',
+              color: 'var(--color-success)',
               fontSize: '13px',
               fontWeight: '600'
             }}
@@ -140,7 +143,7 @@ export default function InternshipPage() {
           </p>
 
           <div className="d-flex flex-wrap justify-content-center gap-3 mt-4">
-            <a href="#apply-form" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700',  }}>
+            <a href="#apply-form" className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700',  }}>
               <i className="fas fa-edit me-2"></i> Apply for Internship Now
             </a>
             <a href="/verify" className="btn btn-outline-light btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '600' }}>
@@ -157,13 +160,13 @@ export default function InternshipPage() {
               style={{
                 borderRadius: '24px',
                 
-                background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--section-bg) 100%)',
+                
                 
               }}
             >
               <div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                  <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{  color: 'var(--color-success)',  fontSize: '13px', fontWeight: '700' }}>
+                  <span className="badge px-3 py-2 bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{ color: 'var(--color-success)',  fontSize: '13px', fontWeight: '700' }}>
                     SHORT-TERM / SUMMER
                   </span>
                   <span style={{ color: 'var(--color-success)', fontWeight: '800', fontSize: '22px' }}>45 Days</span>
@@ -180,7 +183,7 @@ export default function InternshipPage() {
                 </ul>
               </div>
 
-              <div className="mt-4 pt-3 border-top border-secondary w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
+              <div className="mt-4 pt-3 border-top border-secondary">
                 <a href="#apply-form" className="btn btn-outline-info btn-glow-hover w-100 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
                   Apply for 45-Day Program
                 </a>
@@ -190,17 +193,11 @@ export default function InternshipPage() {
 
           <div className="col-lg-6">
             <div 
-              className="p-4 p-md-5 pos-rel text-main h-100 d-flex flex-column justify-content-between interactive-hover-card"
-              style={{
-                borderRadius: '24px',
-                
-                background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--card-bg) 100%)',
-                
-              }}
+              className="p-4 p-md-5 pos-rel text-main h-100 d-flex flex-column justify-content-between interactive-hover-card bg-white dark:bg-[#0d1226] border border-slate-200 shadow-sm dark:border-none" style={{ borderRadius: '24px' }}
             >
               <div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                  <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{  color: 'var(--color-primary-light)',  fontSize: '13px', fontWeight: '700' }}>
+                  <span className="badge px-3 py-2 bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{ color: 'var(--color-primary-light)',  fontSize: '13px', fontWeight: '700' }}>
                     SEMESTER INDUSTRIAL
                   </span>
                   <span style={{ color: 'var(--color-success)', fontWeight: '800', fontSize: '22px' }}>6 Months</span>
@@ -217,7 +214,7 @@ export default function InternshipPage() {
                 </ul>
               </div>
 
-              <div className="mt-4 pt-3 border-top border-secondary w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
+              <div className="mt-4 pt-3 border-top border-secondary">
                 <a href="#apply-form" className="btn btn-outline-success btn-glow-hover w-100 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
                   Apply for 6-Month Program
                 </a>
@@ -249,10 +246,13 @@ export default function InternshipPage() {
           {domains.map((d, idx) => (
             <div className="col-lg-4 col-md-6" key={idx}>
               <div 
-                className="p-4 h-100 d-flex flex-column justify-content-between interactive-hover-card bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
+                className="p-4 h-100 d-flex flex-column justify-content-between interactive-hover-card" 
+                style={{
+                  backgroundColor: 'var(--card-bg)',
                   
                   borderRadius: '18px',
-                  backdropFilter: 'blur(12px)' }}
+                  backdropFilter: 'blur(12px)'
+                }}
               >
                 <div>
                   <div 
@@ -279,7 +279,7 @@ export default function InternshipPage() {
 
         {/* ─── 4. PROGRAM DELIVERABLES & BENEFITS ────────────────────────── */}
         <section className="program-benefits mb-80">
-          <div className="p-4 p-md-5 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{   borderRadius: '24px' }}>
+          <div className="p-4 p-md-5 bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '24px' }}>
             <div className="sec-title--two text-center mb-50">
               <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '32px' }}>
                 Program Deliverables & Candidate Benefits
@@ -303,16 +303,10 @@ export default function InternshipPage() {
         <div className="row justify-content-center" id="apply-form">
           <div className="col-lg-9">
             <div 
-              className="p-4 p-md-5 text-main"
-              style={{
-                borderRadius: '24px',
-                
-                background: 'linear-gradient(180deg, var(--card-bg) 0%, var(--section-bg) 100%)',
-                
-              }}
+              className="p-4 p-md-5 text-main bg-white dark:bg-[#0d1226] border border-slate-200 shadow-sm dark:border-none" style={{ borderRadius: '24px' }}
             >
               <div className="text-center mb-4">
-                <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 px-3 py-2 mb-2" style={{ fontSize: '13px', fontWeight: '700' }}>
+                <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white px-3 py-2 mb-2" style={{ fontSize: '13px', fontWeight: '700' }}>
                   <i className="fas fa-check-circle me-1"></i> VERIFIED APPLICATION FORM
                 </span>
                 <h3 className="text-main" style={{ fontWeight: '800', fontSize: '28px' }}>Apply for Internship</h3>
@@ -336,7 +330,7 @@ export default function InternshipPage() {
                   </p>
                   <button 
                     onClick={loginWithGoogle}
-                    className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-2"
+                    className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold btn-glow-hover px-4 py-2"
                     style={{  borderRadius: '10px', fontWeight: '700'  }}
                   >
                     <i className="fab fa-google me-2"></i> Sign In with Google to Apply
@@ -346,7 +340,7 @@ export default function InternshipPage() {
 
               {/* Verified User Badge when Logged In */}
               {currentUser && (
-                <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{   borderRadius: '12px' }}>
+                <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '12px' }}>
                   <div className="d-flex align-items-center gap-3">
                     <UserAvatar name={currentUser.displayName || currentUser.email} size={40} borderColor="#4ade80" />
                     <div>
@@ -354,15 +348,18 @@ export default function InternshipPage() {
                       <div style={{ color: 'var(--color-success)', fontSize: '13px' }}><i className="fas fa-check-circle me-1"></i> Google Verified Account ({currentUser.email})</div>
                     </div>
                   </div>
-                  <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200">Authenticated</span>
+                  <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white">Authenticated</span>
                 </div>
               )}
 
               {submitted ? (
                 <div 
-                  className="p-4 text-center bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
+                  className="p-4 text-center"
+                  style={{
+                    backgroundColor: 'var(--card-bg)',
                     
-                    borderRadius: '16px' }}
+                    borderRadius: '16px'
+                  }}
                 >
                   <i className="fas fa-check-circle mb-3" style={{ fontSize: '48px', color: 'var(--color-success)' }}></i>
                   <h4 className="text-main">Application Submitted Successfully!</h4>
