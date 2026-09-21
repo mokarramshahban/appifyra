@@ -62,12 +62,9 @@ export default function IndustriesSection() {
       <div className="container pos-rel" style={{ zIndex: 2 }}>
         <div className="sec-title--two text-center mb-60">
           <span 
-            className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
+            className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3 !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4"
             style={{
-              backgroundColor: 'var(--input-border)',
-              border: '1px solid var(--input-border)',
               borderRadius: '30px',
-              color: 'var(--badge-text)',
               fontSize: '13px',
               fontWeight: '600'
             }}

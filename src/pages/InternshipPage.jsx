@@ -113,12 +113,9 @@ export default function InternshipPage() {
         {/* ─── 1. HERO BANNER ────────────────────────────────────────────── */}
         <div className="sec-title--two sec-title--three text-center mb-60">
           <span 
-            className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
+            className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3 !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4"
             style={{
-              backgroundColor: 'var(--badge-bg)',
-              
               borderRadius: '30px',
-              color: 'var(--color-success)',
               fontSize: '13px',
               fontWeight: '600'
             }}

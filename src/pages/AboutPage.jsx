@@ -79,12 +79,9 @@ export default function AboutPage() {
         <div className="container">
           <div className="text-center mx-auto" style={{ maxWidth: '840px' }}>
             <span 
-              className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
+              className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3 !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4"
               style={{
-                backgroundColor: 'var(--input-border)',
-                
                 borderRadius: '30px',
-                color: 'var(--color-primary-light)',
                 fontSize: '13px',
                 fontWeight: '600'
               }}
@@ -194,12 +191,9 @@ export default function AboutPage() {
         <div className="container">
           <div className="sec-title--two text-center mb-60">
             <span 
-              className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
+              className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3 !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4"
               style={{
-                backgroundColor: 'var(--badge-bg)',
-                
                 borderRadius: '30px',
-                color: 'var(--color-success)',
                 fontSize: '13px',
                 fontWeight: '600'
               }}
@@ -282,12 +276,9 @@ export default function AboutPage() {
         <div className="container">
           <div className="sec-title--two text-center mb-50">
             <span 
-              className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
+              className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3 !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4"
               style={{
-                backgroundColor: 'var(--badge-bg)',
-                
                 borderRadius: '30px',
-                color: 'var(--color-success)',
                 fontSize: '13px',
                 fontWeight: '600'
               }}

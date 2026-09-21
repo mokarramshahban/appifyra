@@ -50,7 +50,7 @@ export default function CertificateVerificationPage() {
       <div className="container">
         {/* Section Header */}
         <div className="sec-title--two sec-title--three text-center mb-50 no-print">
-          <span className="sub-title">
+          <span className="sub-title !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4">
             <img src="/assets/img/icon/check-mark.png" alt="Verification Shield" style={{ width: '18px', height: '18px', marginRight: '6px' }} />
             <span>Official Credential Registry</span>
           </span>

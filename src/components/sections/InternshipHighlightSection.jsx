@@ -20,7 +20,7 @@ export default function InternshipHighlightSection() {
     <section className="pt-100 pb-100 pos-rel bg-slate-50 dark:bg-[#060813]" >
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
-          <span className="sub-title">
+          <span className="sub-title !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4">
             <img src="/assets/img/icon/cap.svg" alt="Cap" style={{ width: '18px', height: '18px', marginRight: '6px' }} />
             <span>UNIVERSITY ALIGNED TRAINING</span>
           </span>
