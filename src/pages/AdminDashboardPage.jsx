@@ -482,7 +482,7 @@ export default function AdminDashboardPage() {
 
         {/* Global Application Edit Overlay */}
         {editingApp && (
-          <div className="p-4 mb-4 text-main bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
+          <div className="p-4 mb-4 text-main bg-white border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
             <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Application for {editingApp.fullName}</h4>
             <form onSubmit={handleSaveEditApp}>
               <div className="row g-3">
@@ -536,7 +536,7 @@ export default function AdminDashboardPage() {
 
         {/* Global Inquiry Edit Overlay */}
         {editingInq && (
-          <div className="p-4 mb-4 text-main bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
+          <div className="p-4 mb-4 text-main bg-white border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
             <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Contact Inquiry from {editingInq.fullName}</h4>
             <form onSubmit={handleSaveEditInq}>
               <div className="row g-3">
@@ -578,7 +578,7 @@ export default function AdminDashboardPage() {
 
         {/* Global Subscriber Edit Overlay */}
         {editingSub && (
-          <div className="p-4 mb-4 text-main bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
+          <div className="p-4 mb-4 text-main bg-white border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
             <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Subscriber Email</h4>
             <form onSubmit={handleSaveEditSub}>
               <div className="row g-3">
@@ -851,7 +851,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Broadcast Newsletter Composer Box */}
-            <div className="p-4 mb-4 text-main bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '20px' }}>
+            <div className="p-4 mb-4 text-main bg-white border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '20px' }}>
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <h4 className="text-main mb-0" style={{ fontWeight: '700' }}>
                   <i className="fas fa-bullhorn text-warning me-2"></i> Send Broadcast Newsletter to All Subscribers
@@ -973,7 +973,7 @@ export default function AdminDashboardPage() {
 
             {/* Edit Certificate Form Overlay */}
             {editingCert && (
-              <div className="p-4 mb-4 text-main bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
+              <div className="p-4 mb-4 text-main bg-white border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{  borderRadius: '16px' }}>
                 <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Update Certificate: {editingCert.certificateId}</h4>
                 <form onSubmit={handleSaveEditCert}>
                   <div className="row g-3">
