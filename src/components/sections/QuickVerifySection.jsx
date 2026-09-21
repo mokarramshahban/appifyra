@@ -13,14 +13,14 @@ export default function QuickVerifySection() {
   };
 
   return (
-    <section className="pt-80 pb-80 pos-rel bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)', borderBottom: '1px solid var(--card-bg)' }}>
+    <section className="pt-80 pb-80 pos-rel bg-slate-50 dark:bg-[#060813]" >
       <div className="container">
         <div 
           className="p-4 p-md-5 text-main pos-rel"
           style={{
             borderRadius: '24px',
             background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--card-bg) 100%)',
-            border: '1px solid var(--card-border)'
+            
           }}
         >
           <div className="row align-items-center g-4">
@@ -46,7 +46,7 @@ export default function QuickVerifySection() {
                     onChange={(e) => setCertId(e.target.value)}
                     style={{
                       backgroundColor: 'var(--input-bg)',
-                      border: '1px solid var(--color-border-light)',
+                      
                       borderRadius: '12px 0 0 12px',
                       padding: '14px 20px'
                     }}

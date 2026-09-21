@@ -82,7 +82,7 @@ export default function AboutPage() {
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
                 backgroundColor: 'var(--input-border)',
-                border: '1px solid var(--input-border)',
+                
                 borderRadius: '30px',
                 color: 'var(--color-primary-light)',
                 fontSize: '13px',
@@ -110,7 +110,7 @@ export default function AboutPage() {
             </p>
 
             <div className="d-flex flex-wrap justify-content-center gap-3">
-              <Link to="/contact" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
+              <Link to="/contact" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700',  }}>
                 <i className="fas fa-paper-plane me-2"></i> Partner With Us
               </Link>
               <Link to="/internship" className="btn btn-outline-light px-4 py-3" style={{ borderRadius: '12px', fontWeight: '600' }}>
@@ -135,7 +135,7 @@ export default function AboutPage() {
                 className="p-4 p-md-5 h-100 text-main pos-rel bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
                   
                   backdropFilter: 'blur(16px)',
-                  boxShadow: '0 20px 40px var(--card-bg)' }}
+                   }}
               >
                 <div 
                   className="d-inline-flex align-items-center justify-content-center mb-4"
@@ -144,7 +144,7 @@ export default function AboutPage() {
                     height: '64px',
                     borderRadius: '18px',
                     background: 'var(--card-bg)',
-                    border: '1px solid var(--card-bg)',
+                    
                     color: 'var(--color-success)',
                     fontSize: '26px'
                   }}
@@ -163,7 +163,7 @@ export default function AboutPage() {
                 className="p-4 p-md-5 h-100 text-main pos-rel bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
                   
                   backdropFilter: 'blur(16px)',
-                  boxShadow: '0 20px 40px var(--card-bg)' }}
+                   }}
               >
                 <div 
                   className="d-inline-flex align-items-center justify-content-center mb-4"
@@ -172,7 +172,7 @@ export default function AboutPage() {
                     height: '64px',
                     borderRadius: '18px',
                     background: 'var(--card-bg)',
-                    border: '1px solid var(--card-bg)',
+                    
                     color: 'var(--color-primary-light)',
                     fontSize: '26px'
                   }}
@@ -197,7 +197,7 @@ export default function AboutPage() {
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
                 backgroundColor: 'var(--badge-bg)',
-                border: '1px solid var(--card-bg)',
+                
                 borderRadius: '30px',
                 color: 'var(--color-success)',
                 fontSize: '13px',
@@ -219,7 +219,7 @@ export default function AboutPage() {
                   className="p-4 p-md-5 h-100 text-main d-flex flex-column justify-content-between bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '20px',
                     
                     backdropFilter: 'blur(16px)',
-                    boxShadow: '0 10px 30px var(--card-bg)' }}
+                     }}
                 >
                   <div>
                     <div 
@@ -229,7 +229,7 @@ export default function AboutPage() {
                         height: '56px',
                         borderRadius: '14px',
                         background: `radial-gradient(circle, ${pil.glow}30 0%, var(--section-bg) 100%)`,
-                        border: `1px solid ${pil.glow}60`,
+                        
                         color: pil.glow,
                         fontSize: '24px'
                       }}
@@ -259,7 +259,7 @@ export default function AboutPage() {
                   style={{
                     borderRadius: '20px',
                     backgroundColor: 'var(--input-bg)',
-                    border: '1px solid var(--input-border)',
+                    
                     transition: 'all 0.3s ease'
                   }}
                 >
@@ -285,7 +285,7 @@ export default function AboutPage() {
               className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
               style={{
                 backgroundColor: 'var(--badge-bg)',
-                border: '1px solid var(--card-bg)',
+                
                 borderRadius: '30px',
                 color: 'var(--color-success)',
                 fontSize: '13px',
@@ -316,7 +316,7 @@ export default function AboutPage() {
                       height: '50px',
                       borderRadius: '12px',
                       backgroundColor: `${tech.color}15`,
-                      border: `1px solid ${tech.color}40`,
+                      
                       color: tech.color,
                       fontSize: '22px'
                     }}
@@ -350,7 +350,7 @@ export default function AboutPage() {
                   className="p-4 text-main h-100 pos-rel"
                   style={{
                     backgroundColor: 'var(--input-bg)',
-                    border: '1px solid var(--input-border)',
+                    
                     borderRadius: '20px'
                   }}
                 >
@@ -396,7 +396,7 @@ export default function AboutPage() {
                   <div 
                     key={idx}
                     className="p-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
-                      border: openFaq === idx ? '1px solid var(--input-border)' : '1px solid var(--card-bg)',
+                      
                       borderRadius: '16px',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease' }}

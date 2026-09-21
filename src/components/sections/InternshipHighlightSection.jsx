@@ -37,9 +37,9 @@ export default function InternshipHighlightSection() {
               className="p-4 p-md-5 text-main h-100 d-flex flex-column justify-content-between"
               style={{
                 borderRadius: '24px',
-                border: '1px solid var(--input-border)',
                 
-                boxShadow: '0 20px 40px var(--card-bg)'
+                
+                
               }}
             >
               <div>
@@ -77,9 +77,9 @@ export default function InternshipHighlightSection() {
               className="p-4 p-md-5 text-main h-100 d-flex flex-column justify-content-between"
               style={{
                 borderRadius: '24px',
-                border: '1px solid var(--input-border)',
+                
                 background: 'linear-gradient(135deg, var(--input-border) 0%, var(--section-bg) 100%)',
-                boxShadow: '0 20px 40px var(--input-border)'
+                
               }}
             >
               <div>
@@ -105,7 +105,7 @@ export default function InternshipHighlightSection() {
                 </div>
               </div>
 
-              <Link to="/internship" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold w-100 py-3" style={{ border: 'none', borderRadius: '12px', fontWeight: '700'  }}>
+              <Link to="/internship" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold w-100 py-3" style={{  borderRadius: '12px', fontWeight: '700'  }}>
                 View 6-Month Track Details <i className="far fa-arrow-right ms-2"></i>
               </Link>
             </div>
