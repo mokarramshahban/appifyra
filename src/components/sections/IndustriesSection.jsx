@@ -42,7 +42,7 @@ export default function IndustriesSection() {
 
   return (
     <section 
-      className="industries-section pt-100 pb-100 pos-rel bg-slate-50 dark:bg-[#060813]" style={{ ,overflow: 'hidden' }}
+      className="industries-section pt-100 pb-100 pos-rel bg-slate-50 dark:bg-[#060813]" style={{ overflow: 'hidden' }}
     >
       {/* Background Ambient Glow Effects */}
       <div 
@@ -94,7 +94,7 @@ export default function IndustriesSection() {
           {industries.map((ind, idx) => (
             <div className="col-lg-4 col-md-6" key={idx}>
               <div 
-                className="industry-card p-4 h-100 d-flex flex-column bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                className="industry-card p-4 h-100 d-flex flex-column bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
                   

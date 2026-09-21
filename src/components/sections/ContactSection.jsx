@@ -89,7 +89,7 @@ export default function ContactSection() {
     >
       <div className="container">
         <div 
-          className="pos-rel p-4 p-md-5 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+          className="pos-rel p-4 p-md-5 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
             borderRadius: '24px',
              }}
         >
@@ -167,7 +167,7 @@ export default function ContactSection() {
 
                 {/* Verified User Badge when Logged In */}
                 {currentUser && (
-                  <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '12px' }}>
+                  <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{   borderRadius: '12px' }}>
                     <div className="d-flex align-items-center gap-2">
                       <UserAvatar name={currentUser.displayName || currentUser.email} size={32} borderColor="#4ade80" />
                       <span className="text-main" style={{ fontSize: '14px', fontWeight: '600' }}>{currentUser.displayName} ({currentUser.email})</span>
@@ -178,7 +178,7 @@ export default function ContactSection() {
 
                 {submitted ? (
                   <div 
-                    className="p-4 text-center bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                    className="p-4 text-center bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                       
                       borderRadius: '16px' }}
                   >

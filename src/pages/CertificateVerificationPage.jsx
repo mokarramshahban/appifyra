@@ -251,7 +251,7 @@ export default function CertificateVerificationPage() {
                   >
                     <div className="mb-3">
                       <span 
-                        className="bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                        className="bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                           color: 'var(--color-error)',
                           padding: '12px 20px',
                           borderRadius: '50px',

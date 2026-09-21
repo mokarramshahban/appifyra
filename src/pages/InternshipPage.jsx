@@ -166,7 +166,7 @@ export default function InternshipPage() {
             >
               <div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                  <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ , color: 'var(--color-success)',  fontSize: '13px', fontWeight: '700' }}>
+                  <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{  color: 'var(--color-success)',  fontSize: '13px', fontWeight: '700' }}>
                     SHORT-TERM / SUMMER
                   </span>
                   <span style={{ color: 'var(--color-success)', fontWeight: '800', fontSize: '22px' }}>45 Days</span>
@@ -203,7 +203,7 @@ export default function InternshipPage() {
             >
               <div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                  <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ , color: 'var(--color-primary-light)',  fontSize: '13px', fontWeight: '700' }}>
+                  <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{  color: 'var(--color-primary-light)',  fontSize: '13px', fontWeight: '700' }}>
                     SEMESTER INDUSTRIAL
                   </span>
                   <span style={{ color: 'var(--color-success)', fontWeight: '800', fontSize: '22px' }}>6 Months</span>
@@ -252,7 +252,7 @@ export default function InternshipPage() {
           {domains.map((d, idx) => (
             <div className="col-lg-4 col-md-6" key={idx}>
               <div 
-                className="p-4 h-100 d-flex flex-column justify-content-between interactive-hover-card bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                className="p-4 h-100 d-flex flex-column justify-content-between interactive-hover-card bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                   
                   borderRadius: '18px',
                   backdropFilter: 'blur(12px)' }}
@@ -282,7 +282,7 @@ export default function InternshipPage() {
 
         {/* ─── 4. PROGRAM DELIVERABLES & BENEFITS ────────────────────────── */}
         <section className="program-benefits mb-80">
-          <div className="p-4 p-md-5 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '24px' }}>
+          <div className="p-4 p-md-5 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{   borderRadius: '24px' }}>
             <div className="sec-title--two text-center mb-50">
               <h2 className="title text-main" style={{ fontWeight: '800', fontSize: '32px' }}>
                 Program Deliverables & Candidate Benefits
@@ -349,7 +349,7 @@ export default function InternshipPage() {
 
               {/* Verified User Badge when Logged In */}
               {currentUser && (
-                <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '12px' }}>
+                <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{   borderRadius: '12px' }}>
                   <div className="d-flex align-items-center gap-3">
                     <UserAvatar name={currentUser.displayName || currentUser.email} size={40} borderColor="#4ade80" />
                     <div>
@@ -363,7 +363,7 @@ export default function InternshipPage() {
 
               {submitted ? (
                 <div 
-                  className="p-4 text-center bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                  className="p-4 text-center bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                     
                     borderRadius: '16px' }}
                 >

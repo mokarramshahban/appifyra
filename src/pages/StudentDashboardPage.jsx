@@ -254,7 +254,7 @@ export default function StudentDashboardPage() {
                         backdropFilter: 'blur(12px)' }}
                     >
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ , color: 'var(--color-text-muted)',  fontWeight: '700' }}>
+                        <span className="badge px-3 py-2 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{  color: 'var(--color-text-muted)',  fontWeight: '700' }}>
                           {app.duration}
                         </span>
                         {getStatusBadge(app.status)}

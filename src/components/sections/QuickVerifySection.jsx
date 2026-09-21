@@ -13,7 +13,7 @@ export default function QuickVerifySection() {
   };
 
   return (
-    <section className="pt-80 pb-80 pos-rel bg-slate-50 dark:bg-[#060813]" style={{ ,borderTop: '1px solid var(--card-bg)', borderBottom: '1px solid var(--card-bg)' }}>
+    <section className="pt-80 pb-80 pos-rel bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)', borderBottom: '1px solid var(--card-bg)' }}>
       <div className="container">
         <div 
           className="p-4 p-md-5 text-main pos-rel"

@@ -304,7 +304,7 @@ export default function AboutPage() {
             {techStack.map((tech, idx) => (
               <div className="col-lg-4 col-md-6" key={idx}>
                 <div 
-                  className="p-4 text-main d-flex align-items-center gap-3 h-100 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                  className="p-4 text-main d-flex align-items-center gap-3 h-100 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                     
                     borderRadius: '16px',
                     transition: 'all 0.3s ease' }}
@@ -395,7 +395,7 @@ export default function AboutPage() {
                 {faqs.map((faq, idx) => (
                   <div 
                     key={idx}
-                    className="p-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                    className="p-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                       border: openFaq === idx ? '1px solid var(--input-border)' : '1px solid var(--card-bg)',
                       borderRadius: '16px',
                       cursor: 'pointer',

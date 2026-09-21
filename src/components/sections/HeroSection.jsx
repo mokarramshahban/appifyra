@@ -189,7 +189,7 @@ export default function HeroSection() {
 
                 {/* Live Stats Strip */}
                 <div 
-                  className="row g-3 p-3 mt-3 mb-0 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                  className="row g-3 p-3 mt-3 mb-0 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                     
                     borderRadius: '16px',
                     boxShadow: 'var(--shadow-sm)',

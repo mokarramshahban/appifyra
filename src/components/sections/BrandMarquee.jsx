@@ -16,7 +16,7 @@ export default function BrandMarquee() {
   const rightLoop = [...rightBrands, ...rightBrands];
 
   return (
-    <section className="brand py-5 overflow-hidden pos-rel bg-slate-50 dark:bg-[#060813]" style={{ ,borderTop: '1px solid var(--input-bg)', borderBottom: '1px solid var(--input-bg)' }}>
+    <section className="brand py-5 overflow-hidden pos-rel bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--input-bg)', borderBottom: '1px solid var(--input-bg)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-4">
