@@ -22,7 +22,7 @@ export default function AboutSection() {
                   </p>
                 </div>
                 <div className="xb-btn mt-4">
-                  <Link to="/contact" className="btn btn-primary px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700' }}>
+                  <Link to="/contact" className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700' }}>
                     <span>Get started now <i className="far fa-angle-right ms-2"></i></span>
                   </Link>
                 </div>

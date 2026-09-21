@@ -34,13 +34,13 @@ export default function StudentDashboardPage() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Approved':
-        return <span className="badge bg-success px-3 py-2" style={{ borderRadius: '20px', fontWeight: '600' }}><i className="fas fa-check-circle me-1"></i> Approved</span>;
+        return <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white px-3 py-2" style={{ borderRadius: '20px', fontWeight: '600' }}><i className="fas fa-check-circle me-1"></i> Approved</span>;
       case 'Completed':
-        return <span className="badge bg-info text-dark px-3 py-2" style={{ borderRadius: '20px', fontWeight: '700' }}><i className="fas fa-award me-1"></i> Completed</span>;
+        return <span className="badge bg-cyan-100 text-cyan-900 dark:bg-cyan-500 dark:text-white px-3 py-2" style={{ borderRadius: '20px', fontWeight: '700' }}><i className="fas fa-award me-1"></i> Completed</span>;
       case 'Rejected':
-        return <span className="badge bg-danger px-3 py-2" style={{ borderRadius: '20px', fontWeight: '600' }}><i className="fas fa-times-circle me-1"></i> Rejected</span>;
+        return <span className="badge bg-red-100 text-red-900 dark:bg-red-600 dark:text-white px-3 py-2" style={{ borderRadius: '20px', fontWeight: '600' }}><i className="fas fa-times-circle me-1"></i> Rejected</span>;
       default:
-        return <span className="badge bg-warning text-dark px-3 py-2" style={{ borderRadius: '20px', fontWeight: '700' }}><i className="fas fa-clock me-1"></i> Under Review</span>;
+        return <span className="badge bg-orange-100 text-orange-900 dark:bg-orange-500 dark:text-white px-3 py-2" style={{ borderRadius: '20px', fontWeight: '700' }}><i className="fas fa-clock me-1"></i> Under Review</span>;
     }
   };
 
@@ -65,14 +65,14 @@ export default function StudentDashboardPage() {
             <div className="d-flex align-items-center gap-3">
               <UserAvatar name={currentUser?.displayName || currentUser?.email} size={64} borderColor="#ae6dfe" />
               <div>
-                <span className="badge bg-primary px-3 py-1 mb-2" style={{ borderRadius: '15px', fontWeight: '700', fontSize: '11px', letterSpacing: '0.5px' }}>
+                <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white px-3 py-1 mb-2" style={{ borderRadius: '15px', fontWeight: '700', fontSize: '11px', letterSpacing: '0.5px' }}>
                   <i className="fas fa-user-graduate me-1"></i> STUDENT PORTAL
                 </span>
                 <h2 className="text-main mb-0" style={{ fontWeight: '800' }}>Welcome back, {currentUser?.displayName || 'Student'}!</h2>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>{currentUser?.email}</p>
               </div>
             </div>
-            <Link to="/internship" className="btn btn-primary btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
+            <Link to="/internship" className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
               <i className="fas fa-plus-circle me-2"></i> Apply for New Internship
             </Link>
           </div>
@@ -81,7 +81,7 @@ export default function StudentDashboardPage() {
           <div className="d-flex flex-wrap gap-3 mt-4 pt-4 border-top border-secondary">
             <button 
               onClick={() => setActiveTab('applications')}
-              className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'applications' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'applications' ? 'bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold' : 'btn-outline-light'}`}
               style={{ borderRadius: '12px', fontSize: '14px', fontWeight: '700' }}
             >
               <i className="fas fa-list-check me-2"></i> My Applications ({applications.length})
@@ -89,7 +89,7 @@ export default function StudentDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('certificates')}
-              className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'certificates' ? 'btn-success' : 'btn-outline-success'}`}
+              className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'certificates' ? 'bg-green-100 text-green-900 border border-green-200 shadow-sm dark:bg-green-600 dark:text-white dark:border-none hover:bg-green-200 dark:hover:bg-green-700 font-semibold' : 'btn-outline-success'}`}
               style={{ borderRadius: '12px', fontSize: '14px', fontWeight: '700' }}
             >
               <i className="fas fa-award me-2"></i> My Issued Certificates ({certificates.length})
@@ -120,13 +120,13 @@ export default function StudentDashboardPage() {
                 overflowY: 'auto',
                 borderRadius: '24px',
                 border: '3px double #4ade80',
-                background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
+                background: "" /* Removed dark inline gradient */,
                 boxShadow: '0 25px 60px var(--section-bg), 0 0 35px var(--card-bg)'
               }}
             >
               {/* Modal Top Close Bar (UI Only, Hidden in PDF Print) */}
               <div className="d-flex justify-content-between align-items-center pb-3 mb-3 no-print" style={{ borderBottom: '1px solid var(--card-border)' }}>
-                <span className="badge bg-success px-3 py-2" style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '1px' }}>
+                <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white px-3 py-2" style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '1px' }}>
                   <i className="fas fa-check-circle me-1"></i> VERIFIED CREDENTIAL PREVIEW
                 </span>
                 <button onClick={() => setPreviewCert(null)} className="btn btn-sm btn-outline-light rounded-circle" style={{ width: '36px', height: '36px' }}>
@@ -209,7 +209,7 @@ export default function StudentDashboardPage() {
                   Issued by <strong>Appifyra Certification Board</strong>
                 </span>
                 <div className="d-flex gap-2 no-print">
-                  <button onClick={handlePrintCert} className="btn btn-success btn-glow-hover px-4" style={{ borderRadius: '10px', fontWeight: '700' }}>
+                  <button onClick={handlePrintCert} className="btn bg-green-100 text-green-900 border border-green-200 shadow-sm dark:bg-green-600 dark:text-white dark:border-none hover:bg-green-200 dark:hover:bg-green-700 font-semibold btn-glow-hover px-4" style={{ borderRadius: '10px', fontWeight: '700' }}>
                     <i className="fas fa-download me-2"></i> Download / Print PDF
                   </button>
                   <button onClick={() => setPreviewCert(null)} className="btn btn-outline-light px-3" style={{ borderRadius: '10px' }}>
@@ -226,7 +226,7 @@ export default function StudentDashboardPage() {
           <div className="mb-5 no-print">
             <div className="d-flex align-items-center justify-content-between mb-4">
               <h3 className="text-main mb-0" style={{ fontWeight: '700' }}>My Internship Applications</h3>
-              <span className="badge bg-primary px-3 py-2" style={{ fontSize: '13px' }}>Total: {applications.length}</span>
+              <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white px-3 py-2" style={{ fontSize: '13px' }}>Total: {applications.length}</span>
             </div>
 
             {loading ? (
@@ -245,7 +245,7 @@ export default function StudentDashboardPage() {
                 <p className="text-muted" style={{ maxWidth: '450px', margin: '0 auto 20px', fontSize: '14px' }}>
                   You haven't submitted any internship applications yet. Choose from our 45-Day or 6-Month programs to get started!
                 </p>
-                <Link to="/internship" className="btn btn-primary btn-glow-hover px-4 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
+                <Link to="/internship" className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold btn-glow-hover px-4 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
                   <i className="fas fa-graduation-cap me-2"></i> Browse Internship Programs
                 </Link>
               </div>
@@ -263,7 +263,7 @@ export default function StudentDashboardPage() {
                       }}
                     >
                       <div className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="badge px-3 py-2" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--color-text-muted)', border: '1px solid var(--input-border)', fontWeight: '700' }}>
+                        <span className="badge px-3 py-2 bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{ color: 'var(--color-text-muted)', border: '1px solid var(--input-border)', fontWeight: '700' }}>
                           {app.duration}
                         </span>
                         {getStatusBadge(app.status)}
@@ -298,7 +298,7 @@ export default function StudentDashboardPage() {
                 <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>My Issued Certificates</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Official credentials issued by Appifyra Certification Board.</p>
               </div>
-              <span className="badge bg-success px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {certificates.length}</span>
+              <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {certificates.length}</span>
             </div>
 
             {loading ? (
@@ -332,10 +332,10 @@ export default function StudentDashboardPage() {
                     >
                       <div>
                         <div className="d-flex justify-content-between align-items-center mb-3">
-                          <span className="badge bg-warning text-dark font-monospace px-3 py-2" style={{ fontSize: '13px', fontWeight: '800' }}>
+                          <span className="badge bg-orange-100 text-orange-900 dark:bg-orange-500 dark:text-white font-monospace px-3 py-2" style={{ fontSize: '13px', fontWeight: '800' }}>
                             <i className="fas fa-certificate me-1"></i> {cert.certificateId}
                           </span>
-                          <span className="badge bg-success px-3 py-2" style={{ fontWeight: '700' }}>
+                          <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white px-3 py-2" style={{ fontWeight: '700' }}>
                             <i className="fas fa-check-circle me-1"></i> Verified Credential
                           </span>
                         </div>
@@ -349,7 +349,7 @@ export default function StudentDashboardPage() {
 
                         <div className="d-flex align-items-center gap-2 mb-3">
                           <span className="text-muted" style={{ fontSize: '13px' }}>Grade:</span>
-                          <span className="badge bg-primary px-3 py-1" style={{ fontSize: '13px', fontWeight: '700' }}>
+                          <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white px-3 py-1" style={{ fontSize: '13px', fontWeight: '700' }}>
                             {cert.performanceGrade || cert.grade || 'Excellence (A+)'}
                           </span>
                         </div>
@@ -371,7 +371,7 @@ export default function StudentDashboardPage() {
                           
                           <button 
                             onClick={() => setPreviewCert(cert)} 
-                            className="btn btn-sm btn-success btn-glow-hover px-3"
+                            className="btn btn-sm bg-green-100 text-green-900 border border-green-200 shadow-sm dark:bg-green-600 dark:text-white dark:border-none hover:bg-green-200 dark:hover:bg-green-700 font-semibold btn-glow-hover px-3"
                             style={{ borderRadius: '8px', fontSize: '12px', fontWeight: '700' }}
                           >
                             <i className="fas fa-download me-1"></i> Download PDF

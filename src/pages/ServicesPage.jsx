@@ -112,11 +112,8 @@ export default function ServicesPage() {
           {/* CTA Banner */}
           <div 
             className="p-4 p-md-5 mt-60 text-center text-main pos-rel"
-            style={{
-              borderRadius: '24px',
-              background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-              boxShadow: '0 20px 40px var(--card-bg)'
-            }}
+            style={{ boxShadow: '0 20px 40px var(--card-bg)'
+             }}
           >
             <h3 className="text-main mb-2" style={{ fontWeight: '700' }}>Have a custom project in mind?</h3>
             <p style={{ color: 'rgba(255, 255, 255, 0.85)', maxWidth: '600px', margin: '0 auto 24px' }}>

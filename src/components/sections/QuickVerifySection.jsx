@@ -13,7 +13,7 @@ export default function QuickVerifySection() {
   };
 
   return (
-    <section className="pt-80 pb-80 pos-rel" style={{ backgroundColor: 'var(--section-bg)', borderTop: '1px solid var(--card-bg)', borderBottom: '1px solid var(--card-bg)' }}>
+    <section className="pt-80 pb-80 pos-rel bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)', borderBottom: '1px solid var(--card-bg)' }}>
       <div className="container">
         <div 
           className="p-4 p-md-5 text-main pos-rel"
@@ -26,7 +26,7 @@ export default function QuickVerifySection() {
           <div className="row align-items-center g-4">
             <div className="col-lg-6">
               <div className="d-flex align-items-center gap-3 mb-2">
-                <span className="badge bg-success text-white" style={{ fontSize: '12px' }}>VERIFIED REGISTRY</span>
+                <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white" style={{ fontSize: '12px' }}>VERIFIED REGISTRY</span>
                 <span className="text-muted" style={{ fontSize: '13px' }}>100% Credibility Guarantee</span>
               </div>
               <h3 className="text-main mb-2" style={{ fontWeight: '700' }}>Verify Student Certificate</h3>
@@ -54,12 +54,10 @@ export default function QuickVerifySection() {
                   <button 
                     type="submit" 
                     className="btn px-4"
-                    style={{
-                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                      color: 'var(--color-text-main)',
+                    style={{ color: 'var(--color-text-main)',
                       fontWeight: '700',
                       borderRadius: '0 12px 12px 0'
-                    }}
+                     }}
                   >
                     <i className="far fa-search me-1"></i> Verify Now
                   </button>

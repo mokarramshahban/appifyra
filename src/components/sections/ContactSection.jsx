@@ -86,7 +86,7 @@ export default function ContactSection() {
     <section 
       id="contact" 
       className="contact pt-140 pb-100 pos-rel" 
-      style={{ backgroundColor: 'var(--section-bg)' }}
+      className="${className} bg-slate-50 dark:bg-[#060813]" 
     >
       <div className="container">
         <div 
@@ -109,7 +109,7 @@ export default function ContactSection() {
                 }}
               >
                 <div>
-                  <span className="badge bg-primary text-white mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
+                  <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
                     <i className="fas fa-paper-plane me-1"></i> Get In Touch
                   </span>
                   <h2 className="text-main mb-3" style={{ fontWeight: '800', fontSize: '36px' }}>Let's Connect</h2>
@@ -119,7 +119,7 @@ export default function ContactSection() {
                   
                   <div className="d-flex flex-column gap-3 mb-4">
                     <div className="d-flex align-items-center gap-3 p-3" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '12px', border: '1px solid var(--input-border)' }}>
-                      <div className="d-flex align-items-center justify-content-center bg-info text-dark rounded-circle" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
+                      <div className="d-flex align-items-center justify-content-center bg-cyan-100 text-cyan-900 dark:bg-cyan-500 dark:text-white rounded-circle" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
                         <i className="fas fa-envelope"></i>
                       </div>
                       <div>
@@ -162,7 +162,7 @@ export default function ContactSection() {
                       type="button"
                       onClick={loginWithGoogle}
                       className="btn btn-sm text-main px-4 py-2"
-                      style={{ background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', borderRadius: '8px', fontWeight: '600' }}
+                      style={{ borderRadius: '8px', fontWeight: '600'  }}
                     >
                       <i className="fab fa-google me-2"></i> Sign In with Google
                     </button>
@@ -171,12 +171,12 @@ export default function ContactSection() {
 
                 {/* Verified User Badge when Logged In */}
                 {currentUser && (
-                  <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: '12px' }}>
+                  <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white border border-slate-200 shadow-sm dark:bg-[#0d1226] dark:border-none" style={{ border: '1px solid var(--card-border)', borderRadius: '12px' }}>
                     <div className="d-flex align-items-center gap-2">
                       <UserAvatar name={currentUser.displayName || currentUser.email} size={32} borderColor="#4ade80" />
                       <span className="text-main" style={{ fontSize: '14px', fontWeight: '600' }}>{currentUser.displayName} ({currentUser.email})</span>
                     </div>
-                    <span className="badge bg-success text-white" style={{ fontSize: '11px' }}>Verified</span>
+                    <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white" style={{ fontSize: '11px' }}>Verified</span>
                   </div>
                 )}
 
@@ -285,13 +285,11 @@ export default function ContactSection() {
                             type="submit"
                             disabled={isSubmitting}
                             className="btn btn-lg w-100"
-                            style={{
-                              background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                              color: 'var(--color-text-main)',
+                            style={{ color: 'var(--color-text-main)',
                               fontWeight: '700',
                               padding: '14px',
                               borderRadius: '12px'
-                            }}
+                             }}
                           >
                             {isSubmitting ? (
                               <span><i className="fas fa-spinner fa-spin me-2"></i> Sending Message...</span>
