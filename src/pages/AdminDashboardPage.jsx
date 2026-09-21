@@ -399,7 +399,7 @@ export default function AdminDashboardPage() {
   );
 
   return (
-    <div className="pt-140 pb-100 pos-rel">
+    <div className="pt-140 pb-100 pos-rel w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
       <div className="container">
         {/* Admin Header */}
         <div 
@@ -426,7 +426,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Navigation Tabs */}
-          <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top border-secondary">
+          <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top border-secondary w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
             <button 
               onClick={() => setActiveTab('hero-quick')}
               className={`btn btn-glow-hover ${activeTab === 'hero-quick' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-outline-light'}`}

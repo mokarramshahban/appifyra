@@ -35,7 +35,7 @@ export default function HowWeWorkSection() {
               <img src="/assets/img/icon/work.svg" alt="Work Icon" />
               <span>How we works</span>
             </span>
-            <h2 className="title wow fadeInDown text-slate-900 font-bold dark:text-white" data-wow-duration="600ms">
+            <h2 className="title wow fadeInDown !text-slate-900 font-bold dark:text-white" data-wow-duration="600ms">
               Our Comprehensive Workflow
             </h2>
           </div>
@@ -48,7 +48,7 @@ export default function HowWeWorkSection() {
                     <div className="xb-item--icon">
                       <img src={step.icon} alt={step.title} />
                     </div>
-                    <h4 className="xb-item--title text-slate-900 font-semibold dark:text-white">{step.title}</h4>
+                    <h4 className="xb-item--title !text-slate-900 font-semibold dark:text-white">{step.title}</h4>
                   </div>
                   <div className="xb-img">
                     <img src={step.img} alt={step.title} />

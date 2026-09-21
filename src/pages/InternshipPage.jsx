@@ -108,7 +108,7 @@ export default function InternshipPage() {
   ];
 
   return (
-    <div className="pt-140 pb-100 pos-rel">
+    <div className="pt-140 pb-100 pos-rel w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
       <div className="container">
         {/* ─── 1. HERO BANNER ────────────────────────────────────────────── */}
         <div className="sec-title--two sec-title--three text-center mb-60">
@@ -183,7 +183,7 @@ export default function InternshipPage() {
                 </ul>
               </div>
 
-              <div className="mt-4 pt-3 border-top border-secondary">
+              <div className="mt-4 pt-3 border-top border-secondary w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
                 <a href="#apply-form" className="btn btn-outline-info btn-glow-hover w-100 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
                   Apply for 45-Day Program
                 </a>
@@ -220,7 +220,7 @@ export default function InternshipPage() {
                 </ul>
               </div>
 
-              <div className="mt-4 pt-3 border-top border-secondary">
+              <div className="mt-4 pt-3 border-top border-secondary w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
                 <a href="#apply-form" className="btn btn-outline-success btn-glow-hover w-100 py-2" style={{ borderRadius: '10px', fontWeight: '600' }}>
                   Apply for 6-Month Program
                 </a>

@@ -105,7 +105,7 @@ export default function ContactSection() {
                 }}
               >
                 <div>
-                  <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 text-slate-700 dark:text-white mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
+                  <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 !text-slate-700 dark:text-white mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
                     <i className="fas fa-paper-plane me-1"></i> Get In Touch
                   </span>
                   <h2 className="text-main mb-3" style={{ fontWeight: '800', fontSize: '36px' }}>Let's Connect</h2>
@@ -172,7 +172,7 @@ export default function ContactSection() {
                       <UserAvatar name={currentUser.displayName || currentUser.email} size={32} borderColor="#4ade80" />
                       <span className="text-main" style={{ fontSize: '14px', fontWeight: '600' }}>{currentUser.displayName} ({currentUser.email})</span>
                     </div>
-                    <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 text-slate-700 dark:text-white" style={{ fontSize: '11px' }}>Verified</span>
+                    <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 !text-slate-700 dark:text-white" style={{ fontSize: '11px' }}>Verified</span>
                   </div>
                 )}
 

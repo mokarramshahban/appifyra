@@ -7,7 +7,7 @@ import Preloader from '../common/Preloader';
 
 export default function Layout() {
   return (
-    <div className="body_wrap">
+    <div className="body_wrap bg-white dark:bg-[#060813] !text-slate-900 dark:text-slate-100 min-h-screen">
       <Preloader />
       <Header />
       <main>

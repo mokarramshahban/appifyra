@@ -144,7 +144,7 @@ export default function HeroSection() {
                       backdropFilter: 'blur(8px)'
                     }}
                   >
-                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 text-slate-700 dark:text-white" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
+                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 !text-slate-700 dark:text-white" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
                     <span className="text-main" style={{ fontSize: '14px', fontWeight: '500' }}>
                       🚀 Next-Gen IT Services & Verified University Training
                     </span>
@@ -155,7 +155,7 @@ export default function HeroSection() {
                   Empowering Tech Innovation & Industry Training
                 </h1>
                 
-                <p className="content text-slate-700 dark:text-slate-900 dark:text-slate-700 dark:text-white my-2" style={{ fontSize: '17px', maxWidth: '580px', lineHeight: '1.6' }}>
+                <p className="content !text-slate-700 dark:!text-slate-900 dark:!text-slate-700 dark:text-white my-2" style={{ fontSize: '17px', maxWidth: '580px', lineHeight: '1.6' }}>
                   Appifyra delivers enterprise-grade software development, cloud architecture, and degree-aligned industrial internship programs to shape the future of IT.
                 </p>
 
@@ -224,7 +224,7 @@ export default function HeroSection() {
                   <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '14px', border: '1px solid var(--input-border)' }}>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-link !text-slate-600 dark:!text-slate-400 text-decoration-none'}`}
                       style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px' }}
                       onClick={() => { setFormTab('internship'); setSubmitted(false); }}
                     >
@@ -232,7 +232,7 @@ export default function HeroSection() {
                     </button>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-link !text-slate-600 dark:!text-slate-400 text-decoration-none'}`}
                       style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px',   }}
                       onClick={() => { setFormTab('service'); setSubmitted(false); }}
                     >
@@ -241,7 +241,7 @@ export default function HeroSection() {
                   </div>
 
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 text-slate-700 dark:text-white px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
+                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 !text-slate-700 dark:text-white px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
                       {formTab === 'internship' ? 'QUICK APPLY' : 'SERVICE INQUIRY'}
                     </span>
                     <span style={{ color: 'var(--color-success)', fontSize: '13px', fontWeight: '600' }}>
@@ -388,7 +388,7 @@ export default function HeroSection() {
 
                     <div className="mt-3">
                       {!currentUser && (
-                        <p className="text-slate-700 dark:text-slate-400 mb-2 text-center" style={{ fontSize: '12px' }}>
+                        <p className="!text-slate-700 dark:text-slate-400 mb-2 text-center" style={{ fontSize: '12px' }}>
                           <i className="fab fa-google text-danger me-1"></i> Google Verification required on submit to prevent spam
                         </p>
                       )}

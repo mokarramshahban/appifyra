@@ -49,7 +49,7 @@ export default function StudentDashboardPage() {
   };
 
   return (
-    <div className="pt-140 pb-100 pos-rel">
+    <div className="pt-140 pb-100 pos-rel w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
       <div className="container">
         {/* Welcome Header */}
         <div 
@@ -78,7 +78,7 @@ export default function StudentDashboardPage() {
           </div>
 
           {/* Student Dashboard Navigation Tabs */}
-          <div className="d-flex flex-wrap gap-3 mt-4 pt-4 border-top border-secondary">
+          <div className="d-flex flex-wrap gap-3 mt-4 pt-4 border-top border-secondary w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
             <button 
               onClick={() => setActiveTab('applications')}
               className={`btn btn-glow-hover px-4 py-2 ${activeTab === 'applications' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-outline-light'}`}
@@ -165,7 +165,7 @@ export default function StudentDashboardPage() {
                 })()}
 
                 {/* Certificate Badges & Signatory Footer Grid */}
-                <div className="mt-5 pt-4" style={{ borderTop: '1px solid var(--card-border)' }}>
+                <div className="mt-5 pt-4 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
                   <div className="row align-items-center">
                     <div className="col-4 text-start">
                       <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
@@ -199,7 +199,7 @@ export default function StudentDashboardPage() {
               </div>
 
               {/* Modal Footer Controls */}
-              <div className="d-flex flex-wrap align-items-center justify-content-between pt-4 mt-2" style={{ borderTop: '1px solid var(--card-border)' }}>
+              <div className="d-flex flex-wrap align-items-center justify-content-between pt-4 mt-2 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
                 <span className="text-muted" style={{ fontSize: '13px' }}>
                   Issued by <strong>Appifyra Certification Board</strong>
                 </span>
@@ -265,7 +265,7 @@ export default function StudentDashboardPage() {
                         <i className="fas fa-university me-1 text-primary"></i> {app.college} ({app.degree})
                       </p>
 
-                      <div className="pt-3 d-flex justify-content-between align-items-center" style={{ borderTop: '1px solid var(--card-bg)', fontSize: '13px' }}>
+                      <div className="pt-3 d-flex justify-content-between align-items-center w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)', fontSize: '13px' }}>
                         <span className="text-muted">
                           Applied: {app.createdAt ? new Date(app.createdAt).toLocaleDateString() : 'Recent'}
                         </span>
@@ -346,7 +346,7 @@ export default function StudentDashboardPage() {
                         </div>
                       </div>
 
-                      <div className="pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2" style={{ borderTop: '1px solid var(--card-border)' }}>
+                      <div className="pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
                         <span className="text-muted" style={{ fontSize: '12px' }}>
                           Issued: {cert.issueDate || (cert.issuedAt ? new Date(cert.issuedAt).toLocaleDateString() : 'Recent')}
                         </span>

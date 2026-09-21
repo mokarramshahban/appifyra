@@ -46,7 +46,7 @@ export default function CertificateVerificationPage() {
   };
 
   return (
-    <div className="pt-140 pb-100 pos-rel">
+    <div className="pt-140 pb-100 pos-rel w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
       <div className="container">
         {/* Section Header */}
         <div className="sec-title--two sec-title--three text-center mb-50 no-print">
@@ -206,7 +206,7 @@ export default function CertificateVerificationPage() {
                         })()}
 
                         {/* Certificate Badges & Signatory Footer Grid */}
-                        <div className="mt-5 pt-4" style={{ borderTop: '1px solid var(--card-border)' }}>
+                        <div className="mt-5 pt-4 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
                           <div className="row align-items-center">
                             <div className="col-4 text-start">
                               <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
