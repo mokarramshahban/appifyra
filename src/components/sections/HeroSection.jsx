@@ -84,11 +84,9 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="hero hero-style-two hero-style-three bg_img pos-rel overflow-hidden"
+      className="hero hero-style-two hero-style-three pos-rel overflow-hidden bg-slate-50 dark:bg-[#060813] dark:bg-[url('/assets/img/bg/hero-bg03.png')] dark:bg-cover dark:bg-center"
       style={{ 
-        backgroundImage: 'url(/assets/img/bg/hero-bg03.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        
         paddingTop: '130px',
         paddingBottom: '50px'
       }}
@@ -146,7 +144,7 @@ export default function HeroSection() {
                       backdropFilter: 'blur(8px)'
                     }}
                   >
-                    <span className="badge bg-primary text-white" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
+                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 text-slate-700 dark:text-white" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
                     <span className="text-main" style={{ fontSize: '14px', fontWeight: '500' }}>
                       🚀 Next-Gen IT Services & Verified University Training
                     </span>
@@ -157,7 +155,7 @@ export default function HeroSection() {
                   Empowering Tech Innovation & Industry Training
                 </h1>
                 
-                <p className="content text-slate-700 dark:text-slate-300 my-2" style={{ fontSize: '17px', maxWidth: '580px', lineHeight: '1.6' }}>
+                <p className="content text-slate-700 dark:text-slate-900 dark:text-slate-700 dark:text-white my-2" style={{ fontSize: '17px', maxWidth: '580px', lineHeight: '1.6' }}>
                   Appifyra delivers enterprise-grade software development, cloud architecture, and degree-aligned industrial internship programs to shape the future of IT.
                 </p>
 
@@ -166,14 +164,11 @@ export default function HeroSection() {
                   <Link 
                     to="/services" 
                     className="btn btn-lg"
-                    style={{
-                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                      color: '#ffffff',
-                      fontWeight: '700',
+                    style={{ fontWeight: '700',
                       padding: '14px 32px',
                       borderRadius: '12px',
                       boxShadow: 'var(--shadow-primary)'
-                    }}
+                     }}
                   >
                     <span>Explore Our Services <i className="far fa-arrow-right ms-2"></i></span>
                   </Link>
@@ -194,15 +189,12 @@ export default function HeroSection() {
 
                 {/* Live Stats Strip */}
                 <div 
-                  className="row g-3 p-3 mt-3 mb-0"
-                  style={{
-                    backgroundColor: 'var(--card-bg)',
-                    border: '1px solid var(--card-border)',
+                  className="row g-3 p-3 mt-3 mb-0 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                    
                     borderRadius: '16px',
                     boxShadow: 'var(--shadow-sm)',
                     width: '100%',
-                    maxWidth: '560px'
-                  }}
+                    maxWidth: '560px' }}
                 >
                   <div className="col-4 border-end border-secondary">
                     <div className="h3 mb-0" style={{ fontWeight: '700', color: 'var(--color-success)' }}>500+</div>
@@ -223,20 +215,16 @@ export default function HeroSection() {
             {/* Right Column: Quick Application / Inquiry Form Box with Dual Tabs */}
             <div className="col-lg-6 d-flex flex-column">
               <div 
-                className="p-4 p-md-5 pos-rel h-100 d-flex flex-column justify-content-between mb-0"
-                style={{
-                  borderRadius: '24px',
-                  border: '1px solid var(--card-border)',
-                  backgroundColor: 'var(--card-bg)',
-                  boxShadow: 'var(--card-shadow)'
-                }}
+                className="p-4 p-md-5 pos-rel h-100 d-flex flex-column justify-content-between mb-0 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                  
+                  boxShadow: 'var(--card-shadow)' }}
               >
                 <div>
                   {/* Form Mode Selector Tabs */}
                   <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '14px', border: '1px solid var(--input-border)' }}>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'btn-primary' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
                       style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px' }}
                       onClick={() => { setFormTab('internship'); setSubmitted(false); }}
                     >
@@ -244,8 +232,8 @@ export default function HeroSection() {
                     </button>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'btn-primary' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
-                      style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px', backgroundColor: formTab === 'service' ? 'var(--color-primary)' : 'transparent', borderColor: 'transparent' }}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
+                      style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px',   }}
                       onClick={() => { setFormTab('service'); setSubmitted(false); }}
                     >
                       <i className="fas fa-briefcase me-1"></i> Client Service Request
@@ -253,7 +241,7 @@ export default function HeroSection() {
                   </div>
 
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <span className="badge bg-primary text-white px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
+                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 text-slate-700 dark:text-white px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
                       {formTab === 'internship' ? 'QUICK APPLY' : 'SERVICE INQUIRY'}
                     </span>
                     <span style={{ color: 'var(--color-success)', fontSize: '13px', fontWeight: '600' }}>
@@ -409,14 +397,11 @@ export default function HeroSection() {
                         type="submit"
                         disabled={isSubmitting}
                         className="btn btn-lg w-100 font-weight-bold"
-                        style={{
-                          background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                          color: '#ffffff',
-                          borderRadius: '12px',
+                        style={{ borderRadius: '12px',
                           padding: '14px',
                           boxShadow: 'var(--shadow-primary)',
                           fontSize: '15px'
-                        }}
+                         }}
                       >
                         {isSubmitting ? (
                           <span><i className="fas fa-spinner fa-spin me-2"></i> Submitting & Verifying...</span>

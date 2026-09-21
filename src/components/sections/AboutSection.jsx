@@ -22,7 +22,7 @@ export default function AboutSection() {
                   </p>
                 </div>
                 <div className="xb-btn mt-4">
-                  <Link to="/contact" className="btn btn-primary px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700' }}>
+                  <Link to="/contact" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700' }}>
                     <span>Get started now <i className="far fa-angle-right ms-2"></i></span>
                   </Link>
                 </div>
@@ -32,14 +32,10 @@ export default function AboutSection() {
             <div className="col-lg-6">
               <div className="cs-about_right pos-rel text-center">
                 <div 
-                  className="p-4 text-main d-inline-block w-100"
-                  style={{
-                    borderRadius: '24px',
-                    backgroundColor: 'var(--card-bg)',
-                    border: '1px solid var(--input-border)',
+                  className="p-4 text-main d-inline-block w-100 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                    
                     backdropFilter: 'blur(16px)',
-                    boxShadow: '0 20px 40px var(--card-bg)'
-                  }}
+                    boxShadow: '0 20px 40px var(--card-bg)' }}
                 >
                   <img 
                     src="/assets/img/about/img04.png" 

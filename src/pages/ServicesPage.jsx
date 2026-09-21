@@ -82,12 +82,8 @@ export default function ServicesPage() {
             {serviceDetails.map((detail, idx) => (
               <div className="col-lg-6" key={idx}>
                 <div 
-                  className="p-4 p-md-5 h-100 pos-rel text-main"
-                  style={{
-                    borderRadius: '24px',
-                    border: '1px solid var(--card-bg)',
-                    backgroundColor: 'var(--card-bg)'
-                  }}
+                  className="p-4 p-md-5 h-100 pos-rel text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                     }}
                 >
                   <span className="badge px-3 py-2 mb-3" style={{ backgroundColor: 'var(--input-border)', color: 'var(--color-primary-light)', border: '1px solid var(--input-border)', fontSize: '12px' }}>
                     {detail.badge}
@@ -112,11 +108,8 @@ export default function ServicesPage() {
           {/* CTA Banner */}
           <div 
             className="p-4 p-md-5 mt-60 text-center text-main pos-rel"
-            style={{
-              borderRadius: '24px',
-              background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-              boxShadow: '0 20px 40px var(--card-bg)'
-            }}
+            style={{ boxShadow: '0 20px 40px var(--card-bg)'
+             }}
           >
             <h3 className="text-main mb-2" style={{ fontWeight: '700' }}>Have a custom project in mind?</h3>
             <p style={{ color: 'rgba(255, 255, 255, 0.85)', maxWidth: '600px', margin: '0 auto 24px' }}>

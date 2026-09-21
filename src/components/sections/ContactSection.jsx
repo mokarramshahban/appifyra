@@ -85,17 +85,13 @@ export default function ContactSection() {
   return (
     <section 
       id="contact" 
-      className="contact pt-140 pb-100 pos-rel" 
-      style={{ backgroundColor: 'var(--section-bg)' }}
+      className="contact pt-140 pb-100 pos-rel bg-slate-50 dark:bg-[#060813]" 
     >
       <div className="container">
         <div 
-          className="pos-rel p-4 p-md-5" 
-          style={{
-            backgroundColor: 'var(--card-bg)',
+          className="pos-rel p-4 p-md-5 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
             borderRadius: '24px',
-            border: '1px solid var(--input-border)'
-          }}
+             }}
         >
           <div className="row align-items-stretch g-4">
             {/* Contact Details & Info */}
@@ -109,7 +105,7 @@ export default function ContactSection() {
                 }}
               >
                 <div>
-                  <span className="badge bg-primary text-white mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
+                  <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 text-slate-700 dark:text-white mb-2" style={{ borderRadius: '20px', padding: '6px 14px' }}>
                     <i className="fas fa-paper-plane me-1"></i> Get In Touch
                   </span>
                   <h2 className="text-main mb-3" style={{ fontWeight: '800', fontSize: '36px' }}>Let's Connect</h2>
@@ -119,7 +115,7 @@ export default function ContactSection() {
                   
                   <div className="d-flex flex-column gap-3 mb-4">
                     <div className="d-flex align-items-center gap-3 p-3" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '12px', border: '1px solid var(--input-border)' }}>
-                      <div className="d-flex align-items-center justify-content-center bg-info text-dark rounded-circle" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
+                      <div className="d-flex align-items-center justify-content-center bg-cyan-100 text-cyan-900 dark:bg-cyan-900/50 dark:text-cyan-200 text-dark rounded-circle" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
                         <i className="fas fa-envelope"></i>
                       </div>
                       <div>
@@ -162,7 +158,7 @@ export default function ContactSection() {
                       type="button"
                       onClick={loginWithGoogle}
                       className="btn btn-sm text-main px-4 py-2"
-                      style={{ background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', borderRadius: '8px', fontWeight: '600' }}
+                      style={{ borderRadius: '8px', fontWeight: '600'  }}
                     >
                       <i className="fab fa-google me-2"></i> Sign In with Google
                     </button>
@@ -171,23 +167,20 @@ export default function ContactSection() {
 
                 {/* Verified User Badge when Logged In */}
                 {currentUser && (
-                  <div className="d-flex align-items-center justify-content-between p-3 mb-4" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--card-border)', borderRadius: '12px' }}>
+                  <div className="d-flex align-items-center justify-content-between p-3 mb-4 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '12px' }}>
                     <div className="d-flex align-items-center gap-2">
                       <UserAvatar name={currentUser.displayName || currentUser.email} size={32} borderColor="#4ade80" />
                       <span className="text-main" style={{ fontSize: '14px', fontWeight: '600' }}>{currentUser.displayName} ({currentUser.email})</span>
                     </div>
-                    <span className="badge bg-success text-white" style={{ fontSize: '11px' }}>Verified</span>
+                    <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 text-slate-700 dark:text-white" style={{ fontSize: '11px' }}>Verified</span>
                   </div>
                 )}
 
                 {submitted ? (
                   <div 
-                    className="p-4 text-center"
-                    style={{
-                      backgroundColor: 'var(--card-bg)',
-                      border: '1px solid var(--card-bg)',
-                      borderRadius: '16px'
-                    }}
+                    className="p-4 text-center bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,
+                      
+                      borderRadius: '16px' }}
                   >
                     <i className="fas fa-paper-plane mb-3" style={{ fontSize: '42px', color: 'var(--color-success)' }}></i>
                     <h4 className="text-main">Message Sent Successfully!</h4>
@@ -285,13 +278,11 @@ export default function ContactSection() {
                             type="submit"
                             disabled={isSubmitting}
                             className="btn btn-lg w-100"
-                            style={{
-                              background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                              color: 'var(--color-text-main)',
+                            style={{ color: 'var(--color-text-main)',
                               fontWeight: '700',
                               padding: '14px',
                               borderRadius: '12px'
-                            }}
+                             }}
                           >
                             {isSubmitting ? (
                               <span><i className="fas fa-spinner fa-spin me-2"></i> Sending Message...</span>

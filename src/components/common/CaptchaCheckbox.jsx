@@ -38,12 +38,12 @@ export default function CaptchaCheckbox({ isVerified, setIsVerified }) {
           }}
         >
           {isVerifying ? (
-            <i className="fas fa-spinner fa-spin text-white" style={{ fontSize: '12px' }}></i>
+            <i className="fas fa-spinner fa-spin text-slate-700 dark:text-white" style={{ fontSize: '12px' }}></i>
           ) : isVerified ? (
             <i className="fas fa-check text-dark" style={{ fontSize: '14px', fontWeight: 'bold' }}></i>
           ) : null}
         </div>
-        <span className="text-white" style={{ fontSize: '14px', fontWeight: '500' }}>
+        <span className="text-slate-700 dark:text-white" style={{ fontSize: '14px', fontWeight: '500' }}>
           I'm not a robot
         </span>
       </div>

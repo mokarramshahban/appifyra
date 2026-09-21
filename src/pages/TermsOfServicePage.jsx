@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const TermsOfServicePage = () => {
   return (
-    <main className="main-area fix pt-120 pb-120" style={{ marginTop: '100px', marginBottom: '100px', backgroundColor: '#ffffff' }}>
+    <main className="main-area fix pt-120 pb-120" style={{ marginTop: '100px', marginBottom: '100px', background}}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">

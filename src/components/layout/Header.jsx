@@ -51,14 +51,14 @@ export default function Header() {
   };
 
   return (
-    <header id="xb-header-area" className="header-area header-style-three header-transparent" style={{ overflow: 'visible' }}>
+    <header id="xb-header-area" className="header-area header-style-three header-transparent bg-white/90 backdrop-blur-md border-b border-slate-200 dark:bg-[#060813]/90 dark:border-slate-800" style={{ overflow: 'visible' }}>
       <div className={`xb-header stricky original ${isSticky ? 'stricky-fixed stricked-menu' : ''}`} style={{ overflow: 'visible' }}>
         <div className="container" style={{ overflow: 'visible' }}>
           <div className="header__wrap ul_li_between" style={{ overflow: 'visible' }}>
             {/* Logo */}
             <div className="header-logo">
               <Link to="/">
-                <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra Logo" />
+                <img src="/assets/img/logo/appifyra logo white.svg" alt="Appifyra Logo" className="invert dark:invert-0" />
               </Link>
             </div>
             
@@ -67,27 +67,27 @@ export default function Header() {
               <nav className="main-menu collapse navbar-collapse" style={{ overflow: 'visible' }}>
                 <ul style={{ overflow: 'visible' }}>
                   <li>
-                    <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/" end className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
                       <span>Home</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
                       <span>About Us</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/services" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/services" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
                       <span>Services</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/internship" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/internship" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
                       <span>Internship</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contact" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-all"}>
                       <span>Contact</span>
                     </NavLink>
                   </li>
@@ -185,18 +185,14 @@ export default function Header() {
                     {/* Floating Overlay Profile Dropdown */}
                     {isProfileMenuOpen && (
                       <div 
-                        className="p-3 text-main"
-                        style={{
-                          position: 'absolute',
+                        className="p-3 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ position: 'absolute',
                           top: 'calc(100% + 10px)',
                           right: 0,
                           minWidth: '220px',
-                          backgroundColor: 'var(--card-bg)',
-                          border: '1px solid var(--card-border)',
+                          
                           borderRadius: '16px',
                           boxShadow: '0 15px 35px rgba(0, 0, 0, 0.7)',
-                          zIndex: 9999
-                        }}
+                          zIndex: 9999 }}
                       >
                         <div className="pb-2 mb-2 d-flex align-items-center gap-2" style={{ borderBottom: '1px solid var(--input-border)' }}>
                           <UserAvatar name={currentUser.displayName || currentUser.email} size={32} />
@@ -234,13 +230,11 @@ export default function Header() {
                   <button 
                     onClick={loginWithGoogle} 
                     className="btn btn-sm text-main" 
-                    style={{
-                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                      borderRadius: '20px',
+                    style={{ borderRadius: '20px',
                       fontSize: '13px',
                       fontWeight: '600',
                       padding: '6px 18px'
-                    }}
+                     }}
                   >
                     <i className="fab fa-google me-1"></i> Sign In
                   </button>

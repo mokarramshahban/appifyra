@@ -406,7 +406,7 @@ export default function AdminDashboardPage() {
           className="p-4 p-md-5 mb-5 text-main pos-rel"
           style={{
             borderRadius: '24px',
-            background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)',
+            
             border: '1px solid var(--input-border)'
           }}
         >
@@ -414,7 +414,7 @@ export default function AdminDashboardPage() {
             <div className="d-flex align-items-center gap-3">
               <UserAvatar name={currentUser?.displayName || currentUser?.email || 'Admin'} size={64} borderColor="#4ade80" />
               <div>
-                <span className="badge bg-success mb-1">ADMINISTRATOR CONTROL PANEL</span>
+                <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 mb-1">ADMINISTRATOR CONTROL PANEL</span>
                 <h2 className="text-main mb-0" style={{ fontWeight: '700' }}>Appifyra Admin Portal</h2>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Logged in as: {currentUser?.email}</p>
               </div>
@@ -429,7 +429,7 @@ export default function AdminDashboardPage() {
           <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top border-secondary">
             <button 
               onClick={() => setActiveTab('hero-quick')}
-              className={`btn btn-glow-hover ${activeTab === 'hero-quick' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'hero-quick' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               🚀 1. Hero Quick Applies ({heroQuickApps.length})
@@ -437,7 +437,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('full-internship')}
-              className={`btn btn-glow-hover ${activeTab === 'full-internship' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'full-internship' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               🎓 2. Full Internship Applications ({fullInternshipApps.length})
@@ -445,7 +445,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('contact-inquiries')}
-              className={`btn btn-glow-hover ${activeTab === 'contact-inquiries' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'contact-inquiries' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               ✉️ 3. Contact Inquiries ({inquiries.length})
@@ -453,7 +453,7 @@ export default function AdminDashboardPage() {
 
             <button 
               onClick={() => setActiveTab('subscribers')}
-              className={`btn btn-glow-hover ${activeTab === 'subscribers' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn btn-glow-hover ${activeTab === 'subscribers' ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold' : 'btn-outline-light'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               📩 4. Community Subscribers ({subscribers.length})
@@ -472,7 +472,7 @@ export default function AdminDashboardPage() {
                 setActiveTab('issue-cert');
                 loadNextCertId();
               }}
-              className={`btn btn-glow-hover ${activeTab === 'issue-cert' ? 'btn-success' : 'btn-outline-success'}`}
+              className={`btn btn-glow-hover ${activeTab === 'issue-cert' ? 'bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold' : 'btn-outline-success'}`}
               style={{ borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}
             >
               📜 Issue Certificate Tool
@@ -482,7 +482,7 @@ export default function AdminDashboardPage() {
 
         {/* Global Application Edit Overlay */}
         {editingApp && (
-          <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+          <div className="p-4 mb-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '16px' }}>
             <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Application for {editingApp.fullName}</h4>
             <form onSubmit={handleSaveEditApp}>
               <div className="row g-3">
@@ -518,7 +518,7 @@ export default function AdminDashboardPage() {
                   <button 
                     type="submit" 
                     disabled={isSavingAppEdit} 
-                    className="btn btn-success px-4 py-2 font-weight-bold"
+                    className="btn bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold px-4 py-2 font-weight-bold"
                     style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                   >
                     {isSavingAppEdit ? (
@@ -536,7 +536,7 @@ export default function AdminDashboardPage() {
 
         {/* Global Inquiry Edit Overlay */}
         {editingInq && (
-          <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+          <div className="p-4 mb-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '16px' }}>
             <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Contact Inquiry from {editingInq.fullName}</h4>
             <form onSubmit={handleSaveEditInq}>
               <div className="row g-3">
@@ -560,7 +560,7 @@ export default function AdminDashboardPage() {
                   <button 
                     type="submit" 
                     disabled={isSavingInqEdit} 
-                    className="btn btn-success px-4 py-2 font-weight-bold"
+                    className="btn bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold px-4 py-2 font-weight-bold"
                     style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                   >
                     {isSavingInqEdit ? (
@@ -578,7 +578,7 @@ export default function AdminDashboardPage() {
 
         {/* Global Subscriber Edit Overlay */}
         {editingSub && (
-          <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+          <div className="p-4 mb-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '16px' }}>
             <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Edit Subscriber Email</h4>
             <form onSubmit={handleSaveEditSub}>
               <div className="row g-3">
@@ -590,7 +590,7 @@ export default function AdminDashboardPage() {
                   <button 
                     type="submit" 
                     disabled={isSavingSubEdit} 
-                    className="btn btn-success px-4 py-2 font-weight-bold"
+                    className="btn bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold px-4 py-2 font-weight-bold"
                     style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                   >
                     {isSavingSubEdit ? (
@@ -614,7 +614,7 @@ export default function AdminDashboardPage() {
                 <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Form 1: Hero Quick Apply Submissions</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Submissions received directly from the Homepage Hero Quick Form.</p>
               </div>
-              <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total: {heroQuickApps.length}</span>
+              <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 px-3 py-2" style={{ fontSize: '14px' }}>Total: {heroQuickApps.length}</span>
             </div>
 
             {loading ? (
@@ -648,10 +648,10 @@ export default function AdminDashboardPage() {
                           </div>
                         </td>
                         <td className="text-info">{app.email}</td>
-                        <td><span className="badge bg-secondary">{app.duration}</span></td>
+                        <td><span className="badge bg-purple-100 text-purple-900 dark:bg-purple-900/30 dark:text-purple-200">{app.duration}</span></td>
                         <td style={{ color: 'var(--color-primary-light)', fontWeight: '600' }}>{app.domain}</td>
                         <td>
-                          <span className={`badge status-badge-anim ${app.status === 'Approved' ? 'bg-success' : app.status === 'Completed' ? 'bg-info text-dark' : app.status === 'Rejected' ? 'bg-danger' : 'bg-warning text-dark'}`}>
+                          <span className={`badge status-badge-anim ${app.status === 'Approved' ? 'bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200' : app.status === 'Completed' ? 'bg-cyan-100 text-cyan-900 dark:bg-cyan-900/50 dark:text-cyan-200 text-dark' : app.status === 'Rejected' ? 'bg-red-100 text-red-900 dark:bg-red-900/50 dark:text-red-200' : 'bg-orange-100 text-orange-900 dark:bg-orange-900/50 dark:text-orange-200 text-dark'}`}>
                             {updatingId === app.id ? <i className="fas fa-spinner fa-spin me-1"></i> : null}
                             {app.status || 'Under Review'}
                           </span>
@@ -688,7 +688,7 @@ export default function AdminDashboardPage() {
                 <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Form 2: Full Internship Applications</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Detailed candidate applications submitted from the /internship page.</p>
               </div>
-              <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total: {fullInternshipApps.length}</span>
+              <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 px-3 py-2" style={{ fontSize: '14px' }}>Total: {fullInternshipApps.length}</span>
             </div>
 
             {loading ? (
@@ -731,7 +731,7 @@ export default function AdminDashboardPage() {
                           <div className="text-muted">{app.degree}</div>
                         </td>
                         <td>
-                          <span className="badge bg-secondary me-1">{app.duration}</span>
+                          <span className="badge bg-purple-100 text-purple-900 dark:bg-purple-900/30 dark:text-purple-200 me-1">{app.duration}</span>
                           <div style={{ fontSize: '13px', color: 'var(--color-primary-light)', marginTop: '2px' }}>{app.domain}</div>
                         </td>
                         <td>
@@ -744,7 +744,7 @@ export default function AdminDashboardPage() {
                           )}
                         </td>
                         <td>
-                          <span className={`badge status-badge-anim ${app.status === 'Approved' ? 'bg-success' : app.status === 'Completed' ? 'bg-info text-dark' : app.status === 'Rejected' ? 'bg-danger' : 'bg-warning text-dark'}`}>
+                          <span className={`badge status-badge-anim ${app.status === 'Approved' ? 'bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200' : app.status === 'Completed' ? 'bg-cyan-100 text-cyan-900 dark:bg-cyan-900/50 dark:text-cyan-200 text-dark' : app.status === 'Rejected' ? 'bg-red-100 text-red-900 dark:bg-red-900/50 dark:text-red-200' : 'bg-orange-100 text-orange-900 dark:bg-orange-900/50 dark:text-orange-200 text-dark'}`}>
                             {updatingId === app.id ? <i className="fas fa-spinner fa-spin me-1"></i> : null}
                             {app.status || 'Under Review'}
                           </span>
@@ -781,7 +781,7 @@ export default function AdminDashboardPage() {
                 <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Form 3: Contact & General Inquiries</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Inquiry messages submitted from the /contact page form.</p>
               </div>
-              <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total: {inquiries.length}</span>
+              <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 px-3 py-2" style={{ fontSize: '14px' }}>Total: {inquiries.length}</span>
             </div>
 
             {loading ? (
@@ -847,16 +847,16 @@ export default function AdminDashboardPage() {
                 <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Community Newsletter & Broadcast Tool</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>View all community subscribers and compose broadcast emails to send to all.</p>
               </div>
-              <span className="badge bg-primary px-3 py-2" style={{ fontSize: '14px' }}>Total Subscribers: {subscribers.length}</span>
+              <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200 px-3 py-2" style={{ fontSize: '14px' }}>Total Subscribers: {subscribers.length}</span>
             </div>
 
             {/* Broadcast Newsletter Composer Box */}
-            <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '20px' }}>
+            <div className="p-4 mb-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '20px' }}>
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <h4 className="text-main mb-0" style={{ fontWeight: '700' }}>
                   <i className="fas fa-bullhorn text-warning me-2"></i> Send Broadcast Newsletter to All Subscribers
                 </h4>
-                <span className="badge bg-success" style={{ fontSize: '12px' }}>
+                <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200" style={{ fontSize: '12px' }}>
                   Target: {subscribers.length} Recipient{subscribers.length === 1 ? '' : 's'}
                 </span>
               </div>
@@ -968,12 +968,12 @@ export default function AdminDashboardPage() {
                 <h3 className="text-main mb-1" style={{ fontWeight: '700' }}>Issued Certificates Management</h3>
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>View, update student info/grade, or delete issued certificate records.</p>
               </div>
-              <span className="badge bg-info text-dark px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {issuedCerts.length}</span>
+              <span className="badge bg-cyan-100 text-cyan-900 dark:bg-cyan-900/50 dark:text-cyan-200 text-dark px-3 py-2" style={{ fontSize: '14px', fontWeight: '700' }}>Total: {issuedCerts.length}</span>
             </div>
 
             {/* Edit Certificate Form Overlay */}
             {editingCert && (
-              <div className="p-4 mb-4 text-main" style={{ backgroundColor: 'var(--card-bg)', border: '1px solid var(--input-border)', borderRadius: '16px' }}>
+              <div className="p-4 mb-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ ,  borderRadius: '16px' }}>
                 <h4 className="text-main mb-3"><i className="fas fa-edit me-2"></i> Update Certificate: {editingCert.certificateId}</h4>
                 <form onSubmit={handleSaveEditCert}>
                   <div className="row g-3">
@@ -1025,7 +1025,7 @@ export default function AdminDashboardPage() {
                       <button 
                         type="submit" 
                         disabled={isSavingCertEdit} 
-                        className="btn btn-success px-4 py-2 font-weight-bold"
+                        className="btn bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold px-4 py-2 font-weight-bold"
                         style={{ borderRadius: '10px', boxShadow: '0 4px 15px var(--card-border)' }}
                       >
                         {isSavingCertEdit ? (
@@ -1075,7 +1075,7 @@ export default function AdminDashboardPage() {
                         </td>
                         <td className="text-info">{cert.studentEmail}</td>
                         <td style={{ color: 'var(--color-primary-light)', fontWeight: '600' }}>{cert.courseTitle || cert.domain}</td>
-                        <td><span className="badge bg-primary">{cert.performanceGrade || cert.grade || 'Excellence (A+)'}</span></td>
+                        <td><span className="badge bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-200">{cert.performanceGrade || cert.grade || 'Excellence (A+)'}</span></td>
                         <td className="text-muted" style={{ fontSize: '12px' }}>{cert.issueDate || 'Recent'}</td>
                         <td>
                           <div className="d-flex align-items-center gap-2">
@@ -1104,17 +1104,13 @@ export default function AdminDashboardPage() {
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div 
-                className="p-4 p-md-5 text-main pos-rel"
-                style={{
-                  borderRadius: '24px',
-                  border: '1px solid var(--card-bg)',
-                  backgroundColor: 'var(--card-bg)',
-                  boxShadow: '0 20px 50px var(--card-bg)'
-                }}
+                className="p-4 p-md-5 text-main pos-rel bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                  
+                  boxShadow: '0 20px 50px var(--card-bg)' }}
               >
                 <div className="d-flex align-items-center justify-content-between mb-4 pb-3" style={{ borderBottom: '1px solid var(--card-border)' }}>
                   <div>
-                    <span className="badge bg-success mb-1">OFFICIAL ISSUANCE TOOL</span>
+                    <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 mb-1">OFFICIAL ISSUANCE TOOL</span>
                     <h3 className="text-main mb-0" style={{ fontWeight: '700' }}>Issue New Internship Certificate</h3>
                   </div>
                   <i className="fas fa-certificate text-success" style={{ fontSize: '36px' }}></i>
@@ -1237,7 +1233,7 @@ export default function AdminDashboardPage() {
                         <button 
                           type="submit" 
                           disabled={isIssuing}
-                          className="btn btn-success btn-lg w-100"
+                          className="btn bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold btn-lg w-100"
                           style={{ borderRadius: '12px', fontWeight: '700', padding: '14px' }}
                         >
                           {isIssuing ? (

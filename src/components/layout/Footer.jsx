@@ -30,8 +30,7 @@ export default function Footer() {
 
   return (
     <footer 
-      className="footer bg_img footer-style-two footer-style-three pt-120 pos-rel" 
-      style={{ backgroundColor: 'var(--section-bg)', backgroundImage: 'url(/assets/img/bg/footer_overly.png)' }}
+      className="footer footer-style-two footer-style-three pt-120 pos-rel bg-slate-50 dark:bg-[#060813] dark:bg-[url('/assets/img/bg/footer_overly.png')] dark:bg-cover dark:bg-center"
     >
       <div className="container">
         <div className="xb-footer">

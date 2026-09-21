@@ -17,7 +17,7 @@ export default function InternshipHighlightSection() {
   ];
 
   return (
-    <section className="pt-100 pb-100 pos-rel" style={{ backgroundColor: 'var(--section-bg)' }}>
+    <section className="pt-100 pb-100 pos-rel bg-slate-50 dark:bg-[#060813]" >
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
           <span className="sub-title">
@@ -38,7 +38,7 @@ export default function InternshipHighlightSection() {
               style={{
                 borderRadius: '24px',
                 border: '1px solid var(--input-border)',
-                background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)',
+                
                 boxShadow: '0 20px 40px var(--card-bg)'
               }}
             >
@@ -105,7 +105,7 @@ export default function InternshipHighlightSection() {
                 </div>
               </div>
 
-              <Link to="/internship" className="btn btn-primary w-100 py-3" style={{ background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', border: 'none', borderRadius: '12px', fontWeight: '700' }}>
+              <Link to="/internship" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold w-100 py-3" style={{ border: 'none', borderRadius: '12px', fontWeight: '700'  }}>
                 View 6-Month Track Details <i className="far fa-arrow-right ms-2"></i>
               </Link>
             </div>
