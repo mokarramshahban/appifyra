@@ -5,7 +5,7 @@ export default function UserAvatar({ name, size = 40, bgColor = 'linear-gradient
 
   return (
     <div 
-      className="d-flex align-items-center justify-content-center dark:text-white"
+      className="d-flex align-items-center justify-content-center text-slate-700 dark:text-white"
       style={{
         width: `${size}px`,
         height: `${size}px`,

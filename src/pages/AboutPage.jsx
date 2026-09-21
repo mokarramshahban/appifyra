@@ -110,7 +110,7 @@ export default function AboutPage() {
             </p>
 
             <div className="d-flex flex-wrap justify-content-center gap-3">
-              <Link to="/contact" className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
+              <Link to="/contact" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
                 <i className="fas fa-paper-plane me-2"></i> Partner With Us
               </Link>
               <Link to="/internship" className="btn btn-outline-light px-4 py-3" style={{ borderRadius: '12px', fontWeight: '600' }}>
@@ -132,14 +132,10 @@ export default function AboutPage() {
           <div className="row g-4">
             <div className="col-lg-6">
               <div 
-                className="p-4 p-md-5 h-100 text-main pos-rel"
-                style={{
-                  borderRadius: '24px',
-                  backgroundColor: 'var(--card-bg)',
-                  border: '1px solid var(--card-bg)',
+                className="p-4 p-md-5 h-100 text-main pos-rel bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                  
                   backdropFilter: 'blur(16px)',
-                  boxShadow: '0 20px 40px var(--card-bg)'
-                }}
+                  boxShadow: '0 20px 40px var(--card-bg)' }}
               >
                 <div 
                   className="d-inline-flex align-items-center justify-content-center mb-4"
@@ -164,14 +160,10 @@ export default function AboutPage() {
 
             <div className="col-lg-6">
               <div 
-                className="p-4 p-md-5 h-100 text-main pos-rel"
-                style={{
-                  borderRadius: '24px',
-                  backgroundColor: 'var(--card-bg)',
-                  border: '1px solid var(--card-bg)',
+                className="p-4 p-md-5 h-100 text-main pos-rel bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                  
                   backdropFilter: 'blur(16px)',
-                  boxShadow: '0 20px 40px var(--card-bg)'
-                }}
+                  boxShadow: '0 20px 40px var(--card-bg)' }}
               >
                 <div 
                   className="d-inline-flex align-items-center justify-content-center mb-4"
@@ -224,14 +216,10 @@ export default function AboutPage() {
             {pillars.map((pil, idx) => (
               <div className="col-lg-4 col-md-6" key={idx}>
                 <div 
-                  className="p-4 p-md-5 h-100 text-main d-flex flex-column justify-content-between"
-                  style={{
-                    borderRadius: '20px',
-                    backgroundColor: 'var(--card-bg)',
-                    border: '1px solid var(--input-border)',
+                  className="p-4 p-md-5 h-100 text-main d-flex flex-column justify-content-between bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '20px',
+                    
                     backdropFilter: 'blur(16px)',
-                    boxShadow: '0 10px 30px var(--card-bg)'
-                  }}
+                    boxShadow: '0 10px 30px var(--card-bg)' }}
                 >
                   <div>
                     <div 
@@ -316,13 +304,10 @@ export default function AboutPage() {
             {techStack.map((tech, idx) => (
               <div className="col-lg-4 col-md-6" key={idx}>
                 <div 
-                  className="p-4 text-main d-flex align-items-center gap-3 h-100"
-                  style={{
-                    backgroundColor: 'var(--card-bg)',
-                    border: '1px solid var(--input-border)',
+                  className="p-4 text-main d-flex align-items-center gap-3 h-100 bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
+                    
                     borderRadius: '16px',
-                    transition: 'all 0.3s ease'
-                  }}
+                    transition: 'all 0.3s ease' }}
                 >
                   <div 
                     className="d-flex align-items-center justify-content-center"
@@ -410,14 +395,11 @@ export default function AboutPage() {
                 {faqs.map((faq, idx) => (
                   <div 
                     key={idx}
-                    className="p-4 text-main"
-                    style={{
-                      backgroundColor: 'var(--card-bg)',
+                    className="p-4 text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                       border: openFaq === idx ? '1px solid var(--input-border)' : '1px solid var(--card-bg)',
                       borderRadius: '16px',
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease'
-                    }}
+                      transition: 'all 0.3s ease' }}
                     onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
                   >
                     <div className="d-flex align-items-center justify-content-between">

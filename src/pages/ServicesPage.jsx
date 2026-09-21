@@ -82,12 +82,8 @@ export default function ServicesPage() {
             {serviceDetails.map((detail, idx) => (
               <div className="col-lg-6" key={idx}>
                 <div 
-                  className="p-4 p-md-5 h-100 pos-rel text-main"
-                  style={{
-                    borderRadius: '24px',
-                    border: '1px solid var(--card-bg)',
-                    backgroundColor: 'var(--card-bg)'
-                  }}
+                  className="p-4 p-md-5 h-100 pos-rel text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
+                     }}
                 >
                   <span className="badge px-3 py-2 mb-3" style={{ backgroundColor: 'var(--input-border)', color: 'var(--color-primary-light)', border: '1px solid var(--input-border)', fontSize: '12px' }}>
                     {detail.badge}

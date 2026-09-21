@@ -29,7 +29,7 @@ export default function HowWeWorkSection() {
   return (
     <section className="work">
       <div className="container">
-        <div className="xb-work-wrap pos-rel pt-100 pb-155 bg-white dark:bg-[url('/assets/img/bg/work-bg.png')] dark:bg-cover dark:bg-center">
+        <div className="xb-work-wrap pos-rel pt-100 pb-155 bg-slate-50 dark:bg-[#060813] dark:bg-[url('/assets/img/bg/work-bg.png')] dark:bg-cover dark:bg-center">
           <div className="sec-title--two sec-title--three text-center mb-60">
             <span className="sub-title wow fadeInDown" data-wow-duration="600ms">
               <img src="/assets/img/icon/work.svg" alt="Work Icon" />

@@ -65,7 +65,7 @@ export default function CertificateVerificationPage() {
         {/* Verification Form Box */}
         <div className="row justify-content-center">
           <div className="col-lg-10">
-            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--input-border)', background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)' }}>
+            <div className="contact-two pos-rel p-4 p-md-5 mb-5 no-print" style={{ borderRadius: '20px', border: '1px solid var(--input-border)', }}>
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -144,10 +144,10 @@ export default function CertificateVerificationPage() {
                   <div>
                     {/* Top Action Control Bar */}
                     <div className="d-flex justify-content-between align-items-center mb-4 no-print">
-                      <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white px-3 py-2" style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px' }}>
+                      <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 px-3 py-2" style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px' }}>
                         <i className="fas fa-check-circle me-1"></i> VERIFIED OFFICIAL CREDENTIAL
                       </span>
-                      <button onClick={handlePrintCert} className="btn bg-green-100 text-green-900 border border-green-200 shadow-sm dark:bg-green-600 dark:text-white dark:border-none hover:bg-green-200 dark:hover:bg-green-700 font-semibold px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px var(--card-bg)' }}>
+                      <button onClick={handlePrintCert} className="btn bg-green-600 text-white hover:bg-green-700 shadow-md dark:bg-green-600/80 font-semibold px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px var(--card-bg)' }}>
                         <i className="fas fa-download me-2"></i> Download / Print PDF Certificate
                       </button>
                     </div>
@@ -158,7 +158,7 @@ export default function CertificateVerificationPage() {
                       style={{
                         borderRadius: '24px',
                         border: '3px double #4ade80',
-                        background: "" /* Removed dark inline gradient */,
+                        
                         boxShadow: '0 25px 60px var(--section-bg), 0 0 30px var(--card-bg)'
                       }}
                     >
@@ -251,14 +251,12 @@ export default function CertificateVerificationPage() {
                   >
                     <div className="mb-3">
                       <span 
-                        style={{
-                          backgroundColor: 'var(--card-bg)',
+                        className="bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ 
                           color: 'var(--color-error)',
                           padding: '12px 20px',
                           borderRadius: '50px',
                           fontSize: '14px',
-                          fontWeight: '700'
-                        }}
+                          fontWeight: '700' }}
                       >
                         <i className="fas fa-exclamation-triangle me-2"></i> INVALID OR UNVERIFIED CERTIFICATE ID
                       </span>

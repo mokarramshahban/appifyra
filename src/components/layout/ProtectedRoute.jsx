@@ -7,7 +7,7 @@ export default function ProtectedRoute({ children, requireAdmin = false }) {
 
   if (loading) {
     return (
-      <div className="text-center pt-150 pb-150 dark:text-white">
+      <div className="text-center pt-150 pb-150 text-slate-700 dark:text-white">
         <i className="fas fa-spinner fa-spin me-2"></i> Loading session...
       </div>
     );

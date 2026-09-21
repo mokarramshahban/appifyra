@@ -37,7 +37,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="cs-feature pos-rel pt-100 pb-80 z-1" className="${className} bg-slate-50 dark:bg-[#060813]" >
+    <section className="cs-feature pos-rel pt-100 pb-80 z-1 bg-slate-50 dark:bg-[#060813]" >
       <div className="container">
         {/* Section Header */}
         <div className="sec-title--two sec-title--three text-center mb-50">
