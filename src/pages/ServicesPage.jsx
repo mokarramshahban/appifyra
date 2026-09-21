@@ -53,7 +53,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="pt-140 pb-60 pos-rel">
+    <div className="pt-140 pb-60 pos-rel w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
       {/* Services Header Banner */}
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
@@ -73,7 +73,7 @@ export default function ServicesPage() {
         <ServicesSection />
 
         {/* Detailed Solutions Grid */}
-        <div className="pt-80 pb-60">
+        <div className="pt-80 pb-60 w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
           <div className="sec-title--two sec-title--three text-center mb-50">
             <h3 className="title text-main" style={{ fontSize: '32px' }}>Why Choose Appifyra For Your Project</h3>
           </div>
@@ -91,7 +91,7 @@ export default function ServicesPage() {
                   <h4 className="text-main mb-3" style={{ fontWeight: '700', fontSize: '24px' }}>{detail.title}</h4>
                   <p className="text-muted mb-4" style={{ fontSize: '15px', lineHeight: '1.6' }}>{detail.desc}</p>
                   
-                  <div className="pt-3" style={{ borderTop: '1px solid var(--card-bg)' }}>
+                  <div className="pt-3 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)' }}>
                     <ul className="list-unstyled row g-2 mb-0">
                       {detail.highlights.map((h, i) => (
                         <li className="col-md-6 text-muted" style={{ fontSize: '14px' }} key={i}>

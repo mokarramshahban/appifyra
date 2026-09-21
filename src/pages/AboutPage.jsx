@@ -73,7 +73,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="pt-140 pb-100 pos-rel">
+    <div className="pt-140 pb-100 pos-rel w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
       {/* ─── 1. ABOUT HERO BANNER ────────────────────────────────────────── */}
       <section className="about-hero mb-80">
         <div className="container">

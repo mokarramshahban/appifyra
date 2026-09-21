@@ -67,27 +67,27 @@ export default function Header() {
               <nav className="main-menu">
                 <ul className="hidden lg:flex md:flex items-center gap-6" style={{ margin: 0, padding: 0, listStyle: "none" }}>
                   <li>
-                    <NavLink to="/" end className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/" end className={({ isActive }) => isActive ? "!text-blue-600 font-bold dark:!text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "!text-slate-900 font-semibold hover:!text-blue-600 dark:!text-slate-100 dark:hover:!text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Home</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/about" className={({ isActive }) => isActive ? "!text-blue-600 font-bold dark:!text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "!text-slate-900 font-semibold hover:!text-blue-600 dark:!text-slate-100 dark:hover:!text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>About Us</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/services" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/services" className={({ isActive }) => isActive ? "!text-blue-600 font-bold dark:!text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "!text-slate-900 font-semibold hover:!text-blue-600 dark:!text-slate-100 dark:hover:!text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Services</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/internship" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/internship" className={({ isActive }) => isActive ? "!text-blue-600 font-bold dark:!text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "!text-slate-900 font-semibold hover:!text-blue-600 dark:!text-slate-100 dark:hover:!text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Internship</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "text-slate-900 font-semibold hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400 px-3 py-2 rounded-md transition-all"}>
+                    <NavLink to="/contact" className={({ isActive }) => isActive ? "!text-blue-600 font-bold dark:!text-white dark:bg-slate-800/50 px-3 py-2 rounded-md transition-all" : "!text-slate-900 font-semibold hover:!text-blue-600 dark:!text-slate-100 dark:hover:!text-blue-400 px-3 py-2 rounded-md transition-all"}>
                       <span>Contact</span>
                     </NavLink>
                   </li>

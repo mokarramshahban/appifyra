@@ -26,7 +26,7 @@ export default function QuickVerifySection() {
           <div className="row align-items-center g-4">
             <div className="col-lg-6">
               <div className="d-flex align-items-center gap-3 mb-2">
-                <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 text-slate-700 dark:text-white" style={{ fontSize: '12px' }}>VERIFIED REGISTRY</span>
+                <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 !text-slate-700 dark:text-white" style={{ fontSize: '12px' }}>VERIFIED REGISTRY</span>
                 <span className="text-muted" style={{ fontSize: '13px' }}>100% Credibility Guarantee</span>
               </div>
               <h3 className="text-main mb-2" style={{ fontWeight: '700' }}>Verify Student Certificate</h3>
