@@ -10,7 +10,7 @@ export default function AboutSection() {
             <div className="col-lg-6">
               <div className="cs-about_left">
                 <div className="sec-title--two sec-title--three">
-                  <span className="sub-title">
+                  <span className="sub-title !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4">
                     <img src="/assets/img/icon/magic02.svg" alt="Magic Icon" />
                     <span>About us</span>
                   </span>

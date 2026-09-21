@@ -57,7 +57,7 @@ export default function ServicesPage() {
       {/* Services Header Banner */}
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
-          <span className="sub-title wow fadeInDown" data-wow-duration="600ms">
+          <span className="sub-title wow fadeInDown !bg-purple-100 !text-purple-900 border border-purple-200 dark:!bg-purple-900/30 dark:!text-purple-300 px-3 py-1 rounded-full inline-flex items-center gap-2 mb-4" data-wow-duration="600ms">
             <img src="/assets/img/icon/ser_layer.svg" alt="Services Layer" />
             <span>End-to-End Digital Solutions</span>
           </span>
