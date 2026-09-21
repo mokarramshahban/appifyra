@@ -64,7 +64,7 @@ export default function ServicesPage() {
           <h2 className="title wow fadeInDown" data-wow-duration="600ms">
             Services Designed to Scale Your Business
           </h2>
-          <p className="content mt-15" style={{ maxWidth: '720px', margin: '0 auto', color: 'var(--color-text-muted)' }}>
+          <p className="content mt-15" style={{ maxWidth: '720px', margin: '0 auto', }}>
             From custom web and mobile applications to cloud infrastructure and visual branding, Appifyra delivers tailored technology solutions engineered for growth.
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
         <ServicesSection />
 
         {/* Detailed Solutions Grid */}
-        <div className="pt-80 pb-60 w-full min-h-screen bg-slate-50 dark:bg-[#060813]">
+        <div className="pt-80 pb-60">
           <div className="sec-title--two sec-title--three text-center mb-50">
             <h3 className="title text-main" style={{ fontSize: '32px' }}>Why Choose Appifyra For Your Project</h3>
           </div>
@@ -85,13 +85,13 @@ export default function ServicesPage() {
                   className="p-4 p-md-5 h-100 pos-rel text-main bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none" style={{ borderRadius: '24px',
                      }}
                 >
-                  <span className="badge px-3 py-2 mb-3" style={{ backgroundColor: 'var(--input-border)', color: 'var(--color-primary-light)', border: '1px solid var(--input-border)', fontSize: '12px' }}>
+                  <span className="badge px-3 py-2 mb-3 bg-purple-100 text-purple-900 border border-purple-200 dark:bg-purple-900/30 dark:border-none dark:text-purple-300" style={{ fontSize: "12px" }}>
                     {detail.badge}
                   </span>
                   <h4 className="text-main mb-3" style={{ fontWeight: '700', fontSize: '24px' }}>{detail.title}</h4>
                   <p className="text-muted mb-4" style={{ fontSize: '15px', lineHeight: '1.6' }}>{detail.desc}</p>
                   
-                  <div className="pt-3 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)' }}>
+                  <div className="pt-3" >
                     <ul className="list-unstyled row g-2 mb-0">
                       {detail.highlights.map((h, i) => (
                         <li className="col-md-6 text-muted" style={{ fontSize: '14px' }} key={i}>
@@ -107,12 +107,11 @@ export default function ServicesPage() {
 
           {/* CTA Banner */}
           <div 
-            className="p-4 p-md-5 mt-60 text-center text-main pos-rel"
-            style={{ boxShadow: '0 20px 40px var(--card-bg)'
-             }}
+            className="p-4 p-md-5 mt-60 text-center text-main pos-rel bg-white dark:bg-[#0d1226] border border-indigo-200 border-b-4 border-b-blue-500 shadow-sm dark:border-none"
+            
           >
             <h3 className="text-main mb-2" style={{ fontWeight: '700' }}>Have a custom project in mind?</h3>
-            <p style={{ color: 'rgba(255, 255, 255, 0.85)', maxWidth: '600px', margin: '0 auto 24px' }}>
+            <p className="!text-slate-700 dark:!text-slate-300" style={{ maxWidth: "600px", margin: "0 auto 24px" }}>
               Our team of senior engineers and designers is ready to transform your ideas into scalable software products.
             </p>
             <Link to="/contact" className="btn btn-light px-4 py-3 font-weight-bold" style={{ borderRadius: '12px', color: 'var(--color-primary)', fontWeight: '700' }}>

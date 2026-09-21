@@ -116,7 +116,7 @@ export default function InternshipPage() {
             className="sub-title d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
               backgroundColor: 'var(--badge-bg)',
-              border: '1px solid var(--card-bg)',
+              
               borderRadius: '30px',
               color: 'var(--color-success)',
               fontSize: '13px',
@@ -143,7 +143,7 @@ export default function InternshipPage() {
           </p>
 
           <div className="d-flex flex-wrap justify-content-center gap-3 mt-4">
-            <a href="#apply-form" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
+            <a href="#apply-form" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700',  }}>
               <i className="fas fa-edit me-2"></i> Apply for Internship Now
             </a>
             <a href="/verify" className="btn btn-outline-light btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '600' }}>
@@ -159,9 +159,9 @@ export default function InternshipPage() {
               className="p-4 p-md-5 pos-rel text-main h-100 d-flex flex-column justify-content-between interactive-hover-card"
               style={{
                 borderRadius: '24px',
-                border: '1px solid var(--card-bg)',
+                
                 background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--section-bg) 100%)',
-                boxShadow: '0 15px 35px var(--card-bg)'
+                
               }}
             >
               <div>
@@ -196,9 +196,9 @@ export default function InternshipPage() {
               className="p-4 p-md-5 pos-rel text-main h-100 d-flex flex-column justify-content-between interactive-hover-card"
               style={{
                 borderRadius: '24px',
-                border: '1px solid var(--card-bg)',
+                
                 background: 'linear-gradient(135deg, var(--section-bg) 0%, var(--card-bg) 100%)',
-                boxShadow: '0 15px 35px var(--card-bg)'
+                
               }}
             >
               <div>
@@ -235,7 +235,7 @@ export default function InternshipPage() {
             className="d-inline-flex align-items-center gap-2 px-3 py-2 mb-3"
             style={{
               backgroundColor: 'var(--badge-bg)',
-              border: '1px solid var(--card-bg)',
+              
               borderRadius: '30px',
               color: 'var(--color-success)',
               fontSize: '13px',
@@ -265,7 +265,7 @@ export default function InternshipPage() {
                       height: '56px',
                       borderRadius: '14px',
                       background: `${d.glow}20`,
-                      border: `1px solid ${d.glow}60`,
+                      
                       color: d.glow,
                       fontSize: '24px'
                     }}
@@ -309,9 +309,9 @@ export default function InternshipPage() {
               className="p-4 p-md-5 text-main"
               style={{
                 borderRadius: '24px',
-                border: '1px solid var(--card-border)',
+                
                 background: 'linear-gradient(180deg, var(--card-bg) 0%, var(--section-bg) 100%)',
-                boxShadow: '0 20px 50px var(--card-bg)'
+                
               }}
             >
               <div className="text-center mb-4">
@@ -328,7 +328,7 @@ export default function InternshipPage() {
                   className="p-4 mb-4 text-center"
                   style={{
                     backgroundColor: 'var(--input-bg)',
-                    border: '1px solid var(--input-border)',
+                    
                     borderRadius: '16px'
                   }}
                 >
@@ -340,7 +340,7 @@ export default function InternshipPage() {
                   <button 
                     onClick={loginWithGoogle}
                     className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-2"
-                    style={{ border: 'none', borderRadius: '10px', fontWeight: '700'  }}
+                    style={{  borderRadius: '10px', fontWeight: '700'  }}
                   >
                     <i className="fab fa-google me-2"></i> Sign In with Google to Apply
                   </button>
@@ -398,7 +398,7 @@ export default function InternshipPage() {
                         type="text" 
                         name="fullName"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.fullName}
                         onChange={handleChange}
                         required
@@ -412,7 +412,7 @@ export default function InternshipPage() {
                         type="email" 
                         name="email"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -426,7 +426,7 @@ export default function InternshipPage() {
                         type="tel" 
                         name="phone"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.phone}
                         onChange={handleChange}
                         required
@@ -440,7 +440,7 @@ export default function InternshipPage() {
                         type="text" 
                         name="college"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.college}
                         onChange={handleChange}
                         required
@@ -454,7 +454,7 @@ export default function InternshipPage() {
                         type="text" 
                         name="degree"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.degree}
                         onChange={handleChange}
                         required
@@ -467,7 +467,7 @@ export default function InternshipPage() {
                       <select 
                         name="duration"
                         className="form-select text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--color-bg-card)',  borderRadius: '10px' }}
                         value={formData.duration}
                         onChange={handleChange}
                         required
@@ -482,7 +482,7 @@ export default function InternshipPage() {
                       <select 
                         name="domain"
                         className="form-select text-main"
-                        style={{ backgroundColor: 'var(--color-bg-card)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--color-bg-card)',  borderRadius: '10px' }}
                         value={formData.domain}
                         onChange={handleChange}
                         required
@@ -504,7 +504,7 @@ export default function InternshipPage() {
                         <input 
                           type="text" 
                           className="form-control text-main"
-                          style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                          style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                           placeholder="e.g. Cyber Security, AI/ML, Blockchain..."
                           value={customDomain}
                           onChange={(e) => setCustomDomain(e.target.value)}
@@ -520,7 +520,7 @@ export default function InternshipPage() {
                         type="url" 
                         name="resumeUrl"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.resumeUrl}
                         onChange={handleChange}
                         disabled={!currentUser}
@@ -533,7 +533,7 @@ export default function InternshipPage() {
                         name="message"
                         rows="3"
                         className="form-control text-main"
-                        style={{ backgroundColor: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: '10px' }}
+                        style={{ backgroundColor: 'var(--input-bg)',  borderRadius: '10px' }}
                         value={formData.message}
                         onChange={handleChange}
                         disabled={!currentUser}
@@ -559,7 +559,7 @@ export default function InternshipPage() {
                             fontWeight: '700',
                             padding: '14px',
                             borderRadius: '12px',
-                            boxShadow: '0 10px 25px var(--card-bg)'
+                            
                            }}
                         >
                           {isSubmitting ? (

@@ -57,8 +57,8 @@ export default function StudentDashboardPage() {
           style={{
             borderRadius: '24px',
             
-            border: '1px solid var(--input-border)',
-            boxShadow: '0 20px 50px var(--card-bg)'
+            
+            
           }}
         >
           <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -72,7 +72,7 @@ export default function StudentDashboardPage() {
                 <p className="text-muted mb-0" style={{ fontSize: '14px' }}>{currentUser?.email}</p>
               </div>
             </div>
-            <Link to="/internship" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700', boxShadow: '0 10px 25px var(--card-bg)' }}>
+            <Link to="/internship" className="btn bg-blue-600 text-white hover:bg-blue-700 shadow-md dark:bg-blue-600/80 font-semibold btn-glow-hover px-4 py-3" style={{ borderRadius: '12px', fontWeight: '700',  }}>
               <i className="fas fa-plus-circle me-2"></i> Apply for New Internship
             </Link>
           </div>
@@ -114,13 +114,13 @@ export default function StudentDashboardPage() {
                 maxHeight: '92vh',
                 overflowY: 'auto',
                 borderRadius: '24px',
-                border: '3px double #4ade80',
                 
-                boxShadow: '0 25px 60px var(--section-bg), 0 0 35px var(--card-bg)'
+                
+                
               }}
             >
               {/* Modal Top Close Bar (UI Only, Hidden in PDF Print) */}
-              <div className="d-flex justify-content-between align-items-center pb-3 mb-3 no-print" style={{ borderBottom: '1px solid var(--card-border)' }}>
+              <div className="d-flex justify-content-between align-items-center pb-3 mb-3 no-print" >
                 <span className="badge bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-200 px-3 py-2" style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '1px' }}>
                   <i className="fas fa-check-circle me-1"></i> VERIFIED CREDENTIAL PREVIEW
                 </span>
@@ -165,7 +165,7 @@ export default function StudentDashboardPage() {
                 })()}
 
                 {/* Certificate Badges & Signatory Footer Grid */}
-                <div className="mt-5 pt-4 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
+                <div className="mt-5 pt-4 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" >
                   <div className="row align-items-center">
                     <div className="col-4 text-start">
                       <span className="text-muted text-uppercase d-block" style={{ fontSize: '11px', letterSpacing: '1px' }}>Certificate ID</span>
@@ -178,7 +178,7 @@ export default function StudentDashboardPage() {
                       <div 
                         className="d-inline-flex flex-column align-items-center justify-content-center"
                         style={{
-                          border: '2px dashed #4ade80',
+                          
                           borderRadius: '50%',
                           width: '84px',
                           height: '84px',
@@ -199,7 +199,7 @@ export default function StudentDashboardPage() {
               </div>
 
               {/* Modal Footer Controls */}
-              <div className="d-flex flex-wrap align-items-center justify-content-between pt-4 mt-2 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
+              <div className="d-flex flex-wrap align-items-center justify-content-between pt-4 mt-2 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" >
                 <span className="text-muted" style={{ fontSize: '13px' }}>
                   Issued by <strong>Appifyra Certification Board</strong>
                 </span>
@@ -232,7 +232,7 @@ export default function StudentDashboardPage() {
                 style={{
                   borderRadius: '20px',
                   backgroundColor: 'var(--input-bg)',
-                  border: '1px dashed var(--card-border)'
+                  
                 }}
               >
                 <i className="fas fa-folder-open mb-3 text-muted" style={{ fontSize: '48px' }}></i>
@@ -265,7 +265,7 @@ export default function StudentDashboardPage() {
                         <i className="fas fa-university me-1 text-primary"></i> {app.college} ({app.degree})
                       </p>
 
-                      <div className="pt-3 d-flex justify-content-between align-items-center w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-bg)', fontSize: '13px' }}>
+                      <div className="pt-3 d-flex justify-content-between align-items-center w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{  fontSize: '13px' }}>
                         <span className="text-muted">
                           Applied: {app.createdAt ? new Date(app.createdAt).toLocaleDateString() : 'Recent'}
                         </span>
@@ -300,7 +300,7 @@ export default function StudentDashboardPage() {
                 style={{
                   borderRadius: '20px',
                   backgroundColor: 'var(--input-bg)',
-                  border: '1px dashed var(--card-border)'
+                  
                 }}
               >
                 <i className="fas fa-award mb-3 text-muted" style={{ fontSize: '48px' }}></i>
@@ -318,7 +318,7 @@ export default function StudentDashboardPage() {
                       style={{
                         borderRadius: '20px',
                         
-                        border: '1px solid var(--card-bg)'
+                        
                       }}
                     >
                       <div>
@@ -346,7 +346,7 @@ export default function StudentDashboardPage() {
                         </div>
                       </div>
 
-                      <div className="pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" style={{ borderTop: '1px solid var(--card-border)' }}>
+                      <div className="pt-3 d-flex flex-wrap align-items-center justify-content-between gap-2 w-full min-h-screen bg-slate-50 dark:bg-[#060813]" >
                         <span className="text-muted" style={{ fontSize: '12px' }}>
                           Issued: {cert.issueDate || (cert.issuedAt ? new Date(cert.issuedAt).toLocaleDateString() : 'Recent')}
                         </span>
