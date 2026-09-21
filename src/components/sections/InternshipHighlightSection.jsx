@@ -17,7 +17,7 @@ export default function InternshipHighlightSection() {
   ];
 
   return (
-    <section className="pt-100 pb-100 pos-rel" style={{ backgroundColor: 'var(--section-bg)' }}>
+    <section className="pt-100 pb-100 pos-rel" className="${className} bg-slate-50 dark:bg-[#060813]" >
       <div className="container">
         <div className="sec-title--two sec-title--three text-center mb-60">
           <span className="sub-title">
@@ -34,13 +34,7 @@ export default function InternshipHighlightSection() {
           {/* 45-Day Track */}
           <div className="col-lg-6">
             <div 
-              className="p-4 p-md-5 text-main h-100 d-flex flex-column justify-content-between"
-              style={{
-                borderRadius: '24px',
-                border: '1px solid var(--input-border)',
-                background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--section-bg) 100%)',
-                boxShadow: '0 20px 40px var(--card-bg)'
-              }}
+              className="p-4 p-md-5 text-main h-100 d-flex flex-column justify-content-between bg-white dark:bg-[#0d1226] border border-slate-200 shadow-sm dark:border-none" style={{ borderRadius: '24px' }}
             >
               <div>
                 <div className="d-flex justify-content-between align-items-center mb-3">
@@ -105,7 +99,7 @@ export default function InternshipHighlightSection() {
                 </div>
               </div>
 
-              <Link to="/internship" className="btn btn-primary w-100 py-3" style={{ background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)', border: 'none', borderRadius: '12px', fontWeight: '700' }}>
+              <Link to="/internship" className="btn bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold w-100 py-3" style={{  borderRadius: '12px', fontWeight: '700'  }}>
                 View 6-Month Track Details <i className="far fa-arrow-right ms-2"></i>
               </Link>
             </div>

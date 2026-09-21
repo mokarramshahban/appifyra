@@ -65,7 +65,7 @@ const CookieBanner = () => {
           style={{
             backgroundColor: 'var(--tg-theme-primary)',
             color: 'var(--color-text-main)',
-            border: 'none',
+            
             padding: '8px 20px',
             cursor: 'pointer',
             borderRadius: '4px',

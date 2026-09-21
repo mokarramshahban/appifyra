@@ -67,27 +67,27 @@ export default function Header() {
               <nav className="main-menu collapse navbar-collapse" style={{ overflow: 'visible' }}>
                 <ul style={{ overflow: 'visible' }}>
                   <li>
-                    <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/" end className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-colors"}>
                       <span>Home</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-colors"}>
                       <span>About Us</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/services" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/services" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-colors"}>
                       <span>Services</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/internship" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/internship" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-colors"}>
                       <span>Internship</span>
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contact" className={({ isActive }) => isActive ? "active" : ""}>
+                    <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-600 font-bold dark:text-white dark:bg-slate-800/50 px-3 py-2 rounded-md" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white px-3 py-2 rounded-md transition-colors"}>
                       <span>Contact</span>
                     </NavLink>
                   </li>
@@ -234,13 +234,11 @@ export default function Header() {
                   <button 
                     onClick={loginWithGoogle} 
                     className="btn btn-sm text-main" 
-                    style={{
-                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                      borderRadius: '20px',
+                    style={{ borderRadius: '20px',
                       fontSize: '13px',
                       fontWeight: '600',
                       padding: '6px 18px'
-                    }}
+                     }}
                   >
                     <i className="fab fa-google me-1"></i> Sign In
                   </button>
@@ -285,7 +283,7 @@ export default function Header() {
               <button 
                 className={`xb-nav-mobile ${isMobileMenuOpen ? 'active' : ''}`} 
                 onClick={toggleMobileMenu}
-                style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'inherit' }}
+                style={{ background: 'transparent',  cursor: 'pointer', color: 'inherit' }}
                 aria-label="Toggle Navigation"
               >
                 <i className="far fa-bars"></i>

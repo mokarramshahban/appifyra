@@ -95,13 +95,11 @@ export default function CertificateVerificationPage() {
                     type="submit"
                     disabled={loading}
                     className="btn"
-                    style={{
-                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                      color: 'var(--color-text-main)',
+                    style={{ color: 'var(--color-text-main)',
                       padding: '0 30px',
                       fontWeight: '600',
                       borderRadius: '0 10px 10px 0'
-                    }}
+                     }}
                   >
                     {loading ? <i className="fas fa-spinner fa-spin"></i> : <span><i className="far fa-search me-2"></i> Verify Credential</span>}
                   </button>
@@ -146,10 +144,10 @@ export default function CertificateVerificationPage() {
                   <div>
                     {/* Top Action Control Bar */}
                     <div className="d-flex justify-content-between align-items-center mb-4 no-print">
-                      <span className="badge bg-success px-3 py-2" style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px' }}>
+                      <span className="badge bg-green-100 text-green-900 dark:bg-green-600 dark:text-white px-3 py-2" style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px' }}>
                         <i className="fas fa-check-circle me-1"></i> VERIFIED OFFICIAL CREDENTIAL
                       </span>
-                      <button onClick={handlePrintCert} className="btn btn-success px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px var(--card-bg)' }}>
+                      <button onClick={handlePrintCert} className="btn bg-green-100 text-green-900 border border-green-200 shadow-sm dark:bg-green-600 dark:text-white dark:border-none hover:bg-green-200 dark:hover:bg-green-700 font-semibold px-4 py-2" style={{ borderRadius: '10px', fontWeight: '700', boxShadow: '0 4px 15px var(--card-bg)' }}>
                         <i className="fas fa-download me-2"></i> Download / Print PDF Certificate
                       </button>
                     </div>
@@ -160,7 +158,7 @@ export default function CertificateVerificationPage() {
                       style={{
                         borderRadius: '24px',
                         border: '3px double #4ade80',
-                        background: 'linear-gradient(135deg, #04121a 0%, #030818 100%)',
+                        background: "" /* Removed dark inline gradient */,
                         boxShadow: '0 25px 60px var(--section-bg), 0 0 30px var(--card-bg)'
                       }}
                     >

@@ -84,11 +84,8 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="hero hero-style-two hero-style-three bg_img pos-rel overflow-hidden"
+      className="hero hero-style-two hero-style-three bg-white dark:bg-[url('/assets/img/bg/hero-bg03.png')] dark:bg-cover dark:bg-center pos-rel overflow-hidden"
       style={{ 
-        backgroundImage: 'url(/assets/img/bg/hero-bg03.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         paddingTop: '130px',
         paddingBottom: '50px'
       }}
@@ -146,7 +143,7 @@ export default function HeroSection() {
                       backdropFilter: 'blur(8px)'
                     }}
                   >
-                    <span className="badge bg-primary text-white" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
+                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white" style={{ fontSize: '11px', borderRadius: '15px' }}>NEW</span>
                     <span className="text-main" style={{ fontSize: '14px', fontWeight: '500' }}>
                       🚀 Next-Gen IT Services & Verified University Training
                     </span>
@@ -166,14 +163,12 @@ export default function HeroSection() {
                   <Link 
                     to="/services" 
                     className="btn btn-lg"
-                    style={{
-                      background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                      color: '#ffffff',
+                    style={{ color: '#ffffff',
                       fontWeight: '700',
                       padding: '14px 32px',
                       borderRadius: '12px',
                       boxShadow: 'var(--shadow-primary)'
-                    }}
+                     }}
                   >
                     <span>Explore Our Services <i className="far fa-arrow-right ms-2"></i></span>
                   </Link>
@@ -236,7 +231,7 @@ export default function HeroSection() {
                   <div className="d-flex gap-2 p-1 mb-4" style={{ backgroundColor: 'var(--input-bg)', borderRadius: '14px', border: '1px solid var(--input-border)' }}>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'btn-primary' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'internship' ? 'bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
                       style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px' }}
                       onClick={() => { setFormTab('internship'); setSubmitted(false); }}
                     >
@@ -244,8 +239,8 @@ export default function HeroSection() {
                     </button>
                     <button
                       type="button"
-                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'btn-primary' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
-                      style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px', backgroundColor: formTab === 'service' ? 'var(--color-primary)' : 'transparent', borderColor: 'transparent' }}
+                      className={`btn flex-fill py-2 btn-sm ${formTab === 'service' ? 'bg-blue-100 text-blue-900 border border-blue-200 shadow-sm dark:bg-blue-600 dark:text-white dark:border-none hover:bg-blue-200 dark:hover:bg-blue-700 font-semibold' : 'btn-link text-slate-600 dark:text-slate-400 text-decoration-none'}`}
+                      style={{ borderRadius: '10px', fontWeight: '600', fontSize: '13px',  }}
                       onClick={() => { setFormTab('service'); setSubmitted(false); }}
                     >
                       <i className="fas fa-briefcase me-1"></i> Client Service Request
@@ -253,7 +248,7 @@ export default function HeroSection() {
                   </div>
 
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <span className="badge bg-primary text-white px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
+                    <span className="badge bg-blue-100 text-blue-900 dark:bg-blue-600 dark:text-white px-3 py-1" style={{ borderRadius: '8px', fontSize: '11px' }}>
                       {formTab === 'internship' ? 'QUICK APPLY' : 'SERVICE INQUIRY'}
                     </span>
                     <span style={{ color: 'var(--color-success)', fontSize: '13px', fontWeight: '600' }}>
@@ -409,14 +404,12 @@ export default function HeroSection() {
                         type="submit"
                         disabled={isSubmitting}
                         className="btn btn-lg w-100 font-weight-bold"
-                        style={{
-                          background: 'linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%)',
-                          color: '#ffffff',
+                        style={{ color: '#ffffff',
                           borderRadius: '12px',
                           padding: '14px',
                           boxShadow: 'var(--shadow-primary)',
                           fontSize: '15px'
-                        }}
+                         }}
                       >
                         {isSubmitting ? (
                           <span><i className="fas fa-spinner fa-spin me-2"></i> Submitting & Verifying...</span>
